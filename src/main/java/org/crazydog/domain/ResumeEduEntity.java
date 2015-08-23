@@ -15,6 +15,7 @@ public class ResumeEduEntity {
     private Timestamp endTime;
     private String school;
     private String discipline;
+    private ResumeEntity resumeByResumeId;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -102,5 +103,15 @@ public class ResumeEduEntity {
         result = 31 * result + (school != null ? school.hashCode() : 0);
         result = 31 * result + (discipline != null ? discipline.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
+    public ResumeEntity getResumeByResumeId() {
+        return resumeByResumeId;
+    }
+
+    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
+        this.resumeByResumeId = resumeByResumeId;
     }
 }
