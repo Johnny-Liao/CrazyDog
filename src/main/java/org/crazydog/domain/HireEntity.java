@@ -16,6 +16,7 @@ public class HireEntity {
     private String comment;
     private Timestamp operateTime;
     private String operator;
+    private ResumeEntity resumeByResumeId;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -115,5 +116,15 @@ public class HireEntity {
         result = 31 * result + (operateTime != null ? operateTime.hashCode() : 0);
         result = 31 * result + (operator != null ? operator.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
+    public ResumeEntity getResumeByResumeId() {
+        return resumeByResumeId;
+    }
+
+    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
+        this.resumeByResumeId = resumeByResumeId;
     }
 }
