@@ -1,10 +1,7 @@
-.settings/
-.classpath
-.project
 bin/
 *.class
 target/
-.idea/
+
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
