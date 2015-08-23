@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="CrazyDog:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="CrazyDog-0.0.1-SNAPSHOT.war">
+      <element id="artifact" artifact-name="CrazyDog:war exploded" />
+    </root>
+  </artifact>
+</component>
