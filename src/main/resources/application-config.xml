@@ -7,10 +7,15 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
     <context:component-scan base-package="org.crazydog"/>
-
+	 <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+   		<property name="sessionFactory">
+   			<ref bean="sessionFactory"/>
+   		</property>
+   </bean>
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="configLocation"
                   value="classpath:hibernate.cfg.xml">
         </property>
     </bean>
+    <context:component-scan base-package="org.crazydog.daoI.impl"/>
 </beans>
