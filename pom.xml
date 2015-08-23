@@ -23,7 +23,7 @@
 		<spring-framework.version>4.2.0.RELEASE</spring-framework.version>
 
 		<!-- Hibernate -->
-		<hibernate.version>4.3.11.Final</hibernate.version>
+		<hibernate.version>4.3.6.Final</hibernate.version>
 
 		<!-- Test -->
 		<junit.version>4.12</junit.version>
@@ -93,11 +93,11 @@
 		</dependency>
 
 		<!-- Hibernate -->
-<!-- 		<dependency>
+ 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
 			<version>${hibernate.version}</version>
-		</dependency> -->
+		</dependency>
 
 		<!-- Test Artifacts -->
 		<dependency>
