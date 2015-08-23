@@ -23,6 +23,7 @@ public class EmployeeEntity {
     private DepartmentEntity departmentByDepId;
     private UnitEntity unitByUnitId;
     private Collection<PositionEntity> positionsById;
+    private ResumeEntity resumeByResumeId;
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
@@ -196,5 +197,15 @@ public class EmployeeEntity {
 
     public void setPositionsById(Collection<PositionEntity> positionsById) {
         this.positionsById = positionsById;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
+    public ResumeEntity getResumeByResumeId() {
+        return resumeByResumeId;
+    }
+
+    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
+        this.resumeByResumeId = resumeByResumeId;
     }
 }
