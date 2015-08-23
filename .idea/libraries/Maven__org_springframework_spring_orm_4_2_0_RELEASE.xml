@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <component name="libraryTable">
   <library name="Maven: org.springframework:spring-orm:4.2.0.RELEASE">
     <CLASSES>
@@ -56,4 +57,18 @@
       <root url="file://D:/git_about/spring-framework/src/test/java" />
     </SOURCES>
   </library>
+=======
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-orm:4.2.0.RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.2.0.RELEASE/spring-orm-4.2.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.2.0.RELEASE/spring-orm-4.2.0.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-orm/4.2.0.RELEASE/spring-orm-4.2.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+>>>>>>> 25bc47e096aeff95fefa30c7e30e290692e20b37
 </component>
