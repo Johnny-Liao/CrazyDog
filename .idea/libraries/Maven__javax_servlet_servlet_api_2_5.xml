@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <component name="libraryTable">
 	<library name="Maven: javax.servlet:servlet-api:2.5">
 		<CLASSES>
@@ -13,4 +14,18 @@
 				url="jar://D:/maven_repos/repository/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar!/" />
 		</SOURCES>
 	</library>
+=======
+<component name="libraryTable">
+  <library name="Maven: javax.servlet:servlet-api:2.5">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/servlet-api/2.5/servlet-api-2.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+>>>>>>> bcd33826cccc6660b1d060c59ac9e26753337c6e
 </component>

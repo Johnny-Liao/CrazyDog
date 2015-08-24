@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <component name="libraryTable">
 	<library name="Maven: org.springframework:spring-jdbc:4.2.0.RELEASE">
 		<CLASSES>
@@ -13,4 +14,18 @@
 				url="jar://D:/maven_repos/repository/org/springframework/spring-jdbc/4.2.0.RELEASE/spring-jdbc-4.2.0.RELEASE-sources.jar!/" />
 		</SOURCES>
 	</library>
+=======
+<component name="libraryTable">
+  <library name="Maven: org.springframework:spring-jdbc:4.2.0.RELEASE">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/4.2.0.RELEASE/spring-jdbc-4.2.0.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/4.2.0.RELEASE/spring-jdbc-4.2.0.RELEASE-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/4.2.0.RELEASE/spring-jdbc-4.2.0.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+>>>>>>> bcd33826cccc6660b1d060c59ac9e26753337c6e
 </component>
