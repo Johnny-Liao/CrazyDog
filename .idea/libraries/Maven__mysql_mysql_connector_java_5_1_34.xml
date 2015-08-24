@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-<component name="libraryTable">
-	<library name="Maven: mysql:mysql-connector-java:5.1.34">
-		<CLASSES>
-			<root
-				url="jar://D:/maven_repos/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34.jar!/" />
-		</CLASSES>
-		<JAVADOC>
-			<root
-				url="jar://D:/maven_repos/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34-javadoc.jar!/" />
-		</JAVADOC>
-		<SOURCES>
-			<root
-				url="jar://D:/maven_repos/repository/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34-sources.jar!/" />
-		</SOURCES>
-	</library>
-=======
 <component name="libraryTable">
   <library name="Maven: mysql:mysql-connector-java:5.1.34">
     <CLASSES>
@@ -27,5 +10,4 @@
       <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/5.1.34/mysql-connector-java-5.1.34-sources.jar!/" />
     </SOURCES>
   </library>
->>>>>>> bcd33826cccc6660b1d060c59ac9e26753337c6e
 </component>
