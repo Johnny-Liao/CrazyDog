@@ -1,6 +1,24 @@
+<<<<<<< HEAD
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 	<component name="Encoding">
 		<file url="file://$PROJECT_DIR$" charset="UTF-8" />
 	</component>
+=======
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding" defaultCharsetForPropertiesFiles="UTF-8">
+    <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/ContractdaoI.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/DepartmentdaoI.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/EmployeedaoI.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/PositiondaoI.java" charset="GBK" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/ResumedaoI.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/UnitdaoI.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/impl/ContractdaoImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/impl/DepartmentdaoImpl.java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/src/main/java/org/crazydog/daoI/impl/UnitdaoImpl.java" charset="UTF-8" />
+    <file url="PROJECT" charset="UTF-8" />
+  </component>
+>>>>>>> bcd33826cccc6660b1d060c59ac9e26753337c6e
 </project>
