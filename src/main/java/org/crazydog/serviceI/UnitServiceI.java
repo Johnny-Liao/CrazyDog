@@ -1,5 +1,6 @@
 package org.crazydog.serviceI;
 
+import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 
 import java.util.List;
@@ -44,4 +45,11 @@ public interface UnitServiceI {
      * @return
      */
     List<UnitEntity> getAllUnits();
+
+    /**
+     * 向服务单位一次添加多个部门
+     *
+     * @param departmentEntities 部门集合
+     */
+    void addDepartments(List<DepartmentEntity> departmentEntities);
 }

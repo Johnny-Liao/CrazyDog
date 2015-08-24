@@ -4,12 +4,15 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/CrazyDog</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
-        <property name="hbm2ddl.auto">update</property>
+        <!--<property name="connection.url">jdbc:mysql://localhost:3306/CrazyDog?charset=utf-8</property>-->
+        <!--<property name="connection.driver_class">com.mysql.jdbc.Driver</property>-->
+        <!--<property name="connection.username">root</property>-->
+        <!--<property name="connection.password">root</property>-->
 
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+        <!--<property name=""-->
         <mapping class="org.crazydog.domain.ContractEntity"/>
         <mapping class="org.crazydog.domain.ContractChangeEntity"/>
         <mapping class="org.crazydog.domain.DepartmentEntity"/>

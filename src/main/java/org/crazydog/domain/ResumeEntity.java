@@ -1,8 +1,6 @@
 package org.crazydog.domain;
 
-import javax.persistence.Basic;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
@@ -15,6 +13,7 @@ public class ResumeEntity {
 
     @Id
     @javax.persistence.Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }

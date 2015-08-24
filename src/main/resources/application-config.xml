@@ -10,15 +10,30 @@
 
     <context:annotation-config/>
 
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="url" value="jdbc:mysql://localhost:3306/CrazyDog?charset=utf-8"/>
+        <property name="username" value="root"/>
+        <property name="password" value="root"/>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+    </bean>
+
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="configLocation"
                   value="classpath:hibernate.cfg.xml">
         </property>
+        <property name="dataSource" ref="dataSource"/>
+        <!--<property name="annotatedClasses"-->
+        <!--value="org.crazydog.domain">-->
+        <!--</property>-->
     </bean>
 
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
         <property name="sessionFactory"
                   ref="sessionFactory">
         </property>
+    </bean>
+
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
 </beans>
