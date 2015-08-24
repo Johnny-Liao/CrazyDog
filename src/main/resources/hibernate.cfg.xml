@@ -8,9 +8,19 @@
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
         <property name="connection.username">root</property>
         <property name="connection.password">root</property>
-
         <property name="hbm2ddl.auto">update</property>
 
+        <mapping class="org.crazydog.domain.ContractEntity"/>
+        <mapping class="org.crazydog.domain.ContractChangeEntity"/>
+        <mapping class="org.crazydog.domain.DepartmentEntity"/>
+        <mapping class="org.crazydog.domain.EmployeeEntity"/>
+        <mapping class="org.crazydog.domain.HireEntity"/>
+        <mapping class="org.crazydog.domain.PositionEntity"/>
+        <mapping class="org.crazydog.domain.ResumeEntity"/>
+        <mapping class="org.crazydog.domain.ResumeEduEntity"/>
+        <mapping class="org.crazydog.domain.ResumeFamilyEntity"/>
+        <mapping class="org.crazydog.domain.ResumeJobsEntity"/>
+        <mapping class="org.crazydog.domain.UnitEntity"/>
         <mapping class="org.crazydog.domain.ContractEntity"/>
         <mapping class="org.crazydog.domain.ContractChangeEntity"/>
         <mapping class="org.crazydog.domain.DepartmentEntity"/>

@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "resume_edu", schema = "", catalog = "crazydog")
@@ -15,10 +15,9 @@ public class ResumeEduEntity {
     private Timestamp endTime;
     private String school;
     private String discipline;
-    private ResumeEntity resumeByResumeId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -28,7 +27,7 @@ public class ResumeEduEntity {
     }
 
     @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "resume_id")
     public Integer getResumeId() {
         return resumeId;
     }
@@ -38,7 +37,7 @@ public class ResumeEduEntity {
     }
 
     @Basic
-    @Column(name = "start_time", nullable = false, insertable = true, updatable = true)
+    @Column(name = "start_time")
     public Timestamp getStartTime() {
         return startTime;
     }
@@ -48,7 +47,7 @@ public class ResumeEduEntity {
     }
 
     @Basic
-    @Column(name = "end_time", nullable = false, insertable = true, updatable = true)
+    @Column(name = "end_time")
     public Timestamp getEndTime() {
         return endTime;
     }
@@ -58,7 +57,7 @@ public class ResumeEduEntity {
     }
 
     @Basic
-    @Column(name = "school", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "school")
     public String getSchool() {
         return school;
     }
@@ -68,7 +67,7 @@ public class ResumeEduEntity {
     }
 
     @Basic
-    @Column(name = "discipline", nullable = false, insertable = true, updatable = true, length = 255)
+    @Column(name = "discipline")
     public String getDiscipline() {
         return discipline;
     }
@@ -103,15 +102,5 @@ public class ResumeEduEntity {
         result = 31 * result + (school != null ? school.hashCode() : 0);
         result = 31 * result + (discipline != null ? discipline.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
-    public ResumeEntity getResumeByResumeId() {
-        return resumeByResumeId;
-    }
-
-    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
-        this.resumeByResumeId = resumeByResumeId;
     }
 }

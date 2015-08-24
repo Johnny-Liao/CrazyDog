@@ -7,5 +7,9 @@
       <schema-pattern>crazydog.*</schema-pattern>
       <default-schemas>crazydog.*</default-schemas>
     </data-source>
+    <data-source name="MySQL - @localhost" uuid="b72a4918-1f09-438a-9c79-06e5e3a3f4f6">
+      <secret-storage>master_key</secret-storage>
+      <first-sync>true</first-sync>
+    </data-source>
   </component>
 </project>

@@ -5,7 +5,6 @@ import org.crazydog.domain.ContractEntity;
 import org.crazydog.domain.EmployeeEntity;
 import org.crazydog.serviceI.ContractServiceI;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -14,7 +13,7 @@ import java.util.List;
 /**
  * Created by never on 2015/8/23.
  */
-@Service
+//@Service
 public class ContractServiceImpl implements ContractServiceI {
 
     @Autowired
@@ -53,8 +52,8 @@ public class ContractServiceImpl implements ContractServiceI {
         List<Timestamp> endDates = new ArrayList<Timestamp>(employeeEntities.size());
 
         for (EmployeeEntity employeeEntity : employeeEntities) {
-            units.add(unitdao.getUnit(employeeEntity.getUnitId()).getUnitName());
-            departments.add(departmentdao.getDepartmentEntity(employeeEntity.getDepId()).getDeptName());
+//            units.add(unitdao.getUnit(employeeEntity.getUnitId()).getUnitName());
+//            departments.add(departmentdao.getDepartmentEntity(employeeEntity.getDepId()).getDeptName());
 //            resumedao.getResume(employeeEntity.getResumeId()).get
 //            positiondao.
             ContractEntity contractEntity = contractdao.getContractEntity(employeeEntity);

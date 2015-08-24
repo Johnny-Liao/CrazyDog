@@ -3,15 +3,12 @@ package org.crazydog.domain;
 import javax.persistence.*;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "contract_change", schema = "", catalog = "crazydog")
 public class ContractChangeEntity {
     private Integer id;
-    private Integer contractId;
-    private Integer unitId;
-    private Integer deptId;
     private String position;
     private String changeCause;
     private Integer renewTime;
@@ -21,7 +18,7 @@ public class ContractChangeEntity {
     private DepartmentEntity departmentByDeptId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -31,37 +28,7 @@ public class ContractChangeEntity {
     }
 
     @Basic
-    @Column(name = "contract_id", nullable = true, insertable = true, updatable = true)
-    public Integer getContractId() {
-        return contractId;
-    }
-
-    public void setContractId(Integer contractId) {
-        this.contractId = contractId;
-    }
-
-    @Basic
-    @Column(name = "unit_id", nullable = true, insertable = true, updatable = true)
-    public Integer getUnitId() {
-        return unitId;
-    }
-
-    public void setUnitId(Integer unitId) {
-        this.unitId = unitId;
-    }
-
-    @Basic
-    @Column(name = "dept_id", nullable = true, insertable = true, updatable = true)
-    public Integer getDeptId() {
-        return deptId;
-    }
-
-    public void setDeptId(Integer deptId) {
-        this.deptId = deptId;
-    }
-
-    @Basic
-    @Column(name = "position", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "position")
     public String getPosition() {
         return position;
     }
@@ -71,7 +38,7 @@ public class ContractChangeEntity {
     }
 
     @Basic
-    @Column(name = "change_cause", nullable = false, insertable = true, updatable = true, length = 100)
+    @Column(name = "change_cause")
     public String getChangeCause() {
         return changeCause;
     }
@@ -81,7 +48,7 @@ public class ContractChangeEntity {
     }
 
     @Basic
-    @Column(name = "renew_time", nullable = false, insertable = true, updatable = true)
+    @Column(name = "renew_time")
     public Integer getRenewTime() {
         return renewTime;
     }
@@ -91,7 +58,7 @@ public class ContractChangeEntity {
     }
 
     @Basic
-    @Column(name = "comment", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "comment")
     public String getComment() {
         return comment;
     }
@@ -108,9 +75,6 @@ public class ContractChangeEntity {
         ContractChangeEntity that = (ContractChangeEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (contractId != null ? !contractId.equals(that.contractId) : that.contractId != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
-        if (deptId != null ? !deptId.equals(that.deptId) : that.deptId != null) return false;
         if (position != null ? !position.equals(that.position) : that.position != null) return false;
         if (changeCause != null ? !changeCause.equals(that.changeCause) : that.changeCause != null) return false;
         if (renewTime != null ? !renewTime.equals(that.renewTime) : that.renewTime != null) return false;
@@ -122,9 +86,6 @@ public class ContractChangeEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (contractId != null ? contractId.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
-        result = 31 * result + (deptId != null ? deptId.hashCode() : 0);
         result = 31 * result + (position != null ? position.hashCode() : 0);
         result = 31 * result + (changeCause != null ? changeCause.hashCode() : 0);
         result = 31 * result + (renewTime != null ? renewTime.hashCode() : 0);

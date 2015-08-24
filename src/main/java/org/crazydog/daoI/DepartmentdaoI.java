@@ -17,6 +17,13 @@ public interface DepartmentdaoI {
     void addDepartment(DepartmentEntity departmentEntity);
 
     /**
+     * 一次增加多个增加部门
+     *
+     * @param departmentEntities 部门
+     */
+    void addDepartments(List<DepartmentEntity> departmentEntities);
+
+    /**
      * 修改部门
      *
      * @param departmentEntity 部门
@@ -26,9 +33,9 @@ public interface DepartmentdaoI {
     /**
      * 删除部门
      *
-     * @param id 部门id
+     * @param departmentEntity 部门id
      */
-    void deleteDepartment(int id);
+    void deleteDepartment(DepartmentEntity departmentEntity);
 
     /**
      * 根据部门的id来获取部门信息

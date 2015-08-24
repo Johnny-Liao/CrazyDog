@@ -3,7 +3,7 @@ package org.crazydog.domain;
 import javax.persistence.*;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "resume_family", schema = "", catalog = "crazydog")
@@ -13,10 +13,9 @@ public class ResumeFamilyEntity {
     private String name;
     private String relationship;
     private String department;
-    private ResumeEntity resumeByResumeId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -26,7 +25,7 @@ public class ResumeFamilyEntity {
     }
 
     @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "resume_id")
     public Integer getResumeId() {
         return resumeId;
     }
@@ -36,7 +35,7 @@ public class ResumeFamilyEntity {
     }
 
     @Basic
-    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 10)
+    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -46,7 +45,7 @@ public class ResumeFamilyEntity {
     }
 
     @Basic
-    @Column(name = "relationship", nullable = false, insertable = true, updatable = true, length = 10)
+    @Column(name = "relationship")
     public String getRelationship() {
         return relationship;
     }
@@ -56,7 +55,7 @@ public class ResumeFamilyEntity {
     }
 
     @Basic
-    @Column(name = "department", nullable = false, insertable = true, updatable = true, length = 30)
+    @Column(name = "department")
     public String getDepartment() {
         return department;
     }
@@ -89,15 +88,5 @@ public class ResumeFamilyEntity {
         result = 31 * result + (relationship != null ? relationship.hashCode() : 0);
         result = 31 * result + (department != null ? department.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
-    public ResumeEntity getResumeByResumeId() {
-        return resumeByResumeId;
-    }
-
-    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
-        this.resumeByResumeId = resumeByResumeId;
     }
 }

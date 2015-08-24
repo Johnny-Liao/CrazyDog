@@ -5,13 +5,16 @@ import org.crazydog.domain.ContractEntity;
 import org.crazydog.domain.EmployeeEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
  * Created by never on 2015/8/23.
  */
+@Component
 public class ContractdaoImpl implements ContractdaoI {
+
     @Autowired
     private HibernateTemplate hibernateTemplate;
 

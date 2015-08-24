@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Collection;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "employee", schema = "", catalog = "crazydog")
@@ -16,17 +16,14 @@ public class EmployeeEntity {
     private String idNum;
     private Integer tel;
     private String education;
-    private Integer depId;
-    private Integer unitId;
     private Integer resumeId;
     private Collection<ContractEntity> contractsById;
     private DepartmentEntity departmentByDepId;
     private UnitEntity unitByUnitId;
     private Collection<PositionEntity> positionsById;
-    private ResumeEntity resumeByResumeId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -36,7 +33,7 @@ public class EmployeeEntity {
     }
 
     @Basic
-    @Column(name = "emp_code", nullable = false, insertable = true, updatable = true, length = 255)
+    @Column(name = "emp_code")
     public String getEmpCode() {
         return empCode;
     }
@@ -46,7 +43,7 @@ public class EmployeeEntity {
     }
 
     @Basic
-    @Column(name = "emp_name", nullable = false, insertable = true, updatable = true, length = 255)
+    @Column(name = "emp_name")
     public String getEmpName() {
         return empName;
     }
@@ -56,7 +53,7 @@ public class EmployeeEntity {
     }
 
     @Basic
-    @Column(name = "gender", nullable = false, insertable = true, updatable = true, length = 2)
+    @Column(name = "gender")
     public String getGender() {
         return gender;
     }
@@ -66,7 +63,7 @@ public class EmployeeEntity {
     }
 
     @Basic
-    @Column(name = "id_num", nullable = false, insertable = true, updatable = true, length = 20)
+    @Column(name = "id_num")
     public String getIdNum() {
         return idNum;
     }
@@ -76,7 +73,7 @@ public class EmployeeEntity {
     }
 
     @Basic
-    @Column(name = "tel", nullable = true, insertable = true, updatable = true)
+    @Column(name = "tel")
     public Integer getTel() {
         return tel;
     }
@@ -86,7 +83,7 @@ public class EmployeeEntity {
     }
 
     @Basic
-    @Column(name = "education", nullable = true, insertable = true, updatable = true, length = 3)
+    @Column(name = "education")
     public String getEducation() {
         return education;
     }
@@ -95,28 +92,9 @@ public class EmployeeEntity {
         this.education = education;
     }
 
-    @Basic
-    @Column(name = "dep_id", nullable = false, insertable = true, updatable = true)
-    public Integer getDepId() {
-        return depId;
-    }
-
-    public void setDepId(Integer depId) {
-        this.depId = depId;
-    }
 
     @Basic
-    @Column(name = "unit_id", nullable = false, insertable = true, updatable = true)
-    public Integer getUnitId() {
-        return unitId;
-    }
-
-    public void setUnitId(Integer unitId) {
-        this.unitId = unitId;
-    }
-
-    @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "resume_id")
     public Integer getResumeId() {
         return resumeId;
     }
@@ -139,8 +117,6 @@ public class EmployeeEntity {
         if (idNum != null ? !idNum.equals(that.idNum) : that.idNum != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
-        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
         if (resumeId != null ? !resumeId.equals(that.resumeId) : that.resumeId != null) return false;
 
         return true;
@@ -155,8 +131,6 @@ public class EmployeeEntity {
         result = 31 * result + (idNum != null ? idNum.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
         result = 31 * result + (education != null ? education.hashCode() : 0);
-        result = 31 * result + (depId != null ? depId.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
         result = 31 * result + (resumeId != null ? resumeId.hashCode() : 0);
         return result;
     }
@@ -197,15 +171,5 @@ public class EmployeeEntity {
 
     public void setPositionsById(Collection<PositionEntity> positionsById) {
         this.positionsById = positionsById;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
-    public ResumeEntity getResumeByResumeId() {
-        return resumeByResumeId;
-    }
-
-    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
-        this.resumeByResumeId = resumeByResumeId;
     }
 }

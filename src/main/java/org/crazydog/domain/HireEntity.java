@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "hire", schema = "", catalog = "crazydog")
@@ -16,10 +16,9 @@ public class HireEntity {
     private String comment;
     private Timestamp operateTime;
     private String operator;
-    private ResumeEntity resumeByResumeId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -29,7 +28,7 @@ public class HireEntity {
     }
 
     @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "resume_id")
     public Integer getResumeId() {
         return resumeId;
     }
@@ -39,7 +38,7 @@ public class HireEntity {
     }
 
     @Basic
-    @Column(name = "STATE", nullable = false, insertable = true, updatable = true, length = 4)
+    @Column(name = "STATE")
     public String getState() {
         return state;
     }
@@ -49,7 +48,7 @@ public class HireEntity {
     }
 
     @Basic
-    @Column(name = "decline_cause", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "decline_cause")
     public String getDeclineCause() {
         return declineCause;
     }
@@ -59,7 +58,7 @@ public class HireEntity {
     }
 
     @Basic
-    @Column(name = "COMMENT", nullable = true, insertable = true, updatable = true, length = 255)
+    @Column(name = "COMMENT")
     public String getComment() {
         return comment;
     }
@@ -69,7 +68,7 @@ public class HireEntity {
     }
 
     @Basic
-    @Column(name = "operate_time", nullable = false, insertable = true, updatable = true)
+    @Column(name = "operate_time")
     public Timestamp getOperateTime() {
         return operateTime;
     }
@@ -79,7 +78,7 @@ public class HireEntity {
     }
 
     @Basic
-    @Column(name = "OPERATOR", nullable = false, insertable = true, updatable = true, length = 10)
+    @Column(name = "OPERATOR")
     public String getOperator() {
         return operator;
     }
@@ -116,15 +115,5 @@ public class HireEntity {
         result = 31 * result + (operateTime != null ? operateTime.hashCode() : 0);
         result = 31 * result + (operator != null ? operator.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
-    public ResumeEntity getResumeByResumeId() {
-        return resumeByResumeId;
-    }
-
-    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
-        this.resumeByResumeId = resumeByResumeId;
     }
 }

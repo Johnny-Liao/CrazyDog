@@ -8,9 +8,17 @@
 
     <context:component-scan base-package="org.crazydog"/>
 
+    <context:annotation-config/>
+
     <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="configLocation"
                   value="classpath:hibernate.cfg.xml">
+        </property>
+    </bean>
+
+    <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
+        <property name="sessionFactory"
+                  ref="sessionFactory">
         </property>
     </bean>
 </beans>

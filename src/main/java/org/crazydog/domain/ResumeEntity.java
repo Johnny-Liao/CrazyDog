@@ -1,49 +1,20 @@
 package org.crazydog.domain;
 
-import javax.persistence.*;
+import javax.persistence.Basic;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.sql.Timestamp;
-import java.util.Collection;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
-@Table(name = "resume", schema = "", catalog = "crazydog")
+@javax.persistence.Table(name = "resume", schema = "", catalog = "crazydog")
 public class ResumeEntity {
     private Integer id;
-    private String name;
-    private Timestamp birthday;
-    private String nation;
-    private String gender;
-    private String zzmm;
-    private String hyzk;
-    private String education;
-    private Timestamp workTime;
-    private String jjsp;
-    private String profession;
-    private Integer zipCode;
-    private String homeTown;
-    private String foreignLang;
-    private String specialty;
-    private String yysp;
-    private Integer jndj;
-    private Double height;
-    private Integer tel;
-    private String idCard;
-    private String hukou;
-    private String hukouAddress;
-    private Integer homePhone;
-    private String address;
-    private String reportCard;
-    private String email;
-    private Collection<EmployeeEntity> employeesById;
-    private Collection<HireEntity> hiresById;
-    private Collection<ResumeEduEntity> resumeEdusById;
-    private Collection<ResumeFamilyEntity> resumeFamiliesById;
-    private Collection<ResumeJobsEntity> resumeJobsesById;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -52,8 +23,10 @@ public class ResumeEntity {
         this.id = id;
     }
 
+    private String name;
+
     @Basic
-    @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 20)
+    @javax.persistence.Column(name = "name")
     public String getName() {
         return name;
     }
@@ -62,8 +35,10 @@ public class ResumeEntity {
         this.name = name;
     }
 
+    private Timestamp birthday;
+
     @Basic
-    @Column(name = "birthday", nullable = true, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "birthday")
     public Timestamp getBirthday() {
         return birthday;
     }
@@ -72,8 +47,10 @@ public class ResumeEntity {
         this.birthday = birthday;
     }
 
+    private String nation;
+
     @Basic
-    @Column(name = "nation", nullable = false, insertable = true, updatable = true, length = 20)
+    @javax.persistence.Column(name = "nation")
     public String getNation() {
         return nation;
     }
@@ -82,8 +59,10 @@ public class ResumeEntity {
         this.nation = nation;
     }
 
+    private String gender;
+
     @Basic
-    @Column(name = "gender", nullable = true, insertable = true, updatable = true, length = 2)
+    @javax.persistence.Column(name = "gender")
     public String getGender() {
         return gender;
     }
@@ -92,8 +71,10 @@ public class ResumeEntity {
         this.gender = gender;
     }
 
+    private String zzmm;
+
     @Basic
-    @Column(name = "zzmm", nullable = true, insertable = true, updatable = true, length = 3)
+    @javax.persistence.Column(name = "zzmm")
     public String getZzmm() {
         return zzmm;
     }
@@ -102,8 +83,10 @@ public class ResumeEntity {
         this.zzmm = zzmm;
     }
 
+    private String hyzk;
+
     @Basic
-    @Column(name = "hyzk", nullable = true, insertable = true, updatable = true, length = 3)
+    @javax.persistence.Column(name = "hyzk")
     public String getHyzk() {
         return hyzk;
     }
@@ -112,8 +95,10 @@ public class ResumeEntity {
         this.hyzk = hyzk;
     }
 
+    private String education;
+
     @Basic
-    @Column(name = "education", nullable = true, insertable = true, updatable = true, length = 3)
+    @javax.persistence.Column(name = "education")
     public String getEducation() {
         return education;
     }
@@ -122,8 +107,10 @@ public class ResumeEntity {
         this.education = education;
     }
 
+    private Timestamp workTime;
+
     @Basic
-    @Column(name = "work_time", nullable = true, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "work_time")
     public Timestamp getWorkTime() {
         return workTime;
     }
@@ -132,8 +119,10 @@ public class ResumeEntity {
         this.workTime = workTime;
     }
 
+    private String jjsp;
+
     @Basic
-    @Column(name = "jjsp", nullable = true, insertable = true, updatable = true, length = 3)
+    @javax.persistence.Column(name = "jjsp")
     public String getJjsp() {
         return jjsp;
     }
@@ -142,8 +131,10 @@ public class ResumeEntity {
         this.jjsp = jjsp;
     }
 
+    private String profession;
+
     @Basic
-    @Column(name = "profession", nullable = true, insertable = true, updatable = true, length = 10)
+    @javax.persistence.Column(name = "profession")
     public String getProfession() {
         return profession;
     }
@@ -152,8 +143,10 @@ public class ResumeEntity {
         this.profession = profession;
     }
 
+    private Integer zipCode;
+
     @Basic
-    @Column(name = "zip_code", nullable = true, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "zip_code")
     public Integer getZipCode() {
         return zipCode;
     }
@@ -162,8 +155,10 @@ public class ResumeEntity {
         this.zipCode = zipCode;
     }
 
+    private String homeTown;
+
     @Basic
-    @Column(name = "home_town", nullable = true, insertable = true, updatable = true, length = 50)
+    @javax.persistence.Column(name = "home_town")
     public String getHomeTown() {
         return homeTown;
     }
@@ -172,8 +167,10 @@ public class ResumeEntity {
         this.homeTown = homeTown;
     }
 
+    private String foreignLang;
+
     @Basic
-    @Column(name = "foreign_lang", nullable = true, insertable = true, updatable = true, length = 50)
+    @javax.persistence.Column(name = "foreign_lang")
     public String getForeignLang() {
         return foreignLang;
     }
@@ -182,8 +179,10 @@ public class ResumeEntity {
         this.foreignLang = foreignLang;
     }
 
+    private String specialty;
+
     @Basic
-    @Column(name = "specialty", nullable = true, insertable = true, updatable = true, length = 30)
+    @javax.persistence.Column(name = "specialty")
     public String getSpecialty() {
         return specialty;
     }
@@ -192,8 +191,10 @@ public class ResumeEntity {
         this.specialty = specialty;
     }
 
+    private String yysp;
+
     @Basic
-    @Column(name = "yysp", nullable = true, insertable = true, updatable = true, length = 20)
+    @javax.persistence.Column(name = "yysp")
     public String getYysp() {
         return yysp;
     }
@@ -202,8 +203,10 @@ public class ResumeEntity {
         this.yysp = yysp;
     }
 
+    private Integer jndj;
+
     @Basic
-    @Column(name = "jndj", nullable = true, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "jndj")
     public Integer getJndj() {
         return jndj;
     }
@@ -212,8 +215,10 @@ public class ResumeEntity {
         this.jndj = jndj;
     }
 
+    private Double height;
+
     @Basic
-    @Column(name = "height", nullable = true, insertable = true, updatable = true, precision = 0)
+    @javax.persistence.Column(name = "height")
     public Double getHeight() {
         return height;
     }
@@ -222,8 +227,10 @@ public class ResumeEntity {
         this.height = height;
     }
 
+    private Integer tel;
+
     @Basic
-    @Column(name = "tel", nullable = false, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "tel")
     public Integer getTel() {
         return tel;
     }
@@ -232,8 +239,10 @@ public class ResumeEntity {
         this.tel = tel;
     }
 
+    private String idCard;
+
     @Basic
-    @Column(name = "id_card", nullable = false, insertable = true, updatable = true, length = 20)
+    @javax.persistence.Column(name = "id_card")
     public String getIdCard() {
         return idCard;
     }
@@ -242,8 +251,10 @@ public class ResumeEntity {
         this.idCard = idCard;
     }
 
+    private String hukou;
+
     @Basic
-    @Column(name = "hukou", nullable = true, insertable = true, updatable = true, length = 5)
+    @javax.persistence.Column(name = "hukou")
     public String getHukou() {
         return hukou;
     }
@@ -252,8 +263,10 @@ public class ResumeEntity {
         this.hukou = hukou;
     }
 
+    private String hukouAddress;
+
     @Basic
-    @Column(name = "hukou_address", nullable = true, insertable = true, updatable = true, length = 50)
+    @javax.persistence.Column(name = "hukou_address")
     public String getHukouAddress() {
         return hukouAddress;
     }
@@ -262,8 +275,10 @@ public class ResumeEntity {
         this.hukouAddress = hukouAddress;
     }
 
+    private Integer homePhone;
+
     @Basic
-    @Column(name = "home_phone", nullable = true, insertable = true, updatable = true)
+    @javax.persistence.Column(name = "home_phone")
     public Integer getHomePhone() {
         return homePhone;
     }
@@ -272,8 +287,10 @@ public class ResumeEntity {
         this.homePhone = homePhone;
     }
 
+    private String address;
+
     @Basic
-    @Column(name = "address", nullable = true, insertable = true, updatable = true, length = 30)
+    @javax.persistence.Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -282,8 +299,10 @@ public class ResumeEntity {
         this.address = address;
     }
 
+    private String reportCard;
+
     @Basic
-    @Column(name = "report_card", nullable = true, insertable = true, updatable = true, length = 2)
+    @javax.persistence.Column(name = "report_card")
     public String getReportCard() {
         return reportCard;
     }
@@ -292,8 +311,10 @@ public class ResumeEntity {
         this.reportCard = reportCard;
     }
 
+    private String email;
+
     @Basic
-    @Column(name = "email", nullable = false, insertable = true, updatable = true, length = 20)
+    @javax.persistence.Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -368,50 +389,5 @@ public class ResumeEntity {
         result = 31 * result + (reportCard != null ? reportCard.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "resumeByResumeId")
-    public Collection<EmployeeEntity> getEmployeesById() {
-        return employeesById;
-    }
-
-    public void setEmployeesById(Collection<EmployeeEntity> employeesById) {
-        this.employeesById = employeesById;
-    }
-
-    @OneToMany(mappedBy = "resumeByResumeId")
-    public Collection<HireEntity> getHiresById() {
-        return hiresById;
-    }
-
-    public void setHiresById(Collection<HireEntity> hiresById) {
-        this.hiresById = hiresById;
-    }
-
-    @OneToMany(mappedBy = "resumeByResumeId")
-    public Collection<ResumeEduEntity> getResumeEdusById() {
-        return resumeEdusById;
-    }
-
-    public void setResumeEdusById(Collection<ResumeEduEntity> resumeEdusById) {
-        this.resumeEdusById = resumeEdusById;
-    }
-
-    @OneToMany(mappedBy = "resumeByResumeId")
-    public Collection<ResumeFamilyEntity> getResumeFamiliesById() {
-        return resumeFamiliesById;
-    }
-
-    public void setResumeFamiliesById(Collection<ResumeFamilyEntity> resumeFamiliesById) {
-        this.resumeFamiliesById = resumeFamiliesById;
-    }
-
-    @OneToMany(mappedBy = "resumeByResumeId")
-    public Collection<ResumeJobsEntity> getResumeJobsesById() {
-        return resumeJobsesById;
-    }
-
-    public void setResumeJobsesById(Collection<ResumeJobsEntity> resumeJobsesById) {
-        this.resumeJobsesById = resumeJobsesById;
     }
 }

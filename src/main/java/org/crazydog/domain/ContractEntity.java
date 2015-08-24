@@ -5,13 +5,12 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "contract", schema = "", catalog = "crazydog")
 public class ContractEntity {
     private Integer id;
-    private Integer empId;
     private Timestamp contractStart;
     private Timestamp contractEnd;
     private Integer length;
@@ -19,7 +18,7 @@ public class ContractEntity {
     private Collection<ContractChangeEntity> contractChangesById;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -28,18 +27,9 @@ public class ContractEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "emp_id", nullable = false, insertable = true, updatable = true)
-    public Integer getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
 
     @Basic
-    @Column(name = "contract_start", nullable = false, insertable = true, updatable = true)
+    @Column(name = "contract_start")
     public Timestamp getContractStart() {
         return contractStart;
     }
@@ -49,7 +39,7 @@ public class ContractEntity {
     }
 
     @Basic
-    @Column(name = "contract_end", nullable = false, insertable = true, updatable = true)
+    @Column(name = "contract_end")
     public Timestamp getContractEnd() {
         return contractEnd;
     }
@@ -59,7 +49,7 @@ public class ContractEntity {
     }
 
     @Basic
-    @Column(name = "length", nullable = false, insertable = true, updatable = true)
+    @Column(name = "length")
     public Integer getLength() {
         return length;
     }
@@ -76,7 +66,6 @@ public class ContractEntity {
         ContractEntity that = (ContractEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
         if (contractStart != null ? !contractStart.equals(that.contractStart) : that.contractStart != null)
             return false;
         if (contractEnd != null ? !contractEnd.equals(that.contractEnd) : that.contractEnd != null) return false;
@@ -88,7 +77,6 @@ public class ContractEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (empId != null ? empId.hashCode() : 0);
         result = 31 * result + (contractStart != null ? contractStart.hashCode() : 0);
         result = 31 * result + (contractEnd != null ? contractEnd.hashCode() : 0);
         result = 31 * result + (length != null ? length.hashCode() : 0);

@@ -4,13 +4,12 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "position", schema = "", catalog = "crazydog")
 public class PositionEntity {
     private Integer id;
-    private Integer empId;
     private Timestamp joinDate;
     private Timestamp leaveDate;
     private String leaveInfo;
@@ -18,7 +17,7 @@ public class PositionEntity {
     private EmployeeEntity employeeByEmpId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -28,17 +27,7 @@ public class PositionEntity {
     }
 
     @Basic
-    @Column(name = "emp_id", nullable = false, insertable = true, updatable = true)
-    public Integer getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
-
-    @Basic
-    @Column(name = "join_date", nullable = false, insertable = true, updatable = true)
+    @Column(name = "join_date")
     public Timestamp getJoinDate() {
         return joinDate;
     }
@@ -48,7 +37,7 @@ public class PositionEntity {
     }
 
     @Basic
-    @Column(name = "leave_date", nullable = true, insertable = true, updatable = true)
+    @Column(name = "leave_date")
     public Timestamp getLeaveDate() {
         return leaveDate;
     }
@@ -58,7 +47,7 @@ public class PositionEntity {
     }
 
     @Basic
-    @Column(name = "leave_info", nullable = true, insertable = true, updatable = true, length = 20)
+    @Column(name = "leave_info")
     public String getLeaveInfo() {
         return leaveInfo;
     }
@@ -68,7 +57,7 @@ public class PositionEntity {
     }
 
     @Basic
-    @Column(name = "leave_comment", nullable = true, insertable = true, updatable = true, length = 200)
+    @Column(name = "leave_comment")
     public String getLeaveComment() {
         return leaveComment;
     }
@@ -85,7 +74,6 @@ public class PositionEntity {
         PositionEntity that = (PositionEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
         if (joinDate != null ? !joinDate.equals(that.joinDate) : that.joinDate != null) return false;
         if (leaveDate != null ? !leaveDate.equals(that.leaveDate) : that.leaveDate != null) return false;
         if (leaveInfo != null ? !leaveInfo.equals(that.leaveInfo) : that.leaveInfo != null) return false;
@@ -97,7 +85,6 @@ public class PositionEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (empId != null ? empId.hashCode() : 0);
         result = 31 * result + (joinDate != null ? joinDate.hashCode() : 0);
         result = 31 * result + (leaveDate != null ? leaveDate.hashCode() : 0);
         result = 31 * result + (leaveInfo != null ? leaveInfo.hashCode() : 0);

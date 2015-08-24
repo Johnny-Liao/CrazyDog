@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by never on 2015/8/23.
+ * Created by never on 2015/8/24.
  */
 @Entity
 @Table(name = "resume_jobs", schema = "", catalog = "crazydog")
@@ -15,10 +15,9 @@ public class ResumeJobsEntity {
     private Timestamp endTime;
     private String departmennt;
     private String post;
-    private ResumeEntity resumeByResumeId;
 
     @Id
-    @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "id")
     public Integer getId() {
         return id;
     }
@@ -28,7 +27,7 @@ public class ResumeJobsEntity {
     }
 
     @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
+    @Column(name = "resume_id")
     public Integer getResumeId() {
         return resumeId;
     }
@@ -38,7 +37,7 @@ public class ResumeJobsEntity {
     }
 
     @Basic
-    @Column(name = "start_time", nullable = false, insertable = true, updatable = true)
+    @Column(name = "start_time")
     public Timestamp getStartTime() {
         return startTime;
     }
@@ -48,7 +47,7 @@ public class ResumeJobsEntity {
     }
 
     @Basic
-    @Column(name = "end_time", nullable = false, insertable = true, updatable = true)
+    @Column(name = "end_time")
     public Timestamp getEndTime() {
         return endTime;
     }
@@ -58,7 +57,7 @@ public class ResumeJobsEntity {
     }
 
     @Basic
-    @Column(name = "departmennt", nullable = false, insertable = true, updatable = true, length = 255)
+    @Column(name = "departmennt")
     public String getDepartmennt() {
         return departmennt;
     }
@@ -68,7 +67,7 @@ public class ResumeJobsEntity {
     }
 
     @Basic
-    @Column(name = "Post", nullable = false, insertable = true, updatable = true, length = 255)
+    @Column(name = "Post")
     public String getPost() {
         return post;
     }
@@ -103,15 +102,5 @@ public class ResumeJobsEntity {
         result = 31 * result + (departmennt != null ? departmennt.hashCode() : 0);
         result = 31 * result + (post != null ? post.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "resume_id", referencedColumnName = "id", nullable = false)
-    public ResumeEntity getResumeByResumeId() {
-        return resumeByResumeId;
-    }
-
-    public void setResumeByResumeId(ResumeEntity resumeByResumeId) {
-        this.resumeByResumeId = resumeByResumeId;
     }
 }

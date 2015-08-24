@@ -25,9 +25,9 @@ public interface UnitdaoI {
     /**
      * 删除服务单位
      *
-     * @param id 服务单位的id
+     * @param entity 服务单位的id
      */
-    void deleteUnit(int id);
+    void deleteUnit(UnitEntity entity);
 
     /**
      * 获取指定的服务单位
