@@ -1,12 +1,14 @@
 package org.crazydog.daoI;
 
-import java.util.List;
-
-import org.crazydog.domain.ResumeEduEntity;
 import org.crazydog.domain.ResumeJobsEntity;
 
+import java.util.List;
+
+/**
+ * 对简历里面的工作信息进行操作
+ */
 public interface ResumeJobsDaoI {
-	 /**
+    /**
      * 增加工作经验
      *
      * @param entity 教育工作经验实例
