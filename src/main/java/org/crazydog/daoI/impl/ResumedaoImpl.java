@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 @Component("resumedaoImpl")
 public class ResumedaoImpl implements ResumedaoI{
@@ -25,30 +26,26 @@ public class ResumedaoImpl implements ResumedaoI{
 
 	@Override
 	public void addResume(ResumeEntity entity) {
-		// TODO Auto-generated method stub
+		hibernateTemplate.save(entity);
 	}
-
+	@Transactional(readOnly=false)
 	@Override
 	public void modifyResume(ResumeEntity entity) {
-		// TODO Auto-generated method stub
+		hibernateTemplate.update(entity);
 	}
 
 	@Override
 	public void deleteResume(int id) {
-		// TODO Auto-generated method stub
 		hibernateTemplate.delete(this.getResume(id));
 	}
 
 	@Override
 	public ResumeEntity getResume(int id) {
-		// TODO Auto-generated method stub
-		
 		return hibernateTemplate.get(ResumeEntity.class, id);
 	}
 
 	@Override
 	public List<ResumeEntity> getAllResumes() {
-		// TODO Auto-generated method stub
 		return hibernateTemplate.loadAll(ResumeEntity.class);
 	}
 }
