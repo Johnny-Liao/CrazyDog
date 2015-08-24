@@ -389,4 +389,21 @@ public class ResumeEntity {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         return result;
     }
+
+	@Override
+	public String toString() {
+		return "ResumeEntity [id=" + id + ", name=" + name + ", birthday="
+				+ birthday + ", nation=" + nation + ", gender=" + gender
+				+ ", zzmm=" + zzmm + ", hyzk=" + hyzk + ", education="
+				+ education + ", workTime=" + workTime + ", jjsp=" + jjsp
+				+ ", profession=" + profession + ", zipCode=" + zipCode
+				+ ", homeTown=" + homeTown + ", foreignLang=" + foreignLang
+				+ ", specialty=" + specialty + ", yysp=" + yysp + ", jndj="
+				+ jndj + ", height=" + height + ", tel=" + tel + ", idCard="
+				+ idCard + ", hukou=" + hukou + ", hukouAddress="
+				+ hukouAddress + ", homePhone=" + homePhone + ", address="
+				+ address + ", reportCard=" + reportCard + ", email=" + email
+				+ "]";
+	}
+    
 }

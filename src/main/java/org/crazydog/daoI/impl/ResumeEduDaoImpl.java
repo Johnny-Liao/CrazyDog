@@ -27,7 +27,7 @@ public class ResumeEduDaoImpl implements ResumeEduDaoI{
 
 	@Override
 	public void deleteResumeEdu(int id) {
-		
+		hibernateTemplate.delete(this.getResumeEdu(id));
 	}
 
 	@Override

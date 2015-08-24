@@ -19,8 +19,9 @@ public class ResumeServiceImpl implements ResumeServiceI{
 	private ResumedaoI  resumedaoImpl;
 	
 	
-	@Transactional(readOnly=false)
+	
 	@Override
+	@Transactional(readOnly=false)
 	public void modifyResume(ResumeEntity entity) {
 		// TODO Auto-generated method stub
 		resumedaoImpl.modifyResume(entity);
@@ -28,6 +29,7 @@ public class ResumeServiceImpl implements ResumeServiceI{
 
 
 	@Override
+	@Transactional(readOnly=false)
 	public void addResume(ResumeEntity entity) {
 		// TODO Auto-generated method stub
 		resumedaoImpl.addResume(entity);
@@ -35,6 +37,7 @@ public class ResumeServiceImpl implements ResumeServiceI{
 
 
 	@Override
+	@Transactional(readOnly=false)
 	public void deleteResume(int id) {
 		// TODO Auto-generated method stub
 		resumedaoImpl.deleteResume(id);
@@ -42,6 +45,7 @@ public class ResumeServiceImpl implements ResumeServiceI{
 
 
 	@Override
+	@Transactional(readOnly=false)
 	public ResumeEntity getResume(int id) {
 		// TODO Auto-generated method stub
 		return resumedaoImpl.getResume(id);
@@ -49,6 +53,7 @@ public class ResumeServiceImpl implements ResumeServiceI{
 
 
 	@Override
+	@Transactional(readOnly=false)
 	public List<ResumeEntity> getAllResumes() {
 		// TODO Auto-generated method stub
 		return resumedaoImpl.getAllResumes();
