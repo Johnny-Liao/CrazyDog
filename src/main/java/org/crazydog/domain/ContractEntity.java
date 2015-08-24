@@ -11,7 +11,6 @@ import java.util.Collection;
 @Table(name = "contract", schema = "", catalog = "crazydog")
 public class ContractEntity {
     private Integer id;
-    private Integer empId;
     private Timestamp contractStart;
     private Timestamp contractEnd;
     private Integer length;
@@ -28,15 +27,6 @@ public class ContractEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "emp_id", nullable = false, insertable = true, updatable = true)
-    public Integer getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
 
     @Basic
     @Column(name = "contract_start", nullable = false, insertable = true, updatable = true)
@@ -76,7 +66,6 @@ public class ContractEntity {
         ContractEntity that = (ContractEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
         if (contractStart != null ? !contractStart.equals(that.contractStart) : that.contractStart != null)
             return false;
         if (contractEnd != null ? !contractEnd.equals(that.contractEnd) : that.contractEnd != null) return false;
@@ -88,7 +77,6 @@ public class ContractEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (empId != null ? empId.hashCode() : 0);
         result = 31 * result + (contractStart != null ? contractStart.hashCode() : 0);
         result = 31 * result + (contractEnd != null ? contractEnd.hashCode() : 0);
         result = 31 * result + (length != null ? length.hashCode() : 0);

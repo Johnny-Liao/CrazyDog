@@ -16,9 +16,6 @@ public class EmployeeEntity {
     private String idNum;
     private Integer tel;
     private String education;
-    private Integer depId;
-    private Integer unitId;
-    private Integer resumeId;
     private Collection<ContractEntity> contractsById;
     private DepartmentEntity departmentByDepId;
     private UnitEntity unitByUnitId;
@@ -95,36 +92,8 @@ public class EmployeeEntity {
         this.education = education;
     }
 
-    @Basic
-    @Column(name = "dep_id", nullable = false, insertable = true, updatable = true)
-    public Integer getDepId() {
-        return depId;
-    }
 
-    public void setDepId(Integer depId) {
-        this.depId = depId;
-    }
-
-    @Basic
-    @Column(name = "unit_id", nullable = false, insertable = true, updatable = true)
-    public Integer getUnitId() {
-        return unitId;
-    }
-
-    public void setUnitId(Integer unitId) {
-        this.unitId = unitId;
-    }
-
-    @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
-    }
-
+   
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -139,9 +108,6 @@ public class EmployeeEntity {
         if (idNum != null ? !idNum.equals(that.idNum) : that.idNum != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
-        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
-        if (resumeId != null ? !resumeId.equals(that.resumeId) : that.resumeId != null) return false;
 
         return true;
     }
@@ -155,9 +121,6 @@ public class EmployeeEntity {
         result = 31 * result + (idNum != null ? idNum.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
         result = 31 * result + (education != null ? education.hashCode() : 0);
-        result = 31 * result + (depId != null ? depId.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
-        result = 31 * result + (resumeId != null ? resumeId.hashCode() : 0);
         return result;
     }
 

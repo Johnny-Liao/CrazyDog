@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @Table(name = "resume_jobs", schema = "", catalog = "crazydog")
 public class ResumeJobsEntity {
     private Integer id;
-    private Integer resumeId;
     private Timestamp startTime;
     private Timestamp endTime;
     private String departmennt;
@@ -25,16 +24,6 @@ public class ResumeJobsEntity {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
     }
 
     @Basic
@@ -85,7 +74,6 @@ public class ResumeJobsEntity {
         ResumeJobsEntity that = (ResumeJobsEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (resumeId != null ? !resumeId.equals(that.resumeId) : that.resumeId != null) return false;
         if (startTime != null ? !startTime.equals(that.startTime) : that.startTime != null) return false;
         if (endTime != null ? !endTime.equals(that.endTime) : that.endTime != null) return false;
         if (departmennt != null ? !departmennt.equals(that.departmennt) : that.departmennt != null) return false;
@@ -97,7 +85,6 @@ public class ResumeJobsEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (resumeId != null ? resumeId.hashCode() : 0);
         result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
         result = 31 * result + (endTime != null ? endTime.hashCode() : 0);
         result = 31 * result + (departmennt != null ? departmennt.hashCode() : 0);

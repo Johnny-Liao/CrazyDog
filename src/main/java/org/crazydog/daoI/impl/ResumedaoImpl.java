@@ -11,19 +11,21 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.service.ServiceRegistry;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 @Component("resumedaoImpl")
 public class ResumedaoImpl implements ResumedaoI{
 	
-	@Autowired
+	@Autowired(required=true)
+	@Qualifier(value="hibernateTemplate")
 	private HibernateTemplate hibernateTemplate;
-	
+
 	@Override
 	public void addResume(ResumeEntity entity) {
 		// TODO Auto-generated method stub
-		
-
 	}
 
 	@Override

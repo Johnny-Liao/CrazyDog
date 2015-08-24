@@ -3,27 +3,29 @@
         "-//Hibernate/Hibernate Configuration DTD//EN"
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
-    <session-factory>
-        <property name="connection.url">jdbc:mysql://localhost:3306/CrazyDog</property>
-        <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">root</property>
+	    <session-factory>
+	    <property name="connection.driver_class">
+		com.mysql.jdbc.Driver
+	    </property>
+	    <property name="connection.url">
+		jdbc:mysql://localhost:3306/CrazyDog
+	    </property>
+	    <property name="connection.username">root</property>
+	    <property name="connection.password">123456</property>
+	    <property name="hbm2ddl.auto">update</property>
+	    <property name="show_sql">true</property>
+		<mapping class="org.crazydog.domain.ContractEntity" />
+		<mapping class="org.crazydog.domain.ContractChangeEntity" />
+		<mapping class="org.crazydog.domain.DepartmentEntity" />
+		<mapping class="org.crazydog.domain.EmployeeEntity" />
+		<mapping class="org.crazydog.domain.HireEntity" />
+		<mapping class="org.crazydog.domain.PositionEntity" />
+		<mapping class="org.crazydog.domain.ResumeEntity" />
+		<mapping class="org.crazydog.domain.ResumeEduEntity" />
+		<mapping class="org.crazydog.domain.ResumeFamilyEntity" />
+		<mapping class="org.crazydog.domain.ResumeJobsEntity" />
+		<mapping class="org.crazydog.domain.UnitEntity" />
 
-        <property name="hbm2ddl.auto">update</property>
-
-        <mapping class="org.crazydog.domain.ContractEntity"/>
-        <mapping class="org.crazydog.domain.ContractChangeEntity"/>
-        <mapping class="org.crazydog.domain.DepartmentEntity"/>
-        <mapping class="org.crazydog.domain.EmployeeEntity"/>
-        <mapping class="org.crazydog.domain.HireEntity"/>
-        <mapping class="org.crazydog.domain.PositionEntity"/>
-        <mapping class="org.crazydog.domain.ResumeEntity"/>
-        <mapping class="org.crazydog.domain.ResumeEduEntity"/>
-        <mapping class="org.crazydog.domain.ResumeFamilyEntity"/>
-        <mapping class="org.crazydog.domain.ResumeJobsEntity"/>
-        <mapping class="org.crazydog.domain.UnitEntity"/>
-
-        <!-- DB schema will be updated if needed -->
-
-    </session-factory>
+		<!-- DB schema will be updated if needed -->
+	</session-factory>
 </hibernate-configuration>

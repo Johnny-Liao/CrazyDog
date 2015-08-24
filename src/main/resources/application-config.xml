@@ -5,17 +5,24 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
-
+  <!--<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="url" value="jdbc:mysql://localhost:3306/CrazyDog" />
+		<property name="username" value="root" />
+		<property name="password" value="123456" />
+	</bean> -->
     <context:component-scan base-package="org.crazydog"/>
-	 <bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+    
+    <context:annotation-config />
+   <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="configLocation"
+                  value="classpath:hibernate.cfg.xml">
+        </property>
+    </bean> 
+    
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
    		<property name="sessionFactory">
    			<ref bean="sessionFactory"/>
    		</property>
    </bean>
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-        <property name="configLocation"
-                  value="classpath:hibernate.cfg.xml">
-        </property>
-    </bean>
-    <context:component-scan base-package="org.crazydog.daoI.impl"/>
 </beans>

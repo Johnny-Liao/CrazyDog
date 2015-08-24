@@ -17,52 +17,70 @@ import java.util.List;
 @Service
 public class ContractServiceImpl implements ContractServiceI {
 
-    @Autowired
-    private EmployeedaoI employeedao;
+	@Override
+	public void modifyContractEntity(ContractEntity contractEntity) {
+		// TODO Auto-generated method stub
+		
+	}
 
-    @Autowired
-    private DepartmentdaoI departmentdao;
+	@Override
+	public ContractEntity getContractEntity(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Autowired
-    private UnitdaoI unitdao;
+	@Override
+	public List<ContractEntity> getAllContractEntity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
-    @Autowired
-    private PositiondaoI positiondao;
-
-    @Autowired
-    private ResumedaoI resumedao;
-
-    @Autowired
-    private ContractdaoI contractdao;
-
-    public void modifyContractEntity(ContractEntity contractEntity) {
-
-    }
-
-    public ContractEntity getContractEntity(int id) {
-        return null;
-    }
-
-    public List<ContractEntity> getAllContractEntity() {
-        List<EmployeeEntity> employeeEntities = employeedao.getAllEmployees();
-
-        List<Timestamp> hireDates = new ArrayList<Timestamp>(employeeEntities.size());
-        List<String> departments = new ArrayList<String>(employeeEntities.size());
-        List<String> units = new ArrayList<String>(employeeEntities.size());
-        List<Timestamp> startDates = new ArrayList<Timestamp>(employeeEntities.size());
-        List<Timestamp> endDates = new ArrayList<Timestamp>(employeeEntities.size());
-
-        for (EmployeeEntity employeeEntity : employeeEntities) {
-            units.add(unitdao.getUnit(employeeEntity.getUnitId()).getUnitName());
-            departments.add(departmentdao.getDepartmentEntity(employeeEntity.getDepId()).getDeptName());
+//    @Autowired
+//    private EmployeedaoI employeedao;
+//
+//    @Autowired
+//    private DepartmentdaoI departmentdao;
+//
+//    @Autowired
+//    private UnitdaoI unitdao;
+//
+//    @Autowired
+//    private PositiondaoI positiondao;
+//
+//    @Autowired
+//    private ResumedaoI resumedao;
+//
+//    @Autowired
+//    private ContractdaoI contractdao;
+//
+//    public void modifyContractEntity(ContractEntity contractEntity) {
+//
+//    }
+//
+//    public ContractEntity getContractEntity(int id) {
+//        return null;
+//    }
+//
+//    public List<ContractEntity> getAllContractEntity() {
+//        List<EmployeeEntity> employeeEntities = employeedao.getAllEmployees();
+//
+//        List<Timestamp> hireDates = new ArrayList<Timestamp>(employeeEntities.size());
+//        List<String> departments = new ArrayList<String>(employeeEntities.size());
+//        List<String> units = new ArrayList<String>(employeeEntities.size());
+//        List<Timestamp> startDates = new ArrayList<Timestamp>(employeeEntities.size());
+//        List<Timestamp> endDates = new ArrayList<Timestamp>(employeeEntities.size());
+//
+//        for (EmployeeEntity employeeEntity : employeeEntities) {
+//            units.add(unitdao.getUnit(employeeEntity.getUnitId()).getUnitName());
+//            departments.add(departmentdao.getDepartmentEntity(employeeEntity.getDepId()).getDeptName());
 //            resumedao.getResume(employeeEntity.getResumeId()).get
 //            positiondao.
-            ContractEntity contractEntity = contractdao.getContractEntity(employeeEntity);
-            Timestamp startTimestamp = contractEntity.getContractStart();
-            Timestamp endTimestamp = contractEntity.getContractEnd();
-            startDates.add(startTimestamp);
-            endDates.add(endTimestamp);
-        }
-        return null;
-    }
+//            ContractEntity contractEntity = contractdao.getContractEntity(employeeEntity);
+//            Timestamp startTimestamp = contractEntity.getContractStart();
+//            Timestamp endTimestamp = contractEntity.getContractEnd();
+//            startDates.add(startTimestamp);
+//            endDates.add(endTimestamp);
+//        }
+//        return null;
+//    }
 }

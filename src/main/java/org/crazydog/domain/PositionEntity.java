@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @Table(name = "position", schema = "", catalog = "crazydog")
 public class PositionEntity {
     private Integer id;
-    private Integer empId;
     private Timestamp joinDate;
     private Timestamp leaveDate;
     private String leaveInfo;
@@ -27,15 +26,6 @@ public class PositionEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "emp_id", nullable = false, insertable = true, updatable = true)
-    public Integer getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
 
     @Basic
     @Column(name = "join_date", nullable = false, insertable = true, updatable = true)
@@ -85,7 +75,6 @@ public class PositionEntity {
         PositionEntity that = (PositionEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
         if (joinDate != null ? !joinDate.equals(that.joinDate) : that.joinDate != null) return false;
         if (leaveDate != null ? !leaveDate.equals(that.leaveDate) : that.leaveDate != null) return false;
         if (leaveInfo != null ? !leaveInfo.equals(that.leaveInfo) : that.leaveInfo != null) return false;
@@ -97,7 +86,6 @@ public class PositionEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (empId != null ? empId.hashCode() : 0);
         result = 31 * result + (joinDate != null ? joinDate.hashCode() : 0);
         result = 31 * result + (leaveDate != null ? leaveDate.hashCode() : 0);
         result = 31 * result + (leaveInfo != null ? leaveInfo.hashCode() : 0);

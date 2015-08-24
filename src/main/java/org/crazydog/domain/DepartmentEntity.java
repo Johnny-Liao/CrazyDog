@@ -11,7 +11,6 @@ import java.util.Collection;
 public class DepartmentEntity {
     private Integer id;
     private String deptName;
-    private Integer unitId;
     private Collection<ContractChangeEntity> contractChangesById;
     private UnitEntity unitByUnitId;
     private Collection<EmployeeEntity> employeesById;
@@ -36,15 +35,6 @@ public class DepartmentEntity {
         this.deptName = deptName;
     }
 
-    @Basic
-    @Column(name = "unit_id", nullable = false, insertable = true, updatable = true)
-    public Integer getUnitId() {
-        return unitId;
-    }
-
-    public void setUnitId(Integer unitId) {
-        this.unitId = unitId;
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -55,7 +45,6 @@ public class DepartmentEntity {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (deptName != null ? !deptName.equals(that.deptName) : that.deptName != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
 
         return true;
     }
@@ -64,7 +53,6 @@ public class DepartmentEntity {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (deptName != null ? deptName.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
         return result;
     }
 
