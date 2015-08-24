@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "resume_family", schema = "", catalog = "crazydog")
 public class ResumeFamilyEntity {
     private Integer id;
-    private Integer resumeId;
     private String name;
     private String relationship;
     private String department;
@@ -17,6 +16,7 @@ public class ResumeFamilyEntity {
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -25,15 +25,6 @@ public class ResumeFamilyEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
-    }
 
     @Basic
     @Column(name = "name", nullable = false, insertable = true, updatable = true, length = 10)
@@ -73,7 +64,6 @@ public class ResumeFamilyEntity {
         ResumeFamilyEntity that = (ResumeFamilyEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (resumeId != null ? !resumeId.equals(that.resumeId) : that.resumeId != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (relationship != null ? !relationship.equals(that.relationship) : that.relationship != null) return false;
         if (department != null ? !department.equals(that.department) : that.department != null) return false;
@@ -84,7 +74,6 @@ public class ResumeFamilyEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (resumeId != null ? resumeId.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (relationship != null ? relationship.hashCode() : 0);
         result = 31 * result + (department != null ? department.hashCode() : 0);

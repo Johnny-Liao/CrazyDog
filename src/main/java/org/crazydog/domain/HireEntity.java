@@ -10,7 +10,6 @@ import java.sql.Timestamp;
 @Table(name = "hire", schema = "", catalog = "crazydog")
 public class HireEntity {
     private Integer id;
-    private Integer resumeId;
     private String state;
     private String declineCause;
     private String comment;
@@ -28,15 +27,6 @@ public class HireEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "resume_id", nullable = false, insertable = true, updatable = true)
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
-    }
 
     @Basic
     @Column(name = "STATE", nullable = false, insertable = true, updatable = true, length = 4)
@@ -96,7 +86,6 @@ public class HireEntity {
         HireEntity that = (HireEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (resumeId != null ? !resumeId.equals(that.resumeId) : that.resumeId != null) return false;
         if (state != null ? !state.equals(that.state) : that.state != null) return false;
         if (declineCause != null ? !declineCause.equals(that.declineCause) : that.declineCause != null) return false;
         if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
@@ -109,7 +98,6 @@ public class HireEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (resumeId != null ? resumeId.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (declineCause != null ? declineCause.hashCode() : 0);
         result = 31 * result + (comment != null ? comment.hashCode() : 0);

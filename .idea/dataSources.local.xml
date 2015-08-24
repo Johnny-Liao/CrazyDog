@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="dataSourceStorageLocal">
-    <data-source name="MySQL - CrazyDog@localhost" uuid="03eb1248-0840-472a-bad4-7cc8dbe44149">
-      <secret-storage>master_key</secret-storage>
-      <user-name>root</user-name>
-      <schema-pattern>crazydog.*</schema-pattern>
-      <default-schemas>crazydog.*</default-schemas>
-    </data-source>
-  </component>
+	<component name="dataSourceStorageLocal">
+		<data-source name="MySQL - CrazyDog@localhost" uuid="03eb1248-0840-472a-bad4-7cc8dbe44149">
+			<secret-storage>master_key</secret-storage>
+			<user-name>root</user-name>
+			<schema-pattern>crazydog.*</schema-pattern>
+			<default-schemas>crazydog.*</default-schemas>
+		</data-source>
+	</component>
 </project>

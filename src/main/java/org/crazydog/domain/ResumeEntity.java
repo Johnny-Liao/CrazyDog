@@ -44,6 +44,7 @@ public class ResumeEntity {
 
     @Id
     @Column(name = "id", nullable = false, insertable = true, updatable = true)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
