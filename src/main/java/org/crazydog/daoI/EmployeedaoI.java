@@ -5,6 +5,7 @@ import org.crazydog.domain.EmployeeEntity;
 import java.util.List;
 
 /**
+ * 对人事信息实体进行操作
  * Created by never on 2015/8/23.
  */
 public interface EmployeedaoI {

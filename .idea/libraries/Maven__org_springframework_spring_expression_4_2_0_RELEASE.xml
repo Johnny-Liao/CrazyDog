@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-<component name="libraryTable">
-	<library name="Maven: org.springframework:spring-expression:4.2.0.RELEASE">
-		<CLASSES>
-			<root
-				url="jar://D:/maven_repos/repository/org/springframework/spring-expression/4.2.0.RELEASE/spring-expression-4.2.0.RELEASE.jar!/" />
-		</CLASSES>
-		<JAVADOC>
-			<root
-				url="jar://D:/maven_repos/repository/org/springframework/spring-expression/4.2.0.RELEASE/spring-expression-4.2.0.RELEASE-javadoc.jar!/" />
-		</JAVADOC>
-		<SOURCES>
-			<root
-				url="jar://D:/maven_repos/repository/org/springframework/spring-expression/4.2.0.RELEASE/spring-expression-4.2.0.RELEASE-sources.jar!/" />
-		</SOURCES>
-	</library>
-=======
 <component name="libraryTable">
   <library name="Maven: org.springframework:spring-expression:4.2.0.RELEASE">
     <CLASSES>
@@ -27,5 +10,4 @@
       <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/4.2.0.RELEASE/spring-expression-4.2.0.RELEASE-sources.jar!/" />
     </SOURCES>
   </library>
->>>>>>> bcd33826cccc6660b1d060c59ac9e26753337c6e
 </component>
