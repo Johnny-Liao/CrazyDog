@@ -6,6 +6,7 @@ import org.crazydog.domain.UnitEntity;
 import java.util.List;
 
 /**
+ * 对单位下的部门进行操作
  * Created by never on 2015/8/23.
  */
 public interface DepartmentdaoI {
@@ -36,6 +37,15 @@ public interface DepartmentdaoI {
      * @param departmentEntity 部门id
      */
     void deleteDepartment(DepartmentEntity departmentEntity);
+
+    /**
+     * 根据部门的id来获取部门信息
+     * 存在延迟加载效果
+     *
+     * @param id 部门id
+     * @return
+     */
+    DepartmentEntity loadDepartmentEntity(int id);
 
     /**
      * 根据部门的id来获取部门信息
