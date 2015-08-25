@@ -27,7 +27,7 @@ public class ResumeFamilyDaoImpl implements  ResumeFamilyDaoI{
 
 	@Override
 	public void deleteResumeFamily(int id) {
-	
+		hibernateTemplate.delete(this.getResumeFamily(id));
 	}
 
 
