@@ -1,40 +1,78 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.UnitdaoI;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.UnitEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/25.
  */
 @Component
-public class UnitdaoImpl implements UnitdaoI {
-
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
-
-    public void addUnit(UnitEntity entity) {
-//        hibernateTemplate.setCheckWriteOperations(false);
-        hibernateTemplate.save(entity);
+public class UnitdaoImpl extends Basedao<UnitEntity> {
+    /**
+     * 添加实体
+     *
+     * @param unitEntity 实体对象
+     */
+    @Override
+    public void addEntity(UnitEntity unitEntity) {
+        hibernateTemplate.save(unitEntity);
     }
 
-    public void modifyUnit(UnitEntity entity) {
-        hibernateTemplate.update(entity);
+    /**
+     * 修改实体
+     *
+     * @param unitEntity 实体对象
+     */
+    @Override
+    public void modifyEntity(UnitEntity unitEntity) {
+        hibernateTemplate.update(unitEntity);
     }
 
-    public void deleteUnit(UnitEntity entity) {
-        hibernateTemplate.delete(entity);
+    /**
+     * 获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    @Override
+    public UnitEntity getEntity(int id) {
+        return hibernateTemplate.get(UnitEntity.class, id);
     }
 
-    public UnitEntity getUnit(int id) {
+    /**
+     * 获得所有的实体类
+     *
+     * @return
+     */
+    @Override
+    public List<UnitEntity> getAllEntities() {
+        return hibernateTemplate.loadAll(UnitEntity.class);
+    }
+
+    /**
+     * load具有懒加载效果，获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    @Override
+    public UnitEntity loadEntity(int id) {
         return hibernateTemplate.load(UnitEntity.class, id);
     }
 
-    public List<UnitEntity> getAllUnits() {
-        return hibernateTemplate.loadAll(UnitEntity.class);
+    /**
+     * 删除指定的某个实体
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    @Override
+    public void deleteEntity(int id) {
+        UnitEntity unitEntity = new UnitEntity();
+        unitEntity.setId(id);
+        hibernateTemplate.delete(unitEntity);
     }
 }

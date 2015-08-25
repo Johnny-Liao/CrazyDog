@@ -40,6 +40,30 @@ public interface UnitServiceI {
     UnitEntity getUnit(int id);
 
     /**
+     * 通过服务单位名称查询
+     *
+     * @param name 服务单位的名字
+     * @return
+     */
+    UnitEntity getUnitByName(String name);
+
+    /**
+     * 通过服务单位编码查询
+     *
+     * @param code 服务单位的编码
+     * @return
+     */
+    UnitEntity getUnitByCode(String code);
+
+    /**
+     * 获取指定的服务单位
+     *
+     * @param id 服务单位的id
+     * @return
+     */
+    UnitEntity loadUnit(int id);
+
+    /**
      * 获取所有的服务单位
      *
      * @return
