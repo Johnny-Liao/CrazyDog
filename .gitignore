@@ -1,6 +1,12 @@
 bin/
 *.class
 target/
+.idea/
+.settings/
+.classpath
+.project
+.springBeans
+
 
 
 # Mobile Tools for Java (J2ME)
