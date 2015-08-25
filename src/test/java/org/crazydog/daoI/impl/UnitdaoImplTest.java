@@ -50,6 +50,4 @@ public class UnitdaoImplTest {
         unitEntity.setId(1);
         unitdaoImpl.deleteEntity(1);
     }
-
-
 }

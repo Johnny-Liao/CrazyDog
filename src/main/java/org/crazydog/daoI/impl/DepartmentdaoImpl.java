@@ -13,9 +13,10 @@ import java.util.List;
 @Component
 public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     /**
-     * 添加实体
+     * 添加部门实体
+     * 注意添加部门的时候，必须指定部门所属单位
      *
-     * @param departmentEntity 实体对象（不能为空）
+     * @param departmentEntity 部门实体对象（不能为空）
      */
     @Override
     public void addEntity(DepartmentEntity departmentEntity) {
@@ -23,7 +24,9 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * 一次添加多个单位实例
+     * 一次添加多个单位下的部门实例
+     * 默认将设置所有的部门为该单位下属
+     * 不管你是否设置单位和部门的联系，这里都会添加他们之间的联系
      *
      * @param departmentEntities List列表（不能为空）
      */
@@ -35,9 +38,9 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * 修改实体
+     * 修改部门实体
      *
-     * @param departmentEntity 实体对象（不能为空）
+     * @param departmentEntity 部门实体对象（不能为空）
      */
     @Override
     public void modifyEntity(DepartmentEntity departmentEntity) {
@@ -45,9 +48,9 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * load具有懒加载效果，获得实体类
+     * load具有懒加载效果，获得部门实体类
      *
-     * @param id 实体对象的id
+     * @param id 部门实体对象的id
      * @return
      */
     @Override
@@ -56,9 +59,9 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * 获得实体类
+     * 获得部门实体类
      *
-     * @param id 实体对象的id
+     * @param id 部门实体对象的id
      * @return
      */
     @Override
@@ -67,7 +70,7 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * 获得所有的实体类
+     * 获得所有的部门实体类
      *
      * @return
      */
@@ -77,9 +80,9 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * 删除指定的某个实体
+     * 删除指定的某个部门实体
      *
-     * @param departmentEntity 实体对象
+     * @param departmentEntity 部门实体对象
      * @return
      */
     @Override
