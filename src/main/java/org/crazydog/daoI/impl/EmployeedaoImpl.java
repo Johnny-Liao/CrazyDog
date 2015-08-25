@@ -1,6 +1,6 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.Basedao;
+import org.crazydog.Basedao;
 import org.crazydog.domain.EmployeeEntity;
 import org.springframework.stereotype.Component;
 
@@ -81,13 +81,11 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
     /**
      * 删除指定的某个实体
      *
-     * @param id 实体对象的id
+     * @param employeeEntity 实体对象的id
      * @return
      */
     @Override
-    public void deleteEntity(int id) {
-        EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setId(id);
+    public void deleteEntity(EmployeeEntity employeeEntity) {
         hibernateTemplate.delete(employeeEntity);
     }
 }

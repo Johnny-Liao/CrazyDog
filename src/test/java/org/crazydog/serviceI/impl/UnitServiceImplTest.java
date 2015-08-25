@@ -1,7 +1,6 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.domain.UnitEntity;
-import org.crazydog.serviceI.UnitServiceI;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,5 +1,6 @@
 package org.crazydog.daoI.impl;
 
+import org.crazydog.Basedao;
 import org.crazydog.domain.UnitEntity;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,12 +13,18 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class UnitdaoImplTest {
     ApplicationContext applicationContext;
 
-    UnitdaoI unitdaoImpl;
+    Basedao unitdaoImpl;
 
     @Before
     public void before() {
         applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
-        unitdaoImpl = (UnitdaoI) applicationContext.getBean("unitdaoImpl");
+        unitdaoImpl = (Basedao) applicationContext.getBean("unitdaoImpl");
+    }
+
+    @Test
+    public void testGetUnit() {
+        UnitEntity unitEntity = (UnitEntity) unitdaoImpl.getEntity(2);
+        System.out.println(unitEntity);
     }
 
     @Test
@@ -25,7 +32,7 @@ public class UnitdaoImplTest {
         UnitEntity unitEntity = new UnitEntity();
         unitEntity.setUnitCode("SB1");
         unitEntity.setUnitName("臭傻逼");
-        unitdaoImpl.addUnit(unitEntity);
+        unitdaoImpl.addEntity(unitEntity);
     }
 
     @Test
@@ -34,19 +41,15 @@ public class UnitdaoImplTest {
         unitEntity.setId(1);
         unitEntity.setUnitCode("ZY");
         unitEntity.setUnitName("邹杨");
-        unitdaoImpl.modifyUnit(unitEntity);
+        unitdaoImpl.modifyEntity(unitEntity);
     }
 
     @Test
     public void testDeleteUnit() {
         UnitEntity unitEntity = new UnitEntity();
         unitEntity.setId(1);
-        unitdaoImpl.deleteUnit(unitEntity);
+        unitdaoImpl.deleteEntity(1);
     }
 
-    @Test
-    public void testGetUnit() {
-        UnitEntity unitEntity = unitdaoImpl.getUnit(2);
-        System.out.println(unitEntity);
-    }
+
 }

@@ -1,6 +1,6 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.Basedao;
+import org.crazydog.Basedao;
 import org.crazydog.domain.UnitEntity;
 import org.springframework.stereotype.Component;
 
@@ -66,13 +66,11 @@ public class UnitdaoImpl extends Basedao<UnitEntity> {
     /**
      * 删除指定的某个实体
      *
-     * @param id 实体对象的id
+     * @param unitEntity 实体对象
      * @return
      */
     @Override
-    public void deleteEntity(int id) {
-        UnitEntity unitEntity = new UnitEntity();
-        unitEntity.setId(id);
+    public void deleteEntity(UnitEntity unitEntity) {
         hibernateTemplate.delete(unitEntity);
     }
 }

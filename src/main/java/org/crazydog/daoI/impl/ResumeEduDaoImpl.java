@@ -1,5 +1,6 @@
 package org.crazydog.daoI.impl;
 
+import org.crazydog.Basedao;
 import org.crazydog.domain.ResumeEduEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -8,29 +9,65 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class ResumeEduDaoImpl implements ResumeEduDaoI {
+public class ResumeEduDaoImpl extends Basedao<ResumeEduEntity> {
 
     @Autowired
     private HibernateTemplate hibernateTemplate;
 
-    public void addResumeEdu(ResumeEduEntity entity) {
+    /**
+     * 增加教育经历
+     *
+     * @param entity 教育经历实例
+     */
+    public void addEntity(ResumeEduEntity entity) {
         hibernateTemplate.save(entity);
     }
 
-    public void modifyResumeEdu(ResumeEduEntity entity) {
+    /**
+     * 修改教育经历
+     *
+     * @param entity 教育经历实例
+     */
+    public void modifyEntity(ResumeEduEntity entity) {
         hibernateTemplate.update(entity);
     }
 
-    public void deleteResumeEdu(int id) {
-        hibernateTemplate.delete(this.getResumeEdu(id));
+    /**
+     * 删除教育经历
+     *
+     * @param entity 指定删除
+     */
+    public void deleteEntity(ResumeEduEntity entity) {
+        hibernateTemplate.delete(entity);
     }
 
-    public ResumeEduEntity getResumeEdu(int id) {
-        return (ResumeEduEntity) hibernateTemplate.get(ResumeEduEntity.class, id);
+    /**
+     * 获取教育经历
+     *
+     * @param id 指定需要获取的id
+     * @return id所表示的教育经历
+     */
+    public ResumeEduEntity getEntity(int id) {
+        return hibernateTemplate.get(ResumeEduEntity.class, id);
     }
 
-    public List<ResumeEduEntity> getAllResumeEdus() {
+    /**
+     * 获取所有教育经历
+     *
+     * @return 教育经历的list集合
+     */
+    public List<ResumeEduEntity> getAllEntities() {
         return hibernateTemplate.loadAll(ResumeEduEntity.class);
+    }
+
+    /**
+     * 通过load获取指定的教育经历实例
+     *
+     * @param id 教育经历的实例
+     * @return id指定的教育经历实例
+     */
+    public ResumeEduEntity loadEntity(int id) {
+        return hibernateTemplate.load(ResumeEduEntity.class, id);
     }
 
 }

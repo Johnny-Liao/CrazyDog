@@ -1,9 +1,12 @@
 package org.crazydog.serviceI.impl;
 
+import org.crazydog.Basedao;
+import org.crazydog.daoI.impl.DepartmentdaoImpl;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
-import org.crazydog.serviceI.UnitServiceI;
+import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,49 +15,25 @@ import java.util.List;
  * Created by never on 2015/8/24.
  */
 @Service
-public class UnitServiceImpl implements UnitServiceI {
+public class UnitServiceImpl implements BaseService<UnitEntity> {
 
     @Autowired
-    private UnitdaoI unitdao;
+    @Qualifier("unitdaoImpl")
+    private Basedao unitdao;
 
     @Autowired
-    private DepartmentdaoI departmentdao;
-
-    public void addUnit(UnitEntity entity) {
-        unitdao.addUnit(entity);
-    }
-
-    public void modifyUnit(UnitEntity entity) {
-        unitdao.modifyUnit(entity);
-    }
-
-    public void deleteUnit(int id) {
-        UnitEntity entity = new UnitEntity();
-        entity.setId(id);
-        unitdao.deleteUnit(entity);
-    }
-
-    public UnitEntity loadUnit(int id) {
-        return unitdao.loadUnit(id);
-    }
-
-    /**
-     * 获取指定的服务单位
-     *
-     * @param id 服务单位的id
-     * @return
-     */
-    public UnitEntity getUnit(int id) {
-        return unitdao.getUnit(id);
-    }
+    @Qualifier("departmentdaoImpl")
+    private DepartmentdaoImpl departmentdao;
 
     /**
      * 通过服务单位名称查询
+     * 理论上来说单位的名字应该不会重复，所以大多数情况下应该只有一个实例，
+     * 但是以防万一还是返回一个list
      *
      * @param name 服务单位的名字
      * @return
      */
-    public UnitEntity getUnitByName(String name) {
+    public List<UnitEntity> getUnitByName(String name) {
 
         return null;
     }
@@ -69,12 +48,73 @@ public class UnitServiceImpl implements UnitServiceI {
         return null;
     }
 
-    public List<UnitEntity> getAllUnits() {
-        return unitdao.getAllUnits();
+
+    /**
+     * 一次添加多个部门
+     *
+     * @param unitEntity         部门所属的单位
+     * @param departmentEntities 所有的部门
+     */
+    public void addDepartments(UnitEntity unitEntity, List<DepartmentEntity> departmentEntities) {
+        if (departmentEntities != null && departmentEntities.size() != 0)
+            departmentdao.addEntities(unitEntity, departmentEntities);
     }
 
-    public void addDepartments(List<DepartmentEntity> departmentEntities) {
-        if (departmentEntities != null && departmentEntities.size() != 0)
-            departmentdao.addDepartments(departmentEntities);
+    /**
+     * 添加服务单位
+     *
+     * @param entity 服务单位对象
+     */
+    public void addEntity(UnitEntity entity) {
+        unitdao.addEntity(entity);
+    }
+
+    /**
+     * 修改服务单位
+     *
+     * @param entity 服务单位对象
+     */
+    public void modifyEntity(UnitEntity entity) {
+        unitdao.modifyEntity(entity);
+    }
+
+    /**
+     * load具有懒加载效果，获得服务单位类
+     *
+     * @param id 服务单位对象的id
+     * @return
+     */
+    public UnitEntity loadEntity(int id) {
+        return (UnitEntity) unitdao.loadEntity(id);
+    }
+
+    /**
+     * 获得服务单位类
+     *
+     * @param id 服务单位对象的id
+     * @return
+     */
+    public UnitEntity getEntity(int id) {
+        return (UnitEntity) unitdao.getEntity(id);
+    }
+
+    /**
+     * 获得所有的服务单位类
+     *
+     * @return
+     */
+    public List<UnitEntity> getAllEntities() {
+        return unitdao.getAllEntities();
+    }
+
+    /**
+     * 删除指定的某个服务单位
+     * 注意这里具有级联效果（会删除该单位下属的所有部门），所以小心操作
+     *
+     * @param entity 服务单位对象
+     * @return
+     */
+    public void deleteEntity(UnitEntity entity) {
+        unitdao.deleteEntity(entity);
     }
 }
