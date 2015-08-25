@@ -1,4 +1,4 @@
-package org.crazydog;
+package org.crazydog.daoI;
 
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;

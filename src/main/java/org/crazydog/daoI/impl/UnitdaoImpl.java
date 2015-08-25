@@ -1,6 +1,6 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.Basedao;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.UnitEntity;
 import org.springframework.stereotype.Component;
 

@@ -1,6 +1,6 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.Basedao;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ResumeEduEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;

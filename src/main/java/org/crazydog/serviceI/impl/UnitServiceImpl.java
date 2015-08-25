@@ -1,6 +1,6 @@
 package org.crazydog.serviceI.impl;
 
-import org.crazydog.Basedao;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.DepartmentdaoImpl;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;

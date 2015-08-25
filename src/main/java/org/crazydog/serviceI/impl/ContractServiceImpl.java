@@ -1,6 +1,6 @@
 package org.crazydog.serviceI.impl;
 
-import org.crazydog.Basedao;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ContractEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Created by never on 2015/8/23.
  */
 //@Service
-public class ContractServiceImpl implements ContractServiceI {
+public class ContractServiceImpl {
 
     @Autowired
     private Basedao employeedao;
