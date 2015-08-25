@@ -40,6 +40,15 @@ public interface DepartmentdaoI {
 
     /**
      * 根据部门的id来获取部门信息
+     * 存在延迟加载效果
+     *
+     * @param id 部门id
+     * @return
+     */
+    DepartmentEntity loadDepartmentEntity(int id);
+
+    /**
+     * 根据部门的id来获取部门信息
      *
      * @param id 部门id
      * @return

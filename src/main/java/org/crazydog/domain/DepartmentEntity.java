@@ -1,5 +1,8 @@
 package org.crazydog.domain;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -7,6 +10,8 @@ import java.util.Collection;
  * Created by never on 2015/8/24.
  */
 @Entity
+@SelectBeforeUpdate
+@DynamicUpdate
 @Table(name = "department", schema = "", catalog = "crazydog")
 public class DepartmentEntity {
     private Integer id;
@@ -40,13 +45,21 @@ public class DepartmentEntity {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         DepartmentEntity that = (DepartmentEntity) o;
-
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (deptName != null ? !deptName.equals(that.deptName) : that.deptName != null) return false;
-
         return true;
+    }
+
+    @Override
+    public String toString() {
+        return "DepartmentEntity{" +
+                "id=" + id +
+                ", deptName='" + deptName + '\'' +
+//                ", contractChangesById=" + contractChangesById +
+                ", unitByUnitId=" + unitByUnitId +
+//                ", employeesById=" + employeesById +
+                '}';
     }
 
     @Override
