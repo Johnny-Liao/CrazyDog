@@ -23,20 +23,10 @@ public class UnitdaoImpl implements UnitdaoI {
     }
 
     public void modifyUnit(UnitEntity entity) {
-//        Session session = hibernateTemplate.getSessionFactory().openSession();
-//        session.setFlushMode(FlushMode.AUTO);
-//        session.getTransaction().begin();
-//        session.update(entity);
-//        session.getTransaction().commit();
         hibernateTemplate.update(entity);
     }
 
     public void deleteUnit(UnitEntity entity) {
-//        Session session = hibernateTemplate.getSessionFactory().openSession();
-//        session.setFlushMode(FlushMode.AUTO);
-//        session.getTransaction().begin();
-//        session.delete(entity);
-//        session.getTransaction().commit();
         hibernateTemplate.delete(entity);
     }
 

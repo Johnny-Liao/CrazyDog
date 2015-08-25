@@ -17,7 +17,7 @@ public class UnitdaoImplTest {
 
     @Before
     public void before() {
-        applicationContext = new ClassPathXmlApplicationContext("classpath:application-config.xml");
+        applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
         unitdaoImpl = (UnitdaoI) applicationContext.getBean("unitdaoImpl");
     }
 
