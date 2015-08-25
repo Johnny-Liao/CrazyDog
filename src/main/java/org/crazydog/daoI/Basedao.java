@@ -58,10 +58,10 @@ public abstract class Basedao<T> {
     /**
      * 删除指定的某个实体
      *
-     * @param id 实体对象的id
+     * @param t 实体对象
      * @return
      */
-    public abstract void deleteEntity(int id);
+    public abstract void deleteEntity(T t);
 
     /**
      * 使用hql语言进行查询操作

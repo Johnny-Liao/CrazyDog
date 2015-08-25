@@ -1,6 +1,5 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.DepartmentdaoI;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 import org.junit.Before;
@@ -18,12 +17,12 @@ public class DepartmentdaoImplTest {
 
     ApplicationContext applicationContext;
 
-    DepartmentdaoI departmentdao;
+    DepartmentdaoImpl departmentdao;
 
     @Before
     public void before() {
         applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
-        departmentdao = (DepartmentdaoI) applicationContext.getBean("departmentdaoImpl");
+        departmentdao = (DepartmentdaoImpl) applicationContext.getBean("departmentdaoImpl");
     }
 
     @Test
@@ -33,7 +32,7 @@ public class DepartmentdaoImplTest {
         UnitEntity unitEntity = new UnitEntity();
         unitEntity.setId(1);
         departmentEntity.setUnitByUnitId(unitEntity);
-        departmentdao.addDepartment(departmentEntity);
+        departmentdao.addEntity(departmentEntity);
     }
 
     @Test
@@ -52,7 +51,7 @@ public class DepartmentdaoImplTest {
 
         departmentEntities.add(departmentEntity1);
         departmentEntities.add(departmentEntity2);
-        departmentdao.addDepartments(departmentEntities);
+//        departmentdao.addEntities(departmentEntities);
     }
 
     @Test
@@ -63,22 +62,22 @@ public class DepartmentdaoImplTest {
         unitEntity.setId(2);
         departmentEntity.setUnitByUnitId(unitEntity);
         departmentEntity.setDeptName("333傻逼");
-        departmentdao.modifyDepartment(departmentEntity);
+        departmentdao.modifyEntity(departmentEntity);
     }
 
     @Test
     public void testDeleteDepartment() throws Exception {
-        DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setId(28);
-        UnitEntity unitEntity = new UnitEntity();
-        unitEntity.setId(1);
-        departmentEntity.setUnitByUnitId(unitEntity);
-        departmentdao.deleteDepartment(departmentEntity);
+//        DepartmentEntity departmentEntity = new DepartmentEntity();
+//        departmentEntity.setId(28);
+//        UnitEntity unitEntity = new UnitEntity();
+//        unitEntity.setId(1);
+//        departmentEntity.setUnitByUnitId(unitEntity);
+//        departmentdao.deleteEntity(10);
     }
 
     @Test
     public void testGetDepartmentEntity() throws Exception {
-        DepartmentEntity departmentEntity = departmentdao.getDepartmentEntity(1);
+        DepartmentEntity departmentEntity = departmentdao.getEntity(1);
         System.out.println(departmentEntity);
     }
 

@@ -15,7 +15,7 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     /**
      * 添加实体
      *
-     * @param departmentEntity 实体对象
+     * @param departmentEntity 实体对象（不能为空）
      */
     @Override
     public void addEntity(DepartmentEntity departmentEntity) {
@@ -23,9 +23,21 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
+     * 一次添加多个单位实例
+     *
+     * @param departmentEntities List列表（不能为空）
+     */
+    public void addEntities(UnitEntity unitEntity, List<DepartmentEntity> departmentEntities) {
+        for (DepartmentEntity departmentEntity : departmentEntities) {
+            departmentEntity.setUnitByUnitId(unitEntity);
+            addEntity(departmentEntity);
+        }
+    }
+
+    /**
      * 修改实体
      *
-     * @param departmentEntity 实体对象
+     * @param departmentEntity 实体对象（不能为空）
      */
     @Override
     public void modifyEntity(DepartmentEntity departmentEntity) {
@@ -65,7 +77,18 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * @param unitEntity 服务单位
+     * 删除指定的某个实体
+     *
+     * @param departmentEntity 实体对象
+     * @return
+     */
+    @Override
+    public void deleteEntity(DepartmentEntity departmentEntity) {
+        hibernateTemplate.delete(departmentEntity);
+    }
+
+    /**
+     * @param unitEntity 服务单位（不能为空）
      * @return
      */
     public List<DepartmentEntity> getAllDepartmentEntity(UnitEntity unitEntity) {
@@ -73,16 +96,4 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
         return departmentEntities;
     }
 
-    /**
-     * 删除指定的某个实体
-     *
-     * @param id 实体对象的id
-     * @return
-     */
-    @Override
-    public void deleteEntity(int id) {
-        DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setId(id);
-        hibernateTemplate.delete(departmentEntity);
-    }
 }

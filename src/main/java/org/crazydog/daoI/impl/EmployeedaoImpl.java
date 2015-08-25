@@ -1,44 +1,91 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.EmployeedaoI;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Johnny on 2015/8/23.
  */
 @Component
-public class EmployeedaoImpl implements EmployeedaoI {
+public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
 
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
-
-    public void addEmployee(EmployeeEntity entity) {
-        hibernateTemplate.save(EmployeeEntity.class);
+    /**
+     * 通过名字获得员工（抽象匹配）
+     *
+     * @param name
+     * @return
+     */
+    public List<EmployeeEntity> getEmployeeByName(String name) {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("name", name);
+        return find("from employeeEntity where employeeEntity.emp_name like :name", map);
     }
 
-    public void modifyEmployee(EmployeeEntity entity) {
-        hibernateTemplate.update(EmployeeEntity.class);
+    /**
+     * 添加实体
+     *
+     * @param employeeEntity 实体对象
+     */
+    @Override
+    public void addEntity(EmployeeEntity employeeEntity) {
+        hibernateTemplate.save(employeeEntity);
     }
 
-    public void deleteEmployee(int id) {
-        hibernateTemplate.delete(EmployeeEntity.class);
+    /**
+     * 修改实体
+     *
+     * @param employeeEntity 实体对象
+     */
+    @Override
+    public void modifyEntity(EmployeeEntity employeeEntity) {
+        hibernateTemplate.update(employeeEntity);
     }
 
-    public EmployeeEntity getEmployee(int id) {
+    /**
+     * load具有懒加载效果，获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    @Override
+    public EmployeeEntity loadEntity(int id) {
+        return hibernateTemplate.load(EmployeeEntity.class, id);
+    }
+
+    /**
+     * 获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    @Override
+    public EmployeeEntity getEntity(int id) {
         return hibernateTemplate.get(EmployeeEntity.class, id);
     }
 
-    public List<EmployeeEntity> getEmployeeByName(String name) {
-        List<?> list = hibernateTemplate.find("from employeeEntity where employeeEntity.emp_name like ?", name);
-        return (List<EmployeeEntity>) list;
+    /**
+     * 获得所有的实体类
+     *
+     * @return
+     */
+    @Override
+    public List<EmployeeEntity> getAllEntities() {
+        return hibernateTemplate.loadAll(EmployeeEntity.class);
     }
 
-    public List<EmployeeEntity> getAllEmployees() {
-        return hibernateTemplate.loadAll(EmployeeEntity.class);
+    /**
+     * 删除指定的某个实体
+     *
+     * @param employeeEntity 实体对象的id
+     * @return
+     */
+    @Override
+    public void deleteEntity(EmployeeEntity employeeEntity) {
+        hibernateTemplate.delete(employeeEntity);
     }
 }
