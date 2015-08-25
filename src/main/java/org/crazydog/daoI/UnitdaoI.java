@@ -5,6 +5,7 @@ import org.crazydog.domain.UnitEntity;
 import java.util.List;
 
 /**
+ * 对单位实体进行操作
  * Created by never on 2015/8/23.
  */
 public interface UnitdaoI {

@@ -1,12 +1,14 @@
 package org.crazydog.daoI;
 
-import java.util.List;
-
-import org.crazydog.domain.ResumeEduEntity;
 import org.crazydog.domain.ResumeFamilyEntity;
 
+import java.util.List;
+
+/**
+ * 对简历里包含的家庭成员信息进行操作
+ */
 public interface ResumeFamilyDaoI {
-	/**
+    /**
      * 添加家庭成员
      *
      * @param entity 家庭成员实体

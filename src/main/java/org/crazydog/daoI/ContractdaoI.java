@@ -6,6 +6,7 @@ import org.crazydog.domain.EmployeeEntity;
 import java.util.List;
 
 /**
+ * 对合同进行操作
  * Created by never on 2015/8/23.
  */
 public interface ContractdaoI {
