@@ -6,7 +6,6 @@ import org.crazydog.domain.UnitEntity;
 import java.util.List;
 
 /**
- * 对单位下的部门进行操作
  * Created by never on 2015/8/23.
  */
 public interface DepartmentdaoI {
