@@ -11,14 +11,14 @@ public interface BaseService<T> {
      *
      * @param t 实体对象
      */
-    public abstract void addEntity(T t);
+    void addEntity(T t);
 
     /**
      * 修改实体
      *
      * @param t 实体对象
      */
-    public abstract void modifyEntity(T t);
+    void modifyEntity(T t);
 
     /**
      * load具有懒加载效果，获得实体类
@@ -26,7 +26,7 @@ public interface BaseService<T> {
      * @param id 实体对象的id
      * @return
      */
-    public abstract T loadEntity(int id);
+    T loadEntity(int id);
 
     /**
      * 获得实体类
@@ -34,14 +34,14 @@ public interface BaseService<T> {
      * @param id 实体对象的id
      * @return
      */
-    public abstract T getEntity(int id);
+    T getEntity(int id);
 
     /**
      * 获得所有的实体类
      *
      * @return
      */
-    public abstract List<T> getAllEntities();
+    List<T> getAllEntities();
 
 
     /**
@@ -50,6 +50,6 @@ public interface BaseService<T> {
      * @param t 实体对象
      * @return
      */
-    public abstract void deleteEntity(T t);
+    void deleteEntity(T t);
 
 }

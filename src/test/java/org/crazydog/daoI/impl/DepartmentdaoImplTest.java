@@ -51,13 +51,13 @@ public class DepartmentdaoImplTest {
 
         departmentEntities.add(departmentEntity1);
         departmentEntities.add(departmentEntity2);
-//        departmentdao.addEntities(departmentEntities);
+        departmentdao.addEntities(unitEntity, departmentEntities);
     }
 
     @Test
     public void testModifyDepartment() throws Exception {
         DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setId(28);
+        departmentEntity.setId(10);
         UnitEntity unitEntity = new UnitEntity();
         unitEntity.setId(2);
         departmentEntity.setUnitByUnitId(unitEntity);
@@ -67,12 +67,12 @@ public class DepartmentdaoImplTest {
 
     @Test
     public void testDeleteDepartment() throws Exception {
-//        DepartmentEntity departmentEntity = new DepartmentEntity();
-//        departmentEntity.setId(28);
-//        UnitEntity unitEntity = new UnitEntity();
-//        unitEntity.setId(1);
-//        departmentEntity.setUnitByUnitId(unitEntity);
-//        departmentdao.deleteEntity(10);
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setId(10);
+        UnitEntity unitEntity = new UnitEntity();
+        unitEntity.setId(2);
+        departmentEntity.setUnitByUnitId(unitEntity);
+        departmentdao.deleteEntity(departmentEntity);
     }
 
     @Test

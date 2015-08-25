@@ -1,7 +1,7 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.domain.UnitEntity;
-import org.junit.After;
+import org.crazydog.serviceI.BaseService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -14,53 +14,58 @@ import java.util.List;
  */
 public class UnitServiceImplTest {
     ApplicationContext applicationContext;
-    UnitServiceI unitService;
+    BaseService unitService;
 
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
-        unitService = (UnitServiceI) applicationContext.getBean("unitServiceImpl");
+        unitService = (BaseService) applicationContext.getBean("unitServiceImpl");
     }
 
-    @After
-    public void tearDown() throws Exception {
+    @Test
+    public void testGetUnitByName() throws Exception {
 
     }
 
     @Test
-    public void testAddUnit() throws Exception {
+    public void testGetUnitByCode() throws Exception {
 
     }
 
     @Test
-    public void testModifyUnit() throws Exception {
+    public void testAddDepartments() throws Exception {
 
     }
 
     @Test
-    public void testDeleteUnit() throws Exception {
+    public void testAddEntity() throws Exception {
 
     }
 
     @Test
-    public void testLoadUnit() throws Exception {
+    public void testModifyEntity() throws Exception {
 
     }
 
     @Test
-    public void testGetUnit() throws Exception {
+    public void testLoadEntity() throws Exception {
 
     }
 
     @Test
-    public void testGetAllUnits() throws Exception {
-        List<UnitEntity> unitEntities = unitService.getAllUnits();
+    public void testGetEntity() throws Exception {
+
+    }
+
+    @Test
+    public void testGetAllEntities() throws Exception {
+        List<UnitEntity> unitEntities = unitService.getAllEntities();
         for (UnitEntity unitEntity : unitEntities)
             System.out.println(unitEntity);
     }
 
     @Test
-    public void testAddDepartments() throws Exception {
+    public void testDeleteEntity() throws Exception {
 
     }
 }
