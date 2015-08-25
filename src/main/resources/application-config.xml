@@ -51,6 +51,7 @@
     <!--配置HibernateTemplate模板-->
     <bean id="hibernateTemplate" class="org.springframework.orm.hibernate4.HibernateTemplate">
         <property name="sessionFactory" ref="sessionFactory"/>
+        <property name="checkWriteOperations" value="false"/>
     </bean>
 
     <!--配置事务管理器-->
@@ -90,4 +91,5 @@
             <tx:method name="*" propagation="SUPPORTS"/>
         </tx:attributes>
     </tx:advice>
+
 </beans>
