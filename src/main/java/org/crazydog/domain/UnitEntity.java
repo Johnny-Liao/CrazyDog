@@ -1,5 +1,8 @@
 package org.crazydog.domain;
 
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -7,6 +10,8 @@ import java.util.Collection;
  * Created by never on 2015/8/24.
  */
 @Entity
+@SelectBeforeUpdate
+@DynamicUpdate
 @Table(name = "unit", schema = "", catalog = "crazydog")
 public class UnitEntity {
     private Integer id;
@@ -45,6 +50,18 @@ public class UnitEntity {
 
     public void setUnitName(String unitName) {
         this.unitName = unitName;
+    }
+
+    @Override
+    public String toString() {
+        return "UnitEntity{" +
+                "id=" + id +
+                ", unitCode='" + unitCode + '\'' +
+                ", unitName='" + unitName + '\'' +
+//                ", contractChangesById=" + contractChangesById +
+//                ", departmentsById=" + departmentsById +
+//                ", employeesById=" + employeesById +
+                '}';
     }
 
     @Override

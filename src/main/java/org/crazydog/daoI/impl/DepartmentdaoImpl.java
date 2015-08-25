@@ -1,71 +1,67 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.DepartmentdaoI;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/25.
  */
 @Component
-public class DepartmentdaoImpl implements DepartmentdaoI {
-
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
-
+public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     /**
-     * @param departmentEntity 部门
+     * 添加实体
+     *
+     * @param departmentEntity 实体对象
      */
-    public void addDepartment(DepartmentEntity departmentEntity) {
+    @Override
+    public void addEntity(DepartmentEntity departmentEntity) {
         hibernateTemplate.save(departmentEntity);
     }
 
     /**
-     * @param departmentEntities 部门
+     * 修改实体
+     *
+     * @param departmentEntity 实体对象
      */
-    public void addDepartments(List<DepartmentEntity> departmentEntities) {
-        for (DepartmentEntity departmentEntity : departmentEntities)
-            addDepartment(departmentEntity);
-    }
-
-    /**
-     * @param departmentEntity 部门
-     */
-    public void modifyDepartment(DepartmentEntity departmentEntity) {
+    @Override
+    public void modifyEntity(DepartmentEntity departmentEntity) {
         hibernateTemplate.update(departmentEntity);
     }
 
     /**
-     * @param departmentEntity 部门id
-     */
-    public void deleteDepartment(DepartmentEntity departmentEntity) {
-        hibernateTemplate.delete(departmentEntity);
-    }
-
-    /**
-     * 根据部门的id来获取部门信息
-     * 存在延迟加载现象
+     * load具有懒加载效果，获得实体类
      *
-     * @param id 部门id
+     * @param id 实体对象的id
      * @return
      */
-    public DepartmentEntity loadDepartmentEntity(int id) {
+    @Override
+    public DepartmentEntity loadEntity(int id) {
         return hibernateTemplate.load(DepartmentEntity.class, id);
     }
 
     /**
-     * 根据部门的id来获取部门信息
+     * 获得实体类
      *
-     * @param id 部门id
+     * @param id 实体对象的id
      * @return
      */
-    public DepartmentEntity getDepartmentEntity(int id) {
+    @Override
+    public DepartmentEntity getEntity(int id) {
         return hibernateTemplate.get(DepartmentEntity.class, id);
+    }
+
+    /**
+     * 获得所有的实体类
+     *
+     * @return
+     */
+    @Override
+    public List<DepartmentEntity> getAllEntities() {
+        return hibernateTemplate.loadAll(DepartmentEntity.class);
     }
 
     /**
@@ -73,7 +69,20 @@ public class DepartmentdaoImpl implements DepartmentdaoI {
      * @return
      */
     public List<DepartmentEntity> getAllDepartmentEntity(UnitEntity unitEntity) {
-        List<DepartmentEntity> departmentEntities = (List<DepartmentEntity>) hibernateTemplate.find("from DepartmentEntity where DepartmentEntity.unitByUnitId=?", unitEntity.getId());
+        List<DepartmentEntity> departmentEntities = (List<DepartmentEntity>) hibernateTemplate.findByNamedParam("from DepartmentEntity dept where dept.unitByUnitId=:id", "id", unitEntity);
         return departmentEntities;
+    }
+
+    /**
+     * 删除指定的某个实体
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    @Override
+    public void deleteEntity(int id) {
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setId(id);
+        hibernateTemplate.delete(departmentEntity);
     }
 }

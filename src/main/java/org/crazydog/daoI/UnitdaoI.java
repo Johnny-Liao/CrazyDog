@@ -39,9 +39,26 @@ public interface UnitdaoI {
     UnitEntity getUnit(int id);
 
     /**
+     * 获取指定的服务单位
+     * 具有懒加载效果
+     *
+     * @param id 服务单位的id
+     * @return
+     */
+    UnitEntity loadUnit(int id);
+
+    /**
      * 获取所有的服务单位
      *
      * @return
      */
     List<UnitEntity> getAllUnits();
+
+    /**
+     * 提供hql查询接口
+     *
+     * @param hql
+     * @return
+     */
+    List<UnitEntity> find(String hql);
 }

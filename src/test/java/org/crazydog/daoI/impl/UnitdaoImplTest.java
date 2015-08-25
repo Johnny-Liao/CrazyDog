@@ -46,7 +46,7 @@ public class UnitdaoImplTest {
     }
 
     @Test
-    public void testgetUnit() {
+    public void testGetUnit() {
         UnitEntity unitEntity = unitdaoImpl.getUnit(2);
         System.out.println(unitEntity);
     }
