@@ -1,6 +1,5 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.DepartmentdaoI;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 import org.junit.Before;

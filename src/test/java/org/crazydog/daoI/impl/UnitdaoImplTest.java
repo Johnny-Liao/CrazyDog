@@ -1,6 +1,5 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.UnitdaoI;
 import org.crazydog.domain.UnitEntity;
 import org.junit.Before;
 import org.junit.Test;

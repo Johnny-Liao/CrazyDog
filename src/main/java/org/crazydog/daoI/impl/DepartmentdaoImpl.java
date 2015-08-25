@@ -15,7 +15,7 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     /**
      * 添加实体
      *
-     * @param departmentEntity 实体对象
+     * @param departmentEntity 实体对象（不能为空）
      */
     @Override
     public void addEntity(DepartmentEntity departmentEntity) {
@@ -25,7 +25,7 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     /**
      * 修改实体
      *
-     * @param departmentEntity 实体对象
+     * @param departmentEntity 实体对象（不能为空）
      */
     @Override
     public void modifyEntity(DepartmentEntity departmentEntity) {
@@ -65,7 +65,7 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     }
 
     /**
-     * @param unitEntity 服务单位
+     * @param unitEntity 服务单位（不能为空）
      * @return
      */
     public List<DepartmentEntity> getAllDepartmentEntity(UnitEntity unitEntity) {

@@ -1,6 +1,6 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.ContractdaoI;
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ContractEntity;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class ContractdaoImplTest {
 
     @Test
     public void testaddEntity() {
-        ContractdaoI contractdaoImpl = (ContractdaoI) applicationContext.getBean("contractdaoImpl");
+        Basedao contractdaoImpl = (Basedao) applicationContext.getBean("contractdaoImpl");
         ContractEntity contractEntity = new ContractEntity();
         System.out.println(contractdaoImpl);
     }

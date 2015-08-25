@@ -2,7 +2,6 @@ package org.crazydog.serviceI.impl;
 
 import java.util.List;
 
-import org.crazydog.daoI.HireDaoI;
 import org.crazydog.domain.HireEntity;
 import org.crazydog.serviceI.HireServiceI;
 import org.springframework.beans.factory.annotation.Autowired;

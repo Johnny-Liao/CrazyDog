@@ -14,7 +14,7 @@ public class UnitdaoImpl extends Basedao<UnitEntity> {
     /**
      * 添加实体
      *
-     * @param unitEntity 实体对象
+     * @param unitEntity 实体对象（不能为空）
      */
     @Override
     public void addEntity(UnitEntity unitEntity) {
@@ -24,7 +24,7 @@ public class UnitdaoImpl extends Basedao<UnitEntity> {
     /**
      * 修改实体
      *
-     * @param unitEntity 实体对象
+     * @param unitEntity 实体对象（不能为空）
      */
     @Override
     public void modifyEntity(UnitEntity unitEntity) {

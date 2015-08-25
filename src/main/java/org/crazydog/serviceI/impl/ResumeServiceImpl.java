@@ -2,9 +2,6 @@ package org.crazydog.serviceI.impl;
 
 import java.util.List;
 
-import org.crazydog.daoI.ResumeEduDaoI;
-import org.crazydog.daoI.ResumedaoI;
-import org.crazydog.daoI.impl.ResumedaoImpl;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.ResumeServiceI;
 import org.springframework.beans.factory.annotation.Autowired;

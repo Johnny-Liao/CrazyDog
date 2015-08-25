@@ -1,6 +1,5 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.daoI.ResumeFamilyDaoI;
 import org.crazydog.domain.ResumeFamilyEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
