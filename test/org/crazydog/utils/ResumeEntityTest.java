@@ -32,7 +32,7 @@ public class ResumeEntityTest {
 		
 		ResumeEduServiceI resumeEduServiceImpl2 = (ResumeEduServiceI) context.getBean("resumeEduServiceImpl");
 		ResumeEduEntity  s =  (ResumeEduEntity)resumeEduServiceImpl.getResumeEdu(1);
-		s.setSchool("江西农业停水停电大学");
+		s.setSchool("江西农业大学");
 		resumeEduServiceImpl2.modifyResumeEdu(s);
 		System.out.println("修改完成");
 	}
