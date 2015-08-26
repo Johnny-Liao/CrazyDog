@@ -4,7 +4,9 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.HireEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class HireDaoImpl extends Basedao<HireEntity> {
@@ -64,5 +66,6 @@ public class HireDaoImpl extends Basedao<HireEntity> {
     public HireEntity loadEntity(int id) {
         return hibernateTemplate.load(HireEntity.class, id);
     }
+   
 
 }

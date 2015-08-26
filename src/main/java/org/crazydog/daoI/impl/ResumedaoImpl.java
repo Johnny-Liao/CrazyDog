@@ -13,8 +13,6 @@ import java.util.Map;
 @Component
 public class ResumedaoImpl extends Basedao<ResumeEntity> {
 
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
 
     /**
      * 增加简历
