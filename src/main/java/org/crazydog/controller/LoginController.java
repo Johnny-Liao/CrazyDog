@@ -8,10 +8,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Created by never on 2015/8/26.
  */
 @Controller
-public class Login {
+@RequestMapping("/login")
+public class LoginController {
 
-    @RequestMapping(value = "/addStudent", method = RequestMethod.POST)
-    public void verify() {
-
+    @RequestMapping(params = "method=verify", method = RequestMethod.POST)
+    public void verify(String userName, String password) {
+        System.out.println(userName + ":" + password);
     }
 }
