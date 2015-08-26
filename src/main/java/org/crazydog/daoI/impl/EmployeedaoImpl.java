@@ -4,27 +4,13 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
 import org.springframework.stereotype.Component;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * Created by Johnny on 2015/8/23.
+ * Created by never on 2015/8/23.
  */
 @Component
 public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
-
-    /**
-     * 通过名字获得员工（抽象匹配）
-     *
-     * @param name
-     * @return
-     */
-    public List<EmployeeEntity> getEmployeeByName(String name) {
-        Map<String, Object> map = new HashMap<String, Object>(1);
-        map.put("name", name);
-        return find("from employeeEntity where employeeEntity.emp_name like :name", map);
-    }
 
     /**
      * 添加实体
@@ -70,6 +56,9 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
 
     /**
      * 获得所有的实体类
+     * <p>
+     * 注意这里获得的所有实体在底层关闭了延迟加载，所以会导致所有的字段都取出来
+     * 所以他的所有外键都为非空
      *
      * @return
      */

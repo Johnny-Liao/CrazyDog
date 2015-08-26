@@ -1,5 +1,8 @@
 package org.crazydog.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -124,6 +127,24 @@ public class EmployeeEntity {
     }
 
     @Override
+    public String toString() {
+        return "EmployeeEntity{" +
+                "id=" + id +
+                ", empCode='" + empCode + '\'' +
+                ", empName='" + empName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", idNum='" + idNum + '\'' +
+                ", tel=" + tel +
+                ", education='" + education + '\'' +
+                ", resumeId=" + resumeId +
+                ", contractsById=" + contractsById +
+                ", departmentByDepId=" + departmentByDepId +
+                ", unitByUnitId=" + unitByUnitId +
+                ", positionsById=" + positionsById +
+                '}';
+    }
+
+    @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (empCode != null ? empCode.hashCode() : 0);
@@ -136,7 +157,8 @@ public class EmployeeEntity {
         return result;
     }
 
-    @OneToMany(mappedBy = "employeeByEmpId")
+    //获取认识信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
+    @OneToMany(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
     public Collection<ContractEntity> getContractsById() {
         return contractsById;
     }
@@ -145,7 +167,7 @@ public class EmployeeEntity {
         this.contractsById = contractsById;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "dep_id", referencedColumnName = "id", nullable = false)
     public DepartmentEntity getDepartmentByDepId() {
         return departmentByDepId;
@@ -155,6 +177,7 @@ public class EmployeeEntity {
         this.departmentByDepId = departmentByDepId;
     }
 
+    //单位就不用取，因为取部门的时候，顺便会取单位的信息，这里在去就是重复查询
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
     public UnitEntity getUnitByUnitId() {
@@ -165,7 +188,11 @@ public class EmployeeEntity {
         this.unitByUnitId = unitByUnitId;
     }
 
-    @OneToMany(mappedBy = "employeeByEmpId")
+    //这里添加FetchMode.SUBSELECT，是因为Hibernate默认级联抓取的级数为4级，
+    //前面已经多次将FetchType设为EAGER，当这里已经默认已经不允许再取了，这是防止造成大量的数据访问
+    //这里的解决方法就是将重新发送一条语句来查，之前所有的值都是在一条语句中使用左连接进行查询
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
     public Collection<PositionEntity> getPositionsById() {
         return positionsById;
     }

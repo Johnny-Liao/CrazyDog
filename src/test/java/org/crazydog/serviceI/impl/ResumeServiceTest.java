@@ -23,14 +23,14 @@ public class ResumeServiceTest {
 
 	}
 
-	// @Test
-	// public void test(){
-	// resumeServiceImpl = (ResumeServiceImpl)
-	// applicationContext.getBean("resumeServiceImpl");
-	// System.out.println(resumeServiceImpl);
-	// // 测试取消录取
-	// resumeServiceImpl.cancelHire(1,"李飞");
-	// }
+	 @Test
+	 public void test(){
+	 resumeServiceImpl = (ResumeServiceImpl)
+	 applicationContext.getBean("resumeServiceImpl");
+	 System.out.println(resumeServiceImpl);
+	 // 测试取消录取
+	 resumeServiceImpl.cancelHire(1,"廖仕豪");
+	 }
 	// @Test
 	// public void test(){
 	// // 测试通过resumeid拿取录取信息
@@ -40,14 +40,14 @@ public class ResumeServiceTest {
 	// HireEntity h = resumeServiceImpl.getEntitybyreumeid(3);
 	// System.out.println(h);
 	// }
-	@Test
-	public void test() {
+//	@Test
+//	public void test() {
 		// 简历的复杂查询
-		resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
-		SearchModel  sreach = new SearchModel(null, "博士","二审" );
-		String hql = sreach.advanceSearch();
-		System.out.println(hql);
-		System.out.println(resumeServiceImpl.queryEntity(hql).get(0).toString());
-	}
+//		resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
+//		SearchModel  sreach = new SearchModel(null, "博士","二审" );
+//		String hql = sreach.advanceSearch();
+//		System.out.println(hql);
+//		System.out.println(resumeServiceImpl.queryEntity(hql).get(0).toString());
+//	}
 
 }

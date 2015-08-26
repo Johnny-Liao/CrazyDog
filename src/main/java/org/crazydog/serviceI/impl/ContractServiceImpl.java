@@ -2,62 +2,85 @@ package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ContractEntity;
+import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by never on 2015/8/23.
  */
-//@Service
-public class ContractServiceImpl {
+@Service
+public class ContractServiceImpl implements BaseService<ContractEntity> {
 
     @Autowired
-    private Basedao employeedao;
+//    @Qualifier("employeeServiceImpl")
+    private EmployeeServiceImpl employeeService;
 
     @Autowired
-    private Basedao departmentdao;
+    @Qualifier("contractdaoImpl")
+    private Basedao<ContractEntity> contractdao;
 
-    @Autowired
-    private Basedao unitdao;
-
-    @Autowired
-    private Basedao positiondao;
-
-    @Autowired
-    private Basedao resumedao;
-
-    @Autowired
-    private Basedao contractdao;
-
-    public void modifyContractEntity(ContractEntity contractEntity) {
-
+    public void getEmployeeEntityByCode(String code) {
+        employeeService.getEmployeeByCode(code);
     }
 
-    public ContractEntity getContractEntity(int id) {
-        return null;
+    /**
+     * 添加实体
+     *
+     * @param contractEntity 实体对象
+     */
+    public void addEntity(ContractEntity contractEntity) {
+        contractdao.addEntity(contractEntity);
     }
 
-    public List<ContractEntity> getAllContractEntity() {
-//        List<EmployeeEntity> employeeEntities = employeedao.getAllEmployees();
+    /**
+     * 修改实体
+     *
+     * @param contractEntity 实体对象
+     */
+    public void modifyEntity(ContractEntity contractEntity) {
+        contractdao.modifyEntity(contractEntity);
+    }
 
-//        List<Timestamp> hireDates = new ArrayList<Timestamp>(employeeEntities.size());
-//        List<String> departments = new ArrayList<String>(employeeEntities.size());
-//        List<String> units = new ArrayList<String>(employeeEntities.size());
-//        List<Timestamp> startDates = new ArrayList<Timestamp>(employeeEntities.size());
-//        List<Timestamp> endDates = new ArrayList<Timestamp>(employeeEntities.size());
-//
-//        for (EmployeeEntity employeeEntity : employeeEntities) {
-//            units.add(unitdao.getUnit(employeeEntity.getUnitId()).getUnitName());
-//            departments.add(departmentdao.getDepartmentEntity(employeeEntity.getDepId()).getDeptName());
-//            resumedao.getResume(employeeEntity.getResumeId()).get
-//            positiondao.
-//            ContractEntity contractEntity = contractdao.getContractEntity(employeeEntity);
-//            Timestamp startTimestamp = contractEntity.getContractStart();
-//            Timestamp endTimestamp = contractEntity.getContractEnd();
-//            startDates.add(startTimestamp);
-//            endDates.add(endTimestamp);
-//        }
-        return null;
+    /**
+     * load具有懒加载效果，获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    public ContractEntity loadEntity(int id) {
+        return contractdao.loadEntity(id);
+    }
+
+    /**
+     * 获得实体类
+     *
+     * @param id 实体对象的id
+     * @return
+     */
+    public ContractEntity getEntity(int id) {
+        return contractdao.getEntity(id);
+    }
+
+    /**
+     * 获得所有的实体类
+     *
+     * @return
+     */
+    public List<ContractEntity> getAllEntities() {
+        return contractdao.getAllEntities();
+    }
+
+    /**
+     * 删除指定的某个实体
+     *
+     * @param contractEntity 实体对象
+     * @return
+     */
+    public void deleteEntity(ContractEntity contractEntity) {
+        contractdao.deleteEntity(contractEntity);
     }
 }

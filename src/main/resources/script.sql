@@ -86,12 +86,12 @@ CREATE TABLE `hire` (
 #职位信息表
 CREATE TABLE `position` (
   `id`        INT            NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  `emp_id`    INT            NOT NULL,
+  `emp_code`    INT            NOT NULL,
   `join_date`  DATETIME      NOT NULL COMMENT '入职日期',
   `leave_date` DATETIME      COMMENT '离职日期',
   `leave_info` VARCHAR(20)   COMMENT '离职原因',
   `leave_comment`   VARCHAR(200)  COMMENT '备注',
-  FOREIGN KEY (`emp_id`) REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION
+  FOREIGN KEY (`id`) REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 #记录合同相关信息的表
