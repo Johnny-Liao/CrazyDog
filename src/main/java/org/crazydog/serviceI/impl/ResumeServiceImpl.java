@@ -23,11 +23,14 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
 	@Qualifier("resumedaoImpl")
-	private Basedao resumedao;
+	private Basedao<ResumeEntity> resumedao;
 
 	@Autowired
 	@Qualifier("hireDaoImpl")
-	private Basedao hiredao;
+	private Basedao<HireEntity> hiredao;
+	
+	@Autowired
+    protected HibernateTemplate hibernateTemplate;
 
 	/**
 	 * 增加一份简历
@@ -80,7 +83,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 * @return load方法加载的一个简历对象
 	 */
 	public ResumeEntity loadEntity(int id) {
-		return (ResumeEntity) resumedao.loadEntity(id);
+		return  resumedao.loadEntity(id);
 	}
 
 	/**
@@ -101,8 +104,11 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *            根据获取到的查询条件生成的hql语句
 	 * @return 符合条件的list对象
 	 */
-	public List<ResumeEntity> queryEntity(String hql) {
-		return (List<ResumeEntity>) resumedao.find(hql);
+//	public List<ResumeEntity> queryEntity(String hql) {
+//		return (List<ResumeEntity>)resumedao.find(hql);
+//	}
+	public List<Object> queryEntity(String hql) {
+		return hibernateTemplate.getSessionFactory().openSession().createQuery(hql).list();
 	}
 
 	/**
