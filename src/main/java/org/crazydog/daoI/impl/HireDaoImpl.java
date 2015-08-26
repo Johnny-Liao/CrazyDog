@@ -2,17 +2,12 @@ package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.HireEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class HireDaoImpl extends Basedao<HireEntity> {
-
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
 
     /**
      * 增加录取信息

@@ -84,4 +84,5 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
         map.put("name", name);
         return find("from ResumeEntity resume where resume.name=:name", map);
     }
+
 }

@@ -2,17 +2,12 @@ package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ResumeJobsEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class ResumeJobsDaoImpl extends Basedao<ResumeJobsEntity> {
-
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
 
     /**
      * 增加工作经验

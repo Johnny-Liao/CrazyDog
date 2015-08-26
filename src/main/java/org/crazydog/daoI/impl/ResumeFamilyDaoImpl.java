@@ -2,17 +2,12 @@ package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ResumeFamilyEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Component
 public class ResumeFamilyDaoImpl extends Basedao<ResumeFamilyEntity> {
-
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
 
     /**
      * 添加家庭成员
