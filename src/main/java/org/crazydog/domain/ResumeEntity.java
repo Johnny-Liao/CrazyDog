@@ -2,6 +2,7 @@ package org.crazydog.domain;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Collection;
 
 /**
  * Created by never on 2015/8/24.
@@ -390,20 +391,66 @@ public class ResumeEntity {
         return result;
     }
 
-	@Override
-	public String toString() {
-		return "ResumeEntity [id=" + id + ", name=" + name + ", birthday="
-				+ birthday + ", nation=" + nation + ", gender=" + gender
-				+ ", zzmm=" + zzmm + ", hyzk=" + hyzk + ", education="
-				+ education + ", workTime=" + workTime + ", jjsp=" + jjsp
-				+ ", profession=" + profession + ", zipCode=" + zipCode
-				+ ", homeTown=" + homeTown + ", foreignLang=" + foreignLang
-				+ ", specialty=" + specialty + ", yysp=" + yysp + ", jndj="
-				+ jndj + ", height=" + height + ", tel=" + tel + ", idCard="
-				+ idCard + ", hukou=" + hukou + ", hukouAddress="
-				+ hukouAddress + ", homePhone=" + homePhone + ", address="
-				+ address + ", reportCard=" + reportCard + ", email=" + email
-				+ "]";
-	}
-    
+    @Override
+    public String toString() {
+        return "ResumeEntity [id=" + id + ", name=" + name + ", birthday="
+                + birthday + ", nation=" + nation + ", gender=" + gender
+                + ", zzmm=" + zzmm + ", hyzk=" + hyzk + ", education="
+                + education + ", workTime=" + workTime + ", jjsp=" + jjsp
+                + ", profession=" + profession + ", zipCode=" + zipCode
+                + ", homeTown=" + homeTown + ", foreignLang=" + foreignLang
+                + ", specialty=" + specialty + ", yysp=" + yysp + ", jndj="
+                + jndj + ", height=" + height + ", tel=" + tel + ", idCard="
+                + idCard + ", hukou=" + hukou + ", hukouAddress="
+                + hukouAddress + ", homePhone=" + homePhone + ", address="
+                + address + ", reportCard=" + reportCard + ", email=" + email
+                + "]";
+    }
+
+    private Collection<ResumeEduEntity> resumeEduById;
+    private Collection<ResumeFamilyEntity> resumeFamilyById;
+    private Collection<ResumeJobsEntity> resumeJobsById;
+    private Collection<HireEntity> hireById;
+
+    @OneToMany(mappedBy = "resumeId")
+    public Collection<ResumeEduEntity> getResumeEduById() {
+        return resumeEduById;
+    }
+
+    public void setResumeEduById(Collection<ResumeEduEntity> resumeEduById) {
+        this.resumeEduById = resumeEduById;
+    }
+
+    @OneToMany(mappedBy = "resumeId")
+    public Collection<ResumeFamilyEntity> getResumeFamilyById() {
+        return resumeFamilyById;
+    }
+
+    public void setResumeFamilyById(Collection<ResumeFamilyEntity> resumeFamilyById) {
+        this.resumeFamilyById = resumeFamilyById;
+    }
+
+    @OneToMany(mappedBy = "resumeId")
+    public Collection<ResumeJobsEntity> getResumeJobsById() {
+        return resumeJobsById;
+    }
+
+    public void setResumeJobsById(Collection<ResumeJobsEntity> resumeJobsById) {
+        this.resumeJobsById = resumeJobsById;
+    }
+
+    @OneToMany(mappedBy = "resumeId")
+    public Collection<HireEntity> getHireById() {
+        return hireById;
+    }
+
+    public void setHireById(Collection<HireEntity> hireById) {
+        this.hireById = hireById;
+    }
+
+//    private ResumeEduEntity
+//    private ResumeFamilyEntity resumeFamilyById;
+//    private ResumeJobsEntity resumeJobsById;
+
+
 }
