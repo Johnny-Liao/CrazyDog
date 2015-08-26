@@ -15,7 +15,7 @@ public class PositionServiceImpl implements BaseService<PositionEntity> {
 
     @Autowired
     @Qualifier("positiondaoImpl")
-    private Basedao positiondao;
+    private Basedao<PositionEntity> positiondao;
 
     /**
      * 添加实体
@@ -42,7 +42,7 @@ public class PositionServiceImpl implements BaseService<PositionEntity> {
      * @return
      */
     public PositionEntity loadEntity(int id) {
-        return (PositionEntity) positiondao.loadEntity(id);
+        return positiondao.loadEntity(id);
     }
 
     /**
@@ -52,7 +52,7 @@ public class PositionServiceImpl implements BaseService<PositionEntity> {
      * @return
      */
     public PositionEntity getEntity(int id) {
-        return (PositionEntity) positiondao.getEntity(id);
+        return positiondao.getEntity(id);
     }
 
     /**

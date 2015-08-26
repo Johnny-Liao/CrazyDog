@@ -5,6 +5,7 @@ import org.crazydog.domain.EmployeeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,11 +14,12 @@ import java.util.Map;
 /**
  * Created by never on 2015/8/26.
  */
+@Service
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
     @Qualifier("employeedaoImpl")
-    private Basedao employeedao;
+    private Basedao<EmployeeEntity> employeedao;
 
 
     /**
@@ -83,7 +85,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @return
      */
     public EmployeeEntity loadEntity(int id) {
-        return (EmployeeEntity) employeedao.loadEntity(id);
+        return employeedao.loadEntity(id);
     }
 
     /**
@@ -93,7 +95,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @return
      */
     public EmployeeEntity getEntity(int id) {
-        return (EmployeeEntity) employeedao.getEntity(id);
+        return employeedao.getEntity(id);
     }
 
     /**

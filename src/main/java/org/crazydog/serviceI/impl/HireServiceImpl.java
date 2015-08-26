@@ -18,7 +18,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
 
     @Autowired
     @Qualifier("hiredaoImpl")
-    private Basedao hiredao;
+    private Basedao<HireEntity> hiredao;
 
     /**
      * 通过简历实体获得录取实体
@@ -60,7 +60,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      * @return
      */
     public HireEntity loadEntity(int id) {
-        return (HireEntity) hiredao.loadEntity(id);
+        return hiredao.loadEntity(id);
     }
 
     /**
@@ -70,7 +70,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      * @return
      */
     public HireEntity getEntity(int id) {
-        return (HireEntity) hiredao.getEntity(id);
+        return hiredao.getEntity(id);
     }
 
     /**

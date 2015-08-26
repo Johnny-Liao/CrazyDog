@@ -16,7 +16,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
     @Autowired
     @Qualifier("resumedaoImpl")
-    private Basedao resumedao;
+    private Basedao<ResumeEntity> resumedao;
 
 
     /**
@@ -27,7 +27,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
      */
     public ResumeEntity getEntityByEmployee(EmployeeEntity employeeEntity) {
         int resumeId = employeeEntity.getResumeId();
-        ResumeEntity resumeEntity = (ResumeEntity) resumedao.getEntity(resumeId);
+        ResumeEntity resumeEntity = resumedao.getEntity(resumeId);
         return resumeEntity;
     }
 
@@ -56,7 +56,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
      * @return
      */
     public ResumeEntity loadEntity(int id) {
-        return (ResumeEntity) resumedao.loadEntity(id);
+        return resumedao.loadEntity(id);
     }
 
     /**
@@ -66,7 +66,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
      * @return
      */
     public ResumeEntity getEntity(int id) {
-        return (ResumeEntity) resumedao.getEntity(id);
+        return resumedao.getEntity(id);
     }
 
     /**
