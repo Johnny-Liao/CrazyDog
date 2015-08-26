@@ -2,6 +2,15 @@ DROP DATABASE IF EXISTS CrazyDog;
 CREATE DATABASE CrazyDog;
 USE CrazyDog;
 
+#系统用户表
+CREATE TABLE `user` (
+  `id`       INT                NOT NULL AUTO_INCREMENT,
+  `name`     VARCHAR(255)       NOT NULL COMMENT '用户名',
+  `password` VARCHAR(255)       NOT NULL COMMENT '密码',
+  `type`     ENUM('管理员', '普通用户') CHARACTER SET utf8 NOT NULL COMMENT '用户类型',
+  PRIMARY KEY (`id`)
+);
+
 #建立服务单位表
 CREATE TABLE `unit` (
   `id`        INT           NOT NULL AUTO_INCREMENT,
@@ -135,7 +144,7 @@ CREATE TABLE `resume_edu` (
 #简历家庭情况信息
 CREATE TABLE `resume_family` (
   `id`           INT         NOT NULL PRIMARY KEY ,
-  `resume_id`  INT          NOT NULL,
+  `resume_id`    INT          NOT NULL,
   `name`         VARCHAR(10) NOT NULL,
   `relationship` VARCHAR(10) NOT NULL,
   `department`   VARCHAR(30) NOT NULL COMMENT '就业单位',
@@ -152,6 +161,9 @@ CREATE TABLE `resume_jobs` (
   `Post`        VARCHAR(255) NOT NULL COMMENT '职位',
   FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+#添加管理员数据
+INSERT INTO `user` (`id`, `name`, `password`, `type`) VALUES ('1', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员');
 
 #测试数据导入
 INSERT INTO `unit` (`id`, `unit_code`, `unit_name`) VALUES (1, 'ZNH', '中南海');
