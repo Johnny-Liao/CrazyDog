@@ -56,6 +56,9 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
 
     /**
      * 获得所有的实体类
+     * <p>
+     * 注意这里获得的所有实体在底层关闭了延迟加载，所以会导致所有的字段都取出来
+     * 所以他的所有外键都为非空
      *
      * @return
      */

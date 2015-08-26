@@ -21,7 +21,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
 
     @Autowired
     @Qualifier("unitdaoImpl")
-    private Basedao unitdao;
+    private Basedao<UnitEntity> unitdao;
 
     @Autowired
     @Qualifier("departmentdaoImpl")
@@ -94,7 +94,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @return
      */
     public UnitEntity loadEntity(int id) {
-        return (UnitEntity) unitdao.loadEntity(id);
+        return unitdao.loadEntity(id);
     }
 
     /**
@@ -104,7 +104,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @return
      */
     public UnitEntity getEntity(int id) {
-        return (UnitEntity) unitdao.getEntity(id);
+        return unitdao.getEntity(id);
     }
 
     /**
