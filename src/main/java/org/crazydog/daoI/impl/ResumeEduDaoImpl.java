@@ -35,7 +35,6 @@ public class ResumeEduDaoImpl extends Basedao<ResumeEduEntity> {
     public void deleteEntity(ResumeEduEntity entity) {
         hibernateTemplate.delete(entity);
     }
-
     /**
      * 获取教育经历
      *

@@ -1,10 +1,12 @@
 package org.crazydog.serviceI.impl;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.HireDaoImpl;
 import org.crazydog.domain.HireEntity;
+import org.crazydog.domain.ResumeEduEntity;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.hibernate.Query;
@@ -65,9 +67,16 @@ public class ResumeServiceTest {
 //	}
 	@Test
 	public void test() {
-		  //测试分页查询 
+		  //测试获取所有的教育经历记录
 		resumeServiceImpl = (ResumeServiceImpl) applicationContext
 				.getBean("resumeServiceImpl");
+		List<ResumeEduEntity> s = resumeServiceImpl.queryAllEdu();
+		System.out.println(s.size());
+		Iterator<ResumeEduEntity> it = s.iterator();
+		while(it.hasNext()){
+			ResumeEduEntity a = it.next();
+			System.out.println(a.getSchool());
+		}
 	}
 
 
