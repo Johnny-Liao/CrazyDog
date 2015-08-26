@@ -11,9 +11,6 @@ import java.util.List;
 @Component
 public class ResumeJobsDaoImpl extends Basedao<ResumeJobsEntity> {
 
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
-
     /**
      * 增加工作经验
      *

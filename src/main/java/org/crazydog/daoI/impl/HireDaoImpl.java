@@ -6,13 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Component
 public class HireDaoImpl extends Basedao<HireEntity> {
-
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
 
     /**
      * 增加录取信息
@@ -69,5 +68,6 @@ public class HireDaoImpl extends Basedao<HireEntity> {
     public HireEntity loadEntity(int id) {
         return hibernateTemplate.load(HireEntity.class, id);
     }
+   
 
 }

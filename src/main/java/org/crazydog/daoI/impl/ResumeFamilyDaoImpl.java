@@ -11,9 +11,6 @@ import java.util.List;
 @Component
 public class ResumeFamilyDaoImpl extends Basedao<ResumeFamilyEntity> {
 
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
-
     /**
      * 添加家庭成员
      *

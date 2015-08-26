@@ -1,12 +1,18 @@
 package org.crazydog.domain;
 
 import javax.persistence.*;
+
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.SelectBeforeUpdate;
+
 import java.sql.Timestamp;
 
 /**
  * Created by never on 2015/8/24.
  */
 @Entity
+@SelectBeforeUpdate
+@DynamicUpdate
 @Table(name = "hire", schema = "", catalog = "crazydog")
 public class HireEntity {
     private Integer id;
@@ -117,4 +123,13 @@ public class HireEntity {
         result = 31 * result + (operator != null ? operator.hashCode() : 0);
         return result;
     }
+
+	@Override
+	public String toString() {
+		return "HireEntity [id=" + id + ", resumeId=" + resumeId + ", state="
+				+ state + ", declineCause=" + declineCause + ", comment="
+				+ comment + ", operateTime=" + operateTime + ", operator="
+				+ operator + "]";
+	}
+    
 }

@@ -11,9 +11,6 @@ import java.util.List;
 @Component
 public class ResumeEduDaoImpl extends Basedao<ResumeEduEntity> {
 
-    @Autowired
-    private HibernateTemplate hibernateTemplate;
-
     /**
      * 增加教育经历
      *
