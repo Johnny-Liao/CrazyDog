@@ -9,8 +9,12 @@ import java.util.Map;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.DepartmentdaoImpl;
+import org.crazydog.daoI.impl.ResumeEduDaoImpl;
 import org.crazydog.domain.HireEntity;
+import org.crazydog.domain.ResumeEduEntity;
 import org.crazydog.domain.ResumeEntity;
+import org.crazydog.domain.ResumeFamilyEntity;
+import org.crazydog.domain.ResumeJobsEntity;
 import org.crazydog.serviceI.BaseService;
 import org.hibernate.Query;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +27,27 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
 	@Qualifier("resumedaoImpl")
-	private Basedao resumedao;
+	private Basedao<ResumeEntity> resumedao;
 
 	@Autowired
 	@Qualifier("hireDaoImpl")
-	private Basedao hiredao;
+	private Basedao<HireEntity> hiredao;
+	
+	@Autowired
+	@Qualifier("resumeEduDaoImpl")
+	private Basedao<ResumeEduEntity> resumeEdudao;
+	
+	@Autowired
+	@Qualifier("resumeFamilyDaoImpl")
+	private Basedao<ResumeFamilyEntity> resumeFamilydao;
+	
+	@Autowired
+	@Qualifier("resumeJobsDaoImpl")
+	private Basedao<ResumeJobsEntity> resumeJobsdao;
+	
+	
+	@Autowired
+    protected HibernateTemplate hibernateTemplate;
 
 	/**
 	 * 增加一份简历
@@ -80,7 +100,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 * @return load方法加载的一个简历对象
 	 */
 	public ResumeEntity loadEntity(int id) {
-		return (ResumeEntity) resumedao.loadEntity(id);
+		return  resumedao.loadEntity(id);
 	}
 
 	/**
@@ -101,8 +121,11 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *            根据获取到的查询条件生成的hql语句
 	 * @return 符合条件的list对象
 	 */
-	public List<ResumeEntity> queryEntity(String hql) {
-		return (List<ResumeEntity>) resumedao.find(hql);
+//	public List<ResumeEntity> queryEntity(String hql) {
+//		return (List<ResumeEntity>)resumedao.find(hql);
+//	}
+	public List<Object> queryEntity(String hql) {
+		return hibernateTemplate.getSessionFactory().openSession().createQuery(hql).list();
 	}
 
 	/**
@@ -162,4 +185,94 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 		hire.setOperator(name);
 		hiredao.modifyEntity(hire);
 	}
+	/**
+	 * 删除一条教育经历记录
+	 *
+	 * @param id
+	 *            教育经历的id
+	 * @return
+	 */
+	public void deleteEdu(int id) {
+		resumeEdudao.deleteEntity(resumeEdudao.getEntity(id));
+	}
+	/**
+	 * 添加一条教育经历记录
+	 *
+	 * @param t
+	 *            一条教育经历记录
+	 * @return
+	 */
+	public void addEdu(ResumeEduEntity t) {
+		resumeEdudao.addEntity(t);
+	}
+	/**
+	 * 删除一条家庭成员记录
+	 *
+	 * @param id
+	 *            教育经历的id
+	 * @return
+	 */
+	public void deleteFamily(int id) {
+		resumeFamilydao.deleteEntity(resumeFamilydao.getEntity(id));
+	}
+	/**
+	 * 添加一条家庭成员记录
+	 *
+	 * @param t
+	 *            一条教育经历记录
+	 * @return
+	 */
+	public void addFamily(ResumeFamilyEntity t) {
+		resumeFamilydao.addEntity(t);
+	}
+	/**
+	 * 删除一条工作经历记录
+	 *
+	 * @param id
+	 *            教育经历的id
+	 * @return
+	 */
+	public void deleteJob(int id) {
+		resumeJobsdao.deleteEntity(resumeJobsdao.getEntity(id));
+	}
+	/**
+	 * 添加一条工作经历记录
+	 *
+	 * @param t
+	 *            一条教育经历记录
+	 * @return
+	 */
+	public void addJob(ResumeJobsEntity t) {
+		resumeJobsdao.addEntity(t);
+	}
+	
+	/**
+	 * 查询所有的教育经历记录
+	 *
+	 * @return
+	 *          所有的教育经历记录
+	 */
+	public List<ResumeEduEntity> queryAllEdu() {
+		return (List<ResumeEduEntity>)resumeEdudao.getAllEntities();
+	}
+	/**
+	 * 查询所有的工作经历记录
+	 *
+	 * @return
+	 *          所有的工作经历记录
+	 */
+	public List<ResumeJobsEntity> queryAllJob() {
+		return (List<ResumeJobsEntity>)resumeJobsdao.getAllEntities();
+	}
+	/**
+	 * 查询所有的家庭成员
+	 *
+	 * @return
+	 *          所有的家庭成员记录
+	 */
+	public List<ResumeFamilyEntity> queryAllFamily() {
+		return (List<ResumeFamilyEntity>)resumeFamilydao.getAllEntities();
+	}
+	
+	
 }

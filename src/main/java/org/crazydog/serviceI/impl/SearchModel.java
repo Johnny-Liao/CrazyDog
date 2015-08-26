@@ -45,4 +45,28 @@ public class SearchModel {
 			
 		return buffer.toString();
 	}
+//	public String advanceSearch() {
+//		StringBuffer buffer = new StringBuffer();
+//		buffer.append("select * from resume res where ");
+//		if (luquState != null && (null != Luqu.valueOf(luquState))) {
+//			buffer.delete(0, buffer.length());
+//			buffer.append("select * from resume res, hire hire where hire.state='"
+//					+ luquState + "' ");
+//		}
+//		if (name != null){
+//			if(luquState != null){
+//				buffer.append(" and ");
+//			}
+//			buffer.append("res.name='" + name + "' ");
+//		}
+//			
+//		if (highestEdu != null && (null != Edu.valueOf(highestEdu))){
+//			if(name!=null || luquState != null){
+//				buffer.append(" and ");
+//			}
+//			buffer.append(" res.education='" + highestEdu + "'");
+//		}
+//			
+//		return buffer.toString();
+//	}
 }
