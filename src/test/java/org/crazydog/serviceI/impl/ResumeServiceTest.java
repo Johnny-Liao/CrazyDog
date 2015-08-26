@@ -68,7 +68,6 @@ public class ResumeServiceTest {
 		  //测试分页查询 
 		resumeServiceImpl = (ResumeServiceImpl) applicationContext
 				.getBean("resumeServiceImpl");
-		resumeServiceImpl.queryEntity(hql, params, page, rows)
 	}
 
 
