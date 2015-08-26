@@ -12,15 +12,33 @@
     <title>登陆-综合业务管理系统</title>
 </head>
 <body>
-<form:form method="post" action="login/verify">
+<%--<form:form method="post" action="login/verify">--%>
+<%--<table>--%>
+<%--<tr>--%>
+<%--<td><form:label path="userName">Name</form:label></td>--%>
+<%--<td><form:input path="userName"/></td>--%>
+<%--</tr>--%>
+<%--<tr>--%>
+<%--<td><form:label path="password">password</form:label></td>--%>
+<%--<td><form:input path="password"/></td>--%>
+<%--</tr>--%>
+<%--<tr>--%>
+<%--<td colspan="2">--%>
+<%--<input type="submit" value="Submit"/>--%>
+<%--</td>--%>
+<%--</tr>--%>
+<%--</table>--%>
+
+
+<%--</form:form>--%>
+<form method="post" action="/login">
     <table>
+        <input type="hidden" name="method" value="verify"/>
         <tr>
-            <td><form:label path="userName">Name</form:label></td>
-            <td><form:input path="userName"/></td>
+            <td>username:<input type="text" name="userName"/></td>
         </tr>
         <tr>
-            <td><form:label path="password">password</form:label></td>
-            <td><form:input path="password"/></td>
+            <td>password:<input type="password" name="password"/></td>
         </tr>
         <tr>
             <td colspan="2">
@@ -28,8 +46,6 @@
             </td>
         </tr>
     </table>
-
-
-</form:form>
+</form>
 </body>
 </html>
