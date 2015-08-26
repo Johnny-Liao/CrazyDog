@@ -15,16 +15,20 @@ import java.util.List;
 @Service
 public class ContractServiceImpl implements BaseService<ContractEntity> {
 
-    @Autowired
-//    @Qualifier("employeeServiceImpl")
-    private EmployeeServiceImpl employeeService;
+//    @Autowired
+//    private EmployeeServiceImpl employeeService;
 
     @Autowired
     @Qualifier("contractdaoImpl")
     private Basedao<ContractEntity> contractdao;
 
+    /**
+     * 通过员工编码获得员工信息
+     *
+     * @param code
+     */
     public void getEmployeeEntityByCode(String code) {
-        employeeService.getEmployeeByCode(code);
+//        employeeService.getEmployeeByCode(code);
     }
 
     /**
