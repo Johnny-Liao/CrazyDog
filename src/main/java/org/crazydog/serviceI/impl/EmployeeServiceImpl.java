@@ -14,7 +14,7 @@ import java.util.Map;
 /**
  * Created by never on 2015/8/26.
  */
-@Service
+@Service("employeeService")
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
