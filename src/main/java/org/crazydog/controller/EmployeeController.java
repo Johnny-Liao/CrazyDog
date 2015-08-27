@@ -25,7 +25,8 @@ public class EmployeeController {
     private BaseService employeeService;
 
 
-    // eg : .../employee?pages=1 will get the information about the first page employee
+    // eg : .../employee?pages=1
+    // 处理pages参数，显示相应页数的所有人员信息
     @RequestMapping(method = RequestMethod.GET, params = "pages")
     public String getEmployeeByPages(@RequestParam("pages") String page, Model model) {
         return page;
