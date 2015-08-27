@@ -64,19 +64,5 @@ public class ResumeServiceTest {
 //		HireEntity h = (HireEntity) b[1];
 //		System.out.println(h.getOperator());
     }
-/*	@Test
-    public void test() {
-		  //测试获取所有的教育经历记录
-		resumeServiceImpl = (ResumeServiceImpl) applicationContext
-				.getBean("resumeServiceImpl");
-		List<ResumeEduEntity> s = resumeServiceImpl.queryAllEdu();
-		System.out.println(s.size());
-		Iterator<ResumeEduEntity> it = s.iterator();
-		while(it.hasNext()){
-			ResumeEduEntity a = it.next();
-			System.out.println(a.getSchool());
-		}
-	}*/
-
 
 }

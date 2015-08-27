@@ -133,7 +133,7 @@ public abstract class Basedao<T> {
      * @param rows 每页中的行数
      * @return hql语句的结果集
      */
-    public List<T> find(String hql, int page, int rows) {
+    public List<Object> find(String hql, int page, int rows) {
         Query q = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
         return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
     }
