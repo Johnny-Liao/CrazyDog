@@ -23,7 +23,7 @@ a{ text-decoration:none;}
 .left { float:left; }
 .right { float:right; }
 .side{height:100%; width:17%; }
-.cont{height:100%; width:83%;}
+.cont{height:100%; width:100%;}
 .leftlist{ background:#f9f9f9;height:100%;width:100%;}
 .subNavBox{min-height:100%;overflow-y:auto;max-height:100%;}
 /*主要样式*/
