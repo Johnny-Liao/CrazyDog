@@ -29,7 +29,7 @@ $(".subNav").click(function(){
 	<div class="subNav">社会招聘管理</div>
 	<ul class="navContent">
 			<li><a href="/resumeController"  target="rightFrame">简历管理</a></li>
-			<li><a href="#" target="rightFrame">人员录取</a></li>
+			<li><a href="/views?page=resumeManage" target="rightFrame">人员录取</a></li>
 	</ul>
 	<div class="subNav">人事信息管理</div>
 	<ul class="navContent">
