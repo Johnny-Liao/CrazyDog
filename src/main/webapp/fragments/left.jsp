@@ -5,8 +5,8 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>综合业务管理系统</title>
-    <link href="style/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.3.2.js" type="text/javascript"></script>
+    <link href="../style/style.css" rel="stylesheet" type="text/css"/>
+    <script src="../js/jquery-1.3.2.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function () {
             $(".subNav").click(function () {
