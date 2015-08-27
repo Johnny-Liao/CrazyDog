@@ -1,5 +1,9 @@
 package org.crazydog.controller;
 
+import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.EmployeeServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,11 +20,15 @@ import java.util.Map;
 @RequestMapping("/employee")
 public class EmployeeController {
 
+    @Autowired
+    @Qualifier(value = "employeeService")
+    private BaseService employeeService;
+
 
     // eg : .../employee?pages=1 will get the information about the first page employee
     @RequestMapping(method = RequestMethod.GET, params = "pages")
-    public ModelAndView getEmployeeByPages(@RequestParam("pages") String page, Model model) {
-        return null;
+    public String getEmployeeByPages(@RequestParam("pages") String page, Model model) {
+        return page;
     }
 
 }

@@ -10,11 +10,12 @@ import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * Created by never on 2015/8/26.
  */
-@Service
+@Service("employeeService")
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
@@ -118,5 +119,16 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      */
     public void deleteEntity(EmployeeEntity employeeEntity) {
         employeedao.deleteEntity(employeeEntity);
+    }
+
+    /**
+     * 显示页面所需获得的信息
+     * @return
+     */
+    public List<Objects> showEmployeeInfo() {
+        String sql = "SELECT e.id, e.emp_name,e.gender,r.id_card,e.tel,r.education, d.dept_name, u.unit_name,c.contract_start,c.contract_end,c.length\n" +
+                "FROM employee AS e LEFT JOIN resume AS r on r.id = e.resume_id LEFT JOIN department AS d ON d.id = e.dep_id LEFT JOIN unit AS u ON u.id = e.unit_id LEFT JOIN contract AS c ON e.id = c.emp_id;";
+        employeedao.find(sql);
+        return null;
     }
 }
