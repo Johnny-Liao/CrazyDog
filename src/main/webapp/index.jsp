@@ -14,11 +14,12 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 </head>
-<frameset rows="14%,86%">
-    <frame src="top.jsp" name="topFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
+<frameset rows="15%,80%,5%">
+    <frame src="fragments/header.jsp" name="topFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
     <frameset cols="200,*" frameborder="0" border="0" framespacing="0">
-        <frame src="left.jsp" name="leftFrame" frameborder="0" border="0" framespacing="0" noresize scrolling="YES">
-        <frame src="content.jsp" name="rightFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
+        <frame src="fragments/left.jsp" name="leftFrame" frameborder="0" border="0" framespacing="0" noresize scrolling="YES">
+        <frame src="fragments/content.jsp" name="rightFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
     </frameset>
+    <frame src="fragments/footer.jsp" name="footFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
 </frameset>
 </html>
