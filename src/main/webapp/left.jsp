@@ -33,7 +33,7 @@
         </ul>
         <div class="subNav">人事信息管理</div>
         <ul class="navContent">
-            <li><a href="#" target="rightFrame">人员信息管理</a></li>
+            <li><a href="/employee?pages=page" target="rightFrame">人员信息管理</a></li>
             <li><a href="#" target="rightFrame">离职管理</a></li>
             <li><a href="#" target="rightFrame">调岗管理</a></li>
             <li><a href="#" target="rightFrame">离职人员</a></li>

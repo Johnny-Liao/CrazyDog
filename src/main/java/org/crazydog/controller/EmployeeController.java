@@ -27,8 +27,8 @@ public class EmployeeController {
 
     // eg : .../employee?pages=1 will get the information about the first page employee
     @RequestMapping(method = RequestMethod.GET, params = "pages")
-    public ModelAndView getEmployeeByPages(@RequestParam("pages") String page, Model model) {
-        return null;
+    public String getEmployeeByPages(@RequestParam("pages") String page, Model model) {
+        return page;
     }
 
 }
