@@ -1,19 +1,24 @@
-<!DOCTYPE html>
-
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-
-<%--<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>--%>
-<%--<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>--%>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+         pageEncoding="utf-8" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>综合业务管理系统</title>
-    <link href="style/style.css" rel="stylesheet" type="text/css"/>
-    <script src="js/jquery-1.3.2.js" type="text/javascript"></script>
+
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="综合业务管理系统">
+    <meta http-equiv="Content-Language" content="zh-cn">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 </head>
-<body>
-欢迎使用疯狗组人事管理系统！
-</body>
+<frameset rows="14%,86%">
+    <frame src="top.jsp" name="topFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
+    <frameset cols="200,*" frameborder="0" border="0" framespacing="0">
+        <frame src="left.jsp" name="leftFrame" frameborder="0" border="0" framespacing="0" noresize scrolling="YES">
+        <frame src="content.jsp" name="rightFrame" frameborder="0" border="0" framespacing="0" scrolling="NO" noresize>
+    </frameset>
+</frameset>
 </html>
