@@ -21,7 +21,7 @@ public class UnitController {
     private UnitServiceImpl unitService;
 
 
-    @RequestMapping(value = "/unitController", params = "page=unitManage")
+    @RequestMapping(value = "/unit", params = "page=unitManage")
     public String unitManage(HttpServletRequest request) {
         System.out.println(unitService.getClass());
         List<UnitEntity> unitEntities = unitService.getAllEntities();

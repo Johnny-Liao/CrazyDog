@@ -1,7 +1,7 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.PositionEntity;
+import org.crazydog.domain.PositionChangeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -11,28 +11,28 @@ import java.util.List;
 /**
  * Created by never on 2015/8/26.
  */
-public class PositionServiceImpl implements BaseService<PositionEntity> {
+public class PositionServiceImpl implements BaseService<PositionChangeEntity> {
 
     @Autowired
     @Qualifier("positiondaoImpl")
-    private Basedao<PositionEntity> positiondao;
+    private Basedao<PositionChangeEntity> positiondao;
 
     /**
      * 添加实体
      *
-     * @param positionEntity 实体对象
+     * @param positionChangeEntity 实体对象
      */
-    public void addEntity(PositionEntity positionEntity) {
-        positiondao.addEntity(positionEntity);
+    public void addEntity(PositionChangeEntity positionChangeEntity) {
+        positiondao.addEntity(positionChangeEntity);
     }
 
     /**
      * 修改实体
      *
-     * @param positionEntity 实体对象
+     * @param positionChangeEntity 实体对象
      */
-    public void modifyEntity(PositionEntity positionEntity) {
-        positiondao.modifyEntity(positionEntity);
+    public void modifyEntity(PositionChangeEntity positionChangeEntity) {
+        positiondao.modifyEntity(positionChangeEntity);
     }
 
     /**
@@ -41,7 +41,7 @@ public class PositionServiceImpl implements BaseService<PositionEntity> {
      * @param id 实体对象的id
      * @return
      */
-    public PositionEntity loadEntity(int id) {
+    public PositionChangeEntity loadEntity(int id) {
         return positiondao.loadEntity(id);
     }
 
@@ -51,7 +51,7 @@ public class PositionServiceImpl implements BaseService<PositionEntity> {
      * @param id 实体对象的id
      * @return
      */
-    public PositionEntity getEntity(int id) {
+    public PositionChangeEntity getEntity(int id) {
         return positiondao.getEntity(id);
     }
 
@@ -60,17 +60,17 @@ public class PositionServiceImpl implements BaseService<PositionEntity> {
      *
      * @return
      */
-    public List<PositionEntity> getAllEntities() {
+    public List<PositionChangeEntity> getAllEntities() {
         return positiondao.getAllEntities();
     }
 
     /**
      * 删除指定的某个实体
      *
-     * @param positionEntity 实体对象
+     * @param positionChangeEntity 实体对象
      * @return
      */
-    public void deleteEntity(PositionEntity positionEntity) {
-        positiondao.deleteEntity(positionEntity);
+    public void deleteEntity(PositionChangeEntity positionChangeEntity) {
+        positiondao.deleteEntity(positionChangeEntity);
     }
 }

@@ -1,5 +1,8 @@
 package org.crazydog.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.Collection;
@@ -410,9 +413,9 @@ public class ResumeEntity {
     private Collection<ResumeEduEntity> resumeEduById;
     private Collection<ResumeFamilyEntity> resumeFamilyById;
     private Collection<ResumeJobsEntity> resumeJobsById;
-    private Collection<HireEntity> hireById;
+    private HireEntity hireById;
 
-    @OneToMany(mappedBy = "resumeId")
+    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeEduEntity> getResumeEduById() {
         return resumeEduById;
     }
@@ -420,8 +423,8 @@ public class ResumeEntity {
     public void setResumeEduById(Collection<ResumeEduEntity> resumeEduById) {
         this.resumeEduById = resumeEduById;
     }
-
-    @OneToMany(mappedBy = "resumeId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "resumeId" ,fetch = FetchType.EAGER)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
     }
@@ -429,8 +432,8 @@ public class ResumeEntity {
     public void setResumeFamilyById(Collection<ResumeFamilyEntity> resumeFamilyById) {
         this.resumeFamilyById = resumeFamilyById;
     }
-
-    @OneToMany(mappedBy = "resumeId")
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "resumeId",fetch = FetchType.EAGER)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;
     }
@@ -438,13 +441,13 @@ public class ResumeEntity {
     public void setResumeJobsById(Collection<ResumeJobsEntity> resumeJobsById) {
         this.resumeJobsById = resumeJobsById;
     }
-
-    @OneToMany(mappedBy = "resumeId")
-    public Collection<HireEntity> getHireById() {
+    @Fetch(FetchMode.SELECT)
+    @OneToOne(mappedBy = "resumeEntity",fetch = FetchType.EAGER)
+    public HireEntity getHireById() {
         return hireById;
     }
 
-    public void setHireById(Collection<HireEntity> hireById) {
+    public void setHireById(HireEntity hireById) {
         this.hireById = hireById;
     }
 

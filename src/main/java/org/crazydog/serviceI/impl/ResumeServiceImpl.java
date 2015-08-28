@@ -78,7 +78,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 * 
 	 */
 	public List<ResumeEntity> getAllEntities() {
-		return resumedao.getAllEntities();
+		return (List<ResumeEntity>)resumedao.getAllEntities();
 	}
 
 	/**

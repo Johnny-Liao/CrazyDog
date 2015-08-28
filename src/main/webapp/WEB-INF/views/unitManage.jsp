@@ -33,12 +33,12 @@
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td><input type="text" name="textfield" id="textfield" class="s_input" value="服务单位编码"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='员工编号')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='员工编号';this.style.color='#CCCCCC';}"/>
+                               onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位编码')this.value='';"
+                               onblur="javascript:if(this.value==''){this.value='服务单位编码';this.style.color='#CCCCCC';}"/>
                     </td>
                     <td><input type="text" name="textfield2" id="textfield2" class="s_input" value="服务单位名称"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}"/>
+                               onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位名称')this.value='';"
+                               onblur="javascript:if(this.value==''){this.value='服务单位名称';this.style.color='#CCCCCC';}"/>
                     </td>
                     <td><input type="submit" name="button" id="button" value="查询" class="s_btn"/></td>
                     <td><input type="submit" name="button2" id="button2" value="新建服务单位" class="s_btns"/></td>
@@ -49,96 +49,26 @@
         <div class="tum">
             <div class="contlist">
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+                    <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
                         <c:forEach var="column" items="<%=ResourceString.unitShow%>">
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
-                    <tr>
-                        <c:forEach var="entity" items="${unitEntities}">
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity}"/></td>
-                        </c:forEach>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                    </tr>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                    <%--</tr>--%>
+                    <%--显示表内容--%>
+                    <c:forEach var="entity" items="${unitEntities}">
+                        <tr>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitCode}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="修改"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="删除"/></td>
+                        </tr>
+                    </c:forEach>
                 </table>
-
             </div>
-
         </div>
-
     </div>
-</div>
 </div>
 </body>
 </html>
