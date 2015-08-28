@@ -48,7 +48,7 @@
 
         <div class="tum">
             <div class="contlist">
-                <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:100%;" scrolling="yes">
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
                         <c:forEach var="column" items="<%=ResourceString.contractExtensionRecordShow%>">

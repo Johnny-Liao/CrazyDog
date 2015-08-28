@@ -55,6 +55,7 @@
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
+
                     <%--显示表内容--%>
                     <c:forEach var="entity" items="${unitEntities}">
                         <tr>
