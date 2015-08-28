@@ -21,14 +21,30 @@ import java.util.Map;
 public class EmployeeController {
 
     @Autowired
-    @Qualifier(value = "employeeService")
+    @Qualifier(value = "employeeServiceImpl")
     private BaseService employeeService;
+
+    @Autowired
+    @Qualifier(value = "resumeServiceImpl")
+    private BaseService resumeService;
+
+ /*   @Autowired
+    @Qualifier(value = "departmentServiceImpl")
+    private BaseService departmentService;*/
+
+    @Autowired
+    @Qualifier(value = "unitServiceImpl")
+    private BaseService unitService;
 
 
     // eg : .../employee?pages=1
     // 处理pages参数，显示相应页数的所有人员信息
     @RequestMapping(method = RequestMethod.GET, params = "pages")
     public String getEmployeeByPages(@RequestParam("pages") String page, Model model) {
+        model.addAttribute("employees", employeeService.getAllEntities());
+        model.addAttribute("resumes", resumeService.getAllEntities());
+//        model.addAttribute("departments", resumeService.getAllEntities());
+        model.addAttribute("units", unitService.getAllEntities());
         return page;
     }
 
