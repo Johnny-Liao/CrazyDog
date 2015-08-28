@@ -2,7 +2,8 @@
 
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
        xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
@@ -61,7 +62,7 @@
 
     <!--proxy-target-class="true"配置是强制使用CGLIB生成bean的代理类 默认如果类实现了接口将使用jdk生成代理对象
     强制使用CGLib生成的代理类是本类的子类-->
-    <aop:config>
+    <aop:config proxy-target-class="true">
         <!--配置切点，是的所有的业务执行的时候都有事务支持-->
         <aop:pointcut id="transactionPointcut"
                       expression="execution(* org.crazydog.serviceI.impl..*(..))"/>
@@ -82,7 +83,7 @@
             <tx:method name="repair"/>
             <tx:method name="deleteAndRepair"/>
             <tx:method name="cancel*"/>
-            
+
             <tx:method name="get*" propagation="SUPPORTS"/>
             <tx:method name="find*" propagation="SUPPORTS"/>
             <tx:method name="load*" propagation="SUPPORTS"/>
