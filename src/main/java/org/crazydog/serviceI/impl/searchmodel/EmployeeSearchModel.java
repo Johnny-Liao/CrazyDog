@@ -3,29 +3,20 @@ package org.crazydog.serviceI.impl.searchmodel;
 /**
  * Created by never on 2015/8/28.
  */
-public class EmployeeSearch extends Search<EmployeeSearch> {
+public class EmployeeSearchModel extends SearchModel {
     private String name;
     private String unitName;
-    private ResumeSearch.Edu edu;
+    private ResumeSearchModel.Edu edu;
 
 
-    public EmployeeSearch(String name, String unitName, ResumeSearch.Edu edu) {
+    public EmployeeSearchModel(String name, String unitName, ResumeSearchModel.Edu edu) {
         this.name = name;
         this.unitName = unitName;
         this.edu = edu;
     }
 
     @Override
-    public String advanceSearch(EmployeeSearch model) {
-        //记录缓存数据
-        if (model.equals(this))
-            return buffer.toString();
-
-        this.name = model.name;
-        this.unitName = model.unitName;
-        this.edu = model.edu;
-
-        buffer.delete(0, buffer.capacity());
+    public StringBuffer advanceSearch() {
         if (name == null && unitName == null && edu == null)
             return null;
         buffer.append("from EmployeeEntity emp where ");
@@ -35,9 +26,8 @@ public class EmployeeSearch extends Search<EmployeeSearch> {
             buffer.append(" emp.unitByUnitId.unitName='" + unitName + "' and");
         if (edu != null)
             buffer.append(" emp.education='" + edu + "' and");
-        buffer.delete(buffer.capacity() - 3, buffer.capacity());
 
-        return buffer.toString();
+        return buffer;
     }
 
     @Override
@@ -45,7 +35,7 @@ public class EmployeeSearch extends Search<EmployeeSearch> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EmployeeSearch that = (EmployeeSearch) o;
+        EmployeeSearchModel that = (EmployeeSearchModel) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;

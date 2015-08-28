@@ -3,6 +3,7 @@ package org.crazydog.serviceI.impl;
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -57,7 +58,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @return
      */
     public List<EmployeeEntity> advanceSearch(SearchModel model) {
-        String hql = model.advanceSearch();
+        String hql = model.advanceSearch(model);
         return employeedao.find(hql);
     }
 
@@ -123,6 +124,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     /**
      * 显示页面所需获得的信息
+     *
      * @return
      */
     public List<Objects> showEmployeeInfo() {

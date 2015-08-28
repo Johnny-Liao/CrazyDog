@@ -4,36 +4,28 @@ package org.crazydog.serviceI.impl.searchmodel;
  * 必须保证传递进来的对象的所有字段不全都为空
  * Created by never on 2015/8/28.
  */
-public class UnitSearch extends Search<UnitSearch> {
+public class UnitSearchModel extends SearchModel {
     //单位编码
     private String unitCode;
     //单位名称
     private String unitName;
 
-    public UnitSearch(String unitCode, String unitName) {
+    public UnitSearchModel(String unitCode, String unitName) {
         this.unitCode = unitCode;
         this.unitName = unitName;
     }
 
-    public String advanceSearch(UnitSearch model) {
-        //记录缓存数据
-        if (model.equals(this))
-            return buffer.toString();
-
-        this.unitCode = model.unitCode;
-        this.unitName = model.unitName;
-
-        buffer.delete(0, buffer.capacity());
-
+    public StringBuffer advanceSearch() {
         if (unitName == null && unitCode == null)
             return null;
-        if (unitName == null && unitCode != null)
-            buffer.append("from UnitEntity unit where unit.unitCode='" + unitCode + "'");
-        if (unitName != null && unitCode == null)
-            buffer.append("from UnitEntity unit where unit.unitName='" + unitName + "'");
-        if (unitName != null && unitCode != null)
-            buffer.append("from UnitEntity unit where unit.unitName='" + unitName + "' and unit.unitCode='" + unitCode + "'");
-        return buffer.toString();
+
+        buffer.append("from UnitEntity unit where ");
+        if (unitName != null)
+            buffer.append(" unit.unitName='" + unitName + "' and");
+        if (unitCode != null)
+            buffer.append(" unit.unitName='" + unitCode + "' and");
+
+        return buffer;
     }
 
     @Override
@@ -41,7 +33,7 @@ public class UnitSearch extends Search<UnitSearch> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UnitSearch that = (UnitSearch) o;
+        UnitSearchModel that = (UnitSearchModel) o;
 
         if (unitCode != null ? !unitCode.equals(that.unitCode) : that.unitCode != null) return false;
         if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
