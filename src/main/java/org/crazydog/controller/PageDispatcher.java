@@ -17,6 +17,7 @@ public class PageDispatcher {
         String parameter = request.getParameter("page");
 //        System.out.println(parameter);
         if (parameter != null) {
+//            return "forward:/WEB-INF/views/" + parameter + ".jsp";
             return parameter;
         }
         return null;

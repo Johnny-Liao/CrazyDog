@@ -1,7 +1,6 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.domain.UnitEntity;
-import org.crazydog.serviceI.BaseService;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -14,12 +13,12 @@ import java.util.List;
  */
 public class UnitServiceImplTest {
     ApplicationContext applicationContext;
-    BaseService unitService;
+    UnitServiceImpl unitService;
 
     @Before
     public void setUp() throws Exception {
         applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
-        unitService = (BaseService) applicationContext.getBean("unitServiceImpl");
+        unitService = (UnitServiceImpl) applicationContext.getBean("unitServiceImpl");
     }
 
     @Test
@@ -59,6 +58,7 @@ public class UnitServiceImplTest {
 
     @Test
     public void testGetAllEntities() throws Exception {
+        System.out.println(unitService.getClass());
         List<UnitEntity> unitEntities = unitService.getAllEntities();
         for (UnitEntity unitEntity : unitEntities)
             System.out.println(unitEntity);
