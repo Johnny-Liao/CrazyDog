@@ -1,9 +1,8 @@
 <%--
-  此页面是合同续签的显示页面
   Created by IntelliJ IDEA.
   User: never
-  Date: 2015/8/27
-  Time: 19:46
+  Date: 2015/8/28
+  Time: 12:32
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -49,10 +48,10 @@
 
         <div class="tum">
             <div class="contlist">
-                <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+                <table border="0" cellspacing="0" cellpadding="0" style="width:100%;" scrolling="yes">
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <c:forEach var="column" items="<%=ResourceString.contractExtensionShow%>">
+                        <c:forEach var="column" items="<%=ResourceString.contractExtensionRecordShow%>">
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
@@ -61,15 +60,16 @@
                         <tr>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.empCode}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.empName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.gender}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.idNum}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractStart}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.tel}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.employeeByEmpId.unitByUnitId.unitName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.employeeByEmpId.departmentByDepId.deptName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractStart}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractEnd}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="合同变更"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="否"/></td>
                         </tr>
                     </c:forEach>
                 </table>

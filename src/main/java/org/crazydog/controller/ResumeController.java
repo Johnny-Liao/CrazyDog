@@ -35,8 +35,14 @@ public class ResumeController {
 			System.out.println(a.getAddress());
 			System.out.println(a.getHireById());
 		}
-		System.out.println("通过不同方式进行跳转");
 		return "resume";
 	}
+	@RequestMapping("/modelSearch")
+	public String modelSearch(@RequestParam("name")String name,@RequestParam("highestEdu")String highestEdu,@RequestParam("luquState")String luquState){
+		System.out.println(name + highestEdu + luquState);
+		return "selectresume";
+
+	}
+
 
 }
