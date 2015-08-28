@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 /**
  * Created by never on 2015/8/28.
  */
-public class PositionChangeModel extends Search<PositionChangeModel> {
+public class PositionChangeModel extends SearchModel {
 
     //职位这个字段在应用中基本没用到，基本没有指定一个职员的职位
     //    private String position;
@@ -25,19 +25,8 @@ public class PositionChangeModel extends Search<PositionChangeModel> {
     }
 
     @Override
-    public String advanceSearch(PositionChangeModel model) {
-        //记录缓存数据
-        if (model.equals(this))
-            return buffer.toString();
+    public StringBuffer advanceSearch() {
 
-//        this.position = model.position;
-        this.name = model.name;
-        this.unitName = model.unitName;
-        this.hireStart = model.hireStart;
-        this.hirefinish = model.hirefinish;
-        this.leaveInfo = model.leaveInfo;
-
-        buffer.delete(0, buffer.capacity());
         if (/*position == null &&*/ hireStart == null && hirefinish == null)
             return null;
         buffer.append("from EmployeeEntity emp,PositionChangeEntity pos where ");
@@ -53,9 +42,8 @@ public class PositionChangeModel extends Search<PositionChangeModel> {
             buffer.append(" pos.joinDate>='" + hireStart + "' and");
         if (hirefinish != null)
             buffer.append(" emp.leaveDate<='" + hirefinish + "' and");
-        buffer.delete(buffer.capacity() - 3, buffer.capacity());
 
-        return buffer.toString();
+        return buffer;
     }
 
     @Override
