@@ -10,6 +10,7 @@
     <context:component-scan base-package="org.crazydog.controller"/>
 
     <mvc:annotation-driven/>
+
     <!--处理静态资源-->
     <mvc:resources mapping="/js/**" location="/js/"/>
     <mvc:resources mapping="/style/**" location="/style/"/>

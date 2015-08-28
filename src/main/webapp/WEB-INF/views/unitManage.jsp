@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: never
@@ -6,6 +7,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="org.crazydog.util.ResourceString" %>
 <html>
 <head>
     <title>服务单位管理</title>
@@ -30,25 +32,16 @@
         <div class="search">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><input type="text" name="textfield" id="textfield" class="s_input" value="员工编号"
+                    <td><input type="text" name="textfield" id="textfield" class="s_input" value="服务单位编码"
                                onfocus="javascript:this.style.color='#000000';if(this.value=='员工编号')this.value='';"
                                onblur="javascript:if(this.value==''){this.value='员工编号';this.style.color='#CCCCCC';}"/>
                     </td>
-                    <td><input type="text" name="textfield2" id="textfield2" class="s_input" value="姓名"
+                    <td><input type="text" name="textfield2" id="textfield2" class="s_input" value="服务单位名称"
                                onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';"
                                onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}"/>
                     </td>
-                    <td><input type="text" name="textfield3" id="textfield3" class="s_input" value="性别"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='性别')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='性别';this.style.color='#CCCCCC';}"/>
-                    </td>
-                    <td><select name="select" id="select" class="s_inputs">
-                        <option>政治面貌</option>
-                        <option>党员</option>
-                        <option>团员</option>
-                    </select></td>
                     <td><input type="submit" name="button" id="button" value="查询" class="s_btn"/></td>
-                    <td><input type="submit" name="button2" id="button2" value="导出Excel" class="s_btns"/></td>
+                    <td><input type="submit" name="button2" id="button2" value="新建服务单位" class="s_btns"/></td>
                 </tr>
             </table>
         </div>
@@ -57,365 +50,87 @@
             <div class="contlist">
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <td align="center" bgcolor="#fff8f8">员工编号</td>
-                        <td align="center" bgcolor="#fff8f8">姓名</td>
-                        <td align="center" bgcolor="#fff8f8">性别</td>
-                        <td align="center" bgcolor="#fff8f8">政治面貌</td>
-                        <td align="center" bgcolor="#fff8f8">英语水平</td>
-                        <td align="center" bgcolor="#fff8f8">技能等级</td>
-                        <td align="center" bgcolor="#fff8f8">职称</td>
-                        <td align="center" bgcolor="#fff8f8">手机</td>
-                        <td align="center" bgcolor="#fff8f8">户口性质</td>
-                        <td align="center" bgcolor="#fff8f8">户口所在地</td>
-                        <td align="center" bgcolor="#fff8f8">现居地</td>
-                        <td align="center" bgcolor="#fff8f8">邮政编码</td>
-                        <td align="center" bgcolor="#fff8f8">电子邮箱</td>
+                        <c:forEach var="column" items="<%=ResourceString.unitShow%>">
+                            <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
+                        </c:forEach>
                     </tr>
                     <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
+                        <c:forEach var="entity" items="${unitEntities}">
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity}"/></td>
+                        </c:forEach>
+                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
                     </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
-                    <tr>
-                        <td align="center" bgcolor="#ffffff">007</td>
-                        <td align="center" bgcolor="#ffffff">安静</td>
-                        <td align="center" bgcolor="#ffffff">女</td>
-                        <td align="center" bgcolor="#ffffff">团员</td>
-                        <td align="center" bgcolor="#ffffff">4级</td>
-                        <td align="center" bgcolor="#ffffff">高级</td>
-                        <td align="center" bgcolor="#ffffff">UI设计</td>
-                        <td align="center" bgcolor="#ffffff">18721657776</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">河北省定州市</td>
-                        <td align="center" bgcolor="#ffffff">北京市昌平区</td>
-                        <td align="center" bgcolor="#ffffff">073000</td>
-                        <td align="center" bgcolor="#ffffff">163@163.com</td>
-                    </tr>
+                    <%--<tr>--%>
+                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
+                    <%--</tr>--%>
+                    <%--<tr>--%>
+                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
+                    <%--</tr>--%>
+                    <%--<tr>--%>
+                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
+                    <%--</tr>--%>
+                    <%--<tr>--%>
+                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
+                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
+                    <%--</tr>--%>
+                    <%--<tr>--%>
+                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
+                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
+                    <%--</tr>--%>
                 </table>
 
             </div>

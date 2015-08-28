@@ -23,7 +23,7 @@
         <div class="subs"><a href="#">监管人事管理系统</a></div>
         <div class="subNav currentDd currentDt">基础数据维护</div>
         <ul class="navContent " style="display:block">
-            <li><a href="/views/unitManage" target="contentFrame">单位管理</a></li>
+            <li><a href="/unitController?page=unitManage" target="contentFrame">单位管理</a></li>
             <li><a href="/fragments/content.jsp" target="contentFrame">资质管理</a></li>
         </ul>
         <div class="subNav">社会招聘管理</div>
