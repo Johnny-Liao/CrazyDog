@@ -3,6 +3,8 @@ package org.crazydog.domain;
 import javax.persistence.*;
 
 import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.SelectBeforeUpdate;
 
 import java.sql.Timestamp;
@@ -22,6 +24,7 @@ public class HireEntity {
     private String comment;
     private Timestamp operateTime;
     private String operator;
+    private ResumeEntity resumeEntity;
 
     @Id
     @Column(name = "id")
@@ -131,5 +134,16 @@ public class HireEntity {
 				+ comment + ", operateTime=" + operateTime + ", operator="
 				+ operator + "]";
 	}
+
+
+    @Fetch(FetchMode.SELECT)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="resumeEntity",insertable=true,unique=true)
+    public ResumeEntity getResumeEntity() {
+        return resumeEntity;
+    }
+    public void setResumeEntity(ResumeEntity resumeEntity) {
+        this.resumeEntity = resumeEntity;
+    }
     
 }

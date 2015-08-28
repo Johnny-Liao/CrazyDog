@@ -13,18 +13,29 @@ import org.springframework.web.servlet.ModelAndView;
 
 import antlr.collections.List;
 
+import javax.servlet.http.HttpServletRequest;
+import java.util.Iterator;
+
 @Controller
+@RequestMapping("/resumeController")
 public class ResumeController {
 	
-//	@Autowired
-//	@Qualifier("resumeServiceImpl")
-//	private ResumeServiceImpl resumeService;
-//	
+	@Autowired
+	@Qualifier("resumeServiceImpl")
+	private ResumeServiceImpl resumeService;
 	
-	@RequestMapping("/resumeController")
-	public String getAllmes(){
-//		List resumes = (List)resumeService.getAllEntities();
-		System.out.println("stupid lifei");
+	@RequestMapping(params="getAllmes")
+	public String getAllmes(HttpServletRequest request){
+		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+//		java.util.List<ResumeEntity>
+		request.setAttribute("resumes", resumes);
+		Iterator<ResumeEntity> it = resumes.iterator();
+		while(it.hasNext()){
+			ResumeEntity a = it.next();
+			System.out.println(a.getAddress());
+			System.out.println(a.getHireById());
+		}
+		System.out.println("通过不同方式进行跳转");
 		return "resume";
 	}
 
