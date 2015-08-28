@@ -23,7 +23,7 @@ public class EmployeeEntity {
     private Collection<ContractEntity> contractsById;
     private DepartmentEntity departmentByDepId;
     private UnitEntity unitByUnitId;
-    private Collection<PositionEntity> positionsById;
+    private Collection<PositionChangeEntity> positionsById;
 
     @Id
     @Column(name = "id")
@@ -193,11 +193,11 @@ public class EmployeeEntity {
     //这里的解决方法就是将重新发送一条语句来查，之前所有的值都是在一条语句中使用左连接进行查询
     @Fetch(FetchMode.SUBSELECT)
     @OneToMany(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
-    public Collection<PositionEntity> getPositionsById() {
+    public Collection<PositionChangeEntity> getPositionsById() {
         return positionsById;
     }
 
-    public void setPositionsById(Collection<PositionEntity> positionsById) {
+    public void setPositionsById(Collection<PositionChangeEntity> positionsById) {
         this.positionsById = positionsById;
     }
 }
