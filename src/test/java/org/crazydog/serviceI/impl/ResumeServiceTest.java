@@ -49,7 +49,7 @@ public class ResumeServiceTest {
 //    public void test() {
 //        //简历的复杂查询
 //        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
-//        SearchModel sreach = new SearchModel(null, "博士", "二审");
+//        SearchModel sreach = new SearchModel(null, "博士", "一审");
 //        String sql = sreach.advanceSearch();
 //        System.out.println(sql);
 //        List<Object> list = resumeServiceImpl.queryEntity(sql);
@@ -64,20 +64,20 @@ public class ResumeServiceTest {
 //		HireEntity h = (HireEntity) b[1];
 //		System.out.println(h.getOperator());
 //    }
-    @Test
-    public void test(){
-        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
-        java.util.List<ResumeEntity> resumes = resumeServiceImpl.getAllEntities();
-//		java.util.List<ResumeEntity>
-//        request.setAttribute("resumes", resumes);
-        Iterator<ResumeEntity> it = resumes.iterator();
-        while(it.hasNext()){
-            ResumeEntity a = it.next();
-            System.out.println(a.getAddress());
-            HireEntity b = (HireEntity) a.getHireById();
-            System.out.println(b);
-        }
-        System.out.println("通过不同方式进行跳转");
-    }
+//    @Test
+//    public void test(){
+//        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
+//        java.util.List<ResumeEntity> resumes = resumeServiceImpl.getAllEntities();
+////		java.util.List<ResumeEntity>
+////        request.setAttribute("resumes", resumes);
+//        Iterator<ResumeEntity> it = resumes.iterator();
+//        while(it.hasNext()){
+//            ResumeEntity a = it.next();
+//            System.out.println(a.getAddress());
+////            HireEntity b = (HireEntity) a.getHireById();
+//            System.out.println(a.getHireById().getOperator());
+//        }
+//        System.out.println("通过不同方式进行跳转");
+//    }
 
 }

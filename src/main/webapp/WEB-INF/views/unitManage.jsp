@@ -58,79 +58,8 @@
                         <c:forEach var="entity" items="${unitEntities}">
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity}"/></td>
                         </c:forEach>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
                     </tr>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">高级</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">UI设计</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">18721657776</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">河北省定州市</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">北京市昌平区</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">073000</td>&ndash;%&gt;--%>
-                        <%--&lt;%&ndash;<td align="center" bgcolor="#ffffff">163@163.com</td>&ndash;%&gt;--%>
-                    <%--</tr>--%>
-                    <%--<tr>--%>
-                        <%--<td align="center" bgcolor="#ffffff">007</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">安静</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">女</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">团员</td>--%>
-                        <%--<td align="center" bgcolor="#ffffff">4级</td>--%>
-                    <%--</tr>--%>
+
                 </table>
 
             </div>
