@@ -17,10 +17,17 @@ public class ContractController {
     @Autowired
     private ContractServiceImpl contractService;
 
-    @RequestMapping(value = "/contract", params = "page=unitManage")
+    @RequestMapping(value = "/contract", params = "page=contractChange")
     public String contractChange(HttpServletRequest request) {
         List<ContractEntity> contractEntities = contractService.getAllEntities();
         request.setAttribute("contractEntities", contractEntities);
         return "contractExtension";
+    }
+
+    @RequestMapping(value = "/contract", params = "page=changeRecord")
+    public String contractChangeRecord(HttpServletRequest request) {
+        List<ContractEntity> contractEntities = contractService.getAllEntities();
+        request.setAttribute("contractEntities", contractEntities);
+        return "contractExtensionRecord";
     }
 }
