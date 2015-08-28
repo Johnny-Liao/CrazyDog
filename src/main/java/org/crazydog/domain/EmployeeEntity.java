@@ -20,7 +20,7 @@ public class EmployeeEntity {
     private Integer tel;
     private String education;
     private Integer resumeId;
-    private Collection<ContractEntity> contractsById;
+    private ContractEntity contractsById;
     private DepartmentEntity departmentByDepId;
     private UnitEntity unitByUnitId;
     private Collection<PositionChangeEntity> positionsById;
@@ -107,6 +107,7 @@ public class EmployeeEntity {
         this.resumeId = resumeId;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -158,12 +159,12 @@ public class EmployeeEntity {
     }
 
     //获取认识信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
-    @OneToMany(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
-    public Collection<ContractEntity> getContractsById() {
+    @OneToOne(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
+    public ContractEntity getContractsById() {
         return contractsById;
     }
 
-    public void setContractsById(Collection<ContractEntity> contractsById) {
+    public void setContractsById(ContractEntity contractsById) {
         this.contractsById = contractsById;
     }
 

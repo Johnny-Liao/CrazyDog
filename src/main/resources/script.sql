@@ -1,6 +1,6 @@
-DROP DATABASE IF EXISTS CrazyDog;
-CREATE DATABASE CrazyDog;
-USE CrazyDog;
+DROP DATABASE IF EXISTS crazydog;
+CREATE DATABASE crazydog;
+USE crazydog;
 
 #系统用户表
 CREATE TABLE `user` (

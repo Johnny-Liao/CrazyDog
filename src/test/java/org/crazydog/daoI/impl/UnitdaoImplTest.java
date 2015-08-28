@@ -48,6 +48,6 @@ public class UnitdaoImplTest {
     public void testDeleteUnit() {
         UnitEntity unitEntity = new UnitEntity();
         unitEntity.setId(1);
-        unitdaoImpl.deleteEntity(1);
+        unitdaoImpl.deleteEntity(unitEntity);
     }
 }
