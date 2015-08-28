@@ -69,7 +69,7 @@ public abstract class Basedao<T> {
      * @param hql hql语句
      * @return
      */
-    public List<Object> find(String hql) {
+    public List find(String hql) {
         Query q = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
         return q.list();
     }
@@ -86,7 +86,7 @@ public abstract class Basedao<T> {
      * @param params 参数集
      * @return hql语句的结果集
      */
-    public List<Object> find(String hql, Map<String, Object> params) {
+    public List find(String hql, Map<String, Object> params) {
         Query q = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
@@ -110,7 +110,7 @@ public abstract class Basedao<T> {
      * @param rows   每页中的行数
      * @return hql语句的结果集
      */
-    public List<Object> find(String hql, Map<String, Object> params, int page, int rows) {
+    public List find(String hql, Map<String, Object> params, int page, int rows) {
         Query q = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
         if (params != null && !params.isEmpty()) {
             for (String key : params.keySet()) {
@@ -133,7 +133,7 @@ public abstract class Basedao<T> {
      * @param rows 每页中的行数
      * @return hql语句的结果集
      */
-    public List<Object> find(String hql, int page, int rows) {
+    public List find(String hql, int page, int rows) {
         Query q = hibernateTemplate.getSessionFactory().getCurrentSession().createQuery(hql);
         return q.setFirstResult((page - 1) * rows).setMaxResults(rows).list();
     }

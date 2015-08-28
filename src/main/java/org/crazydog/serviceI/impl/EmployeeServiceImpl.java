@@ -57,7 +57,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param model
      * @return
      */
-    public List<EmployeeEntity> advanceSearch(SearchModel model) {
+    public List<Object> advanceSearch(SearchModel model) {
         String hql = model.advanceSearch(model);
         return employeedao.find(hql);
     }
