@@ -33,11 +33,9 @@
         </ul>
         <div class="subNav">人事信息管理</div>
         <ul class="navContent">
-            <li><a href="/fragments/content.jsp" target="contentFrame">人员信息管理</a></li>
+            <li><a href="/employeePage" target="contentFrame">人员信息管理</a></li>
             <li><a href="/fragments/content.jsp" target="contentFrame">离职管理</a></li>
-            <li><a href="/fragments/content.jsp" target="contentFrame">调岗管理</a></li>
             <li><a href="/fragments/content.jsp" target="contentFrame">离职人员</a></li>
-            <li><a href="/fragments/content.jsp" target="contentFrame">调岗人员</a></li>
         </ul>
         <div class="subNav">合同管理</div>
         <ul class="navContent">
