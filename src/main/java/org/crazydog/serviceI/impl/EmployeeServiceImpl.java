@@ -15,7 +15,7 @@ import java.util.Objects;
 /**
  * Created by never on 2015/8/26.
  */
-@Service("employeeService")
+@Service
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
