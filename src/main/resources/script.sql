@@ -92,10 +92,10 @@ CREATE TABLE `hire` (
   FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-#职位信息表
-CREATE TABLE `position` (
-  `id`        INT            NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  `emp_code`    INT            NOT NULL,
+#职位更改信息表
+CREATE TABLE `position_change` (
+  `id`         INT            NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `emp_code`   INT            NOT NULL,
   `join_date`  DATETIME      NOT NULL COMMENT '入职日期',
   `leave_date` DATETIME      COMMENT '离职日期',
   `leave_info` VARCHAR(20)   COMMENT '离职原因',
@@ -221,3 +221,33 @@ INSERT INTO `employee` VALUES (8, 'WJ_1', '张三丰', '男', '32456378923456723
 INSERT INTO `employee` VALUES (9, 'SPAN_3', '葛三炮', '男', '38792173823421987X', 1782314563, '本科', 4, 1, 9);
 INSERT INTO `employee` VALUES (10, 'XC_1', '李二狗', '男', '873923456787324567', 123123, '本科', 6, 2, 10);
 INSERT INTO `employee` VALUES (11, 'JLJCWYH_2', '赵日天', '男', '382345267823452345', 312312, '硕士', 8, 2, 11);
+
+INSERT INTO `contract` VALUES (1, 1, '2014-1-1 00:00:00', '2016-1-1 00:00:00', 2);
+INSERT INTO `contract` VALUES (2, 2, '2015-8-11 12:49:02', '2017-8-11 12:49:06', 2);
+INSERT INTO `contract` VALUES (3, 3, '2011-8-11 12:00:00', '2017-8-11 12:00:00', 6);
+INSERT INTO `contract` VALUES (4, 4, '2013-8-11 12:00:00', '2015-8-11 12:00:00', 2);
+INSERT INTO `contract` VALUES (5, 5, '2012-3-24 12:00:00', '2015-8-24 12:52:12', 3);
+INSERT INTO `contract` VALUES (6, 6, '2015-8-28 12:47:02', '2019-8-28 12:47:12', 4);
+INSERT INTO `contract` VALUES (7, 7, '2014-6-28 12:49:37', '2017-8-28 12:50:18', 3);
+INSERT INTO `contract` VALUES (8, 8, '2013-8-28 12:50:40', '2017-8-28 12:51:05', 4);
+INSERT INTO `contract` VALUES (9, 9, '2015-8-28 12:51:51', '2018-8-28 12:52:04', 3);
+INSERT INTO `contract` VALUES (10, 10, '2014-1-1 12:52:27', '2016-1-28 12:52:45', 2);
+INSERT INTO `contract` VALUES (11, 11, '2015-8-28 12:53:10', '2018-8-28 12:53:20', 3);
+
+INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (1, 1, '2012-1-28 13:00:25', '2016-6-1 13:00:44', '北京大学', '计算机科学');
+INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (2, 5, '2012-9-1 13:02:13', '2016-6-28 13:02:39', '清华大学', '软件开发');
+INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (3, 7, '2012-9-1 13:03:39', '2016-6-1 13:03:52', '哈尔滨工业大学', '计算机信息技术');
+INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (4, 10, '2012-9-1 13:04:49', '2016-6-1 13:05:01', '江西农业大学', '计算机网络');
+INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (5, 11, '2012-9-1 13:06:00', '2016-6-1 13:06:09', '南昌大学', '软件学院');
+
+INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (1, 3, '张元丰', '父亲', '上海市动物保护协会');
+INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (2, 4, '李飞翔', '舅舅', '南昌市新建县县政府');
+INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (3, 6, '王二麻', '父亲', '江西省教育局');
+INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (4, 8, '张翼飞', '父亲', '北京市朝阳区社保局');
+INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (5, 9, '葛格', '母亲', '深圳市宝安区黑河工业区');
+
+INSERT INTO `resume_jobs` VALUES (1, 3, '2014-8-28 13:03:26', '2015-8-28 13:03:44', '软件开发部', '程序员');
+INSERT INTO `resume_jobs` VALUES (2, 6, '2013-6-28 13:05:13', '2014-6-1 13:05:28', '软件测试部', '测试员');
+INSERT INTO `resume_jobs` VALUES (3, 8, '2014-2-28 13:06:33', '2015-2-28 13:06:51', '软件开发部', '项目经理');
+INSERT INTO `resume_jobs` VALUES (4, 10, '2015-1-28 13:07:32', '2015-8-28 13:08:00', '软件开发部', '程序员');
+INSERT INTO `resume_jobs` VALUES (5, 11, '2014-10-28 13:08:31', '2015-5-28 13:08:42', '软件测试部', '测试员');

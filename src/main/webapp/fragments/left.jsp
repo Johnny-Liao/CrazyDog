@@ -23,8 +23,8 @@
         <div class="subs"><a href="#">监管人事管理系统</a></div>
         <div class="subNav currentDd currentDt">基础数据维护</div>
         <ul class="navContent " style="display:block">
-            <li><a href="/unitController?page=unitManage" target="contentFrame">单位管理</a></li>
-            <li><a href="/fragments/content.jsp" target="contentFrame">资质管理</a></li>
+            <li><a href="/unit?page=unitManage" target="contentFrame">单位管理</a></li>
+            <%--<li><a href="/fragments/content.jsp" target="contentFrame">资质管理</a></li>--%>
         </ul>
         <div class="subNav">社会招聘管理</div>
         <ul class="navContent">
@@ -41,7 +41,7 @@
         </ul>
         <div class="subNav">合同管理</div>
         <ul class="navContent">
-            <li><a href="/fragments/content.jsp" target="contentFrame">合同续签管理</a></li>
+            <li><a href="/contract?page=unitManage" target="contentFrame">合同续签管理</a></li>
             <li><a href="/fragments/content.jsp" target="contentFrame">续签合同记录</a></li>
         </ul>
         <div class="subNav">工资管理</div>
