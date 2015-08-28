@@ -234,6 +234,12 @@ INSERT INTO `contract` VALUES (9, 9, '2015-8-28 12:51:51', '2018-8-28 12:52:04',
 INSERT INTO `contract` VALUES (10, 10, '2014-1-1 12:52:27', '2016-1-28 12:52:45', 2);
 INSERT INTO `contract` VALUES (11, 11, '2015-8-28 12:53:10', '2018-8-28 12:53:20', 3);
 
+INSERT INTO `contract_change` VALUES (1, 1, 3, 12, '员工', '合同快到期', 3, NULL);
+INSERT INTO `contract_change` VALUES (2, 4, 4, 18, '员工', '涨薪水', 4, '工作好');
+INSERT INTO `contract_change` VALUES (3, 5, 5, 22, '项目经理', '合同到期', 4, NULL);
+INSERT INTO `contract_change` VALUES (4, 7, 2, 9, '技术总监', '合同到期', 5, NULL);
+INSERT INTO `contract_change` VALUES (5, 10, 1, 5, '员工', '涨薪水', 3, NULL);
+
 INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (1, 1, '2012-1-28 13:00:25', '2016-6-1 13:00:44', '北京大学', '计算机科学');
 INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (2, 5, '2012-9-1 13:02:13', '2016-6-28 13:02:39', '清华大学', '软件开发');
 INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (3, 7, '2012-9-1 13:03:39', '2016-6-1 13:03:52', '哈尔滨工业大学', '计算机信息技术');

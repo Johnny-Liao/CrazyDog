@@ -55,22 +55,23 @@
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
-                    <%--&lt;%&ndash;显示表内容&ndash;%&gt;--%>
-                    <%--<c:forEach var="entity" items="${contractEntities}">--%>
-                        <%--<tr>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.empCode}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.empName}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.idNum}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="${entity.contractStart}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out--%>
-                                    <%--value="${entity.employeeByEmpId.unitByUnitId.unitName}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out--%>
-                                    <%--value="${entity.employeeByEmpId.departmentByDepId.deptName}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="${entity.contractStart}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="${entity.contractEnd}"/></td>--%>
-                            <%--<td align="center" bgcolor="#ffffff"><c:out value="合同变更"/></td>--%>
-                        <%--</tr>--%>
-                    <%--</c:forEach>--%>
+                    <%--显示表内容--%>
+                    <c:forEach var="entity" items="${contractEntities}">
+                        <tr>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.empCode}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.empName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.gender}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.idNum}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.employeeByEmpId.tel}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.employeeByEmpId.unitByUnitId.unitName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.employeeByEmpId.departmentByDepId.deptName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractStart}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractEnd}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="否"/></td>
+                        </tr>
+                    </c:forEach>
                 </table>
             </div>
         </div>
