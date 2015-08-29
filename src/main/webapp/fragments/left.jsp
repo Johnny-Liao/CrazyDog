@@ -26,13 +26,13 @@
             <li><a href="/unit?page=unitManage" target="contentFrame">单位管理</a></li>
             <%--<li><a href="/fragments/content.jsp" target="contentFrame">资质管理</a></li>--%>
         </ul>
-        <div class="subNav">简历</div>
+        <div class="subNav">简历管理</div>
         <ul class="navContent">
             <li><a href="/resumeController?getAllmes" target="contentFrame">显示所有简历</a></li>
             <li><a href="/views?page=resumeManage" target="contentFrame">简历录取</a></li>
             <li><a href="/views?page=resumeManage" target="contentFrame">取消录取</a></li>
         </ul>
-        <div class="subNav">人事信息</div>
+        <div class="subNav">人事管理</div>
         <ul class="navContent">
             <li><a href="/employeePage" target="contentFrame">人员信息建档</a></li>
             <li><a href="/employeePage" target="contentFrame">人事信息管理</a></li>

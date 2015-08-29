@@ -74,15 +74,16 @@ public class ResumeEntity {
         this.idNum = idNum;
     }
 
-    private Long tel;
+
+    private long tel;
 
     @Basic
     @javax.persistence.Column(name = "tel")
-    public Long getTel() {
+    public long getTel() {
         return tel;
     }
 
-    public void setTel(Long tel) {
+    public void setTel(long tel) {
         this.tel = tel;
     }
 
@@ -333,12 +334,12 @@ public class ResumeEntity {
 
         ResumeEntity that = (ResumeEntity) o;
 
+        if (tel != that.tel) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (nation != null ? !nation.equals(that.nation) : that.nation != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
         if (idNum != null ? !idNum.equals(that.idNum) : that.idNum != null) return false;
-        if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (zzmm != null ? !zzmm.equals(that.zzmm) : that.zzmm != null) return false;
@@ -359,8 +360,12 @@ public class ResumeEntity {
         if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (reportCard != null ? !reportCard.equals(that.reportCard) : that.reportCard != null) return false;
+        if (resumeEduById != null ? !resumeEduById.equals(that.resumeEduById) : that.resumeEduById != null)
+            return false;
+        if (resumeFamilyById != null ? !resumeFamilyById.equals(that.resumeFamilyById) : that.resumeFamilyById != null)
+            return false;
+        return !(resumeJobsById != null ? !resumeJobsById.equals(that.resumeJobsById) : that.resumeJobsById != null);
 
-        return true;
     }
 
     @Override
@@ -370,7 +375,7 @@ public class ResumeEntity {
         result = 31 * result + (nation != null ? nation.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (idNum != null ? idNum.hashCode() : 0);
-        result = 31 * result + (tel != null ? tel.hashCode() : 0);
+        result = 31 * result + (int) (tel ^ (tel >>> 32));
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (zzmm != null ? zzmm.hashCode() : 0);
@@ -391,6 +396,9 @@ public class ResumeEntity {
         result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (reportCard != null ? reportCard.hashCode() : 0);
+        result = 31 * result + (resumeEduById != null ? resumeEduById.hashCode() : 0);
+        result = 31 * result + (resumeFamilyById != null ? resumeFamilyById.hashCode() : 0);
+        result = 31 * result + (resumeJobsById != null ? resumeJobsById.hashCode() : 0);
         return result;
     }
 
@@ -441,7 +449,8 @@ public class ResumeEntity {
         this.resumeEduById = resumeEduById;
     }
 
-    @Fetch(FetchMode.SUBSELECT)
+
+    @Fetch(FetchMode.JOIN)
     @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
@@ -451,7 +460,8 @@ public class ResumeEntity {
         this.resumeFamilyById = resumeFamilyById;
     }
 
-    @Fetch(FetchMode.SUBSELECT)
+
+    @Fetch(FetchMode.JOIN)
     @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;

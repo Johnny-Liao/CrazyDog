@@ -62,8 +62,10 @@
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitCode}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="修改"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="删除"/></td>
+                            <td align="center" bgcolor="#ffffff"><a href='unit?action=unitModify&&unitId=<c:out
+                                    value="${entity.id}"/>'>修改</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href='unit?action=unitDelete&&unitId=<c:out
+                                    value="${entity.id}"/>'>删除</a></td>
                         </tr>
                     </c:forEach>
                 </table>

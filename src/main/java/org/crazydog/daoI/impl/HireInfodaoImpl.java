@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class HireInfoDaoImpl extends Basedao<HireInfoEntity> {
+public class HireInfodaoImpl extends Basedao<HireInfoEntity> {
 
     /**
      * 增加录取信息

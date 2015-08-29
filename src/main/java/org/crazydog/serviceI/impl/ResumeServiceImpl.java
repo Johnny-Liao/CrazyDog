@@ -7,6 +7,7 @@ import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.stereotype.Service;
 
 import java.sql.Date;
 import java.sql.Timestamp;
@@ -14,7 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Map;
 
-//@Service
+@Service
 public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
