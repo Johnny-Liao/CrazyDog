@@ -467,6 +467,7 @@ public class EmployeeEntity {
     private UnitEntity unitEntity;
     private DepartmentEntity departmentEntity;
     private ContractEntity contractEntity;
+    private PositionLeaveEntity positionLeaveEntity;
 
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
@@ -498,4 +499,12 @@ public class EmployeeEntity {
         this.contractEntity = contractEntity;
     }
 
+    @OneToOne
+    public PositionLeaveEntity getPositionLeaveEntity() {
+        return positionLeaveEntity;
+    }
+
+    public void setPositionLeaveEntity(PositionLeaveEntity positionLeaveEntity) {
+        this.positionLeaveEntity = positionLeaveEntity;
+    }
 }

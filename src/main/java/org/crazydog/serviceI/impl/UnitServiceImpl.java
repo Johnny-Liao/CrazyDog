@@ -35,6 +35,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @param name 服务单位的名字
      * @return
      */
+    @SuppressWarnings("unchecked")
     public List<UnitEntity> getUnitByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
@@ -47,6 +48,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @param code 服务单位的编码
      * @return
      */
+    @SuppressWarnings("unchecked")
     public UnitEntity getUnitByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
@@ -57,6 +59,9 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
         return null;
     }
 
+    public List<DepartmentEntity> getDepartmentEntitiesByUnit(UnitEntity unitEntity) {
+        return departmentdao.getAllDepartmentEntity(unitEntity);
+    }
 
     /**
      * 一次添加多个部门

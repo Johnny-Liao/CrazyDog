@@ -103,4 +103,15 @@ public class PositionLeaveEntity {
                 ", leaveComment='" + leaveComment + '\'' +
                 '}';
     }
+
+    private EmployeeEntity employeeEntity;
+
+    @OneToOne(mappedBy = "positionLeaveEntity")
+    public EmployeeEntity getEmployeeEntity() {
+        return employeeEntity;
+    }
+
+    public void setEmployeeEntity(EmployeeEntity employeeEntity) {
+        this.employeeEntity = employeeEntity;
+    }
 }

@@ -1,4 +1,4 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: never
@@ -8,6 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>服务单位管理</title>
@@ -62,7 +63,7 @@
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitCode}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><a href='unit?action=unitModify&&unitId=<c:out
+                            <td align="center" bgcolor="#ffffff"><a href='unit?page=unitModify&&unitId=<c:out
                                     value="${entity.id}"/>'>修改</a></td>
                             <td align="center" bgcolor="#ffffff"><a href='unit?action=unitDelete&&unitId=<c:out
                                     value="${entity.id}"/>'>删除</a></td>
