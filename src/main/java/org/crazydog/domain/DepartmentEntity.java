@@ -14,6 +14,7 @@ public class DepartmentEntity {
     private UnitEntity unitByUnitId;
     private Collection<PositionChangeEntity> positionChangesByBeforeId;
     private Collection<PositionChangeEntity> positionChangesByAfterId;
+    private Collection<EmployeeEntity> employeeEntities;
 
     @Id
     @Column(name = "id")
@@ -93,5 +94,14 @@ public class DepartmentEntity {
 //                ", positionChangesByBeforeId=" + positionChangesByBeforeId +
 //                ", positionChangesByAfterId=" + positionChangesByAfterId +
                 '}';
+    }
+
+    @OneToMany(mappedBy = "departmentEntity")
+    public Collection<EmployeeEntity> getEmployeeEntities() {
+        return employeeEntities;
+    }
+
+    public void setEmployeeEntities(Collection<EmployeeEntity> employeeEntities) {
+        this.employeeEntities = employeeEntities;
     }
 }

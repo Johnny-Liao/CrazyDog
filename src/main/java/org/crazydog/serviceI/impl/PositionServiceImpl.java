@@ -5,16 +5,18 @@ import org.crazydog.domain.PositionChangeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by never on 2015/8/26.
  */
+@Service
 public class PositionServiceImpl implements BaseService<PositionChangeEntity> {
 
     @Autowired
-    @Qualifier("positiondaoImpl")
+    @Qualifier("positionChangedaoImpl")
     private Basedao<PositionChangeEntity> positiondao;
 
     /**
