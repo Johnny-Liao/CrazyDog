@@ -6,7 +6,6 @@ import org.crazydog.serviceI.BaseService;
 import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Objects;
 /**
  * Created by never on 2015/8/26.
  */
-@Service
+//@Service
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
@@ -33,7 +32,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
     public List<EmployeeEntity> getEmployeeByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
-        return employeedao.find("from EmployeeEntity emp where emp.empName like :name", map);
+        return (List<EmployeeEntity>) employeedao.find("from EmployeeEntity emp where emp.empName like :name", map);
     }
 
     /**
@@ -45,7 +44,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
     public EmployeeEntity getEmployeeByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
-        List<EmployeeEntity> list = employeedao.find("from EmployeeEntity emp where emp.empCode like :code", map);
+        List<EmployeeEntity> list = (List<EmployeeEntity>) employeedao.find("from EmployeeEntity emp where emp.empCode like :code", map);
         if (list != null && list.size() == 1)
             return list.get(0);
         return null;
@@ -57,7 +56,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param model
      * @return
      */
-    public List<Object> advanceSearch(SearchModel model) {
+    public List<?> advanceSearch(SearchModel model) {
         String hql = model.advanceSearch(model);
         return employeedao.find(hql);
     }

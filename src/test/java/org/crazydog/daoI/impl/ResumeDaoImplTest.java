@@ -1,7 +1,5 @@
 package org.crazydog.daoI.impl;
 
-import org.crazydog.domain.HireEntity;
-import org.crazydog.domain.ResumeEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

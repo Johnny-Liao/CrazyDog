@@ -10,7 +10,7 @@ import java.util.List;
  * Created by never on 2015/8/26.
  */
 @Component
-public class PositiondaoImpl extends Basedao<PositionChangeEntity> {
+public class PositionChangedaoImpl extends Basedao<PositionChangeEntity> {
 
     /**
      * 添加实体

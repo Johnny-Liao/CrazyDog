@@ -3,7 +3,7 @@ package org.crazydog.domain;
 import javax.persistence.*;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/29.
  */
 @Entity
 @Table(name = "resume_family", schema = "", catalog = "crazydog")
@@ -89,5 +89,16 @@ public class ResumeFamilyEntity {
         result = 31 * result + (relationship != null ? relationship.hashCode() : 0);
         result = 31 * result + (department != null ? department.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ResumeFamilyEntity{" +
+                "id=" + id +
+                ", resumeId=" + resumeId +
+                ", name='" + name + '\'' +
+                ", relationship='" + relationship + '\'' +
+                ", department='" + department + '\'' +
+                '}';
     }
 }

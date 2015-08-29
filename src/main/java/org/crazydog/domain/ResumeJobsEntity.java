@@ -1,18 +1,18 @@
 package org.crazydog.domain;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/29.
  */
 @Entity
 @Table(name = "resume_jobs", schema = "", catalog = "crazydog")
 public class ResumeJobsEntity {
     private Integer id;
     private Integer resumeId;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private Date startTime;
+    private Date endTime;
     private String departmennt;
     private String post;
 
@@ -39,21 +39,21 @@ public class ResumeJobsEntity {
 
     @Basic
     @Column(name = "start_time")
-    public Timestamp getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
     @Basic
     @Column(name = "end_time")
-    public Timestamp getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -103,5 +103,17 @@ public class ResumeJobsEntity {
         result = 31 * result + (departmennt != null ? departmennt.hashCode() : 0);
         result = 31 * result + (post != null ? post.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ResumeJobsEntity{" +
+                "id=" + id +
+                ", resumeId=" + resumeId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", departmennt='" + departmennt + '\'' +
+                ", post='" + post + '\'' +
+                '}';
     }
 }
