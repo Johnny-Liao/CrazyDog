@@ -7,6 +7,7 @@ import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Map;
 /**
  * Created by never on 2015/8/24.
  */
-//@Service
+@Service
 public class UnitServiceImpl implements BaseService<UnitEntity> {
 
     @Autowired
@@ -64,8 +65,8 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @param departmentEntities 所有的部门
      */
     public void addDepartments(UnitEntity unitEntity, List<DepartmentEntity> departmentEntities) {
-//        if (departmentEntities != null && departmentEntities.size() != 0)
-//            departmentdao.addEntities(unitEntity, departmentEntities);
+        if (departmentEntities != null && departmentEntities.size() != 0)
+            departmentdao.addEntities(unitEntity, departmentEntities);
     }
 
     /**

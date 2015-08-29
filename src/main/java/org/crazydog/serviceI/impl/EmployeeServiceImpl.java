@@ -6,6 +6,7 @@ import org.crazydog.serviceI.BaseService;
 import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +16,7 @@ import java.util.Objects;
 /**
  * Created by never on 2015/8/26.
  */
-//@Service
+@Service
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
