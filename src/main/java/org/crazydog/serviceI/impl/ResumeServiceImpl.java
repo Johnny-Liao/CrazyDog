@@ -23,21 +23,21 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	private ResumedaoImpl resumedao;
 
 	@Autowired
-	@Qualifier("hireInfoDaoImpl")
-	private HireInfoDaoImpl hiredao;
+	@Qualifier("hireInfodaoImpl")
+	private HireInfodaoImpl hiredao;
 	
 	@Autowired
-	@Qualifier("resumeEduDaoImpl")
-	private ResumeEduDaoImpl resumeEdudao;
+	@Qualifier("resumeEdudaoImpl")
+	private ResumeEdudaoImpl resumeEdudao;
 	
 	@Autowired
-	@Qualifier("resumeFamilyDaoImpl")
-	private ResumeFamilyDaoImpl resumeFamilydao;
+	@Qualifier("resumeFamilydaoImpl")
+	private ResumeFamilydaoImpl resumeFamilydao;
 	
 	@Autowired
-	@Qualifier("resumeJobsDaoImpl")
-	private ResumeJobsDaoImpl resumeJobsdao;
-	
+	@Qualifier("resumeJobsdaoImpl")
+	private ResumeJobsdaoImpl resumeJobsdao;
+
 	
 	@Autowired
     protected HibernateTemplate hibernateTemplate;
@@ -177,7 +177,8 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 * 
 	 */
 	public void cancelHire(int id, String name) {
-		HireInfoEntity hire = (HireInfoEntity) hiredao.getEntity(id);
+		HireInfoEntity hire;
+		hire = (HireInfoEntity) hiredao.getEntity(id);
 		hire.setState("通过");
 //		String s = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 //				.format(new Date());
