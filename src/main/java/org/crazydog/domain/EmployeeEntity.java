@@ -82,15 +82,15 @@ public class EmployeeEntity {
         this.nation = nation;
     }
 
-    private Integer tel;
+    private String tel;
 
     @Basic
     @Column(name = "tel")
-    public Integer getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(Integer tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
@@ -130,28 +130,37 @@ public class EmployeeEntity {
         this.education = education;
     }
 
-    private Integer depId;
+    private UnitEntity unitEntity;
+    private DepartmentEntity departmentEntity;
+    private ContractEntity contractEntity;
 
-    @Basic
-    @Column(name = "dep_id")
-    public Integer getDepId() {
-        return depId;
+    @ManyToOne
+    @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
+    public UnitEntity getUnitEntity() {
+        return unitEntity;
     }
 
-    public void setDepId(Integer depId) {
-        this.depId = depId;
+    public void setUnitEntity(UnitEntity unitEntity) {
+        this.unitEntity = unitEntity;
     }
 
-    private Integer unitId;
-
-    @Basic
-    @Column(name = "unit_id")
-    public Integer getUnitId() {
-        return unitId;
+    @ManyToOne
+    @JoinColumn(name = "dep_id", referencedColumnName = "id", nullable = false)
+    public DepartmentEntity getDepartmentEntity() {
+        return departmentEntity;
     }
 
-    public void setUnitId(Integer unitId) {
-        this.unitId = unitId;
+    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+        this.departmentEntity = departmentEntity;
+    }
+
+    @OneToOne(mappedBy = "employeeEntity")
+    public ContractEntity getContractEntity() {
+        return contractEntity;
+    }
+
+    public void setContractEntity(ContractEntity contractEntity) {
+        this.contractEntity = contractEntity;
     }
 
     private Date birthday;
@@ -397,8 +406,8 @@ public class EmployeeEntity {
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
-        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
+//        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
+//        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
         if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (zzmm != null ? !zzmm.equals(that.zzmm) : that.zzmm != null) return false;
         if (hyzk != null ? !hyzk.equals(that.hyzk) : that.hyzk != null) return false;
@@ -433,8 +442,8 @@ public class EmployeeEntity {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (education != null ? education.hashCode() : 0);
-        result = 31 * result + (depId != null ? depId.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
+//        result = 31 * result + (depId != null ? depId.hashCode() : 0);
+//        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (zzmm != null ? zzmm.hashCode() : 0);
         result = 31 * result + (hyzk != null ? hyzk.hashCode() : 0);
@@ -469,8 +478,8 @@ public class EmployeeEntity {
                 ", email='" + email + '\'' +
                 ", phone=" + phone +
                 ", education='" + education + '\'' +
-                ", depId=" + depId +
-                ", unitId=" + unitId +
+//                ", depId=" + depId +
+//                ", unitId=" + unitId +
                 ", birthday=" + birthday +
                 ", zzmm='" + zzmm + '\'' +
                 ", hyzk='" + hyzk + '\'' +

@@ -15,7 +15,7 @@ public class UnitEntity {
     private Collection<DepartmentEntity> departmentsById;
     private Collection<PositionChangeEntity> positionChangesById;
     private Collection<PositionChangeEntity> positionChangesByAfterId;
-
+    private Collection<EmployeeEntity> employeeEntities;
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -106,5 +106,14 @@ public class UnitEntity {
 //                ", positionChangesById=" + positionChangesById +
 //                ", positionChangesByAfterId=" + positionChangesByAfterId +
                 '}';
+    }
+
+    @OneToMany(mappedBy = "unitEntity")
+    public Collection<EmployeeEntity> getEmployeeEntities() {
+        return employeeEntities;
+    }
+
+    public void setEmployeeEntities(Collection<EmployeeEntity> employeeEntities) {
+        this.employeeEntities = employeeEntities;
     }
 }

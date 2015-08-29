@@ -13,7 +13,7 @@ public class ContractEntity {
     private Integer empId;
     private Date contractStart;
     private Date contractEnd;
-//    private EmployeeEntity employeeEntity;
+    private EmployeeEntity employeeEntity;
 
     @Id
     @Column(name = "id")
@@ -36,14 +36,14 @@ public class ContractEntity {
         this.empId = empId;
     }
 
-//    @OneToOne(mappedBy = "contractEntityByEmp")
-//    public EmployeeEntity getEmployeeEntity() {
-//        return employeeEntity;
-//    }
-//
-//    public void setEmployeeEntity(EmployeeEntity employeeEntity) {
-//        this.employeeEntity = employeeEntity;
-//    }
+    @OneToOne
+    public EmployeeEntity getEmployeeEntity() {
+        return employeeEntity;
+    }
+
+    public void setEmployeeEntity(EmployeeEntity employeeEntity) {
+        this.employeeEntity = employeeEntity;
+    }
 
     @Basic
     @Column(name = "contract_start")

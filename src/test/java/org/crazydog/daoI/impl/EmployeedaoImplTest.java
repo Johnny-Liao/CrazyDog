@@ -1,7 +1,9 @@
 package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
+import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.EmployeeEntity;
+import org.crazydog.domain.UnitEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -15,7 +17,7 @@ import java.util.List;
 public class EmployeedaoImplTest {
     ApplicationContext applicationContext;
 
-    Basedao employeedaoImpl;
+    Basedao<EmployeeEntity> employeedaoImpl;
 
     @Before
     public void before() {
@@ -30,7 +32,27 @@ public class EmployeedaoImplTest {
 
     @Test
     public void testAddEntity() throws Exception {
+        EmployeeEntity employeeEntity = new EmployeeEntity();
+        employeeEntity.setEmpCode("zy");
+        employeeEntity.setEmpName("邹杨");
+        employeeEntity.setGender("男");
+        employeeEntity.setIdNum("421111111111111111");
+        employeeEntity.setNation("汉族");
+        employeeEntity.setTel("11111111111");
+        employeeEntity.setEmail("1360000@qq.com");
 
+        UnitEntity unitEntity = new UnitEntity();
+        unitEntity.setId(1);
+        employeeEntity.setUnitEntity(unitEntity);
+
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setId(1);
+        employeeEntity.setDepartmentEntity(departmentEntity);
+
+        employeeEntity.setHyzk("未婚");
+        employeeEntity.setZzmm("群众");
+
+        employeedaoImpl.addEntity(employeeEntity);
     }
 
     @Test
