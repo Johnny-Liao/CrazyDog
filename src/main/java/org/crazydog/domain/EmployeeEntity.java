@@ -130,7 +130,7 @@ public class EmployeeEntity {
         this.education = education;
     }
 
-    private Integer depId;
+    /*private Integer depId;
 
     @Basic
     @Column(name = "dep_id")
@@ -152,7 +152,7 @@ public class EmployeeEntity {
 
     public void setUnitId(Integer unitId) {
         this.unitId = unitId;
-    }
+    }*/
 
     private Date birthday;
 
@@ -373,7 +373,7 @@ public class EmployeeEntity {
 
     // ##################获取其它表信息##########################
     // 合同信息
-    private ContractEntity contractEntityByEmp;
+   /* private ContractEntity contractEntityByEmp;
 
     public ContractEntity getContractEntityByEmp() {
         return contractEntityByEmp;
@@ -381,7 +381,7 @@ public class EmployeeEntity {
 
     public void setContractEntityByEmp(ContractEntity contractEntityByEmp) {
         this.contractEntityByEmp = contractEntityByEmp;
-    }
+    }*/
 
     // 单位信息
     private UnitEntity unitEntity;
@@ -395,7 +395,7 @@ public class EmployeeEntity {
     }
 
     // 部门信息
-    private DepartmentEntity departmentEntity;
+ /*   private DepartmentEntity departmentEntity;
 
     public DepartmentEntity getDepartmentEntity() {
         return departmentEntity;
@@ -403,7 +403,7 @@ public class EmployeeEntity {
 
     public void setDepartmentEntity(DepartmentEntity departmentEntity) {
         this.departmentEntity = departmentEntity;
-    }
+    }*/
 
     @Override
     public boolean equals(Object o) {
@@ -422,8 +422,8 @@ public class EmployeeEntity {
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
-        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
+//        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
+//        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
         if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (zzmm != null ? !zzmm.equals(that.zzmm) : that.zzmm != null) return false;
         if (hyzk != null ? !hyzk.equals(that.hyzk) : that.hyzk != null) return false;
@@ -458,8 +458,8 @@ public class EmployeeEntity {
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (education != null ? education.hashCode() : 0);
-        result = 31 * result + (depId != null ? depId.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
+//        result = 31 * result + (depId != null ? depId.hashCode() : 0);
+//        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (zzmm != null ? zzmm.hashCode() : 0);
         result = 31 * result + (hyzk != null ? hyzk.hashCode() : 0);
@@ -494,8 +494,8 @@ public class EmployeeEntity {
                 ", email='" + email + '\'' +
                 ", phone=" + phone +
                 ", education='" + education + '\'' +
-                ", depId=" + depId +
-                ", unitId=" + unitId +
+//                ", depId=" + depId +
+//                ", unitId=" + unitId +
                 ", birthday=" + birthday +
                 ", zzmm='" + zzmm + '\'' +
                 ", hyzk='" + hyzk + '\'' +

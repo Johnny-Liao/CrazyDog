@@ -1,7 +1,9 @@
 package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
+import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.EmployeeEntity;
+import org.crazydog.domain.UnitEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -76,5 +78,14 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
     @Override
     public void deleteEntity(EmployeeEntity employeeEntity) {
         hibernateTemplate.delete(employeeEntity);
+    }
+
+    /**
+     * 通过employee获取到employee显示页面所需要的所有信息
+     * @param employeeEntity
+     */
+
+    public void getAllEmployeeMessage(EmployeeEntity employeeEntity) {
+        String hql =  "from EmployeeEntity left join DepartmentEntity left join UnitEntity";
     }
 }
