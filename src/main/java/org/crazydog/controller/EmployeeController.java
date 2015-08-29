@@ -28,7 +28,7 @@ public class EmployeeController {
     // eg : .../employee?pages=1
     // 处理pages参数，显示相应页数的所有人员信息
     @RequestMapping(method = RequestMethod.GET)
-    public String getEmployeeByPages(HttpServletRequest request) {
+    public String getEmployeeByPages(HttpServletRequest request, @RequestParam("page")String page) {
         request.setAttribute("employees", employeeService.getAllEntities());
         return "employeePage";
     }

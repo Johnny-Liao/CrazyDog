@@ -124,9 +124,6 @@ public abstract class Basedao<T> {
      * 支持分页查询hql查询
      * <p>
      * from table t where t.id =:id and t.name=:name
-     * map中应该这样添加
-     * map.put("id",Id);
-     * map.put("name",Name);
      *
      * @param hql  hql语句
      * @param page 分页中页数

@@ -75,4 +75,12 @@ public class EmployeeServiceImplTest {
     public void testShowEmployeeInfo() throws Exception {
 
     }
+
+    @Test
+    public  void getEmployeeByPage() {
+        List<Object[]> objects = employeeService.getEmployeeByPage(1);
+        for(Object object : objects) {
+            System.out.println(object);
+        }
+    }
 }
