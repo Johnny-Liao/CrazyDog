@@ -23,11 +23,35 @@ public class UnitController {
 
     @RequestMapping(value = "/unit", params = "page=unitManage")
     public String unitManage(HttpServletRequest request) {
-        System.out.println(unitService.getClass());
+//        System.out.println(unitService.getClass());
         List<UnitEntity> unitEntities = unitService.getAllEntities();
 
         request.setAttribute("unitEntities", unitEntities);
 
+        return "unitManage";
+    }
+
+    @RequestMapping(value = "/unit", params = "action=unitDelete")
+    public String deleteUnit(HttpServletRequest request) {
+        String unitId = request.getParameter("unitId");
+        UnitEntity unitEntity = new UnitEntity();
+        if (unitId != null) {
+            unitEntity.setId(Integer.valueOf(unitId));
+        }
+        unitService.deleteEntity(unitEntity);
+        //重新加载一次
+        return "unitManage";
+    }
+
+    @RequestMapping(value = "/unit", params = "action=unitModify")
+    public String modifyUnit(HttpServletRequest request) {
+        String unitId = request.getParameter("unitId");
+        UnitEntity unitEntity = new UnitEntity();
+        if (unitId != null) {
+            unitEntity.setId(Integer.valueOf(unitId));
+        }
+//        unitService.deleteEntity(unitEntity);
+        //重新加载一次
         return "unitManage";
     }
 }
