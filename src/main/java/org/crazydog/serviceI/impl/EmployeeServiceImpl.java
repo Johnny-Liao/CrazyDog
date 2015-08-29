@@ -56,10 +56,10 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param model
      * @return
      */
-    public List<EmployeeEntity> advanceSearch(SearchModel model) {
+/*    public List<EmployeeEntity> advanceSearch(SearchModel model) {
         String hql = model.advanceSearch();
         return employeedao.find(hql);
-    }
+    }*/
 
     /**
      * 添加实体

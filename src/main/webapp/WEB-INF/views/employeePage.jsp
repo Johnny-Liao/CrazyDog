@@ -51,25 +51,28 @@
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <c:forEach var="column" items="<%=ResourceString.contractExtensionRecordShow%>">
+                        <c:forEach var="column" items="<%=ResourceString.employeeShow%>">
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
                     <%--显示表内容--%>
                     <c:forEach var="entity" items="${employees}">
                         <tr>
-                            <%--员工编号	姓名	性别	身份证号	手机	最高学历	服务单位	服务部门	合同起始日	合同终止日   签约次数--%>
+                            <%--员工编号	姓名	性别	身份证号	手机	最高学历	服务单位	服务部门	合同起始日    合同终止日   签约次数--%>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.empName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.gender}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.idNum}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.tel}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitByUnitId.unitName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.departmentByDepId.deptName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractsById.contractStart}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractsById.contractEnd}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.departmentByDepId.deptName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.contractsById.contractStart}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                     value="${entity.contractsById.contractEnd}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractsById.length}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="合同变更"/></td>
+                            <td align="center" bgcolor="#ffffff"><a href="<%--<c:url value="#"/>--%>">操作</a></td>
                         </tr>
                     </c:forEach>
                 </table>
