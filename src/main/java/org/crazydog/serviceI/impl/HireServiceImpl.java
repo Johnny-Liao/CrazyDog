@@ -6,6 +6,7 @@ import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,10 +15,11 @@ import java.util.Map;
 /**
  * Created by never on 2015/8/26.
  */
+@Service
 public class HireServiceImpl implements BaseService<HireInfoEntity> {
 
     @Autowired
-    @Qualifier("hiredaoImpl")
+    @Qualifier("hireInfodaoImpl")
     private Basedao<HireInfoEntity> hiredao;
 
     /**
