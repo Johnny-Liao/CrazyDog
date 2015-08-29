@@ -79,13 +79,4 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
     public void deleteEntity(EmployeeEntity employeeEntity) {
         hibernateTemplate.delete(employeeEntity);
     }
-
-    /**
-     * 通过employee获取到employee显示页面所需要的所有信息
-     * @param employeeEntity
-     */
-
-    public void getAllEmployeeMessage(EmployeeEntity employeeEntity) {
-        String hql =  "from EmployeeEntity left join DepartmentEntity left join UnitEntity";
-    }
 }
