@@ -82,15 +82,15 @@ public class EmployeeEntity {
         this.nation = nation;
     }
 
-    private String tel;
+    private long tel;
 
     @Basic
     @Column(name = "tel")
-    public String getTel() {
+    public long getTel() {
         return tel;
     }
 
-    public void setTel(String tel) {
+    public void setTel(long tel) {
         this.tel = tel;
     }
 
@@ -130,38 +130,6 @@ public class EmployeeEntity {
         this.education = education;
     }
 
-    private UnitEntity unitEntity;
-    private DepartmentEntity departmentEntity;
-    private ContractEntity contractEntity;
-
-    @ManyToOne
-    @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
-    public UnitEntity getUnitEntity() {
-        return unitEntity;
-    }
-
-    public void setUnitEntity(UnitEntity unitEntity) {
-        this.unitEntity = unitEntity;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "dep_id", referencedColumnName = "id", nullable = false)
-    public DepartmentEntity getDepartmentEntity() {
-        return departmentEntity;
-    }
-
-    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
-        this.departmentEntity = departmentEntity;
-    }
-
-    @OneToOne(mappedBy = "employeeEntity")
-    public ContractEntity getContractEntity() {
-        return contractEntity;
-    }
-
-    public void setContractEntity(ContractEntity contractEntity) {
-        this.contractEntity = contractEntity;
-    }
 
     private Date birthday;
 
@@ -379,16 +347,6 @@ public class EmployeeEntity {
         this.reportCard = reportCard;
     }
 
-//    private ContractEntity contractEntityByEmp;
-//
-//    public ContractEntity getContractEntityByEmp() {
-//        return contractEntityByEmp;
-//    }
-//
-//    public void setContractEntityByEmp(ContractEntity contractEntityByEmp) {
-//        this.contractEntityByEmp = contractEntityByEmp;
-//    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -396,18 +354,21 @@ public class EmployeeEntity {
 
         EmployeeEntity that = (EmployeeEntity) o;
 
+        if (tel != that.tel) return false;
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (empCode != null ? !empCode.equals(that.empCode) : that.empCode != null) return false;
         if (empName != null ? !empName.equals(that.empName) : that.empName != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
         if (idNum != null ? !idNum.equals(that.idNum) : that.idNum != null) return false;
         if (nation != null ? !nation.equals(that.nation) : that.nation != null) return false;
-        if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (phone != null ? !phone.equals(that.phone) : that.phone != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
-//        if (depId != null ? !depId.equals(that.depId) : that.depId != null) return false;
-//        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
+        if (unitEntity != null ? !unitEntity.equals(that.unitEntity) : that.unitEntity != null) return false;
+        if (departmentEntity != null ? !departmentEntity.equals(that.departmentEntity) : that.departmentEntity != null)
+            return false;
+        if (contractEntity != null ? !contractEntity.equals(that.contractEntity) : that.contractEntity != null)
+            return false;
         if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (zzmm != null ? !zzmm.equals(that.zzmm) : that.zzmm != null) return false;
         if (hyzk != null ? !hyzk.equals(that.hyzk) : that.hyzk != null) return false;
@@ -425,9 +386,8 @@ public class EmployeeEntity {
         if (hukouAddress != null ? !hukouAddress.equals(that.hukouAddress) : that.hukouAddress != null) return false;
         if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
-        if (reportCard != null ? !reportCard.equals(that.reportCard) : that.reportCard != null) return false;
+        return !(reportCard != null ? !reportCard.equals(that.reportCard) : that.reportCard != null);
 
-        return true;
     }
 
     @Override
@@ -438,12 +398,13 @@ public class EmployeeEntity {
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
         result = 31 * result + (idNum != null ? idNum.hashCode() : 0);
         result = 31 * result + (nation != null ? nation.hashCode() : 0);
-        result = 31 * result + (tel != null ? tel.hashCode() : 0);
+        result = 31 * result + (int) (tel ^ (tel >>> 32));
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (education != null ? education.hashCode() : 0);
-//        result = 31 * result + (depId != null ? depId.hashCode() : 0);
-//        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
+        result = 31 * result + (unitEntity != null ? unitEntity.hashCode() : 0);
+        result = 31 * result + (departmentEntity != null ? departmentEntity.hashCode() : 0);
+        result = 31 * result + (contractEntity != null ? contractEntity.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (zzmm != null ? zzmm.hashCode() : 0);
         result = 31 * result + (hyzk != null ? hyzk.hashCode() : 0);
@@ -478,8 +439,9 @@ public class EmployeeEntity {
                 ", email='" + email + '\'' +
                 ", phone=" + phone +
                 ", education='" + education + '\'' +
-//                ", depId=" + depId +
-//                ", unitId=" + unitId +
+                ", unitEntity=" + unitEntity +
+                ", departmentEntity=" + departmentEntity +
+                ", contractEntity=" + contractEntity +
                 ", birthday=" + birthday +
                 ", zzmm='" + zzmm + '\'' +
                 ", hyzk='" + hyzk + '\'' +
@@ -500,4 +462,39 @@ public class EmployeeEntity {
                 ", reportCard='" + reportCard + '\'' +
                 '}';
     }
+
+    private UnitEntity unitEntity;
+    private DepartmentEntity departmentEntity;
+    private ContractEntity contractEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
+    public UnitEntity getUnitEntity() {
+        return unitEntity;
+    }
+
+    public void setUnitEntity(UnitEntity unitEntity) {
+        this.unitEntity = unitEntity;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "dep_id", referencedColumnName = "id", nullable = false)
+    public DepartmentEntity getDepartmentEntity() {
+        return departmentEntity;
+    }
+
+    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+        this.departmentEntity = departmentEntity;
+    }
+
+    //获取认识信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
+    @OneToOne(mappedBy = "employeeEntity", fetch = FetchType.EAGER)
+    public ContractEntity getContractEntity() {
+        return contractEntity;
+    }
+
+    public void setContractEntity(ContractEntity contractEntity) {
+        this.contractEntity = contractEntity;
+    }
+
 }

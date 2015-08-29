@@ -38,7 +38,7 @@ public class EmployeedaoImplTest {
         employeeEntity.setGender("男");
         employeeEntity.setIdNum("421111111111111111");
         employeeEntity.setNation("汉族");
-        employeeEntity.setTel("11111111111");
+        employeeEntity.setTel(11111111111L);
         employeeEntity.setEmail("1360000@qq.com");
 
         UnitEntity unitEntity = new UnitEntity();
@@ -53,6 +53,7 @@ public class EmployeedaoImplTest {
         employeeEntity.setZzmm("群众");
 
         employeedaoImpl.addEntity(employeeEntity);
+        System.out.println(employeeEntity);
     }
 
     @Test
