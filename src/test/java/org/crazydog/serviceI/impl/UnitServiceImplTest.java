@@ -23,12 +23,14 @@ public class UnitServiceImplTest {
 
     @Test
     public void testGetUnitByName() throws Exception {
-
+        List<UnitEntity> unitEntities = unitService.getUnitByName("农大");
+        System.out.println(unitEntities.size());
     }
 
     @Test
     public void testGetUnitByCode() throws Exception {
-
+        UnitEntity nd = unitService.getUnitByCode("ND");
+        System.out.println(nd);
     }
 
     @Test

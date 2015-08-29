@@ -1,7 +1,11 @@
 package org.crazydog.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by never on 2015/8/29.
@@ -421,4 +425,38 @@ public class ResumeEntity {
                 ", reportCard='" + reportCard + '\'' +
                 '}';
     }
+
+    private Collection<ResumeEduEntity> resumeEduById;
+    private Collection<ResumeFamilyEntity> resumeFamilyById;
+    private Collection<ResumeJobsEntity> resumeJobsById;
+
+    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    public Collection<ResumeEduEntity> getResumeEduById() {
+        return resumeEduById;
+    }
+
+    public void setResumeEduById(Collection<ResumeEduEntity> resumeEduById) {
+        this.resumeEduById = resumeEduById;
+    }
+
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    public Collection<ResumeFamilyEntity> getResumeFamilyById() {
+        return resumeFamilyById;
+    }
+
+    public void setResumeFamilyById(Collection<ResumeFamilyEntity> resumeFamilyById) {
+        this.resumeFamilyById = resumeFamilyById;
+    }
+
+    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    public Collection<ResumeJobsEntity> getResumeJobsById() {
+        return resumeJobsById;
+    }
+
+    public void setResumeJobsById(Collection<ResumeJobsEntity> resumeJobsById) {
+        this.resumeJobsById = resumeJobsById;
+    }
+
 }
