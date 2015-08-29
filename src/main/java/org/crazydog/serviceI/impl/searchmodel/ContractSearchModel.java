@@ -38,4 +38,29 @@ public class ContractSearchModel extends SearchModel {
             buffer.append(" pos.leaveDate<='" + hireFinish + "' and");
         return buffer;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        ContractSearchModel that = (ContractSearchModel) o;
+
+        if (!empCode.equals(that.empCode)) return false;
+        if (!name.equals(that.name)) return false;
+        if (!unitName.equals(that.unitName)) return false;
+        if (!hireStart.equals(that.hireStart)) return false;
+        return hireFinish.equals(that.hireFinish);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = empCode.hashCode();
+        result = 31 * result + name.hashCode();
+        result = 31 * result + unitName.hashCode();
+        result = 31 * result + hireStart.hashCode();
+        result = 31 * result + hireFinish.hashCode();
+        return result;
+    }
 }

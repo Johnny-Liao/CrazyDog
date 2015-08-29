@@ -1,6 +1,8 @@
 package org.crazydog.serviceI.impl.searchmodel;
 
 /**
+ * 使用模板设计模式完成hql语句生成。
+ * 提供缓存功能
  * Created by never on 2015/8/28.
  */
 public abstract class SearchModel {
@@ -8,16 +10,17 @@ public abstract class SearchModel {
 
     public abstract StringBuffer advanceSearch();
 
-    private SearchModel cache;
+    /**
+     * 缓存对象，用来缓存上一次查询
+     */
+    private static SearchModel cache = null;
 
-    public String process(SearchModel model) {
-        //如果和上次生成的hql语句一样，则不用在构建一次
-        if (model.equals(cache))
-            return buffer.toString();
-        if (cache == null && model != null)
-            cache = model;
-        //否则清空上次的内容
-        buffer.delete(0, buffer.length());
+    /**
+     * 因为每个advanceSearch()方法返回的语句最后都会多一个'and'字符串，所以在这里统一处理
+     *
+     * @return
+     */
+    public String process() {
         StringBuffer hql = advanceSearch();
         if (hql == null)
             return null;
@@ -25,6 +28,19 @@ public abstract class SearchModel {
     }
 
     public static String advanceSearch(SearchModel searchModel) {
-        return searchModel.process(searchModel);
+
+        //不能传递空值进来
+        if (searchModel == null)
+            return null;
+
+        //如果searchModel和上次查询的对象equals，则直接使用上一次生成的
+        if (searchModel.equals(cache))
+            return cache.buffer.toString();
+
+        String hql = searchModel.process();
+
+        //将缓存设为最近的一次查询
+        cache = searchModel;
+        return hql;
     }
 }

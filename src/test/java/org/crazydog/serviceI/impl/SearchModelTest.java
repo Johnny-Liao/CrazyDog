@@ -4,7 +4,7 @@ import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.junit.Test;
 
-public class SearchModelModelTest {
+public class SearchModelTest {
 
     //	private SearchModel model;
 //    @Autowired
@@ -29,9 +29,10 @@ public class SearchModelModelTest {
 //        }
         SearchModel searchModel = new UnitSearchModel(null, null);
         SearchModel searchModel2 = new UnitSearchModel("ND", "农大");
-        String s = UnitSearchModel.advanceSearch(searchModel);
+        SearchModel searchModel3 = new UnitSearchModel("ND", "农大");
+        String s = searchModel.advanceSearch(searchModel2);
         System.out.println(s);
-        s = searchModel.advanceSearch(searchModel2);
+        s = searchModel.advanceSearch(searchModel3);
         System.out.println(s);
     }
 

@@ -35,17 +35,15 @@ public class UnitSearchModel extends SearchModel {
 
         UnitSearchModel that = (UnitSearchModel) o;
 
-        if (unitCode != null ? !unitCode.equals(that.unitCode) : that.unitCode != null) return false;
-        if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
-        return !(buffer != null ? !buffer.equals(that.buffer) : that.buffer != null);
+        if (!unitCode.equals(that.unitCode)) return false;
+        return unitName.equals(that.unitName);
 
     }
 
     @Override
     public int hashCode() {
-        int result = unitCode != null ? unitCode.hashCode() : 0;
-        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
-        result = 31 * result + (buffer != null ? buffer.hashCode() : 0);
+        int result = unitCode.hashCode();
+        result = 31 * result + unitName.hashCode();
         return result;
     }
 }
