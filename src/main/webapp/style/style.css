@@ -36,7 +36,7 @@ a{ text-decoration:none;}
 .subNav:hover{color:#db0000; background:#f2f0f0;}
 .currentDd{color:#db0000;background:#f2f0f0;}
 .navContent{display: none;border-bottom:solid 1px #e5e3da; padding:5px 0;}
-.navContent li{ background:url(../images/icon.png) no-repeat 36%; padding-left:10px;}
+.navContent li{ background:url(../images/icon.jpg) no-repeat 36%; padding-left:10px;}
 .navContent li a{display:block;heighr:32px;text-align:center;font-size:14px;line-height:32px;color:#333;}
 .navContent li a:hover{color:#db0000;}
 /*右侧*/
