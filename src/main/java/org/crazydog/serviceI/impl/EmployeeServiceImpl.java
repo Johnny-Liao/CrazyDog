@@ -3,9 +3,9 @@ package org.crazydog.serviceI.impl;
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -15,7 +15,7 @@ import java.util.Objects;
 /**
  * Created by never on 2015/8/26.
  */
-@Service
+//@Service
 public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     @Autowired
@@ -32,7 +32,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
     public List<EmployeeEntity> getEmployeeByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
-        return employeedao.find("from EmployeeEntity emp where emp.empName like :name", map);
+        return (List<EmployeeEntity>) employeedao.find("from EmployeeEntity emp where emp.empName like :name", map);
     }
 
     /**
@@ -44,7 +44,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
     public EmployeeEntity getEmployeeByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
-        List<EmployeeEntity> list = employeedao.find("from EmployeeEntity emp where emp.empCode like :code", map);
+        List<EmployeeEntity> list = (List<EmployeeEntity>) employeedao.find("from EmployeeEntity emp where emp.empCode like :code", map);
         if (list != null && list.size() == 1)
             return list.get(0);
         return null;
@@ -56,10 +56,11 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param model
      * @return
      */
-/*    public List<EmployeeEntity> advanceSearch(SearchModel model) {
-        String hql = model.advanceSearch();
+
+    public List<?> advanceSearch(SearchModel model) {
+        String hql = model.advanceSearch(model);
         return employeedao.find(hql);
-    }*/
+    }
 
     /**
      * 添加实体
@@ -101,7 +102,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     /**
      * 获得所有的实体类
-     * <p>
+     * <p/>
      * 注意这里获得的所有实体在底层关闭了延迟加载，所以会导致所有的字段都取出来
      * 所以他的所有外键都为非空
      *
@@ -123,6 +124,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     /**
      * 显示页面所需获得的信息
+     *
      * @return
      */
     public List<Objects> showEmployeeInfo() {

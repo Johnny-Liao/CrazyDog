@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 /**
  * Created by never on 2015/8/28.
  */
-public class PositionChangeModel extends Search<PositionChangeModel> {
+public class PositionChangeModel extends SearchModel {
 
     //职位这个字段在应用中基本没用到，基本没有指定一个职员的职位
     //    private String position;
@@ -25,19 +25,8 @@ public class PositionChangeModel extends Search<PositionChangeModel> {
     }
 
     @Override
-    public String advanceSearch(PositionChangeModel model) {
-        //记录缓存数据
-        if (model.equals(this))
-            return buffer.toString();
+    public StringBuffer advanceSearch() {
 
-//        this.position = model.position;
-        this.name = model.name;
-        this.unitName = model.unitName;
-        this.hireStart = model.hireStart;
-        this.hirefinish = model.hirefinish;
-        this.leaveInfo = model.leaveInfo;
-
-        buffer.delete(0, buffer.capacity());
         if (/*position == null &&*/ hireStart == null && hirefinish == null)
             return null;
         buffer.append("from EmployeeEntity emp,PositionChangeEntity pos where ");
@@ -53,9 +42,8 @@ public class PositionChangeModel extends Search<PositionChangeModel> {
             buffer.append(" pos.joinDate>='" + hireStart + "' and");
         if (hirefinish != null)
             buffer.append(" emp.leaveDate<='" + hirefinish + "' and");
-        buffer.delete(buffer.capacity() - 3, buffer.capacity());
 
-        return buffer.toString();
+        return buffer;
     }
 
     @Override
@@ -65,21 +53,21 @@ public class PositionChangeModel extends Search<PositionChangeModel> {
 
         PositionChangeModel that = (PositionChangeModel) o;
 
-        if (hireStart != null ? !hireStart.equals(that.hireStart) : that.hireStart != null) return false;
-        if (hirefinish != null ? !hirefinish.equals(that.hirefinish) : that.hirefinish != null) return false;
-        if (leaveInfo != null ? !leaveInfo.equals(that.leaveInfo) : that.leaveInfo != null) return false;
-        if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
-        return !(name != null ? !name.equals(that.name) : that.name != null);
+        if (!hireStart.equals(that.hireStart)) return false;
+        if (!hirefinish.equals(that.hirefinish)) return false;
+        if (!leaveInfo.equals(that.leaveInfo)) return false;
+        if (!unitName.equals(that.unitName)) return false;
+        return name.equals(that.name);
 
     }
 
     @Override
     public int hashCode() {
-        int result = hireStart != null ? hireStart.hashCode() : 0;
-        result = 31 * result + (hirefinish != null ? hirefinish.hashCode() : 0);
-        result = 31 * result + (leaveInfo != null ? leaveInfo.hashCode() : 0);
-        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
-        result = 31 * result + (name != null ? name.hashCode() : 0);
+        int result = hireStart.hashCode();
+        result = 31 * result + hirefinish.hashCode();
+        result = 31 * result + leaveInfo.hashCode();
+        result = 31 * result + unitName.hashCode();
+        result = 31 * result + name.hashCode();
         return result;
     }
 }

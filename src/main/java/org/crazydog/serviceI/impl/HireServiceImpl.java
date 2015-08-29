@@ -1,7 +1,7 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.HireEntity;
+import org.crazydog.domain.HireInfoEntity;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +14,11 @@ import java.util.Map;
 /**
  * Created by never on 2015/8/26.
  */
-public class HireServiceImpl implements BaseService<HireEntity> {
+public class HireServiceImpl implements BaseService<HireInfoEntity> {
 
     @Autowired
     @Qualifier("hiredaoImpl")
-    private Basedao<HireEntity> hiredao;
+    private Basedao<HireInfoEntity> hiredao;
 
     /**
      * 通过简历实体获得录取实体
@@ -26,10 +26,10 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      * @param resumeEntity
      * @return
      */
-    public HireEntity getHireEntityByResume(ResumeEntity resumeEntity) {
+    public HireInfoEntity getHireInfoEntityByResume(ResumeEntity resumeEntity) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("resumeId", resumeEntity.getId());
-        List<HireEntity> list = hiredao.find("from HireEntity hire where hire.resumeId=:resumeId", map);
+        List<HireInfoEntity> list = (List<HireInfoEntity>) hiredao.find("from HireInfoEntity hire where hire.resumeId=:resumeId", map);
         if (list != null && list.size() == 1)
             return list.get(0);
         return null;
@@ -40,7 +40,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      *
      * @param hireEntity 实体对象
      */
-    public void addEntity(HireEntity hireEntity) {
+    public void addEntity(HireInfoEntity hireEntity) {
         hiredao.addEntity(hireEntity);
     }
 
@@ -49,7 +49,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      *
      * @param hireEntity 实体对象
      */
-    public void modifyEntity(HireEntity hireEntity) {
+    public void modifyEntity(HireInfoEntity hireEntity) {
         hiredao.modifyEntity(hireEntity);
     }
 
@@ -59,7 +59,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      * @param id 实体对象的id
      * @return
      */
-    public HireEntity loadEntity(int id) {
+    public HireInfoEntity loadEntity(int id) {
         return hiredao.loadEntity(id);
     }
 
@@ -69,7 +69,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      * @param id 实体对象的id
      * @return
      */
-    public HireEntity getEntity(int id) {
+    public HireInfoEntity getEntity(int id) {
         return hiredao.getEntity(id);
     }
 
@@ -78,7 +78,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      *
      * @return
      */
-    public List<HireEntity> getAllEntities() {
+    public List<HireInfoEntity> getAllEntities() {
         return hiredao.getAllEntities();
     }
 
@@ -88,7 +88,7 @@ public class HireServiceImpl implements BaseService<HireEntity> {
      * @param hireEntity 实体对象
      * @return
      */
-    public void deleteEntity(HireEntity hireEntity) {
+    public void deleteEntity(HireInfoEntity hireEntity) {
         hiredao.deleteEntity(hireEntity);
     }
 }

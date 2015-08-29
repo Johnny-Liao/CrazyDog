@@ -7,11 +7,10 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * Created by never on 2015/8/25.
+ * Created by never on 2015/8/29.
  */
 @Component
 public class UnitdaoImpl extends Basedao<UnitEntity> {
-
     /**
      * 添加实体
      *

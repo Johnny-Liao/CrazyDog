@@ -1,18 +1,18 @@
 package org.crazydog.domain;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/29.
  */
 @Entity
 @Table(name = "resume_edu", schema = "", catalog = "crazydog")
 public class ResumeEduEntity {
     private Integer id;
     private Integer resumeId;
-    private Timestamp startTime;
-    private Timestamp endTime;
+    private Date startTime;
+    private Date endTime;
     private String school;
     private String discipline;
 
@@ -39,21 +39,21 @@ public class ResumeEduEntity {
 
     @Basic
     @Column(name = "start_time")
-    public Timestamp getStartTime() {
+    public Date getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Timestamp startTime) {
+    public void setStartTime(Date startTime) {
         this.startTime = startTime;
     }
 
     @Basic
     @Column(name = "end_time")
-    public Timestamp getEndTime() {
+    public Date getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Timestamp endTime) {
+    public void setEndTime(Date endTime) {
         this.endTime = endTime;
     }
 
@@ -103,5 +103,17 @@ public class ResumeEduEntity {
         result = 31 * result + (school != null ? school.hashCode() : 0);
         result = 31 * result + (discipline != null ? discipline.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ResumeEduEntity{" +
+                "id=" + id +
+                ", resumeId=" + resumeId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", school='" + school + '\'' +
+                ", discipline='" + discipline + '\'' +
+                '}';
     }
 }

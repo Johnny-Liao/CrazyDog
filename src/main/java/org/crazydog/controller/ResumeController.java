@@ -5,13 +5,8 @@ import org.crazydog.serviceI.impl.ResumeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
-import antlr.collections.List;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
@@ -26,15 +21,15 @@ public class ResumeController {
 	
 	@RequestMapping(params="getAllmes")
 	public String getAllmes(HttpServletRequest request){
-		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+//		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 //		java.util.List<ResumeEntity>
-		request.setAttribute("resumes", resumes);
-		Iterator<ResumeEntity> it = resumes.iterator();
-		while(it.hasNext()){
-			ResumeEntity a = it.next();
-			System.out.println(a.getAddress());
-			System.out.println(a.getHireById());
-		}
+//		request.setAttribute("resumes", resumes);
+//		Iterator<ResumeEntity> it = resumes.iterator();
+//		while(it.hasNext()){
+//			ResumeEntity a = it.next();
+//			System.out.println(a.getAddress());
+//			System.out.println(a.getHireById());
+//		}
 		return "resume";
 	}
 	@RequestMapping("/modelSearch")

@@ -2,8 +2,6 @@ package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ResumeEntity;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
@@ -77,7 +75,7 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
      * @param name 指定查询的名字
      * @return 指定名字的简历实例
      */
-    public List<ResumeEntity> getEntity(String name) {
+    public List<?> getEntityByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
         return find("from ResumeEntity resume where resume.name=:name", map);
