@@ -57,7 +57,7 @@ public class DepartmentdaoImplTest {
     @Test
     public void testModifyDepartment() throws Exception {
         DepartmentEntity departmentEntity = new DepartmentEntity();
-        departmentEntity.setId(10);
+        departmentEntity.setId(11);
         UnitEntity unitEntity = new UnitEntity();
         unitEntity.setId(2);
         departmentEntity.setUnitByUnitId(unitEntity);

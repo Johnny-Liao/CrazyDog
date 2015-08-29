@@ -73,7 +73,6 @@ public class ContractEntity {
         ContractEntity that = (ContractEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-//        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
         if (contractStart != null ? !contractStart.equals(that.contractStart) : that.contractStart != null)
             return false;
         if (contractEnd != null ? !contractEnd.equals(that.contractEnd) : that.contractEnd != null) return false;
@@ -84,7 +83,6 @@ public class ContractEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-//        result = 31 * result + (empId != null ? empId.hashCode() : 0);
         result = 31 * result + (contractStart != null ? contractStart.hashCode() : 0);
         result = 31 * result + (contractEnd != null ? contractEnd.hashCode() : 0);
         return result;

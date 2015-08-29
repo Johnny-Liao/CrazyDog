@@ -13,7 +13,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 public class UnitdaoImplTest {
     ApplicationContext applicationContext;
 
-    Basedao unitdaoImpl;
+    Basedao<UnitEntity> unitdaoImpl;
 
     @Before
     public void before() {
@@ -23,7 +23,7 @@ public class UnitdaoImplTest {
 
     @Test
     public void testGetUnit() {
-        UnitEntity unitEntity = (UnitEntity) unitdaoImpl.getEntity(2);
+        UnitEntity unitEntity = unitdaoImpl.getEntity(2);
         System.out.println(unitEntity);
     }
 
