@@ -68,7 +68,7 @@ public class ResumeSearchModel extends SearchModel {
 
         ResumeSearchModel that = (ResumeSearchModel) o;
 
-        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (!name.equals(that.name)) return false;
         if (highestEdu != that.highestEdu) return false;
         return luquState == that.luquState;
 
@@ -76,9 +76,9 @@ public class ResumeSearchModel extends SearchModel {
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (highestEdu != null ? highestEdu.hashCode() : 0);
-        result = 31 * result + (luquState != null ? luquState.hashCode() : 0);
+        int result = name.hashCode();
+        result = 31 * result + highestEdu.hashCode();
+        result = 31 * result + luquState.hashCode();
         return result;
     }
 }
