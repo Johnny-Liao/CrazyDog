@@ -1,5 +1,6 @@
-package org.crazydog.daoI;
+package org.crazydog.daoI.impl;
 
+import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ResumeFamilyEntity;
 import org.springframework.stereotype.Component;
 
