@@ -9,6 +9,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "employee", schema = "", catalog = "crazydog")
 public class EmployeeEntity {
+
     private Integer id;
 
     @Id
@@ -466,6 +467,7 @@ public class EmployeeEntity {
     private UnitEntity unitEntity;
     private DepartmentEntity departmentEntity;
     private ContractEntity contractEntity;
+    private PositionLeaveEntity positionLeaveEntity;
 
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
@@ -487,7 +489,7 @@ public class EmployeeEntity {
         this.departmentEntity = departmentEntity;
     }
 
-    //获取认识信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
+    //获取人员信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
     @OneToOne(mappedBy = "employeeEntity", fetch = FetchType.EAGER)
     public ContractEntity getContractEntity() {
         return contractEntity;
@@ -497,4 +499,12 @@ public class EmployeeEntity {
         this.contractEntity = contractEntity;
     }
 
+    @OneToOne
+    public PositionLeaveEntity getPositionLeaveEntity() {
+        return positionLeaveEntity;
+    }
+
+    public void setPositionLeaveEntity(PositionLeaveEntity positionLeaveEntity) {
+        this.positionLeaveEntity = positionLeaveEntity;
+    }
 }

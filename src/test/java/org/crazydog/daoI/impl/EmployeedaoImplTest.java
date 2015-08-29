@@ -22,19 +22,14 @@ public class EmployeedaoImplTest {
     @Before
     public void before() {
         applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
-        employeedaoImpl = (Basedao) applicationContext.getBean("employeedaoImpl");
-    }
-
-    @Test
-    public void testGetEmployeeByName() throws Exception {
-
+        employeedaoImpl = applicationContext.getBean("employeedaoImpl", Basedao.class);
     }
 
     @Test
     public void testAddEntity() throws Exception {
         EmployeeEntity employeeEntity = new EmployeeEntity();
-        employeeEntity.setEmpCode("zy");
-        employeeEntity.setEmpName("邹杨");
+        employeeEntity.setEmpCode("z");
+        employeeEntity.setEmpName("邹");
         employeeEntity.setGender("男");
         employeeEntity.setIdNum("421111111111111111");
         employeeEntity.setNation("汉族");
@@ -58,17 +53,20 @@ public class EmployeedaoImplTest {
 
     @Test
     public void testModifyEntity() throws Exception {
-
+        EmployeeEntity employeeEntity = employeedaoImpl.getEntity(1);
+        employeeEntity.setEmpName("lalala");
+        employeedaoImpl.modifyEntity(employeeEntity);
+        System.out.println(employeeEntity = employeedaoImpl.getEntity(1));
     }
 
     @Test
     public void testLoadEntity() throws Exception {
-
     }
 
     @Test
     public void testGetEntity() throws Exception {
-
+        EmployeeEntity employeeEntity = employeedaoImpl.getEntity(1);
+        System.out.println(employeeEntity);
     }
 
     @Test
@@ -80,6 +78,7 @@ public class EmployeedaoImplTest {
 
     @Test
     public void testDeleteEntity() throws Exception {
-
+        EmployeeEntity employeeEntity = employeedaoImpl.getEntity(1);
+        employeedaoImpl.deleteEntity(employeeEntity);
     }
 }

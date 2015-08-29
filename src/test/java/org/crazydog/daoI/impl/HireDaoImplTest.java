@@ -24,7 +24,8 @@ public class HireDaoImplTest {
         /*
         测试通过resumeid获取录取信息
          */
-        HireInfodaoImpl hireInfoDaoImpl = (HireInfodaoImpl) applicationContext.getBean("hireInfodaoImpl");
+
+        HireInfodaoImpl hireInfoDaoImpl = (HireInfodaoImpl) applicationContext.getBean("hireInfoDaoImpl");
        HireInfoEntity h =  hireInfoDaoImpl.getEntitybyreumeid(6);
         h.setState("录取");
         hireInfoDaoImpl.modifyEntity(h);
