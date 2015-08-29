@@ -1,5 +1,8 @@
 package org.crazydog.domain;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.sql.Date;
 
@@ -15,6 +18,7 @@ public class HireInfoEntity {
     private String comment;
     private Date operateTime;
     private String operator;
+    private ResumeEntity resumeEntity;
 
     @Id
     @Column(name = "id")
@@ -76,6 +80,16 @@ public class HireInfoEntity {
     public void setOperator(String operator) {
         this.operator = operator;
     }
+
+    @Fetch(FetchMode.SELECT)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="resumeEntity",insertable=true,unique=true)
+    public ResumeEntity getResumeEntity() {
+            return resumeEntity;
+        }
+    public void setResumeEntity(ResumeEntity resumeEntity) {
+            this.resumeEntity = resumeEntity;
+       }
 
     @Override
     public boolean equals(Object o) {

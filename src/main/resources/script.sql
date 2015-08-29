@@ -134,7 +134,7 @@ CREATE TABLE `employee` (
 
 #录取信息表
 CREATE TABLE `hire_info` (
-  `id`            INT                 NOT NULL,
+  `id`            INT                 NOT NULL AUTO_INCREMENT,
   `resume_id`     INT                 NOT NULL COMMENT '简历id',
   `STATE`         ENUM('录取', '未录取', '等待审核') CHARACTER SET utf8 NOT NULL COMMENT '简历状态',
   `COMMENT`       VARCHAR(255)        NULL COMMENT '备注',

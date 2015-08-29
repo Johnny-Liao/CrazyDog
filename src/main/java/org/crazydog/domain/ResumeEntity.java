@@ -74,15 +74,15 @@ public class ResumeEntity {
         this.idNum = idNum;
     }
 
-    private Integer tel;
+    private Long tel;
 
     @Basic
     @javax.persistence.Column(name = "tel")
-    public Integer getTel() {
+    public Long getTel() {
         return tel;
     }
 
-    public void setTel(Integer tel) {
+    public void setTel(Long tel) {
         this.tel = tel;
     }
 
@@ -429,8 +429,10 @@ public class ResumeEntity {
     private Collection<ResumeEduEntity> resumeEduById;
     private Collection<ResumeFamilyEntity> resumeFamilyById;
     private Collection<ResumeJobsEntity> resumeJobsById;
+    private HireInfoEntity hireById;
 
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeEduEntity> getResumeEduById() {
         return resumeEduById;
     }
@@ -440,7 +442,7 @@ public class ResumeEntity {
     }
 
     @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
     }
@@ -450,7 +452,7 @@ public class ResumeEntity {
     }
 
     @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;
     }
@@ -459,4 +461,14 @@ public class ResumeEntity {
         this.resumeJobsById = resumeJobsById;
     }
 
+
+    @Fetch(FetchMode.SELECT)
+    @OneToOne(cascade = { CascadeType.ALL},mappedBy = "resumeEntity",fetch = FetchType.EAGER)
+    public HireInfoEntity getHireById() {
+        return hireById;
+    }
+
+    public void setHireById(HireInfoEntity hireById) {
+            this.hireById = hireById;
+        }
 }

@@ -64,6 +64,17 @@ public class HireInfoDaoImpl extends Basedao<HireInfoEntity> {
     public HireInfoEntity loadEntity(int id) {
         return hibernateTemplate.load(HireInfoEntity.class, id);
     }
-   
+
+    /**
+     * 通过resume的id获取录取信息
+     *
+     * @return id 查询的resume的id
+     */
+    public HireInfoEntity getEntitybyreumeid(int resume_id) {
+        String hql = "from HireInfoEntity hire where hire.resumeId='" + resume_id
+                + "'";
+        return (HireInfoEntity) find(hql).get(0);
+    }
+
 
 }

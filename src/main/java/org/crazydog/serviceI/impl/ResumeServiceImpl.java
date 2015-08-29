@@ -1,14 +1,16 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
+import org.crazydog.daoI.impl.*;
 import org.crazydog.domain.*;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -17,23 +19,23 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
 	@Qualifier("resumedaoImpl")
-	private Basedao<ResumeEntity> resumedao;
+	private ResumedaoImpl resumedao;
 
 	@Autowired
-	@Qualifier("hireDaoImpl")
-	private Basedao<HireInfoEntity> hiredao;
+	@Qualifier("hireInfoDaoImpl")
+	private HireInfoDaoImpl hiredao;
 	
 	@Autowired
 	@Qualifier("resumeEduDaoImpl")
-	private Basedao<ResumeEduEntity> resumeEdudao;
+	private ResumeEduDaoImpl resumeEdudao;
 	
 	@Autowired
 	@Qualifier("resumeFamilyDaoImpl")
-	private Basedao<ResumeFamilyEntity> resumeFamilydao;
+	private ResumeFamilyDaoImpl resumeFamilydao;
 	
 	@Autowired
 	@Qualifier("resumeJobsDaoImpl")
-	private Basedao<ResumeJobsEntity> resumeJobsdao;
+	private ResumeJobsDaoImpl resumeJobsdao;
 	
 	
 	@Autowired
@@ -87,7 +89,8 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param id
 	 *            简历的id
-	 * @return load方法加载的一个简历对象
+	 * @return
+	 * 				load方法加载的一个简历对象
 	 */
 	public ResumeEntity loadEntity(int id) {
 		return  resumedao.loadEntity(id);
@@ -98,7 +101,8 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param id
 	 *            简历的id
-	 * @return get方法加载的一个简历对象
+	 * @return
+	 *      	get方法加载的一个简历对象
 	 */
 	public ResumeEntity getEntity(int id) {
 		return (ResumeEntity) resumedao.getEntity(id);
@@ -106,14 +110,12 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	/**
 	 * 通过姓名,学历,录取状体查询简历,所以，返回一个list对象 调用的是父类的find实现方法
-	 * 
+	 *
 	 * @param hql
 	 *            根据获取到的查询条件生成的hql语句
-	 * @return 符合条件的list对象
+	 * @return
+	 * 			符合条件的list对象
 	 */
-//	public List<ResumeEntity> queryEntity(String hql) {
-//		return (List<ResumeEntity>)resumedao.find(hql);
-//	}
 	public List<Object> queryEntity(String hql) {
 		return hibernateTemplate.getSessionFactory().openSession().createQuery(hql).list();
 	}
@@ -131,34 +133,41 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	}
 
 	/**
-	 * 通过resume的id获取录取信息
-	 *
-	 * @return id 查询的resume的id
-	 */
-	public HireInfoEntity getEntitybyreumeid(int resume_id) {
-		String hql = "from HireInfoEntity hire where hire.resumeId='" + resume_id
-				+ "'";
-		return (HireInfoEntity) hiredao.find(hql).get(0);
-	}
-
-	/**
 	 * 批量录取
 	 * 
 	 * @param id
 	 *            保存的是选择界面所有被选择的复选框的value，值是相应的简历对象的id
-	 * @return 符合条件的list对象
+	 *
 	 */
-	public void batchHire(int[] id) {
+	public void batchHire(int[] id,String name) {
 		for (int i : id) {
-			HireInfoEntity hire = new HireInfoEntity();
-			hire.setId(i);
+			HireInfoEntity hire = hiredao.getEntitybyreumeid(i);
 			hire.setState("录取");
+			hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
+			hire.setOperator(name);
+			hiredao.modifyEntity(hire);
+		}
+	}
+	/**
+	 * 批量取消录取
+	 *
+	 * @param id
+	 *            保存的是选择界面所有被选择的复选框的value，值是相应的简历对象的id
+	 * @param  name
+	 * 			操作人姓名
+	 */
+	public void batchcancelHire(int[] id,String name) {
+		for (int i : id) {
+			HireInfoEntity hire = hiredao.getEntitybyreumeid(i);
+			hire.setState("未录取");
+			hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
+			hire.setOperator(name);
 			hiredao.modifyEntity(hire);
 		}
 	}
 
 	/**
-	 * 取消录取
+	 * 通过录取信息的id取消录取
 	 * 
 	 * @param id
 	 *            被取消的id
@@ -169,9 +178,27 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	public void cancelHire(int id, String name) {
 		HireInfoEntity hire = (HireInfoEntity) hiredao.getEntity(id);
 		hire.setState("通过");
-		String s = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
-				.format(new Date());
-//		hire.setOperateTime(Timestamp.valueOf(s));
+//		String s = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
+//				.format(new Date());
+		hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
+		hire.setOperator(name);
+		hiredao.modifyEntity(hire);
+	}
+	/**
+	 * 通过简历的id取消录取
+	 *
+	 * @param resumeid
+	 *            被取消的简历的id
+	 * @param name
+	 *            操作人的姓名
+	 *
+	 */
+	public void cancelHireByresumeId(int resumeid, String name) {
+		HireInfoEntity hire = (HireInfoEntity) hiredao.getEntitybyreumeid(resumeid);
+		hire.setState("未录取");
+//		String s = new SimpleDateFormat("yyyy-MM-dd")
+//				.format(new Date());
+		hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
 		hire.setOperator(name);
 		hiredao.modifyEntity(hire);
 	}
@@ -180,7 +207,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param id
 	 *            教育经历的id
-	 * @return
 	 */
 	public void deleteEdu(int id) {
 		resumeEdudao.deleteEntity(resumeEdudao.getEntity(id));
@@ -190,7 +216,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param t
 	 *            一条教育经历记录
-	 * @return
 	 */
 	public void addEdu(ResumeEduEntity t) {
 		resumeEdudao.addEntity(t);
@@ -200,7 +225,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param id
 	 *            教育经历的id
-	 * @return
 	 */
 	public void deleteFamily(int id) {
 		resumeFamilydao.deleteEntity(resumeFamilydao.getEntity(id));
@@ -210,7 +234,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param t
 	 *            一条教育经历记录
-	 * @return
 	 */
 	public void addFamily(ResumeFamilyEntity t) {
 		resumeFamilydao.addEntity(t);
@@ -220,7 +243,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param id
 	 *            教育经历的id
-	 * @return
 	 */
 	public void deleteJob(int id) {
 		resumeJobsdao.deleteEntity(resumeJobsdao.getEntity(id));
@@ -230,7 +252,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @param t
 	 *            一条教育经历记录
-	 * @return
 	 */
 	public void addJob(ResumeJobsEntity t) {
 		resumeJobsdao.addEntity(t);
@@ -263,6 +284,5 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	public List<ResumeFamilyEntity> queryAllFamily() {
 		return (List<ResumeFamilyEntity>)resumeFamilydao.getAllEntities();
 	}
-	
-	
+
 }
