@@ -23,20 +23,20 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	private ResumedaoImpl resumedao;
 
 	@Autowired
-	@Qualifier("hireInfoDaoImpl")
-	private HireInfoDaoImpl hiredao;
+	@Qualifier("hireInfodaoImpl")
+	private HireInfodaoImpl hiredao;
 	
 	@Autowired
-	@Qualifier("resumeEduDaoImpl")
-	private ResumeEduDaoImpl resumeEdudao;
+	@Qualifier("resumeEdudaoImpl")
+	private ResumeEdudaoImpl resumeEdudao;
 	
 	@Autowired
-	@Qualifier("resumeFamilyDaoImpl")
-	private ResumeFamilyDaoImpl resumeFamilydao;
+	@Qualifier("resumeFamilydaoImpl")
+	private ResumeFamilydaoImpl resumeFamilydao;
 	
 	@Autowired
-	@Qualifier("resumeJobsDaoImpl")
-	private ResumeJobsDaoImpl resumeJobsdao;
+	@Qualifier("resumeJobsdaoImpl")
+	private ResumeJobsdaoImpl resumeJobsdao;
 	
 	
 	@Autowired

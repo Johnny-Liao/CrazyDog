@@ -30,7 +30,10 @@ public class EmployeeServiceImplTest {
 
     @Test
     public void testGetEmployeeByCode() throws Exception {
-
+        List<EmployeeEntity> employeeEntities = employeeService.getEmployeeByCode("4");
+        for (EmployeeEntity entity : employeeEntities) {
+            System.out.println(entity);
+        }
     }
 
     @Test

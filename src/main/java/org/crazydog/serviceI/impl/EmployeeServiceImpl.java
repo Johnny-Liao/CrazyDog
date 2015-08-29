@@ -42,12 +42,12 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param code
      * @return
      */
-    public EmployeeEntity getEmployeeByCode(String code) {
+    public List<EmployeeEntity> getEmployeeByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
         List<EmployeeEntity> list = (List<EmployeeEntity>) employeedao.find("from EmployeeEntity emp where emp.empCode like :code", map);
-        if (list != null && list.size() == 1)
-            return list.get(0);
+        if (list != null)
+            return list;
         return null;
     }
 
@@ -121,17 +121,5 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      */
     public void deleteEntity(EmployeeEntity employeeEntity) {
         employeedao.deleteEntity(employeeEntity);
-    }
-
-    /**
-     * 显示页面所需获得的信息
-     *
-     * @return
-     */
-    public List<Objects> showEmployeeInfo() {
-        String sql = "SELECT e.id, e.emp_name,e.gender,r.id_card,e.tel,r.education, d.dept_name, u.unit_name,c.contract_start,c.contract_end,c.length\n" +
-                "FROM employee AS e LEFT JOIN resume AS r on r.id = e.resume_id LEFT JOIN department AS d ON d.id = e.dep_id LEFT JOIN unit AS u ON u.id = e.unit_id LEFT JOIN contract AS c ON e.id = c.emp_id;";
-        employeedao.find(sql);
-        return null;
     }
 }
