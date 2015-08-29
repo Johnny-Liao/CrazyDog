@@ -6,13 +6,15 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate4.HibernateTemplate;
+
+import java.sql.Date;
 
 /**
  * Created by never on 2015/8/24.
  */
 public class ContractdaoImplTest {
     ApplicationContext applicationContext;
+    Basedao<ContractEntity> contractdaoImpl;
 
     @Before
     public void before() {
@@ -21,14 +23,18 @@ public class ContractdaoImplTest {
 
     @Test
     public void testSpring() {
-        HibernateTemplate hibernateTemplate = (HibernateTemplate) applicationContext.getBean("hibernateTemplate");
-        System.out.println(hibernateTemplate);
+//        HibernateTemplate hibernateTemplate = (HibernateTemplate) applicationContext.getBean("hibernateTemplate");
+//        System.out.println(hibernateTemplate);
     }
 
     @Test
     public void testaddEntity() {
-        Basedao contractdaoImpl = (Basedao) applicationContext.getBean("contractdaoImpl");
+        contractdaoImpl = (Basedao) applicationContext.getBean("contractdaoImpl");
         ContractEntity contractEntity = new ContractEntity();
+        contractEntity.setContractEnd(new Date(System.currentTimeMillis()));
+        contractEntity.setContractStart(new Date(System.currentTimeMillis() - 100000));
+        contractdaoImpl.addEntity(contractEntity);
+        contractEntity.setEmpId(1);
         System.out.println(contractdaoImpl);
     }
 

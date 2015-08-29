@@ -13,7 +13,6 @@ public class PositionLeaveEntity {
     private Integer empCode;
     private String name;
     private Date leaveDate;
-    private String leaveInfo;
     private String leaveComment;
 
     @Id
@@ -57,15 +56,6 @@ public class PositionLeaveEntity {
         this.leaveDate = leaveDate;
     }
 
-    @Basic
-    @Column(name = "leave_info")
-    public String getLeaveInfo() {
-        return leaveInfo;
-    }
-
-    public void setLeaveInfo(String leaveInfo) {
-        this.leaveInfo = leaveInfo;
-    }
 
     @Basic
     @Column(name = "leave_comment")
@@ -88,7 +78,6 @@ public class PositionLeaveEntity {
         if (empCode != null ? !empCode.equals(that.empCode) : that.empCode != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (leaveDate != null ? !leaveDate.equals(that.leaveDate) : that.leaveDate != null) return false;
-        if (leaveInfo != null ? !leaveInfo.equals(that.leaveInfo) : that.leaveInfo != null) return false;
         if (leaveComment != null ? !leaveComment.equals(that.leaveComment) : that.leaveComment != null) return false;
 
         return true;
@@ -100,7 +89,6 @@ public class PositionLeaveEntity {
         result = 31 * result + (empCode != null ? empCode.hashCode() : 0);
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (leaveDate != null ? leaveDate.hashCode() : 0);
-        result = 31 * result + (leaveInfo != null ? leaveInfo.hashCode() : 0);
         result = 31 * result + (leaveComment != null ? leaveComment.hashCode() : 0);
         return result;
     }
@@ -112,7 +100,6 @@ public class PositionLeaveEntity {
                 ", empCode=" + empCode +
                 ", name='" + name + '\'' +
                 ", leaveDate=" + leaveDate +
-                ", leaveInfo='" + leaveInfo + '\'' +
                 ", leaveComment='" + leaveComment + '\'' +
                 '}';
     }

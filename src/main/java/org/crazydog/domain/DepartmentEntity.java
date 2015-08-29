@@ -90,8 +90,8 @@ public class DepartmentEntity {
                 "id=" + id +
                 ", deptName='" + deptName + '\'' +
                 ", unitByUnitId=" + unitByUnitId +
-                ", positionChangesByBeforeId=" + positionChangesByBeforeId +
-                ", positionChangesByAfterId=" + positionChangesByAfterId +
+//                ", positionChangesByBeforeId=" + positionChangesByBeforeId +
+//                ", positionChangesByAfterId=" + positionChangesByAfterId +
                 '}';
     }
 }
