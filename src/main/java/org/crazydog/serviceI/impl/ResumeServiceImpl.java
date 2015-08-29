@@ -1,24 +1,18 @@
 package org.crazydog.serviceI.impl;
 
-import java.sql.Timestamp;
+import org.crazydog.daoI.Basedao;
+import org.crazydog.domain.*;
+import org.crazydog.serviceI.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.orm.hibernate4.HibernateTemplate;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.tmp.HireEntity;
-import org.crazydog.domain.tmp.ResumeEduEntity;
-import org.crazydog.domain.tmp.ResumeEntity;
-import org.crazydog.domain.tmp.ResumeFamilyEntity;
-import org.crazydog.domain.tmp.ResumeJobsEntity;
-import org.crazydog.serviceI.BaseService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.orm.hibernate4.HibernateTemplate;
-import org.springframework.stereotype.Service;
-
-@Service
+//@Service
 public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
@@ -27,7 +21,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
 	@Qualifier("hireDaoImpl")
-	private Basedao<HireEntity> hiredao;
+	private Basedao<HireInfoEntity> hiredao;
 	
 	@Autowired
 	@Qualifier("resumeEduDaoImpl")
@@ -141,10 +135,10 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *
 	 * @return id 查询的resume的id
 	 */
-	public HireEntity getEntitybyreumeid(int resume_id) {
-		String hql = "from HireEntity hire where hire.resumeId='" + resume_id
+	public HireInfoEntity getEntitybyreumeid(int resume_id) {
+		String hql = "from HireInfoEntity hire where hire.resumeId='" + resume_id
 				+ "'";
-		return (HireEntity) hiredao.find(hql).get(0);
+		return (HireInfoEntity) hiredao.find(hql).get(0);
 	}
 
 	/**
@@ -156,7 +150,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 */
 	public void batchHire(int[] id) {
 		for (int i : id) {
-			HireEntity hire = new HireEntity();
+			HireInfoEntity hire = new HireInfoEntity();
 			hire.setId(i);
 			hire.setState("录取");
 			hiredao.modifyEntity(hire);
@@ -173,11 +167,11 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 * 
 	 */
 	public void cancelHire(int id, String name) {
-		HireEntity hire = (HireEntity) hiredao.getEntity(id);
+		HireInfoEntity hire = (HireInfoEntity) hiredao.getEntity(id);
 		hire.setState("通过");
 		String s = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 				.format(new Date());
-		hire.setOperateTime(Timestamp.valueOf(s));
+//		hire.setOperateTime(Timestamp.valueOf(s));
 		hire.setOperator(name);
 		hiredao.modifyEntity(hire);
 	}

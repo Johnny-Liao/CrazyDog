@@ -1,22 +1,19 @@
 package org.crazydog.domain;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 
 /**
  * Created by never on 2015/8/29.
  */
 @Entity
-@javax.persistence.Table(name = "employee", schema = "", catalog = "crazydog")
+@Table(name = "employee", schema = "", catalog = "crazydog")
 public class EmployeeEntity {
     private Integer id;
 
     @Id
-    @javax.persistence.Column(name = "id")
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -28,7 +25,7 @@ public class EmployeeEntity {
     private String empCode;
 
     @Basic
-    @javax.persistence.Column(name = "emp_code")
+    @Column(name = "emp_code")
     public String getEmpCode() {
         return empCode;
     }
@@ -40,7 +37,7 @@ public class EmployeeEntity {
     private String empName;
 
     @Basic
-    @javax.persistence.Column(name = "emp_name")
+    @Column(name = "emp_name")
     public String getEmpName() {
         return empName;
     }
@@ -52,7 +49,7 @@ public class EmployeeEntity {
     private String gender;
 
     @Basic
-    @javax.persistence.Column(name = "gender")
+    @Column(name = "gender")
     public String getGender() {
         return gender;
     }
@@ -64,7 +61,7 @@ public class EmployeeEntity {
     private String idNum;
 
     @Basic
-    @javax.persistence.Column(name = "id_num")
+    @Column(name = "id_num")
     public String getIdNum() {
         return idNum;
     }
@@ -76,7 +73,7 @@ public class EmployeeEntity {
     private String nation;
 
     @Basic
-    @javax.persistence.Column(name = "nation")
+    @Column(name = "nation")
     public String getNation() {
         return nation;
     }
@@ -88,7 +85,7 @@ public class EmployeeEntity {
     private Integer tel;
 
     @Basic
-    @javax.persistence.Column(name = "tel")
+    @Column(name = "tel")
     public Integer getTel() {
         return tel;
     }
@@ -100,7 +97,7 @@ public class EmployeeEntity {
     private String email;
 
     @Basic
-    @javax.persistence.Column(name = "email")
+    @Column(name = "email")
     public String getEmail() {
         return email;
     }
@@ -112,7 +109,7 @@ public class EmployeeEntity {
     private Integer phone;
 
     @Basic
-    @javax.persistence.Column(name = "phone")
+    @Column(name = "phone")
     public Integer getPhone() {
         return phone;
     }
@@ -124,7 +121,7 @@ public class EmployeeEntity {
     private String education;
 
     @Basic
-    @javax.persistence.Column(name = "education")
+    @Column(name = "education")
     public String getEducation() {
         return education;
     }
@@ -136,7 +133,7 @@ public class EmployeeEntity {
     private Integer depId;
 
     @Basic
-    @javax.persistence.Column(name = "dep_id")
+    @Column(name = "dep_id")
     public Integer getDepId() {
         return depId;
     }
@@ -148,7 +145,7 @@ public class EmployeeEntity {
     private Integer unitId;
 
     @Basic
-    @javax.persistence.Column(name = "unit_id")
+    @Column(name = "unit_id")
     public Integer getUnitId() {
         return unitId;
     }
@@ -160,7 +157,7 @@ public class EmployeeEntity {
     private Date birthday;
 
     @Basic
-    @javax.persistence.Column(name = "birthday")
+    @Column(name = "birthday")
     public Date getBirthday() {
         return birthday;
     }
@@ -172,7 +169,7 @@ public class EmployeeEntity {
     private String zzmm;
 
     @Basic
-    @javax.persistence.Column(name = "zzmm")
+    @Column(name = "zzmm")
     public String getZzmm() {
         return zzmm;
     }
@@ -184,7 +181,7 @@ public class EmployeeEntity {
     private String hyzk;
 
     @Basic
-    @javax.persistence.Column(name = "hyzk")
+    @Column(name = "hyzk")
     public String getHyzk() {
         return hyzk;
     }
@@ -196,7 +193,7 @@ public class EmployeeEntity {
     private Date workTime;
 
     @Basic
-    @javax.persistence.Column(name = "work_time")
+    @Column(name = "work_time")
     public Date getWorkTime() {
         return workTime;
     }
@@ -208,7 +205,7 @@ public class EmployeeEntity {
     private String jjsp;
 
     @Basic
-    @javax.persistence.Column(name = "jjsp")
+    @Column(name = "jjsp")
     public String getJjsp() {
         return jjsp;
     }
@@ -220,7 +217,7 @@ public class EmployeeEntity {
     private String profession;
 
     @Basic
-    @javax.persistence.Column(name = "profession")
+    @Column(name = "profession")
     public String getProfession() {
         return profession;
     }
@@ -232,7 +229,7 @@ public class EmployeeEntity {
     private Integer zipCode;
 
     @Basic
-    @javax.persistence.Column(name = "zip_code")
+    @Column(name = "zip_code")
     public Integer getZipCode() {
         return zipCode;
     }
@@ -244,7 +241,7 @@ public class EmployeeEntity {
     private String homeTown;
 
     @Basic
-    @javax.persistence.Column(name = "home_town")
+    @Column(name = "home_town")
     public String getHomeTown() {
         return homeTown;
     }
@@ -256,7 +253,7 @@ public class EmployeeEntity {
     private String foreignLang;
 
     @Basic
-    @javax.persistence.Column(name = "foreign_lang")
+    @Column(name = "foreign_lang")
     public String getForeignLang() {
         return foreignLang;
     }
@@ -268,7 +265,7 @@ public class EmployeeEntity {
     private String specialty;
 
     @Basic
-    @javax.persistence.Column(name = "specialty")
+    @Column(name = "specialty")
     public String getSpecialty() {
         return specialty;
     }
@@ -280,7 +277,7 @@ public class EmployeeEntity {
     private String yysp;
 
     @Basic
-    @javax.persistence.Column(name = "yysp")
+    @Column(name = "yysp")
     public String getYysp() {
         return yysp;
     }
@@ -292,7 +289,7 @@ public class EmployeeEntity {
     private Integer jndj;
 
     @Basic
-    @javax.persistence.Column(name = "jndj")
+    @Column(name = "jndj")
     public Integer getJndj() {
         return jndj;
     }
@@ -304,7 +301,7 @@ public class EmployeeEntity {
     private Double height;
 
     @Basic
-    @javax.persistence.Column(name = "height")
+    @Column(name = "height")
     public Double getHeight() {
         return height;
     }
@@ -316,7 +313,7 @@ public class EmployeeEntity {
     private String hukou;
 
     @Basic
-    @javax.persistence.Column(name = "hukou")
+    @Column(name = "hukou")
     public String getHukou() {
         return hukou;
     }
@@ -328,7 +325,7 @@ public class EmployeeEntity {
     private String hukouAddress;
 
     @Basic
-    @javax.persistence.Column(name = "hukou_address")
+    @Column(name = "hukou_address")
     public String getHukouAddress() {
         return hukouAddress;
     }
@@ -340,7 +337,7 @@ public class EmployeeEntity {
     private Integer homePhone;
 
     @Basic
-    @javax.persistence.Column(name = "home_phone")
+    @Column(name = "home_phone")
     public Integer getHomePhone() {
         return homePhone;
     }
@@ -352,7 +349,7 @@ public class EmployeeEntity {
     private String address;
 
     @Basic
-    @javax.persistence.Column(name = "address")
+    @Column(name = "address")
     public String getAddress() {
         return address;
     }
@@ -364,7 +361,7 @@ public class EmployeeEntity {
     private String reportCard;
 
     @Basic
-    @javax.persistence.Column(name = "report_card")
+    @Column(name = "report_card")
     public String getReportCard() {
         return reportCard;
     }
@@ -372,6 +369,16 @@ public class EmployeeEntity {
     public void setReportCard(String reportCard) {
         this.reportCard = reportCard;
     }
+
+//    private ContractEntity contractEntityByEmp;
+//
+//    public ContractEntity getContractEntityByEmp() {
+//        return contractEntityByEmp;
+//    }
+//
+//    public void setContractEntityByEmp(ContractEntity contractEntityByEmp) {
+//        this.contractEntityByEmp = contractEntityByEmp;
+//    }
 
     @Override
     public boolean equals(Object o) {
@@ -410,13 +417,8 @@ public class EmployeeEntity {
         if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (reportCard != null ? !reportCard.equals(that.reportCard) : that.reportCard != null) return false;
-        if (contractsById != null ? !contractsById.equals(that.contractsById) : that.contractsById != null)
-            return false;
-        if (departmentByDepId != null ? !departmentByDepId.equals(that.departmentByDepId) : that.departmentByDepId != null)
-            return false;
-        if (unitByUnitId != null ? !unitByUnitId.equals(that.unitByUnitId) : that.unitByUnitId != null) return false;
-        return !(positionsById != null ? !positionsById.equals(that.positionsById) : that.positionsById != null);
 
+        return true;
     }
 
     @Override
@@ -451,60 +453,42 @@ public class EmployeeEntity {
         result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (reportCard != null ? reportCard.hashCode() : 0);
-        result = 31 * result + (contractsById != null ? contractsById.hashCode() : 0);
-        result = 31 * result + (departmentByDepId != null ? departmentByDepId.hashCode() : 0);
-        result = 31 * result + (unitByUnitId != null ? unitByUnitId.hashCode() : 0);
-        result = 31 * result + (positionsById != null ? positionsById.hashCode() : 0);
         return result;
     }
 
-    private ContractEntity contractsById;
-    private DepartmentEntity departmentByDepId;
-    private UnitEntity unitByUnitId;
-    private Collection<PositionChangeEntity> positionsById;
-
-    //获取认识信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
-    @OneToOne(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
-    public ContractEntity getContractsById() {
-        return contractsById;
+    @Override
+    public String toString() {
+        return "EmployeeEntity{" +
+                "id=" + id +
+                ", empCode='" + empCode + '\'' +
+                ", empName='" + empName + '\'' +
+                ", gender='" + gender + '\'' +
+                ", idNum='" + idNum + '\'' +
+                ", nation='" + nation + '\'' +
+                ", tel=" + tel +
+                ", email='" + email + '\'' +
+                ", phone=" + phone +
+                ", education='" + education + '\'' +
+                ", depId=" + depId +
+                ", unitId=" + unitId +
+                ", birthday=" + birthday +
+                ", zzmm='" + zzmm + '\'' +
+                ", hyzk='" + hyzk + '\'' +
+                ", workTime=" + workTime +
+                ", jjsp='" + jjsp + '\'' +
+                ", profession='" + profession + '\'' +
+                ", zipCode=" + zipCode +
+                ", homeTown='" + homeTown + '\'' +
+                ", foreignLang='" + foreignLang + '\'' +
+                ", specialty='" + specialty + '\'' +
+                ", yysp='" + yysp + '\'' +
+                ", jndj=" + jndj +
+                ", height=" + height +
+                ", hukou='" + hukou + '\'' +
+                ", hukouAddress='" + hukouAddress + '\'' +
+                ", homePhone=" + homePhone +
+                ", address='" + address + '\'' +
+                ", reportCard='" + reportCard + '\'' +
+                '}';
     }
-
-    public void setContractsById(ContractEntity contractsById) {
-        this.contractsById = contractsById;
-    }
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "dep_id", referencedColumnName = "id", nullable = false)
-    public DepartmentEntity getDepartmentByDepId() {
-        return departmentByDepId;
-    }
-
-    public void setDepartmentByDepId(DepartmentEntity departmentByDepId) {
-        this.departmentByDepId = departmentByDepId;
-    }
-
-    //单位就不用取，因为取部门的时候，顺便会取单位的信息，这里在去就是重复查询
-    @ManyToOne
-    @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
-    public UnitEntity getUnitByUnitId() {
-        return unitByUnitId;
-    }
-
-    public void setUnitByUnitId(UnitEntity unitByUnitId) {
-        this.unitByUnitId = unitByUnitId;
-    }
-
-    //这里添加FetchMode.SUBSELECT，是因为Hibernate默认级联抓取的级数为4级，
-    //前面已经多次将FetchType设为EAGER，当这里已经默认已经不允许再取了，这是防止造成大量的数据访问
-    //这里的解决方法就是将重新发送一条语句来查，之前所有的值都是在一条语句中使用左连接进行查询
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "employeeByEmpId", fetch = FetchType.EAGER)
-    public Collection<PositionChangeEntity> getPositionsById() {
-        return positionsById;
-    }
-
-    public void setPositionsById(Collection<PositionChangeEntity> positionsById) {
-        this.positionsById = positionsById;
-    }
-
 }

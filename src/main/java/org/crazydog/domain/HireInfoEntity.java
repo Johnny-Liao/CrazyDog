@@ -18,6 +18,7 @@ public class HireInfoEntity {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -102,5 +103,17 @@ public class HireInfoEntity {
         result = 31 * result + (operateTime != null ? operateTime.hashCode() : 0);
         result = 31 * result + (operator != null ? operator.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "HireInfoEntity{" +
+                "id=" + id +
+                ", resumeId=" + resumeId +
+                ", state='" + state + '\'' +
+                ", comment='" + comment + '\'' +
+                ", operateTime=" + operateTime +
+                ", operator='" + operator + '\'' +
+                '}';
     }
 }

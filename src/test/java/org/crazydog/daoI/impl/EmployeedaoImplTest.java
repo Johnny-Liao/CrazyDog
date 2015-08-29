@@ -1,7 +1,7 @@
 package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.tmp.EmployeeEntity;
+import org.crazydog.domain.EmployeeEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

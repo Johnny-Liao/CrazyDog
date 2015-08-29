@@ -2,12 +2,11 @@ package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.DepartmentdaoImpl;
-import org.crazydog.domain.tmp.DepartmentEntity;
-import org.crazydog.domain.tmp.UnitEntity;
+import org.crazydog.domain.DepartmentEntity;
+import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
 import java.util.List;
@@ -16,7 +15,7 @@ import java.util.Map;
 /**
  * Created by never on 2015/8/24.
  */
-@Service
+//@Service
 public class UnitServiceImpl implements BaseService<UnitEntity> {
 
     @Autowired
@@ -38,7 +37,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     public List<UnitEntity> getUnitByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
-        return unitdao.find("from UnitEntity unit where unit.unitName=:name", map);
+        return (List<UnitEntity>) unitdao.find("from UnitEntity unit where unit.unitName=:name", map);
     }
 
     /**
@@ -50,7 +49,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     public UnitEntity getUnitByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
-        List<UnitEntity> entities = unitdao.find("from UnitEntity unit where unit.unitCode=:code", map);
+        List<UnitEntity> entities = (List<UnitEntity>) unitdao.find("from UnitEntity unit where unit.unitCode=:code", map);
         //因为code字段有unique约束，所以只会有一个结果
         if (entities != null && entities.size() == 1)
             return entities.get(0);
@@ -65,8 +64,8 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @param departmentEntities 所有的部门
      */
     public void addDepartments(UnitEntity unitEntity, List<DepartmentEntity> departmentEntities) {
-        if (departmentEntities != null && departmentEntities.size() != 0)
-            departmentdao.addEntities(unitEntity, departmentEntities);
+//        if (departmentEntities != null && departmentEntities.size() != 0)
+//            departmentdao.addEntities(unitEntity, departmentEntities);
     }
 
     /**

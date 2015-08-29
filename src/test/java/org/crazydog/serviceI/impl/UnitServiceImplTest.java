@@ -1,6 +1,6 @@
 package org.crazydog.serviceI.impl;
 
-import org.crazydog.domain.tmp.UnitEntity;
+import org.crazydog.domain.UnitEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

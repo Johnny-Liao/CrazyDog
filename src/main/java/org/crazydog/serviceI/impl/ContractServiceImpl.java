@@ -1,18 +1,17 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.tmp.ContractEntity;
+import org.crazydog.domain.ContractEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 /**
  * Created by never on 2015/8/23.
  */
-@Service
+//@Service
 public class ContractServiceImpl implements BaseService<ContractEntity> {
 
 //    @Autowired

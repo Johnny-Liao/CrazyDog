@@ -1,7 +1,7 @@
 package org.crazydog.domain;
 
 import javax.persistence.*;
-import java.util.Set;
+import java.util.Collection;
 
 /**
  * Created by never on 2015/8/29.
@@ -12,12 +12,13 @@ public class UnitEntity {
     private Integer id;
     private String unitCode;
     private String unitName;
-    private Set<DepartmentEntity> departmentsById;
-    private PositionChangeEntity positionChangesById;
-    private PositionChangeEntity positionChangesById_0;
+    private Collection<DepartmentEntity> departmentsById;
+    private Collection<PositionChangeEntity> positionChangesById;
+    private Collection<PositionChangeEntity> positionChangesByAfterId;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -69,29 +70,41 @@ public class UnitEntity {
     }
 
     @OneToMany(mappedBy = "unitByUnitId")
-    public Set<DepartmentEntity> getDepartmentsById() {
+    public Collection<DepartmentEntity> getDepartmentsById() {
         return departmentsById;
     }
 
-    public void setDepartmentsById(Set<DepartmentEntity> departmentsById) {
+    public void setDepartmentsById(Collection<DepartmentEntity> departmentsById) {
         this.departmentsById = departmentsById;
     }
 
-    @OneToOne(mappedBy = "unitByBeforUnitId")
-    public PositionChangeEntity getPositionChangesById() {
+    @OneToMany(mappedBy = "unitByBeforUnitId")
+    public Collection<PositionChangeEntity> getPositionChangesById() {
         return positionChangesById;
     }
 
-    public void setPositionChangesById(PositionChangeEntity positionChangesById) {
+    public void setPositionChangesById(Collection<PositionChangeEntity> positionChangesById) {
         this.positionChangesById = positionChangesById;
     }
 
-    @OneToOne(mappedBy = "unitByAfterUnitId")
-    public PositionChangeEntity getPositionChangesById_0() {
-        return positionChangesById_0;
+    @OneToMany(mappedBy = "unitByAfterUnitId")
+    public Collection<PositionChangeEntity> getPositionChangesByAfterId() {
+        return positionChangesByAfterId;
     }
 
-    public void setPositionChangesById_0(PositionChangeEntity positionChangesById_0) {
-        this.positionChangesById_0 = positionChangesById_0;
+    public void setPositionChangesByAfterId(Collection<PositionChangeEntity> positionChangesByAfterId) {
+        this.positionChangesByAfterId = positionChangesByAfterId;
+    }
+
+    @Override
+    public String toString() {
+        return "UnitEntity{" +
+                "id=" + id +
+                ", unitCode='" + unitCode + '\'' +
+                ", unitName='" + unitName + '\'' +
+//                ", departmentsById=" + departmentsById +
+//                ", positionChangesById=" + positionChangesById +
+//                ", positionChangesByAfterId=" + positionChangesByAfterId +
+                '}';
     }
 }

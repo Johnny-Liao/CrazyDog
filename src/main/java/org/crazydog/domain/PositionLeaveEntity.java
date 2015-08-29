@@ -18,6 +18,7 @@ public class PositionLeaveEntity {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -102,5 +103,17 @@ public class PositionLeaveEntity {
         result = 31 * result + (leaveInfo != null ? leaveInfo.hashCode() : 0);
         result = 31 * result + (leaveComment != null ? leaveComment.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "PositionLeaveEntity{" +
+                "id=" + id +
+                ", empCode=" + empCode +
+                ", name='" + name + '\'' +
+                ", leaveDate=" + leaveDate +
+                ", leaveInfo='" + leaveInfo + '\'' +
+                ", leaveComment='" + leaveComment + '\'' +
+                '}';
     }
 }

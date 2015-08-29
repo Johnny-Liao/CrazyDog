@@ -1,10 +1,7 @@
 package org.crazydog.domain;
 
-import org.crazydog.domain.tmp.ContractChangeEntity;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 
 /**
  * Created by never on 2015/8/29.
@@ -16,9 +13,11 @@ public class ContractEntity {
     private Integer empId;
     private Date contractStart;
     private Date contractEnd;
+//    private EmployeeEntity employeeEntity;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -36,6 +35,15 @@ public class ContractEntity {
     public void setEmpId(Integer empId) {
         this.empId = empId;
     }
+
+//    @OneToOne(mappedBy = "contractEntityByEmp")
+//    public EmployeeEntity getEmployeeEntity() {
+//        return employeeEntity;
+//    }
+//
+//    public void setEmployeeEntity(EmployeeEntity employeeEntity) {
+//        this.employeeEntity = employeeEntity;
+//    }
 
     @Basic
     @Column(name = "contract_start")
@@ -65,7 +73,7 @@ public class ContractEntity {
         ContractEntity that = (ContractEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
+//        if (empId != null ? !empId.equals(that.empId) : that.empId != null) return false;
         if (contractStart != null ? !contractStart.equals(that.contractStart) : that.contractStart != null)
             return false;
         if (contractEnd != null ? !contractEnd.equals(that.contractEnd) : that.contractEnd != null) return false;
@@ -76,31 +84,19 @@ public class ContractEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (empId != null ? empId.hashCode() : 0);
+//        result = 31 * result + (empId != null ? empId.hashCode() : 0);
         result = 31 * result + (contractStart != null ? contractStart.hashCode() : 0);
         result = 31 * result + (contractEnd != null ? contractEnd.hashCode() : 0);
         return result;
     }
 
-    private EmployeeEntity employeeByEmpId;
-    private Collection<ContractChangeEntity> contractChangesById;
-
-    @ManyToOne
-    @JoinColumn(name = "emp_id", referencedColumnName = "id", nullable = false)
-    public EmployeeEntity getEmployeeByEmpId() {
-        return employeeByEmpId;
-    }
-
-    public void setEmployeeByEmpId(EmployeeEntity employeeByEmpId) {
-        this.employeeByEmpId = employeeByEmpId;
-    }
-
-    @OneToMany(mappedBy = "contractByContractId")
-    public Collection<ContractChangeEntity> getContractChangesById() {
-        return contractChangesById;
-    }
-
-    public void setContractChangesById(Collection<ContractChangeEntity> contractChangesById) {
-        this.contractChangesById = contractChangesById;
+    @Override
+    public String toString() {
+        return "ContractEntity{" +
+                "id=" + id +
+                ", empId=" + empId +
+                ", contractStart=" + contractStart +
+                ", contractEnd=" + contractEnd +
+                '}';
     }
 }

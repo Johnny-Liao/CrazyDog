@@ -18,6 +18,7 @@ public class ResumeJobsEntity {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -102,5 +103,17 @@ public class ResumeJobsEntity {
         result = 31 * result + (departmennt != null ? departmennt.hashCode() : 0);
         result = 31 * result + (post != null ? post.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ResumeJobsEntity{" +
+                "id=" + id +
+                ", resumeId=" + resumeId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", departmennt='" + departmennt + '\'' +
+                ", post='" + post + '\'' +
+                '}';
     }
 }

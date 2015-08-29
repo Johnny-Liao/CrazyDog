@@ -11,14 +11,13 @@ import java.util.Collection;
 public class DepartmentEntity {
     private Integer id;
     private String deptName;
-    private Integer unitId;
     private UnitEntity unitByUnitId;
-    private PositionChangeEntity positionChangesById;
-    private PositionChangeEntity positionChangesById_0;
-    private Collection<EmployeeEntity> employeesById;
+    private Collection<PositionChangeEntity> positionChangesByBeforeId;
+    private Collection<PositionChangeEntity> positionChangesByAfterId;
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -37,16 +36,6 @@ public class DepartmentEntity {
         this.deptName = deptName;
     }
 
-    @Basic
-    @Column(name = "unit_id")
-    public Integer getUnitId() {
-        return unitId;
-    }
-
-    public void setUnitId(Integer unitId) {
-        this.unitId = unitId;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,7 +45,6 @@ public class DepartmentEntity {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (deptName != null ? !deptName.equals(that.deptName) : that.deptName != null) return false;
-        if (unitId != null ? !unitId.equals(that.unitId) : that.unitId != null) return false;
 
         return true;
     }
@@ -65,7 +53,6 @@ public class DepartmentEntity {
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (deptName != null ? deptName.hashCode() : 0);
-        result = 31 * result + (unitId != null ? unitId.hashCode() : 0);
         return result;
     }
 
@@ -79,30 +66,32 @@ public class DepartmentEntity {
         this.unitByUnitId = unitByUnitId;
     }
 
-    @OneToOne(mappedBy = "departmentByBeforDeptId")
-    public PositionChangeEntity getPositionChangesById() {
-        return positionChangesById;
+    @OneToMany(mappedBy = "departmentByBeforDeptId")
+    public Collection<PositionChangeEntity> getPositionChangesByBeforeId() {
+        return positionChangesByBeforeId;
     }
 
-    public void setPositionChangesById(PositionChangeEntity positionChangesById) {
-        this.positionChangesById = positionChangesById;
+    public void setPositionChangesByBeforeId(Collection<PositionChangeEntity> positionChangesByBeforeId) {
+        this.positionChangesByBeforeId = positionChangesByBeforeId;
     }
 
-    @OneToOne(mappedBy = "departmentByAfterDeptId")
-    public PositionChangeEntity getPositionChangesById_0() {
-        return positionChangesById_0;
+    @OneToMany(mappedBy = "departmentByAfterDeptId")
+    public Collection<PositionChangeEntity> getPositionChangesByAfterId() {
+        return positionChangesByAfterId;
     }
 
-    public void setPositionChangesById_0(PositionChangeEntity positionChangesById_0) {
-        this.positionChangesById_0 = positionChangesById_0;
+    public void setPositionChangesByAfterId(Collection<PositionChangeEntity> positionChangesByAfterId) {
+        this.positionChangesByAfterId = positionChangesByAfterId;
     }
 
-    @OneToMany(mappedBy = "departmentByDepId")
-    public Collection<EmployeeEntity> getEmployeesById() {
-        return employeesById;
-    }
-
-    public void setEmployeesById(Collection<EmployeeEntity> employeesById) {
-        this.employeesById = employeesById;
+    @Override
+    public String toString() {
+        return "DepartmentEntity{" +
+                "id=" + id +
+                ", deptName='" + deptName + '\'' +
+                ", unitByUnitId=" + unitByUnitId +
+                ", positionChangesByBeforeId=" + positionChangesByBeforeId +
+                ", positionChangesByAfterId=" + positionChangesByAfterId +
+                '}';
     }
 }

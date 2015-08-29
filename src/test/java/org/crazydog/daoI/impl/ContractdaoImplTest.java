@@ -1,7 +1,7 @@
 package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.tmp.ContractEntity;
+import org.crazydog.domain.ContractEntity;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;

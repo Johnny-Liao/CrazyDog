@@ -1,6 +1,6 @@
 package org.crazydog.controller;
 
-import org.crazydog.domain.tmp.ResumeEntity;
+import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.impl.ResumeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,15 +21,15 @@ public class ResumeController {
 	
 	@RequestMapping(params="getAllmes")
 	public String getAllmes(HttpServletRequest request){
-		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+//		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 //		java.util.List<ResumeEntity>
-		request.setAttribute("resumes", resumes);
-		Iterator<ResumeEntity> it = resumes.iterator();
-		while(it.hasNext()){
-			ResumeEntity a = it.next();
-			System.out.println(a.getAddress());
-			System.out.println(a.getHireById());
-		}
+//		request.setAttribute("resumes", resumes);
+//		Iterator<ResumeEntity> it = resumes.iterator();
+//		while(it.hasNext()){
+//			ResumeEntity a = it.next();
+//			System.out.println(a.getAddress());
+//			System.out.println(a.getHireById());
+//		}
 		return "resume";
 	}
 	@RequestMapping("/modelSearch")

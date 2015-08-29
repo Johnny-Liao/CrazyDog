@@ -18,6 +18,7 @@ public class ResumeEduEntity {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -102,5 +103,17 @@ public class ResumeEduEntity {
         result = 31 * result + (school != null ? school.hashCode() : 0);
         result = 31 * result + (discipline != null ? discipline.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "ResumeEduEntity{" +
+                "id=" + id +
+                ", resumeId=" + resumeId +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", school='" + school + '\'' +
+                ", discipline='" + discipline + '\'' +
+                '}';
     }
 }

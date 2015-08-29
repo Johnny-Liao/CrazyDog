@@ -1,11 +1,7 @@
 package org.crazydog.domain;
 
-import org.hibernate.annotations.Fetch;
-import org.hibernate.annotations.FetchMode;
-
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 
 /**
  * Created by never on 2015/8/29.
@@ -17,6 +13,7 @@ public class ResumeEntity {
 
     @Id
     @javax.persistence.Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -61,16 +58,16 @@ public class ResumeEntity {
         this.gender = gender;
     }
 
-    private String idCard;
+    private String idNum;
 
     @Basic
-    @javax.persistence.Column(name = "id_card")
-    public String getIdCard() {
-        return idCard;
+    @javax.persistence.Column(name = "id_num")
+    public String getIdNum() {
+        return idNum;
     }
 
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
+    public void setIdNum(String idNum) {
+        this.idNum = idNum;
     }
 
     private Integer tel;
@@ -336,7 +333,7 @@ public class ResumeEntity {
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
         if (nation != null ? !nation.equals(that.nation) : that.nation != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
-        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
+        if (idNum != null ? !idNum.equals(that.idNum) : that.idNum != null) return false;
         if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
@@ -358,14 +355,8 @@ public class ResumeEntity {
         if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (reportCard != null ? !reportCard.equals(that.reportCard) : that.reportCard != null) return false;
-        if (resumeEduById != null ? !resumeEduById.equals(that.resumeEduById) : that.resumeEduById != null)
-            return false;
-        if (resumeFamilyById != null ? !resumeFamilyById.equals(that.resumeFamilyById) : that.resumeFamilyById != null)
-            return false;
-        if (resumeJobsById != null ? !resumeJobsById.equals(that.resumeJobsById) : that.resumeJobsById != null)
-            return false;
-        return !(hireById != null ? !hireById.equals(that.hireById) : that.hireById != null);
 
+        return true;
     }
 
     @Override
@@ -374,7 +365,7 @@ public class ResumeEntity {
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (nation != null ? nation.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
-        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
+        result = 31 * result + (idNum != null ? idNum.hashCode() : 0);
         result = 31 * result + (tel != null ? tel.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
@@ -396,54 +387,38 @@ public class ResumeEntity {
         result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (reportCard != null ? reportCard.hashCode() : 0);
-        result = 31 * result + (resumeEduById != null ? resumeEduById.hashCode() : 0);
-        result = 31 * result + (resumeFamilyById != null ? resumeFamilyById.hashCode() : 0);
-        result = 31 * result + (resumeJobsById != null ? resumeJobsById.hashCode() : 0);
-        result = 31 * result + (hireById != null ? hireById.hashCode() : 0);
         return result;
     }
 
-    private Collection<ResumeEduEntity> resumeEduById;
-    private Collection<ResumeFamilyEntity> resumeFamilyById;
-    private Collection<ResumeJobsEntity> resumeJobsById;
-    private HireInfoEntity hireById;
-
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
-    public Collection<ResumeEduEntity> getResumeEduById() {
-        return resumeEduById;
-    }
-
-    public void setResumeEduById(Collection<ResumeEduEntity> resumeEduById) {
-        this.resumeEduById = resumeEduById;
-    }
-
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
-    public Collection<ResumeFamilyEntity> getResumeFamilyById() {
-        return resumeFamilyById;
-    }
-
-    public void setResumeFamilyById(Collection<ResumeFamilyEntity> resumeFamilyById) {
-        this.resumeFamilyById = resumeFamilyById;
-    }
-
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
-    public Collection<ResumeJobsEntity> getResumeJobsById() {
-        return resumeJobsById;
-    }
-
-    public void setResumeJobsById(Collection<ResumeJobsEntity> resumeJobsById) {
-        this.resumeJobsById = resumeJobsById;
-    }
-
-    @Fetch(FetchMode.SELECT)
-    @OneToOne(mappedBy = "resumeEntity", fetch = FetchType.EAGER)
-    public HireInfoEntity getHireById() {
-        return hireById;
-    }
-
-    public void setHireById(HireInfoEntity hireById) {
-        this.hireById = hireById;
+    @Override
+    public String toString() {
+        return "ResumeEntity{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", nation='" + nation + '\'' +
+                ", gender='" + gender + '\'' +
+                ", idNum='" + idNum + '\'' +
+                ", tel=" + tel +
+                ", email='" + email + '\'' +
+                ", birthday=" + birthday +
+                ", zzmm='" + zzmm + '\'' +
+                ", hyzk='" + hyzk + '\'' +
+                ", education='" + education + '\'' +
+                ", workTime=" + workTime +
+                ", jjsp='" + jjsp + '\'' +
+                ", profession='" + profession + '\'' +
+                ", zipCode=" + zipCode +
+                ", homeTown='" + homeTown + '\'' +
+                ", foreignLang='" + foreignLang + '\'' +
+                ", specialty='" + specialty + '\'' +
+                ", yysp='" + yysp + '\'' +
+                ", jndj=" + jndj +
+                ", height=" + height +
+                ", hukou='" + hukou + '\'' +
+                ", hukouAddress='" + hukouAddress + '\'' +
+                ", homePhone=" + homePhone +
+                ", address='" + address + '\'' +
+                ", reportCard='" + reportCard + '\'' +
+                '}';
     }
 }

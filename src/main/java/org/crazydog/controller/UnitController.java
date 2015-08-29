@@ -1,6 +1,6 @@
 package org.crazydog.controller;
 
-import org.crazydog.domain.tmp.UnitEntity;
+import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.impl.UnitServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

@@ -106,7 +106,7 @@ CREATE TABLE `employee` (
   `education`         ENUM('博士', '硕士', '本科', '专科', '高中', '初中', '小学') CHARACTER SET utf8 NULL COMMENT '教育程度',
   `dep_id`            INT                     NOT NULL COMMENT '部门id',
   `unit_id`           INT                     NOT NULL COMMENT '单位id',
-  #   `contract_id`       INT                     NOT NULL COMMENT '合同id',
+#   `contract_id`       INT                     NOT NULL COMMENT '合同id',
   `birthday`          DATE,
   `zzmm`              enum('党员','团员','群众')  NOT NULL default '群众' COMMENT '政治面貌',
   `hyzk`              enum('未婚','已婚')   NOT NULL default '未婚' COMMENT '婚姻状况',
@@ -128,7 +128,7 @@ CREATE TABLE `employee` (
   PRIMARY KEY (`id`),
   FOREIGN KEY (`dep_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  #   FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+#   FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   UNIQUE INDEX (`emp_code`)
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
@@ -183,7 +183,7 @@ CREATE TABLE `position_change` (
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 #添加管理员数据
-INSERT INTO `user` (`id`, `name`, `password`) VALUES ('1', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员');
+INSERT INTO `user` (`id`, `name`, `password`) VALUES ('1', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad');
 
 #测试数据导入
 INSERT INTO `unit` (`id`, `unit_code`, `unit_name`) VALUES (1, 'ZNH', '中南海');

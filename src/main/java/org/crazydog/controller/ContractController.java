@@ -1,6 +1,6 @@
 package org.crazydog.controller;
 
-import org.crazydog.domain.tmp.ContractEntity;
+import org.crazydog.domain.ContractEntity;
 import org.crazydog.serviceI.impl.ContractServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
