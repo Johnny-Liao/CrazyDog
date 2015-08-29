@@ -3,7 +3,7 @@ package org.crazydog.domain;
 import javax.persistence.*;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/29.
  */
 @Entity
 @Table(name = "resume_family", schema = "", catalog = "crazydog")
@@ -16,7 +16,6 @@ public class ResumeFamilyEntity {
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }

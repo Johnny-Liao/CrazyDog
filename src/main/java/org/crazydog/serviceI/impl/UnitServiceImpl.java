@@ -2,8 +2,8 @@ package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.DepartmentdaoImpl;
-import org.crazydog.domain.DepartmentEntity;
-import org.crazydog.domain.UnitEntity;
+import org.crazydog.domain.tmp.DepartmentEntity;
+import org.crazydog.domain.tmp.UnitEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

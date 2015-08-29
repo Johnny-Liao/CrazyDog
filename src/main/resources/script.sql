@@ -2,15 +2,6 @@ DROP DATABASE IF EXISTS crazydog;
 CREATE DATABASE crazydog;
 USE crazydog;
 
-#系统用户表
-CREATE TABLE `user` (
-  `id`       INT                NOT NULL AUTO_INCREMENT,
-  `name`     VARCHAR(255)       NOT NULL COMMENT '用户名',
-  `password` VARCHAR(255)       NOT NULL COMMENT '密码',
-  `type`     ENUM('管理员', '普通用户') CHARACTER SET utf8 NOT NULL COMMENT '用户类型',
-  PRIMARY KEY (`id`)
-);
-
 #建立服务单位表
 CREATE TABLE `unit` (
   `id`        INT           NOT NULL AUTO_INCREMENT,
@@ -20,7 +11,7 @@ CREATE TABLE `unit` (
   UNIQUE INDEX (`unit_code`)
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-#建立单位附属的部门表
+#建立单位下的部门表
 CREATE TABLE `department` (
   `id`        INT          NOT NULL AUTO_INCREMENT,
   `dept_name` VARCHAR(255) NOT NULL COMMENT '部门名称',
@@ -29,113 +20,52 @@ CREATE TABLE `department` (
   FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+#系统用户表
+CREATE TABLE `user` (
+  `id`       INT                NOT NULL AUTO_INCREMENT,
+  `name`     VARCHAR(255)       NOT NULL COMMENT '用户名',
+  `password` VARCHAR(255)       NOT NULL COMMENT '密码',
+  PRIMARY KEY (`id`)
+);
+
 #建立简历表，记录投简历信息
 CREATE TABLE `resume` (
   `id`                int                 NOT NULL auto_increment,
   `name`              varchar(20)         NOT NULL,
-  `birthday`          datetime,
-  `nation`            varchar(20)         NOT NULL COMMENT '民族',
-  `gender`            enum('女','男')      default '男',
-  `zzmm`              enum('党员','团员')   default '党员' COMMENT '政治面貌',
-  `hyzk`              enum('未婚','已婚')   default '未婚' COMMENT '婚姻状况',
+  `nation`            varchar(20)          NOT NULL COMMENT '民族',
+  `gender`            enum('女','男')       NOT NULL default '男',
+  `id_num`           varchar(20)          NOT NULL COMMENT '身份证号',
+  `tel`               int(11)              NOT NULL COMMENT '手机号',
+  `email`             varchar(20)          NOT NULL COMMENT '邮箱',
+  `birthday`          DATE,
+  `zzmm`              enum('党员','团员','群众')  NOT NULL default '群众' COMMENT '政治面貌',
+  `hyzk`              enum('未婚','已婚')   NOT NULL default '未婚' COMMENT '婚姻状况',
   `education`         enum('小学','初中','高中','专科','本科','硕士','博士') default '本科' COMMENT '最高学历',
-  `work_time`         datetime            ,
+  `work_time`         DATE            ,
   `jjsp`              enum('一般','中','高')COMMENT '计算机水平',
   `profession`        varchar(10)          COMMENT '专业',
   `zip_code`          int(6)               COMMENT '邮编',
   `home_town`         varchar(50)          COMMENT '籍贯',
   `foreign_lang`      varchar(50)          COMMENT '外语语种',
   `specialty`         varchar(30)          COMMENT '特长',
-  `yysp`              varchar(20)         COMMENT '外语水平',
+  `yysp`              varchar(20)          COMMENT '外语水平',
   `jndj`              int(1)               COMMENT '技能等级',
   `height`            double(6,0)          COMMENT '身高',
-  `tel`               int(11)              NOT NULL COMMENT '手机号',
-  `id_card`           varchar(20)          NOT NULL COMMENT '身份证号',
   `hukou`             enum('农村户口','城镇户口')  COMMENT '户口性质',
   `hukou_address`     varchar(50)          COMMENT '户口所在地',
   `home_phone`        int(11)              COMMENT '家庭电话',
   `address`           varchar(30)          COMMENT '通讯地址',
   `report_card`        enum('否','是')       COMMENT '是否具有报到证',
-  `email`             varchar(20)          NOT NULL COMMENT '邮箱',
+
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-#建立人事信息表
-CREATE TABLE `employee` (
-  `id`        INT                NOT NULL AUTO_INCREMENT,
-  `emp_code`  VARCHAR(255)       NOT NULL COMMENT '员工编码',
-  `emp_name`  VARCHAR(255)       NOT NULL COMMENT '员工名',
-  `gender`    ENUM('女', '男')   CHARACTER SET utf8 NOT NULL COMMENT '性别',
-  `id_num`    VARCHAR(20)        NOT NULL COMMENT '身份证号',
-  `tel`       INT(11)            NULL COMMENT '电话号码',
-  `education` ENUM('博士', '硕士', '本科', '专科', '高中', '初中', '小学') CHARACTER SET utf8 NULL COMMENT '教育程度',
-  `dep_id`    INT                NOT NULL COMMENT '部门id',
-  `unit_id`   INT                NOT NULL COMMENT '单位id',
-  `resume_id` INT                NOT NULL COMMENT '简历id',
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`dep_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  UNIQUE INDEX (`emp_code`)
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
-#录取信息表
-CREATE TABLE `hire` (
-  `id`            INT                NOT NULL,
-  `resume_id`     INT                NOT NULL COMMENT '简历id',
-  `STATE`         ENUM('通过', '三审', '二审', '一审', '简历审核') CHARACTER SET utf8 NOT NULL COMMENT '简历状态',
-  `decline_cause` VARCHAR(255)       NULL COMMENT '取消录取原因',
-  `COMMENT`       VARCHAR(255)       NULL COMMENT '备注',
-  `operate_time`  DATETIME           NOT NULL COMMENT '操作时间',
-  `OPERATOR`      VARCHAR(10)         NOT NULL COMMENT '操作员',
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
-#职位更改信息表
-CREATE TABLE `position_change` (
-  `id`         INT            NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-  `emp_code`   INT            NOT NULL,
-  `join_date`  DATETIME      NOT NULL COMMENT '入职日期',
-  `leave_date` DATETIME      COMMENT '离职日期',
-  `leave_info` VARCHAR(20)   COMMENT '离职原因',
-  `leave_comment`   VARCHAR(200)  COMMENT '备注',
-  FOREIGN KEY (`id`) REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
-#记录合同相关信息的表
-CREATE TABLE `contract` (
-  `id`             INT      NOT NULL AUTO_INCREMENT,
-  `emp_id`         INT      NOT NULL COMMENT '合同相关人员',
-  `contract_start` DATETIME NOT NULL COMMENT '合同开始日期',
-  `contract_end`   DATETIME NOT NULL COMMENT '合同终止日期',
-  `length`         INT      NOT NULL DEFAULT 1 COMMENT '合同持续时间',
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`emp_id`) REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
-
-#记录合同更改信息
-CREATE TABLE `contract_change` (
-  `id`           INT          NOT NULL AUTO_INCREMENT,
-  `contract_id`  INT          NULL COMMENT '合同id',
-  `unit_id`      INT          NULL COMMENT '单位id',
-  `dept_id`      INT          NULL COMMENT '部门id',
-  `position`     VARCHAR(20) NOT NULL COMMENT '职位',
-  `change_cause` VARCHAR(100) NOT NULL COMMENT '更改原因',
-  `renew_time`   INT          NOT NULL COMMENT '续约时间',
-  `comment`      VARCHAR(255) NULL COMMENT '备注',
-  PRIMARY KEY (`id`),
-  FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  FOREIGN KEY (`dept_id`) REFERENCES `department` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-)ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 #简历教育信息
 CREATE TABLE `resume_edu` (
   `id`         INT          NOT NULL PRIMARY KEY ,
   `resume_id`  INT          NOT NULL,
-  `start_time` DATETIME     NOT NULL,
-  `end_time`   DATETIME     NOT NULL,
+  `start_time` DATE         NOT NULL,
+  `end_time`   DATE         NOT NULL,
   `school`     VARCHAR(20)  NOT NULL COMMENT '毕业学校',
   `discipline` VARCHAR(255) NOT NULL COMMENT '专业学科',
   FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
@@ -144,7 +74,7 @@ CREATE TABLE `resume_edu` (
 #简历家庭情况信息
 CREATE TABLE `resume_family` (
   `id`           INT         NOT NULL PRIMARY KEY ,
-  `resume_id`    INT          NOT NULL,
+  `resume_id`    INT         NOT NULL,
   `name`         VARCHAR(10) NOT NULL,
   `relationship` VARCHAR(10) NOT NULL,
   `department`   VARCHAR(30) NOT NULL COMMENT '就业单位',
@@ -155,15 +85,105 @@ CREATE TABLE `resume_family` (
 CREATE TABLE `resume_jobs` (
   `id`          INT          NOT NULL PRIMARY KEY ,
   `resume_id`   INT          NOT NULL,
-  `start_time`  DATETIME     NOT NULL,
-  `end_time`    DATETIME     NOT NULL,
+  `start_time`  DATE         NOT NULL,
+  `end_time`    DATE         NOT NULL,
   `departmennt` VARCHAR(255) NOT NULL COMMENT '部门',
   `Post`        VARCHAR(255) NOT NULL COMMENT '职位',
   FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
+#建立人事信息表
+CREATE TABLE `employee` (
+  `id`                INT                     NOT NULL AUTO_INCREMENT,
+  `emp_code`          VARCHAR(255)            NOT NULL COMMENT '员工编码',
+  `emp_name`          VARCHAR(255)            NOT NULL COMMENT '员工名',
+  `gender`            ENUM('女', '男')        CHARACTER SET utf8 NOT NULL COMMENT '性别',
+  `id_num`            VARCHAR(20)             NOT NULL COMMENT '身份证号',
+  `nation`            varchar(20)             NOT NULL COMMENT '民族',
+  `tel`               int(11)                 NOT NULL COMMENT '手机号',
+  `email`             varchar(20)             NOT NULL COMMENT '邮箱',
+  `phone`             INT(11)                 NULL COMMENT '电话号码',
+  `education`         ENUM('博士', '硕士', '本科', '专科', '高中', '初中', '小学') CHARACTER SET utf8 NULL COMMENT '教育程度',
+  `dep_id`            INT                     NOT NULL COMMENT '部门id',
+  `unit_id`           INT                     NOT NULL COMMENT '单位id',
+  #   `contract_id`       INT                     NOT NULL COMMENT '合同id',
+  `birthday`          DATE,
+  `zzmm`              enum('党员','团员','群众')  NOT NULL default '群众' COMMENT '政治面貌',
+  `hyzk`              enum('未婚','已婚')   NOT NULL default '未婚' COMMENT '婚姻状况',
+  `work_time`         DATE            ,
+  `jjsp`              enum('一般','中','高')   COMMENT '计算机水平',
+  `profession`        varchar(10)             COMMENT '专业',
+  `zip_code`          int(6)                  COMMENT '邮编',
+  `home_town`         varchar(50)             COMMENT '籍贯',
+  `foreign_lang`      varchar(50)             COMMENT '外语语种',
+  `specialty`         varchar(30)             COMMENT '特长',
+  `yysp`              varchar(20)             COMMENT '外语水平',
+  `jndj`              int(1)                  COMMENT '技能等级',
+  `height`            double(6,0)             COMMENT '身高',
+  `hukou`             enum('农村户口','城镇户口')  COMMENT '户口性质',
+  `hukou_address`     varchar(50)             COMMENT '户口所在地',
+  `home_phone`        int(11)                 COMMENT '家庭电话',
+  `address`           varchar(30)             COMMENT '通讯地址',
+  `report_card`       enum('否','是')          COMMENT '是否具有报到证',
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`dep_id`) REFERENCES `department` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  FOREIGN KEY (`unit_id`) REFERENCES `unit` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  #   FOREIGN KEY (`contract_id`) REFERENCES `contract` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  UNIQUE INDEX (`emp_code`)
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+#录取信息表
+CREATE TABLE `hire_info` (
+  `id`            INT                 NOT NULL,
+  `resume_id`     INT                 NOT NULL COMMENT '简历id',
+  `STATE`         ENUM('录取', '未录取', '等待审核') CHARACTER SET utf8 NOT NULL COMMENT '简历状态',
+  `COMMENT`       VARCHAR(255)        NULL COMMENT '备注',
+  `operate_time`  DATE                NOT NULL COMMENT '操作时间',
+  `OPERATOR`      VARCHAR(10)         NOT NULL COMMENT '操作员',
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`resume_id`) REFERENCES `resume` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+#记录合同相关信息的表
+CREATE TABLE `contract` (
+  `id`             INT      NOT NULL AUTO_INCREMENT,
+  `emp_id`         INT      NOT NULL COMMENT '合同相关人员',
+  `contract_start` DATE NOT NULL COMMENT '合同开始日期',
+  `contract_end`   DATE NOT NULL COMMENT '合同终止日期',
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`emp_id`) REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+#离职信息记录表
+CREATE TABLE `position_leave` (
+  `id`         INT            NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `emp_code`   INT            NOT NULL,
+  `name`        VARCHAR(20)   COMMENT '离职员工',
+  `leave_date` DATE      COMMENT '离职日期',
+  `leave_info` VARCHAR(20)   COMMENT '离职原因',
+  `leave_comment`   VARCHAR(200)  COMMENT '备注',
+  FOREIGN KEY (`id`) REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+#岗位更改信息记录表
+CREATE TABLE `position_change` (
+  `id`                  INT          NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  `emp_id`              INT          NOT NULL COMMENT '员工外键',
+  `befor_unit_id`       INT          NOT NULL COMMENT '以前单位id',
+  `befor_dept_id`       INT          NOT NULL COMMENT '以前部门id',
+  `change_time`         DATE         NOT NULL COMMENT '调岗时间',
+  `after_unit_id`       INT          NOT NULL COMMENT '之后单位id',
+  `after_dept_id`       INT          NOT NULL COMMENT '之后部门id',
+  `change_cause`        VARCHAR(100) NOT NULL COMMENT '更改原因',
+  FOREIGN KEY (`emp_id`)        REFERENCES `employee` (`id`) ON DELETE NO ACTION  ON UPDATE NO ACTION,
+  FOREIGN KEY (`befor_unit_id`) REFERENCES `unit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (`befor_dept_id`) REFERENCES `department` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (`after_unit_id`) REFERENCES `unit` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  FOREIGN KEY (`after_dept_id`) REFERENCES `department` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+)ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
 #添加管理员数据
-INSERT INTO `user` (`id`, `name`, `password`, `type`) VALUES ('1', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员');
+INSERT INTO `user` (`id`, `name`, `password`) VALUES ('1', 'admin', '90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad', '管理员');
 
 #测试数据导入
 INSERT INTO `unit` (`id`, `unit_code`, `unit_name`) VALUES (1, 'ZNH', '中南海');
@@ -197,63 +217,3 @@ INSERT INTO `department` (`id`, `dept_name`, `unit_id`) VALUES (22, '外语学�
 INSERT INTO `department` (`id`, `dept_name`, `unit_id`) VALUES (23, '农学院', 5);
 INSERT INTO `department` (`id`, `dept_name`, `unit_id`) VALUES (24, '艺术学院', 5);
 INSERT INTO `department` (`id`, `dept_name`, `unit_id`) VALUES (25, '妓院', 5);
-
-INSERT INTO `resume` VALUES (1, '张三', '1995-6-24 00:00:00', '汉', '男', '党员', '未婚', '本科', '2015-8-24 00:00:00', '高', '软件开发', 330000, '北京', '英语', '打球', '中级', 2, 178, 1387743345, '34785634573485834598', '城镇户口', '北京', 834753984, '北京沙河', '是', '3475834893@qq.com');
-INSERT INTO `resume` VALUES (2, '李四', '1998-5-12 00:00:00', '汉', '男', '团员', '未婚', '博士', '2014-6-24 09:55:44', '高', '软件测试', 330000, '江西', '英语', '唱歌', '高级', 5, 175, 837538450, '23764358656973426584', '城镇户口', '南昌', 347568345, '江西南昌', '是', '43543896@qq.com');
-INSERT INTO `resume` VALUES (3, '张思', '1996-4-24 00:00:00', '汉', '女', '党员', '未婚', '本科', '2014-9-24 10:00:17', '中', '软件开发', 330045, '上海', '英语', '跑步', '中级', 3, 165, 345634958, '476894568798456', '农村户口', '上海', 349645748, '上海虹桥', '是', '3485739847@qq.com');
-INSERT INTO `resume` VALUES (4, '王鑫', '1994-5-25 00:00:00', '汉', '男', '党员', '未婚', '本科', '2015-8-11 10:04:18', '一般', '电子商务', 330258, '天津', '法语', '运动', '中级', 4, 167, 943867894, '4378657648957487947X', '城镇户口', '天津', 346856469, '天津', '是', '4876458987@qq.com');
-INSERT INTO `resume` VALUES (5, '皇朝', '1992-11-23 00:00:00', '汉', '男', '党员', '已婚', '硕士', '2012-7-1 10:07:31', '高', '软件开发', 330036, '江西', '日语', '下棋', '高级', 5, 172, 843673846, '64856450847409784957', '农村户口', '南昌', 607486745, '南昌昌北区', '是', '439658675487@qq.com');
-INSERT INTO `resume` VALUES (6, '傻逼', '1992-11-23 00:00:00', '汉', '男', '党员', '已婚', '硕士', '2012-7-1 10:07:31', '高', '软件开发', 330036, '江西', '英语', '打架', '高级', 5, 174, 34867584, '64856450847409784957', '城镇户口', '南昌', 607485645, '南昌经开区', '是', '4333458675487@qq.com');
-INSERT INTO `resume` VALUES (7, '李飞', '1994-8-24 09:41:56', '汉族', '男', '党员', '未婚', '小学', '2015-8-24 06:38:11', '中', '计算机专业', 342300, '北京市，昌平区', '法语', '节约水', '中级', 1, 180, 1527782314, '360123121234563789', '城镇户口', '江西省赣州市章贡区', 83232423, '北京市昌平区沙河镇', '是', '21321412@sina.com');
-INSERT INTO `resume` VALUES (8, '张三丰', '1995-8-24 09:47:13', '哈萨克族', '男', '党员', '未婚', '本科', '2012-6-24 09:48:37', '高', '软件开发', 338900, '天津市，河西区', '俄语', 'java开发', '高级', 2, 176, 1323456324, '324563789234567234', '城镇户口', '江西省南昌市青山湖区', 43452345, '天津市河西区', '是', 'qwe1123@qq.com');
-INSERT INTO `resume` VALUES (9, '葛三炮', '1985-8-5 09:55:34', '苗族', '男', '党员', '未婚', '博士', '2009-5-1 09:56:23', '高', '计算机专业', 321343, '深圳市，宝安区', '英语，法语，俄语，日语', '计算机科技研发', '高级', 1, 189, 1782314563, '38792173823421987X', '城镇户口', '深圳市，宝安区', 44352345, '深圳市，宝安区', '是', '67adsad@169.comm');
-INSERT INTO `resume` VALUES (10, '李二狗', '2003-8-19 10:00:33', '蒙古族', '男', '党员', '未婚', '本科', '2011-5-10 01:36:00', '中', '软件开发', 312314, '内蒙古自治区，包头市', '英语', '良好的计算机功底，钻研精神', '中级', 1, 169, 123123, '873923456787324567', '农村户口', '内蒙古自治区，包头市', 21113231, '内蒙古自治区，包头市', '是', 'qwe12@163.com');
-INSERT INTO `resume` VALUES (11, '赵日天', '2007-8-12 10:06:41', '汉族', '男', '党员', '未婚', '硕士', '2014-7-27 10:07:04', '高', '软件开发', 132132, '江苏省南京市栖霞区', '英语', '善于交流', '高级', 3, 173, 312312, '382345267823452345', '城镇户口', '江苏省南京市栖霞区', 13123136, '江苏省南京市栖霞区', '是', 'qweqwrg@sina.com');
-
-INSERT INTO `employee` VALUES (1, 'JT_01', '张三', '男', '34785634573485834598', 1387743345, '本科', 12, 3, 1);
-INSERT INTO `employee` VALUES (2, 'CD_01', '李四', '男', '23764358656973426584', 837538450, '博士', 14, 3, 2);
-INSERT INTO `employee` VALUES (3, 'SF_01', '张思', '女', '476894568798456', 345634958, '本科', 18, 4, 3);
-INSERT INTO `employee` VALUES (4, 'SF_02', '王鑫', '男', '4378657648957487947X', 943867894, '本科', 18, 4, 4);
-INSERT INTO `employee` VALUES (5, 'RJ_01', '皇朝', '男', '64856450847409784957', 843673846, '硕士', 21, 5, 5);
-INSERT INTO `employee` VALUES (6, 'NX_01', '傻逼', '男', '64856450847409784957', 34867584, '硕士', 23, 5, 6);
-INSERT INTO `employee` VALUES (7, 'WLJG_1', '李飞', '男', '34785634573485834598', 1387743345, '小学', 3, 1, 7);
-INSERT INTO `employee` VALUES (8, 'WJ_1', '张三丰', '男', '324563789234567234', 1323456324, '博士', 2, 1, 8);
-INSERT INTO `employee` VALUES (9, 'SPAN_3', '葛三炮', '男', '38792173823421987X', 1782314563, '本科', 4, 1, 9);
-INSERT INTO `employee` VALUES (10, 'XC_1', '李二狗', '男', '873923456787324567', 123123, '本科', 6, 2, 10);
-INSERT INTO `employee` VALUES (11, 'JLJCWYH_2', '赵日天', '男', '382345267823452345', 312312, '硕士', 8, 2, 11);
-
-INSERT INTO `contract` VALUES (1, 1, '2014-1-1 00:00:00', '2016-1-1 00:00:00', 2);
-INSERT INTO `contract` VALUES (2, 2, '2015-8-11 12:49:02', '2017-8-11 12:49:06', 2);
-INSERT INTO `contract` VALUES (3, 3, '2011-8-11 12:00:00', '2017-8-11 12:00:00', 6);
-INSERT INTO `contract` VALUES (4, 4, '2013-8-11 12:00:00', '2015-8-11 12:00:00', 2);
-INSERT INTO `contract` VALUES (5, 5, '2012-3-24 12:00:00', '2015-8-24 12:52:12', 3);
-INSERT INTO `contract` VALUES (6, 6, '2015-8-28 12:47:02', '2019-8-28 12:47:12', 4);
-INSERT INTO `contract` VALUES (7, 7, '2014-6-28 12:49:37', '2017-8-28 12:50:18', 3);
-INSERT INTO `contract` VALUES (8, 8, '2013-8-28 12:50:40', '2017-8-28 12:51:05', 4);
-INSERT INTO `contract` VALUES (9, 9, '2015-8-28 12:51:51', '2018-8-28 12:52:04', 3);
-INSERT INTO `contract` VALUES (10, 10, '2014-1-1 12:52:27', '2016-1-28 12:52:45', 2);
-INSERT INTO `contract` VALUES (11, 11, '2015-8-28 12:53:10', '2018-8-28 12:53:20', 3);
-
-INSERT INTO `contract_change` VALUES (1, 1, 3, 12, '员工', '合同快到期', 3, NULL);
-INSERT INTO `contract_change` VALUES (2, 4, 4, 18, '员工', '涨薪水', 4, '工作好');
-INSERT INTO `contract_change` VALUES (3, 5, 5, 22, '项目经理', '合同到期', 4, NULL);
-INSERT INTO `contract_change` VALUES (4, 7, 2, 9, '技术总监', '合同到期', 5, NULL);
-INSERT INTO `contract_change` VALUES (5, 10, 1, 5, '员工', '涨薪水', 3, NULL);
-
-INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (1, 1, '2012-1-28 13:00:25', '2016-6-1 13:00:44', '北京大学', '计算机科学');
-INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (2, 5, '2012-9-1 13:02:13', '2016-6-28 13:02:39', '清华大学', '软件开发');
-INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (3, 7, '2012-9-1 13:03:39', '2016-6-1 13:03:52', '哈尔滨工业大学', '计算机信息技术');
-INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (4, 10, '2012-9-1 13:04:49', '2016-6-1 13:05:01', '江西农业大学', '计算机网络');
-INSERT INTO `resume_edu` (`id`, `resume_id`, `start_time`, `end_time`, `school`, `discipline`) VALUES (5, 11, '2012-9-1 13:06:00', '2016-6-1 13:06:09', '南昌大学', '软件学院');
-
-INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (1, 3, '张元丰', '父亲', '上海市动物保护协会');
-INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (2, 4, '李飞翔', '舅舅', '南昌市新建县县政府');
-INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (3, 6, '王二麻', '父亲', '江西省教育局');
-INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (4, 8, '张翼飞', '父亲', '北京市朝阳区社保局');
-INSERT INTO `resume_family` (`id`, `resume_id`, `name`, `relationship`, `department`) VALUES (5, 9, '葛格', '母亲', '深圳市宝安区黑河工业区');
-
-INSERT INTO `resume_jobs` VALUES (1, 3, '2014-8-28 13:03:26', '2015-8-28 13:03:44', '软件开发部', '程序员');
-INSERT INTO `resume_jobs` VALUES (2, 6, '2013-6-28 13:05:13', '2014-6-1 13:05:28', '软件测试部', '测试员');
-INSERT INTO `resume_jobs` VALUES (3, 8, '2014-2-28 13:06:33', '2015-2-28 13:06:51', '软件开发部', '项目经理');
-INSERT INTO `resume_jobs` VALUES (4, 10, '2015-1-28 13:07:32', '2015-8-28 13:08:00', '软件开发部', '程序员');
-INSERT INTO `resume_jobs` VALUES (5, 11, '2014-10-28 13:08:31', '2015-5-28 13:08:42', '软件测试部', '测试员');

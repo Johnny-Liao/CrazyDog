@@ -1,20 +1,12 @@
 package org.crazydog.serviceI.impl;
 
-import java.util.Iterator;
-import java.util.List;
-
 import org.crazydog.daoI.Basedao;
-import org.crazydog.daoI.impl.HireDaoImpl;
-import org.crazydog.domain.HireEntity;
-import org.crazydog.domain.ResumeEduEntity;
-import org.crazydog.domain.ResumeEntity;
-import org.crazydog.serviceI.BaseService;
-import org.hibernate.Query;
+import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 
 public class ResumeServiceTest {
     ApplicationContext applicationContext;
@@ -45,13 +37,13 @@ public class ResumeServiceTest {
 //     HireEntity h = resumeServiceImpl.getEntitybyreumeid(3);
 //     System.out.println(h);
 //     }
-//    @Test
-//    public void test() {
-//        //简历的复杂查询
-//        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
-//        SearchModel sreach = new SearchModel(null, "博士", "一审");
-//        String sql = sreach.advanceSearch();
-//        System.out.println(sql);
+    @Test
+    public void test() {
+        //简历的复杂查询
+        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
+        SearchModel sreach = new ResumeSearchModel(null, ResumeSearchModel.Edu.博士, ResumeSearchModel.Luqu.通过);
+        String sql = sreach.advanceSearch(sreach);
+        System.out.println(sql);
 //        List<Object> list = resumeServiceImpl.queryEntity(sql);
 //        System.out.println((Object) list.get(0));
 //        for (int i = 0; i < list.size(); i++) {
@@ -63,7 +55,7 @@ public class ResumeServiceTest {
 //		Object[] b = (Object[]) list.get(0);
 //		HireEntity h = (HireEntity) b[1];
 //		System.out.println(h.getOperator());
-//    }
+    }
 //    @Test
 //    public void test(){
 //        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");

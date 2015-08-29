@@ -1,7 +1,7 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.PositionChangeEntity;
+import org.crazydog.domain.tmp.PositionChangeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

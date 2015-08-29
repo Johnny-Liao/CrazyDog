@@ -4,11 +4,11 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
+import java.sql.Date;
 import java.util.Collection;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/29.
  */
 @Entity
 @javax.persistence.Table(name = "resume", schema = "", catalog = "crazydog")
@@ -17,7 +17,6 @@ public class ResumeEntity {
 
     @Id
     @javax.persistence.Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -36,18 +35,6 @@ public class ResumeEntity {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    private Timestamp birthday;
-
-    @Basic
-    @javax.persistence.Column(name = "birthday")
-    public Timestamp getBirthday() {
-        return birthday;
-    }
-
-    public void setBirthday(Timestamp birthday) {
-        this.birthday = birthday;
     }
 
     private String nation;
@@ -72,6 +59,54 @@ public class ResumeEntity {
 
     public void setGender(String gender) {
         this.gender = gender;
+    }
+
+    private String idCard;
+
+    @Basic
+    @javax.persistence.Column(name = "id_card")
+    public String getIdCard() {
+        return idCard;
+    }
+
+    public void setIdCard(String idCard) {
+        this.idCard = idCard;
+    }
+
+    private Integer tel;
+
+    @Basic
+    @javax.persistence.Column(name = "tel")
+    public Integer getTel() {
+        return tel;
+    }
+
+    public void setTel(Integer tel) {
+        this.tel = tel;
+    }
+
+    private String email;
+
+    @Basic
+    @javax.persistence.Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    private Date birthday;
+
+    @Basic
+    @javax.persistence.Column(name = "birthday")
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
     }
 
     private String zzmm;
@@ -110,15 +145,15 @@ public class ResumeEntity {
         this.education = education;
     }
 
-    private Timestamp workTime;
+    private Date workTime;
 
     @Basic
     @javax.persistence.Column(name = "work_time")
-    public Timestamp getWorkTime() {
+    public Date getWorkTime() {
         return workTime;
     }
 
-    public void setWorkTime(Timestamp workTime) {
+    public void setWorkTime(Date workTime) {
         this.workTime = workTime;
     }
 
@@ -230,30 +265,6 @@ public class ResumeEntity {
         this.height = height;
     }
 
-    private Integer tel;
-
-    @Basic
-    @javax.persistence.Column(name = "tel")
-    public Integer getTel() {
-        return tel;
-    }
-
-    public void setTel(Integer tel) {
-        this.tel = tel;
-    }
-
-    private String idCard;
-
-    @Basic
-    @javax.persistence.Column(name = "id_card")
-    public String getIdCard() {
-        return idCard;
-    }
-
-    public void setIdCard(String idCard) {
-        this.idCard = idCard;
-    }
-
     private String hukou;
 
     @Basic
@@ -314,18 +325,6 @@ public class ResumeEntity {
         this.reportCard = reportCard;
     }
 
-    private String email;
-
-    @Basic
-    @javax.persistence.Column(name = "email")
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -335,9 +334,12 @@ public class ResumeEntity {
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (nation != null ? !nation.equals(that.nation) : that.nation != null) return false;
         if (gender != null ? !gender.equals(that.gender) : that.gender != null) return false;
+        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
+        if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (birthday != null ? !birthday.equals(that.birthday) : that.birthday != null) return false;
         if (zzmm != null ? !zzmm.equals(that.zzmm) : that.zzmm != null) return false;
         if (hyzk != null ? !hyzk.equals(that.hyzk) : that.hyzk != null) return false;
         if (education != null ? !education.equals(that.education) : that.education != null) return false;
@@ -351,25 +353,31 @@ public class ResumeEntity {
         if (yysp != null ? !yysp.equals(that.yysp) : that.yysp != null) return false;
         if (jndj != null ? !jndj.equals(that.jndj) : that.jndj != null) return false;
         if (height != null ? !height.equals(that.height) : that.height != null) return false;
-        if (tel != null ? !tel.equals(that.tel) : that.tel != null) return false;
-        if (idCard != null ? !idCard.equals(that.idCard) : that.idCard != null) return false;
         if (hukou != null ? !hukou.equals(that.hukou) : that.hukou != null) return false;
         if (hukouAddress != null ? !hukouAddress.equals(that.hukouAddress) : that.hukouAddress != null) return false;
         if (homePhone != null ? !homePhone.equals(that.homePhone) : that.homePhone != null) return false;
         if (address != null ? !address.equals(that.address) : that.address != null) return false;
         if (reportCard != null ? !reportCard.equals(that.reportCard) : that.reportCard != null) return false;
-        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (resumeEduById != null ? !resumeEduById.equals(that.resumeEduById) : that.resumeEduById != null)
+            return false;
+        if (resumeFamilyById != null ? !resumeFamilyById.equals(that.resumeFamilyById) : that.resumeFamilyById != null)
+            return false;
+        if (resumeJobsById != null ? !resumeJobsById.equals(that.resumeJobsById) : that.resumeJobsById != null)
+            return false;
+        return !(hireById != null ? !hireById.equals(that.hireById) : that.hireById != null);
 
-        return true;
     }
 
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (nation != null ? nation.hashCode() : 0);
         result = 31 * result + (gender != null ? gender.hashCode() : 0);
+        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
+        result = 31 * result + (tel != null ? tel.hashCode() : 0);
+        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (birthday != null ? birthday.hashCode() : 0);
         result = 31 * result + (zzmm != null ? zzmm.hashCode() : 0);
         result = 31 * result + (hyzk != null ? hyzk.hashCode() : 0);
         result = 31 * result + (education != null ? education.hashCode() : 0);
@@ -383,37 +391,22 @@ public class ResumeEntity {
         result = 31 * result + (yysp != null ? yysp.hashCode() : 0);
         result = 31 * result + (jndj != null ? jndj.hashCode() : 0);
         result = 31 * result + (height != null ? height.hashCode() : 0);
-        result = 31 * result + (tel != null ? tel.hashCode() : 0);
-        result = 31 * result + (idCard != null ? idCard.hashCode() : 0);
         result = 31 * result + (hukou != null ? hukou.hashCode() : 0);
         result = 31 * result + (hukouAddress != null ? hukouAddress.hashCode() : 0);
         result = 31 * result + (homePhone != null ? homePhone.hashCode() : 0);
         result = 31 * result + (address != null ? address.hashCode() : 0);
         result = 31 * result + (reportCard != null ? reportCard.hashCode() : 0);
-        result = 31 * result + (email != null ? email.hashCode() : 0);
+        result = 31 * result + (resumeEduById != null ? resumeEduById.hashCode() : 0);
+        result = 31 * result + (resumeFamilyById != null ? resumeFamilyById.hashCode() : 0);
+        result = 31 * result + (resumeJobsById != null ? resumeJobsById.hashCode() : 0);
+        result = 31 * result + (hireById != null ? hireById.hashCode() : 0);
         return result;
-    }
-
-    @Override
-    public String toString() {
-        return "ResumeEntity [id=" + id + ", name=" + name + ", birthday="
-                + birthday + ", nation=" + nation + ", gender=" + gender
-                + ", zzmm=" + zzmm + ", hyzk=" + hyzk + ", education="
-                + education + ", workTime=" + workTime + ", jjsp=" + jjsp
-                + ", profession=" + profession + ", zipCode=" + zipCode
-                + ", homeTown=" + homeTown + ", foreignLang=" + foreignLang
-                + ", specialty=" + specialty + ", yysp=" + yysp + ", jndj="
-                + jndj + ", height=" + height + ", tel=" + tel + ", idCard="
-                + idCard + ", hukou=" + hukou + ", hukouAddress="
-                + hukouAddress + ", homePhone=" + homePhone + ", address="
-                + address + ", reportCard=" + reportCard + ", email=" + email
-                + "]";
     }
 
     private Collection<ResumeEduEntity> resumeEduById;
     private Collection<ResumeFamilyEntity> resumeFamilyById;
     private Collection<ResumeJobsEntity> resumeJobsById;
-    private HireEntity hireById;
+    private HireInfoEntity hireById;
 
     @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeEduEntity> getResumeEduById() {
@@ -423,8 +416,9 @@ public class ResumeEntity {
     public void setResumeEduById(Collection<ResumeEduEntity> resumeEduById) {
         this.resumeEduById = resumeEduById;
     }
+
     @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "resumeId" ,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
     }
@@ -432,8 +426,9 @@ public class ResumeEntity {
     public void setResumeFamilyById(Collection<ResumeFamilyEntity> resumeFamilyById) {
         this.resumeFamilyById = resumeFamilyById;
     }
+
     @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(mappedBy = "resumeId",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;
     }
@@ -441,19 +436,14 @@ public class ResumeEntity {
     public void setResumeJobsById(Collection<ResumeJobsEntity> resumeJobsById) {
         this.resumeJobsById = resumeJobsById;
     }
+
     @Fetch(FetchMode.SELECT)
-    @OneToOne(mappedBy = "resumeEntity",fetch = FetchType.EAGER)
-    public HireEntity getHireById() {
+    @OneToOne(mappedBy = "resumeEntity", fetch = FetchType.EAGER)
+    public HireInfoEntity getHireById() {
         return hireById;
     }
 
-    public void setHireById(HireEntity hireById) {
+    public void setHireById(HireInfoEntity hireById) {
         this.hireById = hireById;
     }
-
-//    private ResumeEduEntity
-//    private ResumeFamilyEntity resumeFamilyById;
-//    private ResumeJobsEntity resumeJobsById;
-
-
 }

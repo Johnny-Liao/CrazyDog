@@ -1,8 +1,8 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.HireEntity;
-import org.crazydog.domain.ResumeEntity;
+import org.crazydog.domain.tmp.HireEntity;
+import org.crazydog.domain.tmp.ResumeEntity;
 import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;

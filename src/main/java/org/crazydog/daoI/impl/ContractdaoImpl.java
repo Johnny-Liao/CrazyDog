@@ -24,7 +24,7 @@ public class ContractdaoImpl extends Basedao<ContractEntity> {
     public ContractEntity getContractEntity(EmployeeEntity employeeEntity) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("emp", employeeEntity);
-        List<ContractEntity> list = find("from ContractEntity con where con.employeeByEmpId=:emp", map);
+        List<ContractEntity> list = (List<ContractEntity>) find("from ContractEntity con where con.employeeByEmpId=:emp", map);
         if (list.size() == 1)
             return list.get(0);
         else throw new RuntimeException("没有" + employeeEntity.getEmpName() + "的合同");

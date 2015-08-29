@@ -1,29 +1,23 @@
 package org.crazydog.domain;
 
-import org.hibernate.annotations.DynamicUpdate;
-import org.hibernate.annotations.SelectBeforeUpdate;
-
 import javax.persistence.*;
-import java.util.Collection;
+import java.util.Set;
 
 /**
- * Created by never on 2015/8/24.
+ * Created by never on 2015/8/29.
  */
 @Entity
-@SelectBeforeUpdate
-@DynamicUpdate
 @Table(name = "unit", schema = "", catalog = "crazydog")
 public class UnitEntity {
     private Integer id;
     private String unitCode;
     private String unitName;
-    private Collection<ContractChangeEntity> contractChangesById;
-    private Collection<DepartmentEntity> departmentsById;
-    private Collection<EmployeeEntity> employeesById;
+    private Set<DepartmentEntity> departmentsById;
+    private PositionChangeEntity positionChangesById;
+    private PositionChangeEntity positionChangesById_0;
 
     @Id
     @Column(name = "id")
-    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
@@ -53,18 +47,6 @@ public class UnitEntity {
     }
 
     @Override
-    public String toString() {
-        return "UnitEntity{" +
-                "id=" + id +
-                ", unitCode='" + unitCode + '\'' +
-                ", unitName='" + unitName + '\'' +
-//                ", contractChangesById=" + contractChangesById +
-//                ", departmentsById=" + departmentsById +
-//                ", employeesById=" + employeesById +
-                '}';
-    }
-
-    @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
@@ -87,29 +69,29 @@ public class UnitEntity {
     }
 
     @OneToMany(mappedBy = "unitByUnitId")
-    public Collection<ContractChangeEntity> getContractChangesById() {
-        return contractChangesById;
-    }
-
-    public void setContractChangesById(Collection<ContractChangeEntity> contractChangesById) {
-        this.contractChangesById = contractChangesById;
-    }
-
-    @OneToMany(mappedBy = "unitByUnitId")
-    public Collection<DepartmentEntity> getDepartmentsById() {
+    public Set<DepartmentEntity> getDepartmentsById() {
         return departmentsById;
     }
 
-    public void setDepartmentsById(Collection<DepartmentEntity> departmentsById) {
+    public void setDepartmentsById(Set<DepartmentEntity> departmentsById) {
         this.departmentsById = departmentsById;
     }
 
-    @OneToMany(mappedBy = "unitByUnitId")
-    public Collection<EmployeeEntity> getEmployeesById() {
-        return employeesById;
+    @OneToOne(mappedBy = "unitByBeforUnitId")
+    public PositionChangeEntity getPositionChangesById() {
+        return positionChangesById;
     }
 
-    public void setEmployeesById(Collection<EmployeeEntity> employeesById) {
-        this.employeesById = employeesById;
+    public void setPositionChangesById(PositionChangeEntity positionChangesById) {
+        this.positionChangesById = positionChangesById;
+    }
+
+    @OneToOne(mappedBy = "unitByAfterUnitId")
+    public PositionChangeEntity getPositionChangesById_0() {
+        return positionChangesById_0;
+    }
+
+    public void setPositionChangesById_0(PositionChangeEntity positionChangesById_0) {
+        this.positionChangesById_0 = positionChangesById_0;
     }
 }
