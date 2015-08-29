@@ -1,4 +1,4 @@
-package org.crazydog.daoI.impl;
+package org.crazydog.daoI;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.HireInfoEntity;
@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 @Component
-public class HireInfoDaoImpl extends Basedao<HireInfoEntity> {
+public class HireInfodaoImpl extends Basedao<HireInfoEntity> {
 
     /**
      * 增加录取信息

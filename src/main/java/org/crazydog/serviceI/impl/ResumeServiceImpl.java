@@ -6,13 +6,14 @@ import org.crazydog.serviceI.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
+import org.springframework.stereotype.Service;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-//@Service
+@Service
 public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 
 	@Autowired
@@ -20,19 +21,19 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	private Basedao<ResumeEntity> resumedao;
 
 	@Autowired
-	@Qualifier("hireDaoImpl")
+	@Qualifier("hireInfodaoImpl")
 	private Basedao<HireInfoEntity> hiredao;
 	
 	@Autowired
-	@Qualifier("resumeEduDaoImpl")
+	@Qualifier("resumeEdudaoImpl")
 	private Basedao<ResumeEduEntity> resumeEdudao;
 	
 	@Autowired
-	@Qualifier("resumeFamilyDaoImpl")
+	@Qualifier("resumeFamilydaoImpl")
 	private Basedao<ResumeFamilyEntity> resumeFamilydao;
 	
 	@Autowired
-	@Qualifier("resumeJobsDaoImpl")
+	@Qualifier("resumeJobsdaoImpl")
 	private Basedao<ResumeJobsEntity> resumeJobsdao;
 	
 	
