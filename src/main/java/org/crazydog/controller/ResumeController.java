@@ -21,15 +21,14 @@ public class ResumeController {
 	
 	@RequestMapping(params="getAllmes")
 	public String getAllmes(HttpServletRequest request){
-//		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
-//		java.util.List<ResumeEntity>
-//		request.setAttribute("resumes", resumes);
-//		Iterator<ResumeEntity> it = resumes.iterator();
-//		while(it.hasNext()){
-//			ResumeEntity a = it.next();
-//			System.out.println(a.getAddress());
-//			System.out.println(a.getHireById());
-//		}
+		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+		request.setAttribute("resumes", resumes);
+		Iterator<ResumeEntity> it = resumes.iterator();
+		while(it.hasNext()){
+			ResumeEntity a = it.next();
+			System.out.println(a.getAddress());
+			System.out.println(a.getHireById());
+		}
 		return "resume";
 	}
 	@RequestMapping("/modelSearch")

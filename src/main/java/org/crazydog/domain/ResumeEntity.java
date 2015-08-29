@@ -74,6 +74,7 @@ public class ResumeEntity {
         this.idNum = idNum;
     }
 
+
     private long tel;
 
     @Basic
@@ -436,8 +437,10 @@ public class ResumeEntity {
     private Collection<ResumeEduEntity> resumeEduById;
     private Collection<ResumeFamilyEntity> resumeFamilyById;
     private Collection<ResumeJobsEntity> resumeJobsById;
+    private HireInfoEntity hireById;
 
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeEduEntity> getResumeEduById() {
         return resumeEduById;
     }
@@ -446,8 +449,9 @@ public class ResumeEntity {
         this.resumeEduById = resumeEduById;
     }
 
+
     @Fetch(FetchMode.JOIN)
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
     }
@@ -456,8 +460,9 @@ public class ResumeEntity {
         this.resumeFamilyById = resumeFamilyById;
     }
 
+
     @Fetch(FetchMode.JOIN)
-    @OneToMany(mappedBy = "resumeId", fetch = FetchType.EAGER)
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;
     }
@@ -466,4 +471,14 @@ public class ResumeEntity {
         this.resumeJobsById = resumeJobsById;
     }
 
+
+    @Fetch(FetchMode.SELECT)
+    @OneToOne(cascade = { CascadeType.ALL},mappedBy = "resumeEntity",fetch = FetchType.EAGER)
+    public HireInfoEntity getHireById() {
+        return hireById;
+    }
+
+    public void setHireById(HireInfoEntity hireById) {
+            this.hireById = hireById;
+        }
 }
