@@ -370,15 +370,40 @@ public class EmployeeEntity {
         this.reportCard = reportCard;
     }
 
-//    private ContractEntity contractEntityByEmp;
-//
-//    public ContractEntity getContractEntityByEmp() {
-//        return contractEntityByEmp;
-//    }
-//
-//    public void setContractEntityByEmp(ContractEntity contractEntityByEmp) {
-//        this.contractEntityByEmp = contractEntityByEmp;
-//    }
+
+    // ##################获取其它表信息##########################
+    // 合同信息
+    private ContractEntity contractEntityByEmp;
+
+    public ContractEntity getContractEntityByEmp() {
+        return contractEntityByEmp;
+    }
+
+    public void setContractEntityByEmp(ContractEntity contractEntityByEmp) {
+        this.contractEntityByEmp = contractEntityByEmp;
+    }
+
+    // 单位信息
+    private UnitEntity unitEntity;
+
+    public UnitEntity getUnitEntity() {
+        return unitEntity;
+    }
+
+    public void setUnitEntity(UnitEntity unitEntity) {
+        this.unitEntity = unitEntity;
+    }
+
+    // 部门信息
+    private DepartmentEntity departmentEntity;
+
+    public DepartmentEntity getDepartmentEntity() {
+        return departmentEntity;
+    }
+
+    public void setDepartmentEntity(DepartmentEntity departmentEntity) {
+        this.departmentEntity = departmentEntity;
+    }
 
     @Override
     public boolean equals(Object o) {

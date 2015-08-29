@@ -20,7 +20,7 @@ public class EmployeedaoImplTest {
     @Before
     public void before() {
         applicationContext = new ClassPathXmlApplicationContext("test-application-config.xml");
-        employeedaoImpl = (Basedao) applicationContext.getBean("employeedaoImpl");
+        employeedaoImpl = applicationContext.getBean("employeedaoImpl", Basedao.class);
     }
 
     @Test
