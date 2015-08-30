@@ -26,10 +26,11 @@ public abstract class SearchModel {
      * @return
      */
     public String process() {
+        //hql主要用来标识方法处理之后的状态，hql是buffer的一个缩影
         StringBuffer hql = advanceSearch();
         if (hql == null)
             return null;
-        buffer.delete(hql.length() - 3,hql.length() );
+        buffer.delete(hql.length() - 3, hql.length());
         return buffer.toString();
     }
 

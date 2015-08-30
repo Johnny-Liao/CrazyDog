@@ -26,17 +26,15 @@ function addRow() {
     td.appendChild(document.createTextNode(""));
     tr.appendChild(td);
     tr.id = length + 1;
-    //for (i = 0; i < 2; i++) {
     var td2 = document.createElement("td");
     var input = document.createElement("input");
     input.type = "text";
     input.setAttribute("class", "s_input");
-    input.setAttribute("name", "lifei");
+    input.setAttribute("name", "line_" + length);
     td2.id = tr.id + "/" + 1;
     td2.align = "center";
     td2.appendChild(input);
     tr.appendChild(td2);
-    //}
     document.getElementById("mytable").appendChild(tr);
 }
 
