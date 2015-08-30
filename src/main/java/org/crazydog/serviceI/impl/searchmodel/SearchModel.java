@@ -8,7 +8,12 @@ package org.crazydog.serviceI.impl.searchmodel;
 public abstract class SearchModel {
     protected StringBuffer buffer = new StringBuffer();
 
-    public abstract StringBuffer advanceSearch();
+    /**
+     * 不要直接使用这个方法，这个方法是给子类实现的钩子方法
+     *
+     * @return
+     */
+    protected abstract StringBuffer advanceSearch();
 
     /**
      * 缓存对象，用来缓存上一次查询

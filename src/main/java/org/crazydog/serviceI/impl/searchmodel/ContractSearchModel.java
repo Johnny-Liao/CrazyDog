@@ -22,7 +22,7 @@ public class ContractSearchModel extends SearchModel {
     }
 
     @Override
-    public StringBuffer advanceSearch() {
+    protected StringBuffer advanceSearch() {
         if (name == null && unitName == null && empCode == null && hireStart == null && hireFinish == null)
             return null;
         buffer.append("from ContractEntity con,PositionChangeEntity pos where ");

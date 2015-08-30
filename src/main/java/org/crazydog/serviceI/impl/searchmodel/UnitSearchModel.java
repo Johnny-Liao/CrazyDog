@@ -15,7 +15,7 @@ public class UnitSearchModel extends SearchModel {
         this.unitName = unitName;
     }
 
-    public StringBuffer advanceSearch() {
+    protected StringBuffer advanceSearch() {
         if (unitName == null && unitCode == null)
             return null;
 
