@@ -15,10 +15,9 @@
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
 
     <script type="text/javascript">
-        function submit(){
-            var submit = $('#username').val();
-            var password = $('#password').val();
-
+        function del(){
+            document.forms.form1.action="/resumeController?bitchdelete";
+            document.forms.form1.submit();
         }
     </script>
 </head>
@@ -31,7 +30,7 @@
         </div>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a></div>
         <div class="search">
-            <form action="">
+            <form id="form1"  action="/resumeController?action=modelSearch">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
                     <td>姓名：</td>>
@@ -54,10 +53,10 @@
                         <option value="录取">录取</option>
                         <option value="未录取">未录取</option>
                     </select></td>
-                    <td><input type="submit" action="modelSearch" name="submit" id="button" value="查询"  class="s_btn"onclick="submit()"/></td>
-                    <td><input type="submit" name="submit" id="button2" value="导出Excel"  class="s_btns" onclick="submit()"/></td>
+                    <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"/></td>
+                    <td><input type="button" name="submit" id="button2" value="导出Excel"  class="s_btns" /></td>
                     <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><input type="submit" action="bitchdelete" name="submit" id="button3" value="批量删除"  class="s_btns" onclick="submit()"/></td>
+                    <td><input type="button"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="del();"/></td>
                 </tr>
             </table>
                 </form>>
