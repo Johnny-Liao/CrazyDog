@@ -24,11 +24,10 @@
         <div class="subNav currentDd currentDt">基础数据维护</div>
         <ul class="navContent " style="display:block">
             <li><a href="/unit?page=unitManage" target="contentFrame">单位管理</a></li>
-            <%--<li><a href="/fragments/content.jsp" target="contentFrame">资质管理</a></li>--%>
         </ul>
         <div class="subNav">简历管理</div>
         <ul class="navContent">
-            <li><a href="/resumeController?getAllmes" target="contentFrame">显示所有简历</a></li>
+            <li><a href="/resumeController?getAllmes" target="contentFrame">所有简历</a></li>
             <li><a href="/views?page=resumeManage" target="contentFrame">简历录取</a></li>
             <li><a href="/views?page=resumeManage" target="contentFrame">取消录取</a></li>
         </ul>
@@ -36,24 +35,9 @@
         <ul class="navContent">
             <li><a href="/employeePage/1" target="contentFrame">人员信息建档</a></li>
             <li><a href="/employeePage" target="contentFrame">人事信息管理</a></li>
-            <li><a href="/fragments/content.jsp" target="contentFrame">离职查看</a></li>
-            <li><a href="/fragments/content.jsp" target="contentFrame">调岗查看</a></li>
+            <li><a href="/employeePage?action=getOffLine" target="contentFrame">离职查看</a></li>
+            <li><a href="/employeePage?action=getPositionChange" target="contentFrame">调岗查看</a></li>
         </ul>
-        <%--<div class="subNav">合同管理</div>--%>
-        <%--<ul class="navContent">--%>
-            <%--<li><a href="/contract?page=contractChange" target="contentFrame">合同续签管理</a></li>--%>
-            <%--<li><a href="/contract?page=changeRecord" target="contentFrame">续签合同记录</a></li>--%>
-        <%--</ul>--%>
-        <%--<div class="subNav">工资管理</div>--%>
-        <%--<ul class="navContent">--%>
-            <%--<li><a href="/fragments/content.jsp" target="contentFrame">发布职位</a></li>--%>
-            <%--<li><a href="/fragments/content.jsp" target="contentFrame">已发职位</a></li>--%>
-            <%--<li><a href="/fragments/content.jsp" target="contentFrame">历史信息</a></li>--%>
-        <%--</ul>--%>
-        <%--<div class="subNav">统计查询</div>--%>
-        <%--<ul class="navContent">--%>
-            <%--<li><a href="/fragments/content.jsp" target="contentFrame">花名册</a></li>--%>
-        <%--</ul>--%>
     </div>
 </div>
 </body>

@@ -5,6 +5,8 @@ import org.crazydog.daoI.impl.DepartmentdaoImpl;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
+import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -28,6 +30,20 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     private DepartmentdaoImpl departmentdao;
 
     /**
+     * 使用UnitSearchModel来进行高级查询
+     *
+     * @param model
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List<UnitEntity> advanceSearch(UnitSearchModel model) {
+        String hql = SearchModel.advanceSearch(model);
+        if (hql != null)
+            return (List<UnitEntity>) unitdao.find(hql);
+        else return null;
+    }
+
+    /**
      * 通过服务单位名称查询
      * 理论上来说单位的名字应该不会重复，所以大多数情况下应该只有一个实例，
      * 但是以防万一还是返回一个list
@@ -35,6 +51,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @param name 服务单位的名字
      * @return
      */
+    @SuppressWarnings("unchecked")
     public List<UnitEntity> getUnitByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
@@ -47,6 +64,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
      * @param code 服务单位的编码
      * @return
      */
+    @SuppressWarnings("unchecked")
     public UnitEntity getUnitByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
@@ -57,6 +75,9 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
         return null;
     }
 
+    public List<DepartmentEntity> getDepartmentEntitiesByUnit(UnitEntity unitEntity) {
+        return departmentdao.getAllDepartmentEntity(unitEntity);
+    }
 
     /**
      * 一次添加多个部门

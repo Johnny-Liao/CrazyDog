@@ -439,7 +439,7 @@ public class ResumeEntity {
     private Collection<ResumeJobsEntity> resumeJobsById;
     private HireInfoEntity hireById;
 
-
+    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeEduEntity> getResumeEduById() {
         return resumeEduById;
@@ -450,7 +450,7 @@ public class ResumeEntity {
     }
 
 
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
@@ -461,7 +461,7 @@ public class ResumeEntity {
     }
 
 
-    @Fetch(FetchMode.JOIN)
+    @Fetch(FetchMode.SUBSELECT)
     @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;

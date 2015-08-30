@@ -94,9 +94,9 @@ CREATE TABLE `resume_jobs` (
 #建立人事信息表
 CREATE TABLE `employee` (
   `id`                INT                     NOT NULL AUTO_INCREMENT,
-  `emp_code`          VARCHAR(255)            NOT NULL COMMENT '员工编码',
-  `emp_name`          VARCHAR(255)            NOT NULL COMMENT '员工名',
-  `gender`            ENUM('女', '男')        CHARACTER SET utf8 NOT NULL COMMENT '性别',
+  `emp_code`          VARCHAR(10)            NOT NULL COMMENT '员工编码',
+  `emp_name`          VARCHAR(20)            NOT NULL COMMENT '员工名',
+  `gender`            ENUM('女', '男')        CHARACTER SET utf8 NOT NULL DEFAULT '男'COMMENT '性别',
   `id_num`            VARCHAR(20)             NOT NULL COMMENT '身份证号',
   `nation`            VARCHAR(20)             NOT NULL COMMENT '民族',
   `tel`               BIGINT(11)                 NOT NULL COMMENT '手机号',
@@ -135,7 +135,7 @@ CREATE TABLE `employee` (
 CREATE TABLE `hire_info` (
   `id`            INT                 NOT NULL AUTO_INCREMENT,
   `resume_id`     INT                 NOT NULL COMMENT '简历id',
-  `STATE`         ENUM('录取', '未录取', '等待审核') CHARACTER SET utf8 NOT NULL COMMENT '简历状态',
+  `STATE`         ENUM('录取', '未录取', '等待审核') CHARACTER SET utf8 NOT NULL DEFAULT '等待审核' COMMENT '简历状态',
   `COMMENT`       VARCHAR(255)        NULL COMMENT '备注',
   `operate_time`  DATE                NOT NULL COMMENT '操作时间',
   `OPERATOR`      VARCHAR(10)         NOT NULL COMMENT '操作员',
@@ -155,12 +155,13 @@ CREATE TABLE `contract` (
 
 #离职信息记录表
 CREATE TABLE `position_leave` (
-  `id`              INT           NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+  `id`              INT           AUTO_INCREMENT PRIMARY KEY ,
+  `emp_id`          INT,
   `emp_code`        INT           NOT NULL,
   `name`            VARCHAR(20)   COMMENT '离职员工',
   `leave_date`      DATE          COMMENT '离职日期',
   `leave_comment`   VARCHAR(200)  COMMENT '离职原因',
-  FOREIGN KEY (`id`) REFERENCES `employee` (`id`) /*ON DELETE SET NULL  ON UPDATE CASCADE*/
+  FOREIGN KEY (`emp_id`) REFERENCES `employee` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 #岗位更改信息记录表
@@ -173,11 +174,11 @@ CREATE TABLE `position_change` (
   `after_unit_id`       INT          NOT NULL COMMENT '之后单位id',
   `after_dept_id`       INT          NOT NULL COMMENT '之后部门id',
   `change_cause`        VARCHAR(100) NOT NULL COMMENT '更改原因',
-  FOREIGN KEY (`emp_id`)        REFERENCES `employee` (`id`)    ON DELETE SET NULL  ON UPDATE CASCADE,
-  FOREIGN KEY (`befor_unit_id`) REFERENCES `unit` (`id`)        ON DELETE SET NULL  ON UPDATE CASCADE,
-  FOREIGN KEY (`befor_dept_id`) REFERENCES `department` (`id`)  ON DELETE SET NULL  ON UPDATE CASCADE,
-  FOREIGN KEY (`after_unit_id`) REFERENCES `unit` (`id`)        ON DELETE SET NULL  ON UPDATE CASCADE,
-  FOREIGN KEY (`after_dept_id`) REFERENCES `department` (`id`)  ON DELETE SET NULL  ON UPDATE CASCADE
+  FOREIGN KEY (`emp_id`)        REFERENCES `employee` (`id`)    ON DELETE CASCADE  ON UPDATE CASCADE,
+  FOREIGN KEY (`befor_unit_id`) REFERENCES `unit` (`id`)        ON DELETE CASCADE  ON UPDATE CASCADE,
+  FOREIGN KEY (`befor_dept_id`) REFERENCES `department` (`id`)  ON DELETE CASCADE  ON UPDATE CASCADE,
+  FOREIGN KEY (`after_unit_id`) REFERENCES `unit` (`id`)        ON DELETE CASCADE  ON UPDATE CASCADE,
+  FOREIGN KEY (`after_dept_id`) REFERENCES `department` (`id`)  ON DELETE CASCADE  ON UPDATE CASCADE
 )ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 #添加管理员数据
@@ -282,6 +283,6 @@ INSERT INTO `position_change` VALUES ('1', '1', '1', '3', '2015-08-29', '2', '6'
 INSERT INTO `position_change` VALUES ('2', '5', '3', '13', '2015-08-29', '2', '8', '领导一致决定');
 INSERT INTO `position_change` VALUES ('3', '6', '3', '15', '2015-08-29', '4', '17', '略');
 
-INSERT INTO `position_leave` VALUES ('2', '2', '草泥马', '2015-08-29', '工资低');
-INSERT INTO `position_leave` VALUES ('4', '4', '傻狗', '2014-08-29', '不告诉你');
-INSERT INTO `position_leave` VALUES ('7', '7', '老王', '2015-05-29', '你猜你猜你猜');
+INSERT INTO `position_leave` VALUES ('1','2', '2', '草泥马', '2015-08-29', '工资低');
+INSERT INTO `position_leave` VALUES ('2','4', '4', '傻狗', '2014-08-29', '不告诉你');
+INSERT INTO `position_leave` VALUES ('3','7', '7', '老王', '2015-05-29', '你猜你猜你猜');

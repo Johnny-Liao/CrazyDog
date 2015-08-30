@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
 <html>
+
 <head>
     <title>服务单位管理</title>
-
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -13,6 +13,14 @@
     <meta http-equiv="Content-Language" content="zh-cn">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+
+    <script type="text/javascript">
+        function submit(){
+            var submit = $('#username').val();
+            var password = $('#password').val();
+
+        }
+    </script>
 </head>
 <body>
 <div class="cont left">
@@ -23,10 +31,12 @@
         </div>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a></div>
         <div class="search">
-            <form action="/resumeController/modelSearch">
+            <form action="">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
+                    <td>姓名：</td>>
                     <td><input type="text" name="name" id="textfield2"  class="s_input"  value="姓名"  onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';" onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}" /></td>
+                    <td>学历：</td>>
                     <td><select name="highestEdu" id="select" class="s_inputs" >
                         <option value= null >——请选择——</option>
                         <option value="小学">小学</option>
@@ -37,20 +47,20 @@
                         <option value="硕士">硕士</option>
                         <option value="博士">博士</option>
                     </select></td>
+                    <td>录取状态：</td>>
                     <td><select name="luquState" id="select2" class="s_inputs" >
                         <option value= null >——请选择——</option>
-                        <option value="简历审核">简历审核</option>
-                        <option value="一审">一审</option>
-                        <option value="二审">二审</option>
-                        <option value="三审">三审</option>
-                        <option value="通过">通过</option>
+                        <option value="等待审核">等待审核</option>
+                        <option value="录取">录取</option>
+                        <option value="未录取">未录取</option>
                     </select></td>
-
-                    <td><input type="submit"  name="button" id="button" value="查询"  class="s_btn"/></td>
-                    <td><input type="submit" name="button2" id="button2" value="导出Excel"  class="s_btns"/></td>
+                    <td><input type="submit" action="modelSearch" name="submit" id="button" value="查询"  class="s_btn"onclick="submit()"/></td>
+                    <td><input type="submit" name="submit" id="button2" value="导出Excel"  class="s_btns" onclick="submit()"/></td>
+                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                    <td><input type="submit" action="bitchdelete" name="submit" id="button3" value="批量删除"  class="s_btns" onclick="submit()"/></td>
                 </tr>
             </table>
-                </>
+                </form>>
         </div>
 
         <div  class="tum">

@@ -31,9 +31,25 @@ public class ResumeController {
 		}
 		return "resume";
 	}
-	@RequestMapping("/modelSearch")
+	@RequestMapping(params = "action=modelSearch")
 	public String modelSearch(@RequestParam("name")String name,@RequestParam("highestEdu")String highestEdu,@RequestParam("luquState")String luquState){
 		System.out.println(name + highestEdu + luquState);
+
+		return "selectresume";
+
+	}
+	@RequestMapping(params = "action=bitchdelete")
+	public String modelSearch(HttpServletRequest request){
+		String[] s = request.getParameterValues("bitchdelete");
+		System.out.println(s.toString());
+		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+		request.setAttribute("resumes", resumes);
+		Iterator<ResumeEntity> it = resumes.iterator();
+		while(it.hasNext()){
+			ResumeEntity a = it.next();
+			System.out.println(a.getAddress());
+			System.out.println(a.getHireById());
+		}
 		return "selectresume";
 
 	}

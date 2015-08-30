@@ -37,7 +37,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	@Autowired
 	@Qualifier("resumeJobsdaoImpl")
 	private ResumeJobsdaoImpl resumeJobsdao;
-	
+
 	
 	@Autowired
     protected HibernateTemplate hibernateTemplate;
@@ -177,7 +177,8 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 * 
 	 */
 	public void cancelHire(int id, String name) {
-		HireInfoEntity hire = (HireInfoEntity) hiredao.getEntity(id);
+		HireInfoEntity hire;
+		hire = (HireInfoEntity) hiredao.getEntity(id);
 		hire.setState("通过");
 //		String s = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
 //				.format(new Date());

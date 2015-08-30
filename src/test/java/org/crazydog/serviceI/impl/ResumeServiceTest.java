@@ -37,13 +37,13 @@ public class ResumeServiceTest {
 //     HireEntity h = resumeServiceImpl.getEntitybyreumeid(3);
 //     System.out.println(h);
 //     }
-    @Test
-    public void test() {
-        //简历的复杂查询
-        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
-        SearchModel sreach = new ResumeSearchModel(null, ResumeSearchModel.Edu.博士, ResumeSearchModel.Luqu.通过);
-        String sql = sreach.advanceSearch(sreach);
-        System.out.println(sql);
+//    @Test
+//    public void test() {
+//        //简历的复杂查询
+//        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
+//        SearchModel sreach = new ResumeSearchModel(null, ResumeSearchModel.Edu.博士, ResumeSearchModel.Luqu.通过);
+//        String sql = sreach.advanceSearch(sreach);
+//        System.out.println(sql);
 //        List<Object> list = resumeServiceImpl.queryEntity(sql);
 //        System.out.println((Object) list.get(0));
 //        for (int i = 0; i < list.size(); i++) {
@@ -55,7 +55,7 @@ public class ResumeServiceTest {
 //		Object[] b = (Object[]) list.get(0);
 //		HireEntity h = (HireEntity) b[1];
 //		System.out.println(h.getOperator());
-    }
+//    }
 //    @Test
 //    public void test(){
 //        resumeServiceImpl = (ResumeServiceImpl) applicationContext.getBean("resumeServiceImpl");
@@ -71,5 +71,13 @@ public class ResumeServiceTest {
 //        }
 //        System.out.println("通过不同方式进行跳转");
 //    }
+
+     @Test
+     public void test(){
+     resumeServiceImpl = (ResumeServiceImpl)
+     applicationContext.getBean("resumeServiceImpl");
+     System.out.println(resumeServiceImpl);
+         resumeServiceImpl.getAllEntities();
+     }
 
 }
