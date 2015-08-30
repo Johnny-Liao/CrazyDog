@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by never on 2015/8/28.
@@ -87,7 +89,7 @@ public class UnitController {
 
     @RequestMapping(value = "/unit", params = "action=search")
     public String advanceSearch(HttpServletRequest request, @RequestParam("unitCode") String unitCode, @RequestParam("unitName") String unitName) throws UnsupportedEncodingException {
-        request.setCharacterEncoding("utf-8");
+//        request.setCharacterEncoding("utf-8");
 
         if ("".equals(unitCode) || "服务单位编码".equals(unitCode))
             unitCode = null;
@@ -99,5 +101,15 @@ public class UnitController {
 
         request.setAttribute("unitEntities", unitEntities);
         return "unitManage";
+    }
+
+    @RequestMapping(value = "/unit", params = "action=add")
+    public String addUnit(HttpServletRequest request) {
+        Map map = request.getParameterMap();
+        Set<String> set = map.keySet();
+        for (String str : set)
+            System.out.println(str + ":" + request.getParameter(str));
+
+        return "/unit?page=unitManage";
     }
 }

@@ -20,7 +20,8 @@
     <meta http-equiv="Content-Language" content="zh-cn">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
-
+    <script src="../../js/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="../../js/tableControl.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="cont left">
@@ -29,6 +30,7 @@
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">待办申请</a></div>
         <div class="search">
             <table border="0" cellspacing="0" cellpadding="0">
+
                 <tr>
                     <td>
                         服务单位编码<span class="red">*</span><input type="text" name="code" value="${unitEntity.unitCode}"
@@ -38,38 +40,43 @@
                         服务单位名称<span class="red">*</span><input type="text" name="name" value="${unitEntity.unitName}"
                                                                class="s_input">
                     </td>
+                    <td><input type="button" name="btnAdd" id="btnAdd" value="增加行" class="s_btn" onclick="addRow()"/>
+                    </td>
+                    <%--<td><input type="button" name="button2" id="button2" value="删除行" class="s_btns"/></td>--%>
+                    <td align="center"><input type="submit" value="确定" class="s_btn"
+                                              onclick='javascript:$("#unit").submit()'>
+                    </td>
+                    <td align="center"><input type="submit" value="返回" class="s_btns"></td>
                 </tr>
-                <tr>
-                    <td><input type="button" name="button" id="button" value="增加行" class="s_btn"/></td>
-                    <td><input type="button" name="button2" id="button2" value="删除行" class="s_btns"/></td>
-                </tr>
+
             </table>
         </div>
 
         <div class="tum">
-            <span class="red">服务部门</span>
-
+            <div><font color="red">服务部门</font></div>
             <div class="contlist">
-                <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+                <form id="unit" method="post" action="/unit?action=add">
+                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
 
-                    <%--显示表头标题--%>
-                    <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <td align="center" bgcolor="#fff8f8">序号</td>
-                        <td align="center" bgcolor="#fff8f8">服务部门名称</td>
-                    </tr>
-
-                    <%--显示表内容--%>
-                    <c:forEach var="entity" items="${departmentEntities}">
-                        <tr>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.deptName}"/></td>
+                        <tbody id="mytable">
+                        <%--显示表头标题--%>
+                        <tr style="color:#000; font-size:14px; padding:10px 0;">
+                            <td align="center" bgcolor="#fff8f8">序号</td>
+                            <td align="center" bgcolor="#fff8f8">服务部门名称</td>
+                            <td align="center" bgcolor="#fff8f8">删除服务部门</td>
                         </tr>
-                    </c:forEach>
-                    <tr>
-                        <td align="center"><input type="submit" value="确定" class="s_btn"></td>
-                        <td align="center"><input type="submit" value="取消" class="s_btns"></td>
-                    </tr>
-                </table>
+
+                        <%--显示表内容--%>
+                        <c:forEach var="entity" items="${departmentEntities}">
+                            <tr>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.deptName}"/></td>
+                                <td align="center" bgcolor="#ffffff">删除</td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </form>
             </div>
         </div>
 
