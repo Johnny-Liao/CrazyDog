@@ -450,8 +450,8 @@ public class ResumeEntity {
     }
 
 
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
+//    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId"/*, fetch = FetchType.EAGER*/)
     public Collection<ResumeFamilyEntity> getResumeFamilyById() {
         return resumeFamilyById;
     }
@@ -461,8 +461,8 @@ public class ResumeEntity {
     }
 
 
-    @Fetch(FetchMode.SUBSELECT)
-    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId", fetch = FetchType.EAGER)
+//    @Fetch(FetchMode.SUBSELECT)
+    @OneToMany(cascade = { CascadeType.ALL},mappedBy = "resumeId"/*, fetch = FetchType.EAGER*/)
     public Collection<ResumeJobsEntity> getResumeJobsById() {
         return resumeJobsById;
     }
@@ -472,8 +472,8 @@ public class ResumeEntity {
     }
 
 
-    @Fetch(FetchMode.SELECT)
-    @OneToOne(cascade = { CascadeType.ALL},mappedBy = "resumeEntity",fetch = FetchType.EAGER)
+//    @Fetch(FetchMode.SELECT)
+    @OneToOne(cascade = { CascadeType.ALL},mappedBy = "resumeEntity"/*,fetch = FetchType.EAGER*/)
     public HireInfoEntity getHireById() {
         return hireById;
     }

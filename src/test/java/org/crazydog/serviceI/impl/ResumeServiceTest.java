@@ -1,12 +1,16 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
+import org.crazydog.domain.HireInfoEntity;
+import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
 import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.List;
 
 public class ResumeServiceTest {
     ApplicationContext applicationContext;
@@ -72,12 +76,29 @@ public class ResumeServiceTest {
 //        System.out.println("通过不同方式进行跳转");
 //    }
 
-     @Test
-     public void test(){
-     resumeServiceImpl = (ResumeServiceImpl)
-     applicationContext.getBean("resumeServiceImpl");
-     System.out.println(resumeServiceImpl);
-         resumeServiceImpl.getAllEntities();
-     }
+    @Test
+    public void test(){
+        resumeServiceImpl = (ResumeServiceImpl)
+                applicationContext.getBean("resumeServiceImpl");
+//     System.out.println(resumeServiceImpl);
+//         resumeServiceImpl.getAllEntities();
+        ResumeSearchModel  resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
+
+        List<Object[]> list = resumeServiceImpl.advanceSearch(resumeSearchModel);
+        System.out.println(list.size());
+//        for (Object[] objs :list)
+//        {
+//            for (Object obj:objs)
+//                System.out.println(obj);
+//        }
+//         System.out.println(list.size());
+//         String hql=SearchModel.advanceSearch(resumeSearchModel);
+//         List<Object>  resumes = resumeServiceImpl.queryEntity(hql);
+//         Object[] b = (Object[]) resumes.get(0);
+//         ResumeEntity re = (ResumeEntity)b[0];
+//         System.out.println(re);
+//         HireInfoEntity h = (HireInfoEntity) b[1];
+//         System.out.println(h);
+    }
 
 }
