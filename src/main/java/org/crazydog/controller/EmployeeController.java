@@ -5,6 +5,8 @@ import org.crazydog.domain.PositionLeaveEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,10 +27,16 @@ public class EmployeeController {
 
     // eg : .../employee?pages=1
     // 处理pages参数，显示相应页数的所有人员信息
-    @RequestMapping(method = RequestMethod.GET)
-    public String getEmployeeByPages(HttpServletRequest request) {
-        request.setAttribute("employees", employeeService.getAllEntities());
+    @RequestMapping(method = RequestMethod.GET, value = "/{page}")
+    public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
+        request.setAttribute("employeesList", employeeService.getEmployeeByPage(Integer.parseInt(page)));
         return "employeePage";
+    }
+
+
+    @RequestMapping(params = "leave", method = RequestMethod.GET)
+    public  String dealWithLeave() {
+        return "leave";
     }
 
     /**

@@ -75,4 +75,16 @@ public class EmployeeServiceImplTest {
     public void testShowEmployeeInfo() throws Exception {
 
     }
+
+    @Test
+    public  void getEmployeeByPage() {
+        List<EmployeeEntity> emp = employeeService.getEmployeeByPage(1);
+        System.out.println(emp.getClass());
+        for(EmployeeEntity employeeEntity : emp) {
+            System.out.println(employeeEntity.getEmpName());
+            // can't get the contract entity.
+            System.out.println(employeeEntity.getContractEntity().getContractStart());
+            System.out.println(employeeEntity.getContractEntity().getContractEnd());
+        }
+    }
 }
