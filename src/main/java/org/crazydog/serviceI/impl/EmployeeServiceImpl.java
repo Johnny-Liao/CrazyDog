@@ -1,9 +1,7 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.EmployeeEntity;
-import org.crazydog.domain.PositionChangeEntity;
-import org.crazydog.domain.PositionLeaveEntity;
+import org.crazydog.domain.*;
 import org.crazydog.serviceI.BaseService;
 import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -150,5 +148,12 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      */
     public void deleteEntity(EmployeeEntity employeeEntity) {
         employeedao.deleteEntity(employeeEntity);
+    }
+
+
+    public List<EmployeeEntity> getEmployeeByPage(int page) {
+        String hql = "from EmployeeEntity emp"; // left join emp.unitEntity unit left join emp.departmentEntity depart left join emp.contractEntity cont";
+        List<EmployeeEntity> emp = (List<EmployeeEntity>) employeedao.find(hql, page, 5);
+        return emp;
     }
 }
