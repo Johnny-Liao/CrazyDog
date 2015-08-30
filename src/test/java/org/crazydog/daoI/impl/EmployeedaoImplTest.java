@@ -9,6 +9,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -78,8 +80,17 @@ public class EmployeedaoImplTest {
 
     @Test
     public void testDeleteEntity() throws Exception {
-        EmployeeEntity employeeEntity = employeedaoImpl.getEntity(1);
-        employeedaoImpl.deleteEntity(employeeEntity);
+//        EmployeeEntity employeeEntity = employeedaoImpl.getEntity(1);
+//        employeedaoImpl.deleteEntity(employeeEntity);
+
+//        String s = DateFormat.getDateInstance(DateFormat.DEFAULT).format(date);
+//        System.out.println(s);
+
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        System.out.println(format.format(date));
+
+//        System.out.println(aa);
     }
 
 //    public void testDisPage() {

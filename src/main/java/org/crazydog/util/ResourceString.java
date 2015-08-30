@@ -20,6 +20,11 @@ public class ResourceString {
     public final static String[] employeeShow = {"员工编号", "姓名", "性别", "身份证号", "手机", "最高学历", "服务单位", "服务部门", "合同起始日", "合同终止日", "离职操作", "调岗操作"};
 
     /**
+     * 离职操作
+     */
+    public final static String[] leave = {"员工编号", "姓名", "离职日期", "离职原因", "提交"};
+
+    /**
      * 这是合同变更维护的列
      */
     public final static String[] contractExtensionRecordShow = {"员工编号", "姓名", "性别", "身份证号", "手机", "服务单位", "服务部门", "合同起始日", "合同终止日", "是否续约"};

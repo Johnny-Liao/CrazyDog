@@ -13,7 +13,7 @@ import java.util.List;
  * Created by never on 2015/8/26.
  */
 @Service
-public class PositionServiceImpl implements BaseService<PositionChangeEntity> {
+public class PositionChangeServiceImpl implements BaseService<PositionChangeEntity> {
 
     @Autowired
     @Qualifier("positionChangedaoImpl")

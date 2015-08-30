@@ -24,11 +24,8 @@
 <body>
 <div class="cont left">
     <div class="content">
-        <div class="contentop">
-            <div class="welcome">您好：<a href="#">admin</a>，欢迎登综合业务管理系统！</div>
-            <div class="time"><span>2015年4月21日</span><span>星期二</span></div>
-        </div>
-        <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">待办申请</a></div>
+        <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
+        <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">显示人员信息</a></div>
         <div class="search">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
@@ -73,7 +70,7 @@
                                     value="${entity.contractEntity.contractStart}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.contractEntity.contractEnd}"/></td>
-                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?leave">离职操作</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?leave&empid=${entity.id}&empname=${entity.empName}">离职操作</a></td>
                             <td align="center" bgcolor="#ffffff"><a href="/employeePage?dispatch">调岗操作</a></td>
                         </tr>
                     </c:forEach>
