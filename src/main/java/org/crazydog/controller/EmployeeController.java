@@ -1,17 +1,15 @@
 package org.crazydog.controller;
 
-import com.sun.deploy.net.HttpRequest;
-import org.crazydog.serviceI.BaseService;
+import org.crazydog.domain.PositionChangeEntity;
+import org.crazydog.domain.PositionLeaveEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
 /**
  * Created by johnny on 15-8-27.
@@ -21,7 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 public class EmployeeController {
 
     @Autowired
-    @Qualifier(value = "employeeServiceImpl")
+//    @Qualifier("employeeServiceImpl")
     private EmployeeServiceImpl employeeService;
 
 
@@ -33,4 +31,27 @@ public class EmployeeController {
         return "employeePage";
     }
 
+    /**
+     * 获取所有的离职员工的信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(params = "action=getOffLine")
+    public String getPositionOffLines(HttpServletRequest request) {
+        List<PositionLeaveEntity> positionLeaveEntities = employeeService.getAllPositionLeaveEntities();
+
+        request.setAttribute("positionLeaveEntities", positionLeaveEntities);
+
+        return "getOffLine";
+    }
+
+    @RequestMapping(params = "action=getPositionChange")
+    public String getPositionChanges(HttpServletRequest request) {
+        List<PositionChangeEntity> positionChangeEntities = employeeService.getAllPositionChangeEntities();
+
+        request.setAttribute("positionChangeEntities", positionChangeEntities);
+
+        return "getPositionChange";
+    }
 }
