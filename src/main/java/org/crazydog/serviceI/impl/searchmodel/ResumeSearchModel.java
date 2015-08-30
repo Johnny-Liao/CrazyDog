@@ -30,13 +30,14 @@ public class ResumeSearchModel extends SearchModel {
     }
 
     public StringBuffer advanceSearch() {
-        buffer.append("from ResumeEntity res , HireInfoEntity hire where ");
+        buffer.append("from ResumeEntity res, HireInfoEntity hire where res.id=hire.resumeId and ");
         if (luquState != null)
             buffer.append("hire.state='" + luquState + "' and");
         if (name != null)
             buffer.append("res.name='" + name + "' and");
         if (highestEdu != null)
-            buffer.append(" res.education='" + highestEdu + "' and");
+        {buffer.append(" res.education='" + highestEdu + "' and");}
+
 
 //        buffer.append("from ResumeEntity res where ");
 //        if (luquState != null) {
