@@ -3,6 +3,7 @@ package org.crazydog.controller;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.impl.UnitServiceImpl;
+import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
 /**
@@ -80,6 +82,23 @@ public class UnitController {
         }
 //        unitService.deleteEntity(unitEntity);
         //重新加载一次
+        return "unitManage";
+    }
+
+    @RequestMapping(value = "/unit", params = "action=search")
+    public String advanceSearch(HttpServletRequest request, @RequestParam("unitCode") String unitCode, @RequestParam("unitName") String unitName) throws UnsupportedEncodingException {
+        request.setCharacterEncoding("utf-8");
+
+//        String unitCode = request.getParameter("unitCode");
+//        String unitName = request.getParameter("unitName");
+        System.out.println(unitCode);
+        System.out.println(unitName);
+
+        UnitSearchModel model = new UnitSearchModel(unitCode, unitName);
+        List<UnitEntity> unitEntities = unitService.advanceSearch(model);
+
+        if (unitEntities != null)
+            request.setAttribute("unitEntities", unitEntities);
         return "unitManage";
     }
 }

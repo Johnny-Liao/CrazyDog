@@ -48,7 +48,7 @@
         </div>
 
         <div class="tum">
-            <span class="red">离职员工</span>
+            <span class="red">调岗信息</span>
 
             <div class="contlist">
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
