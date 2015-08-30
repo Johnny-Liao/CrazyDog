@@ -76,8 +76,11 @@ public class ResumeServiceTest {
      public void test(){
      resumeServiceImpl = (ResumeServiceImpl)
      applicationContext.getBean("resumeServiceImpl");
-     System.out.println(resumeServiceImpl);
-         resumeServiceImpl.getAllEntities();
+//     System.out.println(resumeServiceImpl);
+//         resumeServiceImpl.getAllEntities();
+         ResumeSearchModel  resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.valueOf("等待审核"));
+         String hql=SearchModel.advanceSearch(resumeSearchModel);
+         resumeServiceImpl.queryEntity(hql);
      }
 
 }

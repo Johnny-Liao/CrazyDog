@@ -16,7 +16,7 @@ public class ResumeSearchModel extends SearchModel {
      * 录取状态
      */
     public enum Luqu {
-        通过, 三审, 二审, 一审, 简历审核
+        等待审核, 录取, 未录取
     }
 
     private String name;
@@ -30,7 +30,7 @@ public class ResumeSearchModel extends SearchModel {
     }
 
     public StringBuffer advanceSearch() {
-        buffer.append("from ResumeEntity res , HireEntity hire where ");
+        buffer.append("from ResumeEntity res , HireInfoEntity hire where ");
         if (luquState != null)
             buffer.append("hire.state='" + luquState + "' and");
         if (name != null)

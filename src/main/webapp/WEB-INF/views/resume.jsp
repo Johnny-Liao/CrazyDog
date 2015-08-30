@@ -49,7 +49,7 @@
                         <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/resume?action=modelSearch'"/></td>
                         <td><input type="button" name="submit" id="button2" value="导出Excel"  class="s_btns" /></td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="button"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="del();"/></td>
+                        <td><input type="submit"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="del();"/></td>
                     </tr>
                 </form>
             </table>

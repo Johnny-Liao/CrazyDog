@@ -60,7 +60,16 @@
               <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
             </c:forEach>
           </tr>
-          <tr>显示查询的数据</tr>
+            <c:forEach var="column" items="${resumes}">
+              <tr style="color:#000; font-size:14px; padding:10px 0;">
+                <td align="center" bgcolor="#fff8f8"><input name="selectes" type="checkbox" value="${column.ResumeEntity.id}" /></td>
+                <td align="center" bgcolor="#fff8f8"><c:out value="${column.ResumeEntity.name}"/></td>
+                <td align="center" bgcolor="#fff8f8"><c:out value="${column.ResumeEntity.gender}"/></td>
+                <td align="center" bgcolor="#fff8f8"><c:out value="${column.ResumeEntity.nation}"/></td>
+                <td align="center" bgcolor="#fff8f8"><c:out value="${column.ResumeEntity.gender}"/></td>
+                <td align="center" bgcolor="#fff8f8"><c:out value="${column.ResumeEntity.birthday}"/></td><td align="center" bgcolor="#fff8f8"><c:out value="${column.hyzk}"/></td>
+              </tr>
+            </c:forEach>
         </table>
 
       </div>
