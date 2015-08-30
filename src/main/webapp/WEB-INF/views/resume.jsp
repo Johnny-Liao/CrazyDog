@@ -13,13 +13,6 @@
     <meta http-equiv="Content-Language" content="zh-cn">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
-
-    <script type="text/javascript">
-        function del(){
-            document.forms.form1.action="/resumeController?bitchdelete";
-            document.forms.form1.submit();
-        }
-    </script>
 </head>
 <body>
 <div class="cont left">
@@ -30,36 +23,36 @@
         </div>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a></div>
         <div class="search">
-            <form id="form1"  action="/resumeController?action=modelSearch">
             <table border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td>姓名：</td>>
-                    <td><input type="text" name="name" id="textfield2"  class="s_input"  value="姓名"  onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';" onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}" /></td>
-                    <td>学历：</td>>
-                    <td><select name="highestEdu" id="select" class="s_inputs" >
-                        <option value= null >——请选择——</option>
-                        <option value="小学">小学</option>
-                        <option value="初中">初中</option>
-                        <option value="高中">高中</option>
-                        <option value="专科">专科</option>
-                        <option value="本科">本科</option>
-                        <option value="硕士">硕士</option>
-                        <option value="博士">博士</option>
-                    </select></td>
-                    <td>录取状态：</td>>
-                    <td><select name="luquState" id="select2" class="s_inputs" >
-                        <option value= null >——请选择——</option>
-                        <option value="等待审核">等待审核</option>
-                        <option value="录取">录取</option>
-                        <option value="未录取">未录取</option>
-                    </select></td>
-                    <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"/></td>
-                    <td><input type="button" name="submit" id="button2" value="导出Excel"  class="s_btns" /></td>
-                    <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                    <td><input type="button"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="del();"/></td>
-                </tr>
+                <form id="form1" method="post" >
+                    <tr>
+                        <td>姓名：</td>>
+                        <td><input type="text" name="name" id="textfield2"  class="s_input"  value="姓名"  onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';" onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}" /></td>
+                        <td>学历：</td>>
+                        <td><select name="highestEdu" id="select" class="s_inputs" >
+                            <option value= null >——请选择——</option>
+                            <option value="小学">小学</option>
+                            <option value="初中">初中</option>
+                            <option value="高中">高中</option>
+                            <option value="专科">专科</option>
+                            <option value="本科">本科</option>
+                            <option value="硕士">硕士</option>
+                            <option value="博士">博士</option>
+                        </select></td>
+                        <td>录取状态：</td>>
+                        <td><select name="luquState" id="select2" class="s_inputs" >
+                            <option value= null >——请选择——</option>
+                            <option value="等待审核">等待审核</option>
+                            <option value="录取">录取</option>
+                            <option value="未录取">未录取</option>
+                        </select></td>
+                        <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/resume?action=modelSearch'"/></td>
+                        <td><input type="button" name="submit" id="button2" value="导出Excel"  class="s_btns" /></td>
+                        <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                        <td><input type="button"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="del();"/></td>
+                    </tr>
+                </form>
             </table>
-                </form>>
         </div>
 
         <div  class="tum">

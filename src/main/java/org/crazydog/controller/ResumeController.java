@@ -12,14 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Iterator;
 
 @Controller
-@RequestMapping("/resumeController")
 public class ResumeController {
 	
 	@Autowired
 	@Qualifier("resumeServiceImpl")
 	private ResumeServiceImpl resumeService;
 	
-	@RequestMapping(params="getAllmes")
+	@RequestMapping(value="/resume",params="action=getAll")
 	public String getAllmes(HttpServletRequest request){
 		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
@@ -31,7 +30,7 @@ public class ResumeController {
 		}
 		return "resume";
 	}
-	@RequestMapping(params ="action=modelSearch")
+	@RequestMapping(value="/resume",params ="action=modelSearch")
 	public String modelSearch(@RequestParam("name")String name,@RequestParam("highestEdu")String highestEdu,@RequestParam("luquState")String luquState){
 		System.out.println(name + highestEdu + luquState);
 
