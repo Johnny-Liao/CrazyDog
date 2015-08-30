@@ -1,9 +1,7 @@
 package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.EmployeeEntity;
-import org.crazydog.domain.UnitEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
