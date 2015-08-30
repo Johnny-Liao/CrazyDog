@@ -27,7 +27,7 @@
                 <form id="formresume" method="post" >
                     <tr>
                         <td>姓名：</td>>
-                        <td><input type="text" name="name" id="textfield2"  class="s_input"  value="姓名"  onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';" onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}" /></td>
+                        <td><input type="text" name="name" id="textfield2"  class="s_input"   onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';" onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}" /></td>
                         <td>学历：</td>>
                         <td><select name="highestEdu" id="select" class="s_inputs" >
                             <option value= null >——请选择——</option>

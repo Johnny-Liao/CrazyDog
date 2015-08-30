@@ -28,7 +28,7 @@
 
 
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-          <form>
+          <form method="post">
             <div class="search">
               <input type="submit" name="button" id="button" value="批量录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=bitchHire'"/>
             </div>
@@ -39,7 +39,7 @@
             </c:forEach>
           </tr>
           <%--显示表内容--%>
-          <c:forEach var="column" items="${resumes}">
+          <c:forEach var="column" items="${resumes2}">
             <tr style="color:#000; font-size:14px; padding:10px 0;">
               <td align="center" bgcolor="#fff8f8"><input name="selectes" type="checkbox" value="${column.id}" /></td>
               <td align="center" bgcolor="#fff8f8"><c:out value="${column.name}"/></td>

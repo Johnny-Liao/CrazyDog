@@ -46,21 +46,21 @@ public class ContractSearchModel extends SearchModel {
 
         ContractSearchModel that = (ContractSearchModel) o;
 
-        if (!empCode.equals(that.empCode)) return false;
-        if (!name.equals(that.name)) return false;
-        if (!unitName.equals(that.unitName)) return false;
-        if (!hireStart.equals(that.hireStart)) return false;
-        return hireFinish.equals(that.hireFinish);
+        if (empCode != null ? !empCode.equals(that.empCode) : that.empCode != null) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
+        if (hireStart != null ? !hireStart.equals(that.hireStart) : that.hireStart != null) return false;
+        return !(hireFinish != null ? !hireFinish.equals(that.hireFinish) : that.hireFinish != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = empCode.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + unitName.hashCode();
-        result = 31 * result + hireStart.hashCode();
-        result = 31 * result + hireFinish.hashCode();
+        int result = empCode != null ? empCode.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
+        result = 31 * result + (hireStart != null ? hireStart.hashCode() : 0);
+        result = 31 * result + (hireFinish != null ? hireFinish.hashCode() : 0);
         return result;
     }
 }

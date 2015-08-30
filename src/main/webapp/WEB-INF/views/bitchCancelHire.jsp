@@ -22,7 +22,7 @@
       <div class="time"><span>2015年4月21日</span><span>星期二</span></div>
     </div>
     <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a></div>
-    <form>
+    <form method="post">
       <div class="search">
         <input type="submit" name="button" id="button" value="批量取消录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=bitchHire'"/>
       </div>
@@ -36,7 +36,7 @@
               </c:forEach>
             </tr>
             <%--显示表内容--%>
-            <c:forEach var="column" items="${resumes}">
+            <c:forEach var="column" items="${resumes1}">
               <tr style="color:#000; font-size:14px; padding:10px 0;">
                 <td align="center" bgcolor="#fff8f8"><input name="selectes" type="checkbox" value="${column.id}" /></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.name}"/></td>
@@ -54,7 +54,6 @@
             </c:forEach>
         </table>
       </div>
-
     </div>
     </form>
   </div>
