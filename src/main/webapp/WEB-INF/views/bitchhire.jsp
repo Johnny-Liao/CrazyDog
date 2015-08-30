@@ -28,7 +28,7 @@
 
 
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-          <form>
+          <form method="post">
             <div class="search">
               <input type="submit" name="button" id="button" value="批量录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=bitchHire'"/>
             </div>

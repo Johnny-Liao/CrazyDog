@@ -70,7 +70,7 @@ public class ResumeController {
 //			System.out.println(a.getAddress());
 //			System.out.println(a.getHireById());
 //		}
-		return "selectresume";
+		return "resume";
 
 	}
 
@@ -80,10 +80,12 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchHire")
 	public String bitchHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		int[] i = {2,3};
-		String name = "李飞";
-		resumeService.batchHire(i, name);
-		return "resume";
+		System.out.println(ids);
+//		int[] i = {2,3};
+//		String name = "李飞";
+//		resumeService.batchHire(i, name);
+		this.getNoHire(request);
+		return "bitchhire";
 
 	}
 
@@ -93,10 +95,12 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
 	public String bitchCancelHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		int[] i = {2,3};
-		String name = "李飞";
-		resumeService.batchcancelHire(i,name);
-		return "resume";
+		System.out.println(ids);
+//		int[] i = {2,3};
+//		String name = "李飞";
+//		resumeService.batchcancelHire(i,name);
+		this.getAllHire(request);
+		return "bitchCancelHire";
 
 	}
 
@@ -108,7 +112,7 @@ public class ResumeController {
 	/*
 		获取所有录取等待状态的简历
 	 */
-	@RequestMapping(value="/resume",params ="action=getHiremes")
+	@RequestMapping(value="/resume",params ="action=getNoHire")
 	public String getNoHire(HttpServletRequest request){
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
 		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);

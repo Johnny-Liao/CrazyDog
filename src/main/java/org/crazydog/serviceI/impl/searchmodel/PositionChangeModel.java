@@ -53,21 +53,21 @@ public class PositionChangeModel extends SearchModel {
 
         PositionChangeModel that = (PositionChangeModel) o;
 
-        if (!hireStart.equals(that.hireStart)) return false;
-        if (!hirefinish.equals(that.hirefinish)) return false;
-        if (!leaveInfo.equals(that.leaveInfo)) return false;
-        if (!unitName.equals(that.unitName)) return false;
-        return name.equals(that.name);
+        if (hireStart != null ? !hireStart.equals(that.hireStart) : that.hireStart != null) return false;
+        if (hirefinish != null ? !hirefinish.equals(that.hirefinish) : that.hirefinish != null) return false;
+        if (leaveInfo != null ? !leaveInfo.equals(that.leaveInfo) : that.leaveInfo != null) return false;
+        if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
+        return !(name != null ? !name.equals(that.name) : that.name != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = hireStart.hashCode();
-        result = 31 * result + hirefinish.hashCode();
-        result = 31 * result + leaveInfo.hashCode();
-        result = 31 * result + unitName.hashCode();
-        result = 31 * result + name.hashCode();
+        int result = hireStart != null ? hireStart.hashCode() : 0;
+        result = 31 * result + (hirefinish != null ? hirefinish.hashCode() : 0);
+        result = 31 * result + (leaveInfo != null ? leaveInfo.hashCode() : 0);
+        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
+        result = 31 * result + (name != null ? name.hashCode() : 0);
         return result;
     }
 }
