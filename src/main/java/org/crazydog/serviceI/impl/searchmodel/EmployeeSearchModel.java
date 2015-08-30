@@ -16,7 +16,7 @@ public class EmployeeSearchModel extends SearchModel {
     }
 
     @Override
-    public StringBuffer advanceSearch() {
+    protected StringBuffer advanceSearch() {
         if (name == null && unitName == null && edu == null)
             return null;
         buffer.append("from EmployeeEntity emp where ");

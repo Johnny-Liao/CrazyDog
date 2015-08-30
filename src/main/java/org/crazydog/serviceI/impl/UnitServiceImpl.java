@@ -39,9 +39,11 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     @SuppressWarnings("unchecked")
     public List<UnitEntity> advanceSearch(UnitSearchModel model) {
         String hql = SearchModel.advanceSearch(model);
-        if (hql != null)
+        if (hql != null) {
+            System.out.println(hql);
             return (List<UnitEntity>) unitdao.find(hql);
-        else return new ArrayList<UnitEntity>(0);
+
+        } else return new ArrayList<UnitEntity>(0);
     }
 
     /**
