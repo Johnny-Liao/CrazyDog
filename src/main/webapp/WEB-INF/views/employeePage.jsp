@@ -38,7 +38,6 @@
                                onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}"/>
                     </td>
                     <td><input type="submit" name="button" id="button" value="查询" class="s_btn"/></td>
-                    <td><input type="submit" name="button2" id="button2" value="新建服务单位" class="s_btns"/></td>
                 </tr>
             </table>
         </div>
@@ -71,7 +70,7 @@
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.contractEntity.contractEnd}"/></td>
                             <td align="center" bgcolor="#ffffff"><a href="/employeePage?leave&empid=${entity.id}&empname=${entity.empName}">离职操作</a></td>
-                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?dispatch">调岗操作</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?dispatch&empid=${entity.id}&empname=${entity.empName}&unit=${entity.unitEntity.unitName}&dept=${entity.departmentEntity.deptName}">调岗操作</a></td>
                         </tr>
                     </c:forEach>
                         <tr>
