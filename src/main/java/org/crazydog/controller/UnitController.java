@@ -89,16 +89,15 @@ public class UnitController {
     public String advanceSearch(HttpServletRequest request, @RequestParam("unitCode") String unitCode, @RequestParam("unitName") String unitName) throws UnsupportedEncodingException {
         request.setCharacterEncoding("utf-8");
 
-//        String unitCode = request.getParameter("unitCode");
-//        String unitName = request.getParameter("unitName");
-        System.out.println(unitCode);
-        System.out.println(unitName);
+        if ("".equals(unitCode) || "服务单位编码".equals(unitCode))
+            unitCode = null;
+        if ("".equals(unitName) || "服务单位名称".equals(unitName))
+            unitName = null;
 
         UnitSearchModel model = new UnitSearchModel(unitCode, unitName);
         List<UnitEntity> unitEntities = unitService.advanceSearch(model);
 
-        if (unitEntities != null)
-            request.setAttribute("unitEntities", unitEntities);
+        request.setAttribute("unitEntities", unitEntities);
         return "unitManage";
     }
 }

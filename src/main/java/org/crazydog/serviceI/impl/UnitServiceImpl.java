@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -38,9 +39,10 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     @SuppressWarnings("unchecked")
     public List<UnitEntity> advanceSearch(UnitSearchModel model) {
         String hql = SearchModel.advanceSearch(model);
-        if (hql != null)
+        if (hql != null) {
+            System.out.println(hql);
             return (List<UnitEntity>) unitdao.find(hql);
-        else return null;
+        } else return new ArrayList<UnitEntity>(0);
     }
 
     /**

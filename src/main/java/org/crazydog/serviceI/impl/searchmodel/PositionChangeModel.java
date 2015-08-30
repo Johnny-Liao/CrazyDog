@@ -25,7 +25,7 @@ public class PositionChangeModel extends SearchModel {
     }
 
     @Override
-    public StringBuffer advanceSearch() {
+    protected StringBuffer advanceSearch() {
 
         if (/*position == null &&*/ hireStart == null && hirefinish == null)
             return null;
