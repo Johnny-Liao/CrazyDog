@@ -23,7 +23,7 @@ public class UnitSearchModel extends SearchModel {
         if (unitName != null)
             buffer.append(" unit.unitName='" + unitName + "' and");
         if (unitCode != null)
-            buffer.append(" unit.unitName='" + unitCode + "' and");
+            buffer.append(" unit.unitCode='" + unitCode + "' and");
 
         return buffer;
     }
