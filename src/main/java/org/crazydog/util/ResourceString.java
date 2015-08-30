@@ -26,5 +26,12 @@ public class ResourceString {
     /**
      * 这是合同变更维护的列
      */
-    public final static String[] resumeshow = {"选择", "姓名", "性别", "民族", "出生年月", "最高学历", "婚否", "政治面貌", "户口所在地", "手机号码","录取状态","邮箱","操作"};
+    public final static String[] resumeshow = {"选择", "姓名", "性别", "民族", "出生年月", "最高学历", "婚否", "政治面貌", "户口所在地", "手机号码", "录取状态", "邮箱", "操作"};
+
+    /**
+     * 这是岗位变更维护的列
+     */
+    public final static String[] positionChangeShow = {"序号", "员工编号", "员工姓名", "更改时间", "更改原因", "之前单位", "之前部门", "之后单位", "之后部门", "删除记录"};
+
+
 }

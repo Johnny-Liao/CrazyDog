@@ -2,6 +2,8 @@ package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
+import org.crazydog.domain.PositionChangeEntity;
+import org.crazydog.domain.PositionLeaveEntity;
 import org.crazydog.serviceI.BaseService;
 import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +25,31 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
     @Qualifier("employeedaoImpl")
     private Basedao<EmployeeEntity> employeedao;
 
+    @Autowired
+    @Qualifier("positionLeavedaoImpl")
+    private Basedao<PositionLeaveEntity> positionLeavedao;
+
+    @Autowired
+    @Qualifier("positionChangedaoImpl")
+    private Basedao<PositionChangeEntity> positionChangedao;
+
+    /**
+     * 获取所有的岗位更改的信息
+     *
+     * @return
+     */
+    public List<PositionChangeEntity> getAllPositionChangeEntities() {
+        return positionChangedao.getAllEntities();
+    }
+
+    /**
+     * 获取所有的离职员工信息
+     *
+     * @return
+     */
+    public List<PositionLeaveEntity> getAllPositionLeaveEntities() {
+        return positionLeavedao.getAllEntities();
+    }
 
     /**
      * 通过名字获得员工（抽象匹配）
@@ -30,6 +57,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param name
      * @return
      */
+    @SuppressWarnings("unchecked")
     public List<EmployeeEntity> getEmployeeByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
@@ -42,6 +70,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      * @param code
      * @return
      */
+    @SuppressWarnings("unchecked")
     public List<EmployeeEntity> getEmployeeByCode(String code) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("code", code);
@@ -59,7 +88,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
      */
 
     public List<?> advanceSearch(SearchModel model) {
-        String hql = model.advanceSearch(model);
+        String hql = SearchModel.advanceSearch(model);
         return employeedao.find(hql);
     }
 
@@ -103,7 +132,7 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
     /**
      * 获得所有的实体类
-     * <p/>
+     * <p>
      * 注意这里获得的所有实体在底层关闭了延迟加载，所以会导致所有的字段都取出来
      * 所以他的所有外键都为非空
      *

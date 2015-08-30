@@ -2,6 +2,7 @@ package org.crazydog.domain;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Collection;
 
 /**
  * Created by never on 2015/8/29.
@@ -468,6 +469,7 @@ public class EmployeeEntity {
     private DepartmentEntity departmentEntity;
     private ContractEntity contractEntity;
     private PositionLeaveEntity positionLeaveEntity;
+    private Collection<PositionChangeEntity> positionChangeEntities;
 
     @ManyToOne
     @JoinColumn(name = "unit_id", referencedColumnName = "id", nullable = false)
@@ -506,5 +508,15 @@ public class EmployeeEntity {
 
     public void setPositionLeaveEntity(PositionLeaveEntity positionLeaveEntity) {
         this.positionLeaveEntity = positionLeaveEntity;
+    }
+
+    @OneToMany(mappedBy = "employeeEntity")
+    public Collection<PositionChangeEntity> getPositionChangeEntities() {
+        return positionChangeEntities;
+    }
+
+
+    public void setPositionChangeEntities(Collection<PositionChangeEntity> positionChangeEntities) {
+        this.positionChangeEntities = positionChangeEntities;
     }
 }

@@ -5,6 +5,8 @@ import org.crazydog.daoI.impl.DepartmentdaoImpl;
 import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
+import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -26,6 +28,20 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     @Autowired
     @Qualifier("departmentdaoImpl")
     private DepartmentdaoImpl departmentdao;
+
+    /**
+     * 使用UnitSearchModel来进行高级查询
+     *
+     * @param model
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List<UnitEntity> advanceSearch(UnitSearchModel model) {
+        String hql = SearchModel.advanceSearch(model);
+        if (hql != null)
+            return (List<UnitEntity>) unitdao.find(hql);
+        else return null;
+    }
 
     /**
      * 通过服务单位名称查询

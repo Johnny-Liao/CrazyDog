@@ -1,4 +1,3 @@
-
 <%--
   Created by IntelliJ IDEA.
   User: never
@@ -25,29 +24,30 @@
 <body>
 <div class="cont left">
     <div class="content">
-        <div class="contentop">
-            <div class="welcome">您好：<a href="#">admin</a>，欢迎登综合业务管理系统！</div>
-            <div class="time"><span>2015年4月21日</span><span>星期二</span></div>
-        </div>
+        <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">待办申请</a></div>
         <div class="search">
             <table border="0" cellspacing="0" cellpadding="0">
                 <tr>
-                    <td><input type="text" name="textfield" id="textfield" class="s_input" value="服务单位编码"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位编码')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='服务单位编码';this.style.color='#CCCCCC';}"/>
-                    </td>
-                    <td><input type="text" name="textfield2" id="textfield2" class="s_input" value="服务单位名称"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位名称')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='服务单位名称';this.style.color='#CCCCCC';}"/>
-                    </td>
-                    <td><input type="submit" name="button" id="button" value="查询" class="s_btn"/></td>
-                    <td><input type="submit" name="button2" id="button2" value="新建服务单位" class="s_btns"/></td>
+                    <form method="post">
+                        <td><input type="text" name="unitCode" id="textfield" class="s_input" value="服务单位编码"
+                                   onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位编码')this.value='';"
+                                   onblur="javascript:if(this.value==''){this.value='服务单位编码';this.style.color='#CCCCCC';}"/>
+                        </td>
+                        <td><input type="text" name="unitName" id="textfield2" class="s_input" value="服务单位名称"
+                                   onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位名称')this.value='';"
+                                   onblur="javascript:if(this.value==''){this.value='服务单位名称';this.style.color='#CCCCCC';}"/>
+                        </td>
+                        <td><input type="submit" name="button" id="button" value="查询" class="s_btn"
+                                   onclick="javascript:this.form.action='/unit?action=search'"/></td>
+                        <td><input type="submit" name="button2" id="button2" value="新建服务单位" class="s_btns"
+                                   onclick="javascript:this.form.action='url1'"/></td>
+                    </form>
                 </tr>
             </table>
         </div>
 
-        <div class="tum">
+        <div class=" tum">
             <div class="contlist">
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                     <%--显示表头标题--%>
@@ -61,11 +61,14 @@
                     <c:forEach var="entity" items="${unitEntities}">
                         <tr>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitCode}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.unitCode}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.unitName}"/></td>
                             <td align="center" bgcolor="#ffffff"><a href='unit?page=unitModify&&unitId=<c:out
                                     value="${entity.id}"/>'>修改</a></td>
-                            <td align="center" bgcolor="#ffffff"><a href='unit?action=unitDelete&&unitId=<c:out
+                            <td align="center" bgcolor="#ffffff"><a
+                                    href='unit?action=unitDelete&&unitId=<c:out
                                     value="${entity.id}"/>'>删除</a></td>
                         </tr>
                     </c:forEach>
