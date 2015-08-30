@@ -30,13 +30,27 @@ public class EmployeeController {
     @RequestMapping(method = RequestMethod.GET, value = "/{page}")
     public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
         request.setAttribute("employeesList", employeeService.getEmployeeByPage(Integer.parseInt(page)));
+        request.setAttribute("page", page);
         return "employeePage";
     }
 
 
+    /**
+     * 跳转到离职人员处理
+     * @return
+     */
     @RequestMapping(params = "leave", method = RequestMethod.GET)
     public  String dealWithLeave() {
         return "leave";
+    }
+
+    /**
+     * 跳转到调岗人员处理
+     * @return
+     */
+    @RequestMapping(params = "dispatch", method = RequestMethod.GET)
+    public  String dealWithDispatch() {
+        return "dispatch";
     }
 
     /**

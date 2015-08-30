@@ -73,10 +73,15 @@
                                     value="${entity.contractEntity.contractStart}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.contractEntity.contractEnd}"/></td>
-                            <td align="center" bgcolor="#ffffff"><a href="/employeePage/leave">LiZhi操作</a></td>
-                            <td align="center" bgcolor="#ffffff"><a href="/employeePage/dispatch">DiaoGang操作</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?leave">离职操作</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?dispatch">调岗操作</a></td>
                         </tr>
                     </c:forEach>
+                        <tr>
+                            <td align="center"><input type="submit" value="上一页" class="s_btn" onclick="javascript:this.form.action='/employeePage/${page - 1}'"></td>
+                            <td align="center"><input type="submit" value="下一页" class="s_btn" onclick="javascript:this.form.action='/employeePage/${page + 1}'"></td>
+                            <td align="center"><c:out value="当前页：${page}"  ></c:out></td><!-- default="当前页：1" -->
+                        </tr>
                 </table>
             </div>
         </div>
