@@ -33,17 +33,17 @@ public class UnitSearchModel extends SearchModel {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        UnitSearchModel that = (UnitSearchModel) o;
+        UnitSearchModel model = (UnitSearchModel) o;
 
-        if (!unitCode.equals(that.unitCode)) return false;
-        return unitName.equals(that.unitName);
+        if (unitCode != null ? !unitCode.equals(model.unitCode) : model.unitCode != null) return false;
+        return !(unitName != null ? !unitName.equals(model.unitName) : model.unitName != null);
 
     }
 
     @Override
     public int hashCode() {
-        int result = unitCode.hashCode();
-        result = 31 * result + unitName.hashCode();
+        int result = unitCode != null ? unitCode.hashCode() : 0;
+        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
         return result;
     }
 }

@@ -39,13 +39,16 @@ public abstract class SearchModel {
             return null;
 
         //如果searchModel和上次查询的对象equals，则直接使用上一次生成的
-        if (searchModel.equals(cache))
+        if (cache != null && !"".equals(cache.buffer) && searchModel.equals(cache))
             return cache.buffer.toString();
 
         String hql = searchModel.process();
 
         //将缓存设为最近的一次查询
-        cache = searchModel;
-        return hql;
+        if (hql != null && !"".equals(hql)) {
+            cache = searchModel;
+            return hql;
+        }
+        return null;
     }
 }
