@@ -24,7 +24,6 @@
         <div class="subNav currentDd currentDt">基础数据维护</div>
         <ul class="navContent " style="display:block">
             <li><a href="/unit?page=unitManage" target="contentFrame">单位管理</a></li>
-            <%--<li><a href="/fragments/content.jsp" target="contentFrame">资质管理</a></li>--%>
         </ul>
         <div class="subNav">简历管理</div>
         <ul class="navContent">
