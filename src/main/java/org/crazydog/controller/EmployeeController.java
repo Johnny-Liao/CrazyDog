@@ -30,12 +30,14 @@ public class EmployeeController {
     // 处理pages参数，显示相应页数的所有人员信息
     @RequestMapping(method = RequestMethod.GET, value = "/{page}")
     public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
-//        request.setAttribute("employees", employeeService.getAllEntities());
-//        System.out.println(page + "===========================");
-//        int a = Integer.parseInt(page);
-//        System.out.println(a + "-----------------------");
         request.setAttribute("employeesList", employeeService.getEmployeeByPage(Integer.parseInt(page)));
         return "employeePage";
+    }
+
+
+    @RequestMapping(params = "leave", method = RequestMethod.GET)
+    public  String dealWithLeave() {
+        return "leave";
     }
 
 }

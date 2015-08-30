@@ -73,7 +73,8 @@
                                     value="${entity.contractEntity.contractStart}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.contractEntity.contractEnd}"/></td>
-                            <td align="center" bgcolor="#ffffff"><a href="<%--<c:url value="#"/>--%>">操作</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href="/employeePage/leave">LiZhi操作</a></td>
+                            <td align="center" bgcolor="#ffffff"><a href="/employeePage/dispatch">DiaoGang操作</a></td>
                         </tr>
                     </c:forEach>
                 </table>

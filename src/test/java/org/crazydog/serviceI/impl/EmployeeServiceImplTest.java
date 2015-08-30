@@ -82,6 +82,7 @@ public class EmployeeServiceImplTest {
         System.out.println(emp.getClass());
         for(EmployeeEntity employeeEntity : emp) {
             System.out.println(employeeEntity.getEmpName());
+            // can't get the contract entity.
             System.out.println(employeeEntity.getContractEntity().getContractStart());
             System.out.println(employeeEntity.getContractEntity().getContractEnd());
         }
