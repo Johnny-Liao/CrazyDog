@@ -82,48 +82,11 @@ public class ResumeController {
 		String[] ids =  request.getParameterValues("selectes");
 		int[] i = {2,3};
 		String name = "李飞";
-		resumeService.batchHire(i,name);
+		resumeService.batchHire(i, name);
 		return "resume";
 
 	}
-	/*
-		获取所有录取等待状态的简历
-	 */
-	@RequestMapping(value="/resume",params ="action=getHiremes")
-	public String getNoHire(HttpServletRequest request){
-		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
-		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes= new ArrayList<ResumeEntity>();
-		System.out.println(list.size());
-		for (int i = 0; i < list.size(); i++) {
-			Object[] b = (Object[]) list.get(i);
-			ResumeEntity  resume = (ResumeEntity)b[0];
-			HireInfoEntity h = (HireInfoEntity) b[1];
-			resume.setHireById(h);
-			resumes.add(resume);
-		}
-		request.setAttribute("resumes", resumes);
-		return "bitchhire";
-	}
-	/*
-            获取所有已录取简历
-         */
-	@RequestMapping(value="/resume",params ="action=getAllHire")
-	public String getAllHire(HttpServletRequest request){
-		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
-		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes= new ArrayList<ResumeEntity>();
-		System.out.println(list.size());
-		for (int i = 0; i < list.size(); i++) {
-			Object[] b = (Object[]) list.get(i);
-			ResumeEntity  resume = (ResumeEntity)b[0];
-			HireInfoEntity h = (HireInfoEntity) b[1];
-			resume.setHireById(h);
-			resumes.add(resume);
-		}
-		request.setAttribute("resumes", resumes);
-		return "bitchCancelHire";
-	}
+
 	/*
             批量取消录取
          */
@@ -135,5 +98,49 @@ public class ResumeController {
 		resumeService.batchcancelHire(i,name);
 		return "resume";
 
+	}
+
+
+
+
+
+
+	/*
+		获取所有录取等待状态的简历
+	 */
+	@RequestMapping(value="/resume",params ="action=getHiremes")
+	public String getNoHire(HttpServletRequest request){
+		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
+		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
+		List<ResumeEntity> resumes2= new ArrayList<ResumeEntity>();
+		System.out.println(list.size());
+		for (int i = 0; i < list.size(); i++) {
+			Object[] b = (Object[]) list.get(i);
+			ResumeEntity  resume = (ResumeEntity)b[0];
+			HireInfoEntity h = (HireInfoEntity) b[1];
+			resume.setHireById(h);
+			resumes2.add(resume);
+		}
+		request.setAttribute("resumes2", resumes2);
+		return "bitchhire";
+	}
+	/*
+            获取所有已录取简历
+         */
+	@RequestMapping(value="/resume",params ="action=getAllHire")
+	public String getAllHire(HttpServletRequest request){
+		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
+		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
+		List<ResumeEntity> resumes1= new ArrayList<ResumeEntity>();
+		System.out.println(list.size());
+		for (int i = 0; i < list.size(); i++) {
+			Object[] b = (Object[]) list.get(i);
+			ResumeEntity  resume = (ResumeEntity)b[0];
+			HireInfoEntity h = (HireInfoEntity) b[1];
+			resume.setHireById(h);
+			resumes1.add(resume);
+		}
+		request.setAttribute("resumes1", resumes1);
+		return "bitchCancelHire";
 	}
 }
