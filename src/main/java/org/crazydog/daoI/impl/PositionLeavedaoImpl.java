@@ -15,21 +15,21 @@ public class PositionLeavedaoImpl extends Basedao<PositionLeaveEntity> {
     /**
      * 添加实体
      *
-     * @param positionChangeEntity 实体对象
+     * @param positionLeaveEntity 实体对象
      */
     @Override
-    public void addEntity(PositionLeaveEntity positionChangeEntity) {
-        hibernateTemplate.save(positionChangeEntity);
+    public void addEntity(PositionLeaveEntity positionLeaveEntity) {
+        hibernateTemplate.save(positionLeaveEntity);
     }
 
     /**
      * 修改实体
      *
-     * @param positionChangeEntity 实体对象
+     * @param positionLeaveEntity 实体对象
      */
     @Override
-    public void modifyEntity(PositionLeaveEntity positionChangeEntity) {
-        hibernateTemplate.update(positionChangeEntity);
+    public void modifyEntity(PositionLeaveEntity positionLeaveEntity) {
+        hibernateTemplate.update(positionLeaveEntity);
     }
 
     /**
@@ -67,11 +67,11 @@ public class PositionLeavedaoImpl extends Basedao<PositionLeaveEntity> {
     /**
      * 删除指定的某个实体
      *
-     * @param positionChangeEntity 实体对象
+     * @param positionLeaveEntity 实体对象
      * @return
      */
     @Override
-    public void deleteEntity(PositionLeaveEntity positionChangeEntity) {
-        hibernateTemplate.delete(positionChangeEntity);
+    public void deleteEntity(PositionLeaveEntity positionLeaveEntity) {
+        hibernateTemplate.delete(positionLeaveEntity);
     }
 }
