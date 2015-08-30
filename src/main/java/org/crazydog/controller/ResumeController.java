@@ -70,7 +70,7 @@ public class ResumeController {
 //			System.out.println(a.getAddress());
 //			System.out.println(a.getHireById());
 //		}
-		return "selectresume";
+		return "resume";
 
 	}
 
@@ -80,29 +80,63 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchHire")
 	public String bitchHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		int[] i = {2,3};
-		String name = "李飞";
-		resumeService.batchHire(i,name);
-		return "resume";
+		for(String s:ids){
+			System.out.println(s);
+			int id=Integer.parseInt(s);
+			System.out.println(id);
+		}
+//		int[] i = {2,3};
+//		String name = "李飞";
+//		resumeService.batchHire(i, name);
+		this.getNoHire(request);
+		return "bitchhire";
 
 	}
+
+	/*
+            批量取消录取
+         */
+	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
+	public String bitchCancelHire(HttpServletRequest request){
+		String[] ids =  request.getParameterValues("selectes");
+		for(String s:ids){
+			System.out.println(s);
+			int id=Integer.parseInt(s);
+			System.out.println(id);
+		}
+//		int[] i = {2,3};
+//		String name = "李飞";
+//		resumeService.batchcancelHire(i,name);
+		this.getAllHire(request);
+		/*
+		================================
+		 */
+		return "bitchCancelHire";
+
+	}
+
+
+
+
+
+
 	/*
 		获取所有录取等待状态的简历
 	 */
-	@RequestMapping(value="/resume",params ="action=getHiremes")
+	@RequestMapping(value="/resume",params ="action=getNoHire")
 	public String getNoHire(HttpServletRequest request){
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
 		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes= new ArrayList<ResumeEntity>();
+		List<ResumeEntity> resumes2= new ArrayList<ResumeEntity>();
 		System.out.println(list.size());
 		for (int i = 0; i < list.size(); i++) {
 			Object[] b = (Object[]) list.get(i);
 			ResumeEntity  resume = (ResumeEntity)b[0];
 			HireInfoEntity h = (HireInfoEntity) b[1];
 			resume.setHireById(h);
-			resumes.add(resume);
+			resumes2.add(resume);
 		}
-		request.setAttribute("resumes", resumes);
+		request.setAttribute("resumes2", resumes2);
 		return "bitchhire";
 	}
 	/*
@@ -112,28 +146,16 @@ public class ResumeController {
 	public String getAllHire(HttpServletRequest request){
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes= new ArrayList<ResumeEntity>();
+		List<ResumeEntity> resumes1= new ArrayList<ResumeEntity>();
 		System.out.println(list.size());
 		for (int i = 0; i < list.size(); i++) {
 			Object[] b = (Object[]) list.get(i);
 			ResumeEntity  resume = (ResumeEntity)b[0];
 			HireInfoEntity h = (HireInfoEntity) b[1];
 			resume.setHireById(h);
-			resumes.add(resume);
+			resumes1.add(resume);
 		}
-		request.setAttribute("resumes", resumes);
+		request.setAttribute("resumes1", resumes1);
 		return "bitchCancelHire";
-	}
-	/*
-            批量取消录取
-         */
-	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
-	public String bitchCancelHire(HttpServletRequest request){
-		String[] ids =  request.getParameterValues("selectes");
-		int[] i = {2,3};
-		String name = "李飞";
-		resumeService.batchcancelHire(i,name);
-		return "resume";
-
 	}
 }

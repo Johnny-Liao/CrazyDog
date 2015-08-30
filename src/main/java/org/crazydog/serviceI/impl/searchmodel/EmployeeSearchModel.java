@@ -37,17 +37,17 @@ public class EmployeeSearchModel extends SearchModel {
 
         EmployeeSearchModel that = (EmployeeSearchModel) o;
 
-        if (!name.equals(that.name)) return false;
-        if (!unitName.equals(that.unitName)) return false;
+        if (name != null ? !name.equals(that.name) : that.name != null) return false;
+        if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
         return edu == that.edu;
 
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
-        result = 31 * result + unitName.hashCode();
-        result = 31 * result + edu.hashCode();
+        int result = name != null ? name.hashCode() : 0;
+        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
+        result = 31 * result + (edu != null ? edu.hashCode() : 0);
         return result;
     }
 }

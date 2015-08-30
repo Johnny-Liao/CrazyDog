@@ -49,7 +49,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	/**
 	 * 使用UnitSearchModel来进行高级查询
 	 *
-	 * @param model
+	 * @param searchModel
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
