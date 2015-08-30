@@ -24,7 +24,7 @@
     <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a></div>
     <form method="post">
       <div class="search">
-        <input type="submit" name="button" id="button" value="批量取消录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=bitchHire'"/>
+        <input type="submit" name="button" id="button" value="批量取消录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=bitchCancelHire'"/>
       </div>
     <div  class="tum">
       <div class="contlist">

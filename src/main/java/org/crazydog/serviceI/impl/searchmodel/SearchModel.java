@@ -29,7 +29,8 @@ public abstract class SearchModel {
         StringBuffer hql = advanceSearch();
         if (hql == null)
             return null;
-        return buffer.substring(0, buffer.length() - 3);
+        buffer.delete(hql.length() - 3,hql.length() );
+        return buffer.toString();
     }
 
     public static String advanceSearch(SearchModel searchModel) {

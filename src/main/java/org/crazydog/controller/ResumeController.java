@@ -80,7 +80,11 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchHire")
 	public String bitchHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		System.out.println(ids);
+		for(String s:ids){
+			System.out.println(s);
+			int id=Integer.parseInt(s);
+			System.out.println(id);
+		}
 //		int[] i = {2,3};
 //		String name = "李飞";
 //		resumeService.batchHire(i, name);
@@ -95,11 +99,18 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
 	public String bitchCancelHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		System.out.println(ids);
+		for(String s:ids){
+			System.out.println(s);
+			int id=Integer.parseInt(s);
+			System.out.println(id);
+		}
 //		int[] i = {2,3};
 //		String name = "李飞";
 //		resumeService.batchcancelHire(i,name);
 		this.getAllHire(request);
+		/*
+		================================
+		 */
 		return "bitchCancelHire";
 
 	}
