@@ -42,6 +42,7 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
         if (hql != null) {
             System.out.println(hql);
             return (List<UnitEntity>) unitdao.find(hql);
+
         } else return new ArrayList<UnitEntity>(0);
     }
 

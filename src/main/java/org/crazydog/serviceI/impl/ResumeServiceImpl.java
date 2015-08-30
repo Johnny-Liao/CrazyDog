@@ -4,6 +4,9 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.*;
 import org.crazydog.domain.*;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
+import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
@@ -12,6 +15,7 @@ import org.springframework.stereotype.Service;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,6 +45,23 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	
 	@Autowired
     protected HibernateTemplate hibernateTemplate;
+
+	/**
+	 * 使用UnitSearchModel来进行高级查询
+	 *
+	 * @param model
+	 * @return
+	 */
+	@SuppressWarnings("unchecked")
+	public List<Object[]> advanceSearch(ResumeSearchModel searchModel) {
+		String hql = SearchModel.advanceSearch(searchModel);
+		if (hql != null)
+		{
+			System.out.println(hql);
+			return (List<Object[]>) resumedao.find(hql);
+		}
+		else return new ArrayList<Object[]>(0);
+	}
 
 	/**
 	 * 增加一份简历
