@@ -10,6 +10,7 @@ import java.util.Collection;
 @Entity
 @Table(name = "employee", schema = "", catalog = "crazydog")
 public class EmployeeEntity {
+
     private Integer id;
 
     @Id
@@ -490,7 +491,7 @@ public class EmployeeEntity {
         this.departmentEntity = departmentEntity;
     }
 
-    //获取认识信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
+    //获取人员信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
     @OneToOne(mappedBy = "employeeEntity", fetch = FetchType.EAGER)
     public ContractEntity getContractEntity() {
         return contractEntity;
