@@ -81,4 +81,10 @@ public class EmployeedaoImplTest {
         EmployeeEntity employeeEntity = employeedaoImpl.getEntity(1);
         employeedaoImpl.deleteEntity(employeeEntity);
     }
+
+//    public void testDisPage() {
+
+//        String hql = "find EmployeeEntity left"
+//        employeedaoImpl.find();
+//    }
 }

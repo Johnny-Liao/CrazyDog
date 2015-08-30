@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -27,9 +28,13 @@ public class EmployeeController {
 
     // eg : .../employee?pages=1
     // 处理pages参数，显示相应页数的所有人员信息
-    @RequestMapping(method = RequestMethod.GET)
-    public String getEmployeeByPages(HttpServletRequest request, @RequestParam("page")String page) {
-        request.setAttribute("employees", employeeService.getAllEntities());
+    @RequestMapping(method = RequestMethod.GET, value = "/{page}")
+    public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
+//        request.setAttribute("employees", employeeService.getAllEntities());
+//        System.out.println(page + "===========================");
+//        int a = Integer.parseInt(page);
+//        System.out.println(a + "-----------------------");
+        request.setAttribute("employeesList", employeeService.getEmployeeByPage(Integer.parseInt(page)));
         return "employeePage";
     }
 

@@ -78,9 +78,12 @@ public class EmployeeServiceImplTest {
 
     @Test
     public  void getEmployeeByPage() {
-        List<Object[]> objects = employeeService.getEmployeeByPage(1);
-        for(Object object : objects) {
-            System.out.println(object);
+        List<EmployeeEntity> emp = employeeService.getEmployeeByPage(1);
+        System.out.println(emp.getClass());
+        for(EmployeeEntity employeeEntity : emp) {
+            System.out.println(employeeEntity.getEmpName());
+            System.out.println(employeeEntity.getContractEntity().getContractStart());
+            System.out.println(employeeEntity.getContractEntity().getContractEnd());
         }
     }
 }

@@ -127,9 +127,9 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
     }
 
 
-    public List<Object[]> getEmployeeByPage(int page) {
-        String hql = "from EmployeeEntity emp left join UnitEntity unit left join DepartmentEntity depart left join ContractEntity cont";
-        List<Object[]> objects = (List<Object[]>) employeedao.find(hql, page, 20);
-        return objects;
+    public List<EmployeeEntity> getEmployeeByPage(int page) {
+        String hql = "from EmployeeEntity emp"; // left join emp.unitEntity unit left join emp.departmentEntity depart left join emp.contractEntity cont";
+        List<EmployeeEntity> emp = (List<EmployeeEntity>) employeedao.find(hql, page, 5);
+        return emp;
     }
 }

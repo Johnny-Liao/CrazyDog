@@ -56,22 +56,23 @@
                         </c:forEach>
                     </tr>
                     <%--显示表内容--%>
-                    <c:forEach var="entity" items="${employees}">
+                    <c:forEach var="entity" items="${employeesList}">
                         <tr>
-                            <%--员工编号	姓名	性别	身份证号	手机	最高学历	服务单位	服务部门	合同起始日    合同终止日   签约次数--%>
+                                <%--员工编号	姓名	性别	身份证号	手机	最高学历	服务单位	服务部门	合同起始日    合同终止日   签约次数--%>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.empName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.gender}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.idNum}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.tel}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.unitByUnitId.unitName}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.education}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
-                                    value="${entity.departmentByDepId.deptName}"/></td>
+                                    value="${entity.unitEntity.unitName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
-                                    value="${entity.contractsById.contractStart}"/></td>
+                                    value="${entity.departmentEntity.deptName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
-                                     value="${entity.contractsById.contractEnd}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.contractsById.length}"/></td>
+                                    value="${entity.contractEntity.contractStart}"/></td>
+                            <td align="center" bgcolor="#ffffff"><c:out
+                                    value="${entity.contractEntity.contractEnd}"/></td>
                             <td align="center" bgcolor="#ffffff"><a href="<%--<c:url value="#"/>--%>">操作</a></td>
                         </tr>
                     </c:forEach>
