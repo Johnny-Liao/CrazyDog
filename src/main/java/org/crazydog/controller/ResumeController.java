@@ -64,13 +64,13 @@ public class ResumeController {
 	/*
 		批量删除
 	 */
-	@RequestMapping(value="/resume",params ="action=bitchdelete")
-	public String bitchdelete(HttpServletRequest request){
-		System.out.println("======================================");
+	@RequestMapping(value="/resume",params ="action=batchdelete")
+	public String batchdelete(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectid");
-		int[] id = resumeService.stringtoint(ids);
-		resumeService.batchdeleteresume(id);
-		System.out.println("=============================");
+		if(ids!=null){
+			int[] id = resumeService.stringtoint(ids);
+			resumeService.batchdeleteresume(id);
+		}
 		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
 		return "resume";
@@ -79,8 +79,8 @@ public class ResumeController {
 	/*
 		批量录取
 	 */
-	@RequestMapping(value="/resume",params ="action=bitchHire")
-	public String bitchHire(HttpServletRequest request){
+	@RequestMapping(value="/resume",params ="action=batchHire")
+	public String batchHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
 		if(ids!=null){
 			int[] id = resumeService.stringtoint(ids);
@@ -89,15 +89,15 @@ public class ResumeController {
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
 		List<ResumeEntity> resumes2 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes2", resumes2);
-		return "bitchhire";
+		return "batchhire";
 
 	}
 
 	/*
             批量取消录取
          */
-	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
-	public String bitchCancelHire(HttpServletRequest request){
+	@RequestMapping(value="/resume",params ="action=batchCancelHire")
+	public String batchCancelHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
 		if(ids!=null){
 			int[] id = resumeService.stringtoint(ids);
@@ -106,7 +106,7 @@ public class ResumeController {
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes1", resumes1);
-		return "bitchCancelHire";
+		return "batchCancelHire";
 
 	}
 
@@ -123,7 +123,7 @@ public class ResumeController {
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
 		List<ResumeEntity> resumes2 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes2", resumes2);
-		return "bitchhire";
+		return "batchhire";
 	}
 	/*
             获取所有已录取简历
@@ -133,7 +133,7 @@ public class ResumeController {
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes1", resumes1);
-		return "bitchCancelHire";
+		return "batchCancelHire";
 	}
 
 }
