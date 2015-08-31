@@ -22,7 +22,9 @@ public class ResumeController {
 	@Autowired
 	@Qualifier("resumeServiceImpl")
 	private ResumeServiceImpl resumeService;
-	
+	/*
+	    获取所有的简历信息
+	 */
 	@RequestMapping(value="/resume",params="action=getAll")
 	public String getAllmes(HttpServletRequest request){
 		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
@@ -36,11 +38,26 @@ public class ResumeController {
 		return "resume";
 	}
 	/*
+	    获取指定的简历信息
+	 */
+	@RequestMapping(value="/resume",params="action=getAresume")
+	public String getAresume(HttpServletRequest request){
+		ResumeEntity resume = resumeService.getEntity(6);
+		System.out.println(resume.getName());
+		request.setAttribute("resume", resume);
+		return "getAResume";
+	}
+	/*
 		条件查询
 	 */
 	@RequestMapping(value="/resume",params ="action=modelSearch")
-	public String modelSearch(@RequestParam("name")String name,@RequestParam("highestEdu")String highestEdu,@RequestParam("luquState")String luquState,HttpServletRequest request){
-		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.valueOf(luquState));
+	public String modelSearch(@RequestParam("username")String name,@RequestParam("highestEdu")String highestEdu,@RequestParam("luquState")String luquState,HttpServletRequest request){
+		System.out.println(name+"==========================================================");
+		if(name==""){
+			name=null;
+			System.out.println("拿到的是个空置");
+		}
+		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(name,ResumeSearchModel.Edu.valueOf(highestEdu), ResumeSearchModel.Luqu.valueOf(luquState));
 		List<ResumeEntity> resumes = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes", resumes);
 		return "resume";
