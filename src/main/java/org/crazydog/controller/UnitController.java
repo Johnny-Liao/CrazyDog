@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -89,7 +90,6 @@ public class UnitController {
 
     @RequestMapping(value = "/unit", params = "action=search")
     public String advanceSearch(HttpServletRequest request, @RequestParam("unitCode") String unitCode, @RequestParam("unitName") String unitName) throws UnsupportedEncodingException {
-//        request.setCharacterEncoding("utf-8");
 
         if ("".equals(unitCode) || "服务单位编码".equals(unitCode))
             unitCode = null;
@@ -104,12 +104,32 @@ public class UnitController {
     }
 
     @RequestMapping(value = "/unit", params = "action=add")
-    public String addUnit(HttpServletRequest request) {
-        Map map = request.getParameterMap();
-        Set<String> set = map.keySet();
-        for (String str : set)
-            System.out.println(str + ":" + request.getParameter(str));
+    public String addUnit(HttpServletRequest request, @RequestParam("unitId") int unitId) {
 
-        return "/unit?page=unitManage";
+        UnitEntity unitEntity = null;
+        if (unitId != 0) {
+            unitEntity = new UnitEntity();
+            unitEntity.setId(unitId);
+        }
+
+        Map<String, String> map = request.getParameterMap();
+        Set<String> set = map.keySet();
+        List<DepartmentEntity> departmentEntities = new ArrayList<DepartmentEntity>(map.size() - 2);
+        for (String str : set) {
+            if (!"action".equals(str) && !"unitId".equals(str)) {
+                String deptName = request.getParameter(str);
+                if (deptName != null && !"".equals(deptName)) {
+                    DepartmentEntity departmentEntity = new DepartmentEntity();
+                    departmentEntity.setDeptName(deptName);
+                    departmentEntity.setUnitByUnitId(unitEntity);
+                    departmentEntities.add(departmentEntity);
+                }
+            }
+        }
+
+        unitService.addDepartments(unitEntity, departmentEntities);
+        //明天把这个跳转问题解决
+        return "";
+//        return "forward:/unit?page=unitModify&&unitId=" + unitId;
     }
 }
