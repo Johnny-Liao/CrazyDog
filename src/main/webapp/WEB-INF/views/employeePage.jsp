@@ -8,6 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>人员管理</title>
@@ -51,33 +52,44 @@
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
-                    <%--显示表内容--%>
-                    <c:forEach var="entity" items="${employeesList}">
+
+                    <form>
+                        <%--显示表内容--%>
+                        <c:forEach var="entity" items="${employeesList}">
+                            <tr>
+                                    <%--员工编号	姓名	性别	身份证号	手机	最高学历	服务单位	服务部门	合同起始日    合同终止日   签约次数--%>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.empName}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.gender}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.idNum}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.tel}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.education}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.unitEntity.unitName}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.departmentEntity.deptName}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.contractEntity.contractStart}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.contractEntity.contractEnd}"/></td>
+                                <td align="center" bgcolor="#ffffff"><a
+                                        href="/employeePage?leave&empid=${entity.id}&empname=${entity.empName}">离职操作</a>
+                                </td>
+                                <td align="center" bgcolor="#ffffff"><a
+                                        href="/employeePage?dispatch&empid=${entity.id}">调岗操作</a></td>
+                                    <%--empid=${entity.id}&empname=${entity.empName}&unit=${entity.unitEntity.unitName}&dept=${entity.departmentEntity.deptName} --%>
+                            </tr>
+                        </c:forEach>
                         <tr>
-                                <%--员工编号	姓名	性别	身份证号	手机	最高学历	服务单位	服务部门	合同起始日    合同终止日   签约次数--%>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.empName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.gender}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.idNum}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.tel}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out value="${entity.education}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out
-                                    value="${entity.unitEntity.unitName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out
-                                    value="${entity.departmentEntity.deptName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out
-                                    value="${entity.contractEntity.contractStart}"/></td>
-                            <td align="center" bgcolor="#ffffff"><c:out
-                                    value="${entity.contractEntity.contractEnd}"/></td>
-                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?leave&empid=${entity.id}&empname=${entity.empName}">离职操作</a></td>
-                            <td align="center" bgcolor="#ffffff"><a href="/employeePage?dispatch&empid=${entity.id}&empname=${entity.empName}&unit=${entity.unitEntity.unitName}&dept=${entity.departmentEntity.deptName}">调岗操作</a></td>
+                            <td align="center"><input type="submit" value="上一页" class="s_btn"
+                                                      onclick="javascript:this.form.action='/employeePage/${(page - 1) > 1 ? (page - 1) : 1}'">
+                            </td>
+                            <td align="center"><input type="submit" value="下一页" class="s_btn"
+                                                      onclick="javascript:this.form.action='/employeePage/${page + 1}'">
+                            </td>
+                            <td align="center"><c:out value="当前页：${page}"></c:out></td>
                         </tr>
-                    </c:forEach>
-                        <tr>
-                            <td align="center"><input type="submit" value="上一页" class="s_btn" onclick="javascript:this.form.action='/employeePage/${page - 1}'"></td>
-                            <td align="center"><input type="submit" value="下一页" class="s_btn" onclick="javascript:this.form.action='/employeePage/${page + 1}'"></td>
-                            <td align="center"><c:out value="当前页：${page}"  ></c:out></td><!-- default="当前页：1" -->
-                        </tr>
+                    </form>
                 </table>
             </div>
         </div>
