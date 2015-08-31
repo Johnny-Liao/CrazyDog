@@ -47,20 +47,30 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
     protected HibernateTemplate hibernateTemplate;
 
 	/**
-	 * 使用UnitSearchModel来进行高级查询
+	 * 使用resumeSearchModel来进行高级查询
 	 *
 	 * @param searchModel
 	 * @return
 	 */
 	@SuppressWarnings("unchecked")
-	public List<Object[]> advanceSearch(ResumeSearchModel searchModel) {
+	public List<ResumeEntity> advanceSearch(ResumeSearchModel searchModel) {
 		String hql = SearchModel.advanceSearch(searchModel);
 		if (hql != null)
 		{
 			System.out.println(hql);
-			return (List<Object[]>) resumedao.find(hql);
+			List<Object[]> list=(List<Object[]>) resumedao.find(hql);
+			List<ResumeEntity> resumes2= new ArrayList<ResumeEntity>();
+			System.out.println(list.size());
+			for (int i = 0; i < list.size(); i++) {
+				Object[] b = (Object[]) list.get(i);
+				ResumeEntity  resume = (ResumeEntity)b[0];
+				HireInfoEntity h = (HireInfoEntity) b[1];
+				resume.setHireById(h);
+				resumes2.add(resume);
+			}
+			return resumes2;
 		}
-		else return new ArrayList<Object[]>(0);
+		else return new ArrayList<ResumeEntity>(0);
 	}
 
 	/**
@@ -201,8 +211,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 		HireInfoEntity hire;
 		hire = (HireInfoEntity) hiredao.getEntity(id);
 		hire.setState("通过");
-//		String s = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss")
-//				.format(new Date());
 		hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
 		hire.setOperator(name);
 		hiredao.modifyEntity(hire);
@@ -219,8 +227,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	public void cancelHireByresumeId(int resumeid, String name) {
 		HireInfoEntity hire = (HireInfoEntity) hiredao.getEntitybyreumeid(resumeid);
 		hire.setState("未录取");
-//		String s = new SimpleDateFormat("yyyy-MM-dd")
-//				.format(new Date());
 		hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
 		hire.setOperator(name);
 		hiredao.modifyEntity(hire);
@@ -308,4 +314,35 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 		return (List<ResumeFamilyEntity>)resumeFamilydao.getAllEntities();
 	}
 
+
+
+	/**
+	 * 批量删除
+	 *
+	 * @param id
+	 *            保存的是选择界面所有被选择的复选框的value，值是相应的简历对象的id
+	 *
+	 */
+	public void batchdeleteresume(int[] id) {
+		for (int i : id) {
+			ResumeEntity resume = resumedao.loadEntity(i);
+			resumedao.deleteEntity(resume);
+		}
+	}
+
+
+	/**
+	 * 将前提获取的String[] id 转换为int[]
+	 *
+	 * @param String[]
+	 *            保存的是选择界面所有被选择的复选框的value，值是相应的简历对象的id
+	 *
+	 */
+	public int[] stringtoint(String[] ids){
+		int[] id = new int[ids.length];
+		for(int i=0;i<ids.length;i++){
+			id[i]=Integer.parseInt(ids[i]);
+		}
+		return id;
+	}
 }

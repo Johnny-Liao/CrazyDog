@@ -41,37 +41,23 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=modelSearch")
 	public String modelSearch(@RequestParam("name")String name,@RequestParam("highestEdu")String highestEdu,@RequestParam("luquState")String luquState,HttpServletRequest request){
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.valueOf(luquState));
-		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes= new ArrayList<ResumeEntity>();
-		System.out.println(list.size());
-		for (int i = 0; i < list.size(); i++) {
-            Object[] b = (Object[]) list.get(i);
-			ResumeEntity  resume = (ResumeEntity)b[0];
-			HireInfoEntity h = (HireInfoEntity) b[1];
-			resume.setHireById(h);
-			resumes.add(resume);
-        }
+		List<ResumeEntity> resumes = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes", resumes);
-
 		return "resume";
 	}
 	/*
 		批量删除
 	 */
 	@RequestMapping(value="/resume",params ="action=bitchdelete")
-	public String modelSearch(HttpServletRequest request){
-		String[] s = request.getParameterValues("selectes");
-		System.out.println(s);
-//		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
-//		request.setAttribute("resumes", resumes);
-//		Iterator<ResumeEntity> it = resumes.iterator();
-//		while(it.hasNext()){
-//			ResumeEntity a = it.next();
-//			System.out.println(a.getAddress());
-//			System.out.println(a.getHireById());
-//		}
+	public String bitchdelete(HttpServletRequest request){
+		System.out.println("======================================");
+		String[] ids =  request.getParameterValues("selectid");
+		int[] id = resumeService.stringtoint(ids);
+		resumeService.batchdeleteresume(id);
+		System.out.println("=============================");
+		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+		request.setAttribute("resumes", resumes);
 		return "resume";
-
 	}
 
 	/*
@@ -80,15 +66,11 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchHire")
 	public String bitchHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		for(String s:ids){
-			System.out.println(s);
-			int id=Integer.parseInt(s);
-			System.out.println(id);
-		}
-//		int[] i = {2,3};
-//		String name = "李飞";
-//		resumeService.batchHire(i, name);
-		this.getNoHire(request);
+		int[] id = resumeService.stringtoint(ids);
+		resumeService.batchHire(id, "李飞");
+		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
+		List<ResumeEntity> resumes2 = resumeService.advanceSearch(resumeSearchModel);
+		request.setAttribute("resumes2", resumes2);
 		return "bitchhire";
 
 	}
@@ -99,18 +81,11 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
 	public String bitchCancelHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		for(String s:ids){
-			System.out.println(s);
-			int id=Integer.parseInt(s);
-			System.out.println(id);
-		}
-//		int[] i = {2,3};
-//		String name = "李飞";
-//		resumeService.batchcancelHire(i,name);
-		this.getAllHire(request);
-		/*
-		================================
-		 */
+		int[] id = resumeService.stringtoint(ids);
+		resumeService.batchcancelHire(id,"李飞");
+		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
+		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
+		request.setAttribute("resumes1", resumes1);
 		return "bitchCancelHire";
 
 	}
@@ -126,16 +101,7 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=getNoHire")
 	public String getNoHire(HttpServletRequest request){
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
-		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes2= new ArrayList<ResumeEntity>();
-		System.out.println(list.size());
-		for (int i = 0; i < list.size(); i++) {
-			Object[] b = (Object[]) list.get(i);
-			ResumeEntity  resume = (ResumeEntity)b[0];
-			HireInfoEntity h = (HireInfoEntity) b[1];
-			resume.setHireById(h);
-			resumes2.add(resume);
-		}
+		List<ResumeEntity> resumes2 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes2", resumes2);
 		return "bitchhire";
 	}
@@ -145,17 +111,9 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=getAllHire")
 	public String getAllHire(HttpServletRequest request){
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
-		List<Object[]> list = resumeService.advanceSearch(resumeSearchModel);
-		List<ResumeEntity> resumes1= new ArrayList<ResumeEntity>();
-		System.out.println(list.size());
-		for (int i = 0; i < list.size(); i++) {
-			Object[] b = (Object[]) list.get(i);
-			ResumeEntity  resume = (ResumeEntity)b[0];
-			HireInfoEntity h = (HireInfoEntity) b[1];
-			resume.setHireById(h);
-			resumes1.add(resume);
-		}
+		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes1", resumes1);
 		return "bitchCancelHire";
 	}
+
 }
