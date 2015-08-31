@@ -38,9 +38,9 @@ public class ResumeController {
 	    获取指定的简历信息
 	 */
 	@RequestMapping(value="/resume",params="action=getAresume")
-	public String getAresume(HttpServletRequest request){
-		ResumeEntity resume = resumeService.getEntity(6);
-		System.out.println(resume.getName());
+	public String getAresume(HttpServletRequest request,@RequestParam("resumeid")int resumeid){
+		ResumeEntity resume = resumeService.getEntity(resumeid);
+		System.out.println(resume.getHireById().getState());
 		request.setAttribute("resume", resume);
 		return "getAResume";
 	}
