@@ -1,9 +1,11 @@
 package org.crazydog.controller;
 
 import org.crazydog.domain.EmployeeEntity;
+import org.crazydog.domain.HireInfoEntity;
 import org.crazydog.domain.PositionChangeEntity;
 import org.crazydog.domain.PositionLeaveEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
+import org.crazydog.serviceI.impl.HireInfoServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,8 +26,10 @@ import java.util.List;
 public class EmployeeController {
 
     @Autowired
-//    @Qualifier("employeeServiceImpl")
     private EmployeeServiceImpl employeeService;
+
+    @Autowired
+    private HireInfoServiceImpl hireInfoService;
 
 
     // eg : .../employee?pages=1
@@ -37,6 +41,16 @@ public class EmployeeController {
         return "employeePage";
     }
 
+    /**
+     * 获取所有的已经录取的人员信息
+     *
+     * @return
+     */
+    public String getAllHirePersons(HttpServletRequest request) {
+        List<HireInfoEntity> list = hireInfoService.getAllHireEnitities();
+
+        return null;
+    }
 
     /**
      * 跳转到离职人员处理

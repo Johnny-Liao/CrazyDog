@@ -16,7 +16,7 @@ import java.util.Map;
  * Created by never on 2015/8/26.
  */
 @Service
-public class HireServiceImpl implements BaseService<HireInfoEntity> {
+public class HireInfoServiceImpl implements BaseService<HireInfoEntity> {
 
     @Autowired
     @Qualifier("hireInfodaoImpl")
@@ -28,6 +28,7 @@ public class HireServiceImpl implements BaseService<HireInfoEntity> {
      * @param resumeEntity
      * @return
      */
+    @SuppressWarnings("unchecked")
     public HireInfoEntity getHireInfoEntityByResume(ResumeEntity resumeEntity) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("resumeId", resumeEntity.getId());
@@ -35,6 +36,13 @@ public class HireServiceImpl implements BaseService<HireInfoEntity> {
         if (list != null && list.size() == 1)
             return list.get(0);
         return null;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<HireInfoEntity> getAllHireEnitities() {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("state", "录取");
+        return (List<HireInfoEntity>) hiredao.find("from HireInfoEntity hire where hire.state=:state", map);
     }
 
     /**
