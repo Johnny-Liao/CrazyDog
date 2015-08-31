@@ -55,7 +55,6 @@ public class ResumeController {
 		System.out.println(name+"==========================================================");
 		if(name==""){
 			name=null;
-			System.out.println("拿到的是个空置");
 		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(name,ResumeSearchModel.Edu.valueOf(highestEdu), ResumeSearchModel.Luqu.valueOf(luquState));
 		List<ResumeEntity> resumes = resumeService.advanceSearch(resumeSearchModel);
@@ -83,8 +82,10 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchHire")
 	public String bitchHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		int[] id = resumeService.stringtoint(ids);
-		resumeService.batchHire(id, "李飞");
+		if(ids!=null){
+			int[] id = resumeService.stringtoint(ids);
+			resumeService.batchHire(id, "李飞");
+		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
 		List<ResumeEntity> resumes2 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes2", resumes2);
@@ -98,8 +99,10 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=bitchCancelHire")
 	public String bitchCancelHire(HttpServletRequest request){
 		String[] ids =  request.getParameterValues("selectes");
-		int[] id = resumeService.stringtoint(ids);
-		resumeService.batchcancelHire(id,"李飞");
+		if(ids!=null){
+			int[] id = resumeService.stringtoint(ids);
+			resumeService.batchcancelHire(id,"李飞");
+		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes1", resumes1);

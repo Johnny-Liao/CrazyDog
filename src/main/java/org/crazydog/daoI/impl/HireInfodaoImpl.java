@@ -71,7 +71,7 @@ public class HireInfodaoImpl extends Basedao<HireInfoEntity> {
      * @return id 查询的resume的id
      */
     public HireInfoEntity getEntitybyreumeid(int resume_id) {
-        String hql = "from HireInfoEntity hire where hire.resumeId='" + resume_id
+        String hql = "from HireInfoEntity hire where hire.resumeEntity.id='" + resume_id
                 + "'";
         return (HireInfoEntity) find(hql).get(0);
     }

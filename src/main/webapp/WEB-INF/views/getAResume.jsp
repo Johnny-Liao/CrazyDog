@@ -148,7 +148,7 @@
             </c:forEach>
           </tr>
           <tr style="color:#000; font-size:14px; padding:10px 0;">
-            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.resumeId}"/></td>
+            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.id}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.state}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.comment}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.operateTime}"/></td>
