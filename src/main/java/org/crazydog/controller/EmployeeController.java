@@ -1,11 +1,10 @@
 package org.crazydog.controller;
 
-import org.crazydog.domain.EmployeeEntity;
-import org.crazydog.domain.HireInfoEntity;
-import org.crazydog.domain.PositionChangeEntity;
-import org.crazydog.domain.PositionLeaveEntity;
+import org.crazydog.domain.*;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.HireInfoServiceImpl;
+import org.crazydog.serviceI.impl.ResumeServiceImpl;
+import org.crazydog.serviceI.impl.UnitServiceImpl;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,6 +31,12 @@ public class EmployeeController {
     @Autowired
     private HireInfoServiceImpl hireInfoService;
 
+    @Autowired
+    private ResumeServiceImpl resumeService;
+
+    @Autowired
+    private UnitServiceImpl unitService;
+
 
     // eg : .../employee?pages=1
     // 处理pages参数，显示相应页数的所有人员信息
@@ -47,11 +52,31 @@ public class EmployeeController {
      *
      * @return
      */
+    @RequestMapping(params = "action=getAllHires")
     public String getAllHirePersons(HttpServletRequest request) {
         List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
-        for (HireInfoEntity hireInfoEntity : list)
-            System.out.println(hireInfoEntity);
-        return null;
+        request.setAttribute("hireInfoEntities", list);
+        return "showAllHires";
+    }
+
+    /**
+     * 给某个已经录取的员工建立档案
+     *
+     * @param request
+     * @param resumeId
+     * @return
+     */
+    @RequestMapping(params = "action=buildRecord")
+    public String buildRecord(HttpServletRequest request, @RequestParam("resumeId") int resumeId) {
+        ResumeEntity resumeEntity = resumeService.getEntity(resumeId);
+//        List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
+        request.setAttribute("resume", resumeEntity);
+
+        List<UnitEntity> unitEntities = unitService.getAllEntities();
+        request.setAttribute("unitEntities", unitEntities);
+
+//        unitService.get
+        return "buildRecord";
     }
 
     /**

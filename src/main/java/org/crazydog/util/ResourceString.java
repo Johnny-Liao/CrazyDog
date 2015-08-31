@@ -3,7 +3,7 @@ package org.crazydog.util;
 /**
  * Created by never on 2015/8/28.
  */
-public class ResourceString {
+public final class ResourceString {
     /**
      * 这是服务单位维护的列
      */
@@ -47,6 +47,12 @@ public class ResourceString {
      * 这是离职查看维护的列
      */
     public final static String[] positionOffShow = {"序号", "员工编号", "员工姓名", "员工离职日期", "离职备注", "删除记录"};
+
+    /**
+     * 这是对录取人员进行建档维护的列
+     */
+    public final static String[] hireToEmployeeShow = {"序号", "姓名", "性别", "民族", "户口所在地", "婚否", "政治面貌", "学历", "建立档案"};
+
     /**
      * 这是简历录取状态的列
      */
