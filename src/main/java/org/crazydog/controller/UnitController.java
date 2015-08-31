@@ -15,6 +15,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.*;
 
 /**
+ * 部门和单位的页面响应有本类负责
  * Created by never on 2015/8/28.
  */
 @Controller
@@ -174,6 +175,14 @@ public class UnitController {
         return modifyUnit(request, unitId);
     }
 
+    /**
+     * 删除某个部门
+     *
+     * @param request
+     * @param deptId
+     * @param unitId
+     * @return
+     */
     @RequestMapping(value = "/unit", params = "action=deleteDept")
     public String deleteDept(HttpServletRequest request, @RequestParam("deptId") int deptId, @RequestParam("unitId") int unitId) {
 

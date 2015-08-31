@@ -27,7 +27,7 @@ public class ResourceString {
     /**
      * 调岗操作
      */
-    public  final static String[] dispatch = {"员工编号", "姓名", "调岗前单位", "调岗前部门", "调岗时间", "调岗后单位", "调岗后部门", "调岗原因", "操作"};
+    public final static String[] dispatch = {"员工编号", "姓名", "调岗前单位", "调岗前部门", "调岗时间", "调岗后单位", "调岗后部门", "调岗原因", "操作"};
 
     /**
      * 这是合同变更维护的列
@@ -43,5 +43,8 @@ public class ResourceString {
      */
     public final static String[] positionChangeShow = {"序号", "员工编号", "员工姓名", "更改时间", "更改原因", "之前单位", "之前部门", "之后单位", "之后部门", "删除记录"};
 
-
+    /**
+     * 这是离职查看维护的列
+     */
+    public final static String[] positionOffShow = {"序号", "员工编号", "员工姓名", "员工离职日期", "离职备注", "删除记录"};
 }

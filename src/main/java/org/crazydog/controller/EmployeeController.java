@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Date;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -40,10 +40,11 @@ public class EmployeeController {
 
     /**
      * 跳转到离职人员处理
+     *
      * @return
      */
     @RequestMapping(params = "leave", method = RequestMethod.GET)
-    public  String dealWithLeave(HttpServletRequest request,@RequestParam("empid")String empid, @RequestParam("empname")String empname) {
+    public String dealWithLeave(HttpServletRequest request, @RequestParam("empid") String empid, @RequestParam("empname") String empname) {
 
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -57,19 +58,20 @@ public class EmployeeController {
 
     /**
      * 跳转到调岗人员处理
+     *
      * @return
      */
     @RequestMapping(params = "dispatch", method = RequestMethod.GET)
-    public  String dealWithDispatch(HttpServletRequest request) {
+    public String dealWithDispatch(HttpServletRequest request) {
 
         // just get the emp id
         String empid = request.getParameter("empid");
-System.out.println(empid + "========================================");
+        System.out.println(empid + "========================================");
 
         // get the employee from the database
         EmployeeEntity employeeEntity = employeeService.getEntity(Integer.parseInt(empid));
 
-System.out.println(employeeEntity + "========================================");
+        System.out.println(employeeEntity + "========================================");
 
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
