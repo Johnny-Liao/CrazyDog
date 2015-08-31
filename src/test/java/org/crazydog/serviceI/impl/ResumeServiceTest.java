@@ -81,11 +81,10 @@ public class ResumeServiceTest {
         resumeServiceImpl = (ResumeServiceImpl)
                 applicationContext.getBean("resumeServiceImpl");
 //     System.out.println(resumeServiceImpl);
-//         resumeServiceImpl.getAllEntities();
-        ResumeSearchModel  resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
-
-        List<Object[]> list = resumeServiceImpl.advanceSearch(resumeSearchModel);
-        System.out.println(list.size());
+//         resumeServiceImpl.getAllEntities();ResumeSearchModel.Luqu.录取
+        ResumeSearchModel  resumeSearchModel = new ResumeSearchModel(null,null,ResumeSearchModel.Luqu.录取);
+        List<ResumeEntity> list = resumeServiceImpl.advanceSearch(resumeSearchModel);
+//        System.out.println(list.size());
 //        for (Object[] objs :list)
 //        {
 //            for (Object obj:objs)
@@ -99,6 +98,10 @@ public class ResumeServiceTest {
 //         System.out.println(re);
 //         HireInfoEntity h = (HireInfoEntity) b[1];
 //         System.out.println(h);
+
+
+//        int[] id = {2};
+//        resumeServiceImpl.batchdeleteresume(id);
     }
 
 }

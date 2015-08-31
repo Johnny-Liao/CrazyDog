@@ -12,10 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by never on 2015/8/28.
@@ -27,70 +24,109 @@ public class UnitController {
     @Qualifier("unitServiceImpl")
     private UnitServiceImpl unitService;
 
-
     /**
-     * 映射显示所有单位的页面
+     * 将所有的单位都显示出来，因为服务单位绝对不是很多，所以一次性取出，没必要做分页
      *
      * @param request
      * @return
      */
-    @RequestMapping(value = "/unit")
-    public String unitManage(HttpServletRequest request, @RequestParam("page") String page) {
+    @RequestMapping(value = "/unit", params = "action=getAll")
+    public String getAllUnits(HttpServletRequest request) {
+
         List<UnitEntity> unitEntities = unitService.getAllEntities();
 
         request.setAttribute("unitEntities", unitEntities);
 
-        String unitId = request.getParameter("unitId");
-        if (unitId != null) {
-            //取出unitEntity
-            UnitEntity unitEntity = unitService.getEntity(Integer.valueOf(unitId));
-            List<DepartmentEntity> departmentEntities = unitService.getDepartmentEntitiesByUnit(unitEntity);
-            request.setAttribute("unitEntity", unitEntity);
-            request.setAttribute("departmentEntities", departmentEntities);
+        return "showAllUnits";
+    }
+
+    /**
+     * 添加单位
+     * <p>
+     * 从客户端传递过来的参数必须同时拥有单位编码和单位名称
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/unit", params = "action=addUnit")
+    public String addUnit(HttpServletRequest request) {
+
+        @SuppressWarnings("unchecked")
+        Map<String, String[]> map = request.getParameterMap();
+        Set<String> set = map.keySet();
+        List<UnitEntity> list = new ArrayList<UnitEntity>(map.size() - 1);
+        if (set.contains("action"))
+            set.remove("action");
+
+        for (Iterator<String> iterator = set.iterator(); iterator.hasNext(); ) {
+            String key1 = iterator.next();
+            String key2 = iterator.next();
+            UnitEntity unitEntity = new UnitEntity();
+            if (key1.contains("unit_code"))
+                unitEntity.setUnitCode(request.getParameter(key1));
+            else if (key2.contains("unit_code"))
+                unitEntity.setUnitCode(request.getParameter(key2));
+            if (key1.contains("unit_name"))
+                unitEntity.setUnitName(request.getParameter(key1));
+            else if (key2.contains("unit_name"))
+                unitEntity.setUnitName(request.getParameter(key2));
+            list.add(unitEntity);
         }
 
-        return page;
+        for (UnitEntity unitEntity : list) {
+            System.out.println(unitEntity);
+            unitService.addEntity(unitEntity);
+        }
+
+        return getAllUnits(request);
+    }
+
+    /**
+     * 显示某个单位下所有的部门
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(value = "/unit", params = "action=showAllDepts")
+    public String modifyUnit(HttpServletRequest request, @RequestParam("unitId") int unitId) {
+
+        UnitEntity unitEntity = unitService.getEntity(unitId);
+        List<DepartmentEntity> departmentEntities = unitService.getDepartmentEntitiesByUnit(unitEntity);
+        request.setAttribute("unitEntity", unitEntity);
+        request.setAttribute("departmentEntities", departmentEntities);
+
+        return "showAllDepts";
     }
 
     /**
      * 响应删除某个单位的操作
      *
-     * @param request
      * @return
      */
     @RequestMapping(value = "/unit", params = "action=unitDelete")
-    public String deleteUnit(HttpServletRequest request) {
-        String unitId = request.getParameter("unitId");
+    public String deleteUnit(HttpServletRequest request, @RequestParam("unitId") int unitId) {
+
         UnitEntity unitEntity = new UnitEntity();
-        if (unitId != null) {
-            unitEntity.setId(Integer.valueOf(unitId));
-        }
+        unitEntity.setId(unitId);
         unitService.deleteEntity(unitEntity);
-        //重新加载一次
-        return "unitManage";
+
+        //删除单位之后在重新加载一次
+        return getAllUnits(request);
     }
 
     /**
-     * 响应修改某个单位的操作
+     * 响应高级搜索的请求
      *
      * @param request
+     * @param unitCode
+     * @param unitName
      * @return
+     * @throws UnsupportedEncodingException
      */
-    @RequestMapping(value = "/unit", params = "action=unitModify")
-    public String modifyUnit(HttpServletRequest request) {
-        String unitId = request.getParameter("unitId");
-        UnitEntity unitEntity = new UnitEntity();
-        if (unitId != null) {
-            unitEntity.setId(Integer.valueOf(unitId));
-        }
-//        unitService.deleteEntity(unitEntity);
-        //重新加载一次
-        return "unitManage";
-    }
-
     @RequestMapping(value = "/unit", params = "action=search")
     public String advanceSearch(HttpServletRequest request, @RequestParam("unitCode") String unitCode, @RequestParam("unitName") String unitName) throws UnsupportedEncodingException {
 
+        //有时间完善一下这里的unitCode的不区分大小写的功能
         if ("".equals(unitCode) || "服务单位编码".equals(unitCode))
             unitCode = null;
         if ("".equals(unitName) || "服务单位名称".equals(unitName))
@@ -100,24 +136,29 @@ public class UnitController {
         List<UnitEntity> unitEntities = unitService.advanceSearch(model);
 
         request.setAttribute("unitEntities", unitEntities);
-        return "unitManage";
+        return "showAllUnits";
     }
 
-    @RequestMapping(value = "/unit", params = "action=add")
-    public String addUnit(HttpServletRequest request, @RequestParam("unitId") int unitId) {
+    /**
+     * 给某个单位添加部门
+     *
+     * @param request
+     * @param unitId
+     * @return
+     */
+    @RequestMapping(value = "/unit", params = "action=addDepts")
+    public String addDepartMents(HttpServletRequest request, @RequestParam("unitId") int unitId) {
 
-        UnitEntity unitEntity = null;
-        if (unitId != 0) {
-            unitEntity = new UnitEntity();
-            unitEntity.setId(unitId);
-        }
+        UnitEntity unitEntity = new UnitEntity();
+        unitEntity.setId(unitId);
 
-        Map<String, String> map = request.getParameterMap();
+        @SuppressWarnings("unchecked")
+        Map<String, String[]> map = request.getParameterMap();
         Set<String> set = map.keySet();
         List<DepartmentEntity> departmentEntities = new ArrayList<DepartmentEntity>(map.size() - 2);
-        for (String str : set) {
-            if (!"action".equals(str) && !"unitId".equals(str)) {
-                String deptName = request.getParameter(str);
+        for (String tmp : set) {
+            if (!"action".equals(tmp) && !"unitId".equals(tmp)) {
+                String deptName = request.getParameter(tmp);
                 if (deptName != null && !"".equals(deptName)) {
                     DepartmentEntity departmentEntity = new DepartmentEntity();
                     departmentEntity.setDeptName(deptName);
@@ -128,8 +169,21 @@ public class UnitController {
         }
 
         unitService.addDepartments(unitEntity, departmentEntities);
-        //明天把这个跳转问题解决
-        return "";
-//        return "forward:/unit?page=unitModify&&unitId=" + unitId;
+
+        //增加玩部门之后在显示所有的部门
+        return modifyUnit(request, unitId);
+    }
+
+    @RequestMapping(value = "/unit", params = "action=deleteDept")
+    public String deleteDept(HttpServletRequest request, @RequestParam("deptId") int deptId, @RequestParam("unitId") int unitId) {
+
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setId(deptId);
+        UnitEntity unitEntity = new UnitEntity();
+        unitEntity.setId(unitId);
+        departmentEntity.setUnitByUnitId(unitEntity);
+        unitService.deleteDepartment(departmentEntity);
+
+        return modifyUnit(request, unitId);
     }
 }
