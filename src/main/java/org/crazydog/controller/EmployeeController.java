@@ -1,5 +1,6 @@
 package org.crazydog.controller;
 
+import org.crazydog.domain.EmployeeEntity;
 import org.crazydog.domain.PositionChangeEntity;
 import org.crazydog.domain.PositionLeaveEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
@@ -14,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by johnny on 15-8-27.
@@ -61,18 +61,21 @@ public class EmployeeController {
      */
     @RequestMapping(params = "dispatch", method = RequestMethod.GET)
     public  String dealWithDispatch(HttpServletRequest request) {
+
+        // just get the emp id
         String empid = request.getParameter("empid");
-        String empname = request.getParameter("empname");
-        String unit = request.getParameter("unit");
-        String dept = request.getParameter("dept");
+System.out.println(empid + "========================================");
+
+        // get the employee from the database
+        EmployeeEntity employeeEntity = employeeService.getEntity(Integer.parseInt(empid));
+
+System.out.println(employeeEntity + "========================================");
+
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         String needDate = format.format(date);
 
-        request.setAttribute("empid", empid);
-        request.setAttribute("empname", empname);
-        request.setAttribute("unit", unit);
-        request.setAttribute("dept", dept);
+        request.setAttribute("emp", employeeEntity);
         request.setAttribute("date", needDate);
         return "dispatch";
     }

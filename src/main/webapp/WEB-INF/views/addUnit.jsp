@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: never
-  Date: 2015/8/27
-  Time: 20:23
+  Date: 2015/8/31
+  Time: 10:21
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -20,6 +20,8 @@
     <meta http-equiv="Content-Language" content="zh-cn">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
+    <script src="../../js/jquery-1.3.2.js" type="text/javascript"></script>
+    <script src="../../js/tableControl.js" type="text/javascript"></script>
 </head>
 <body>
 <div class="cont left">
@@ -41,7 +43,7 @@
                         <td><input type="submit" name="button" id="button" value="查询" class="s_btn"
                                    onclick="javascript:this.form.action='/unit?action=search'"/></td>
                         <td><input type="submit" name="button2" id="button2" value="新建服务单位" class="s_btns"
-                                   onclick="javascript:this.form.action='url1'"/></td>
+                                   onclick="addRow()"/></td>
                     </form>
                 </tr>
             </table>
@@ -50,6 +52,7 @@
         <div class=" tum">
             <div class="contlist">
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+                    <tbody id="mytable">
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
                         <c:forEach var="column" items="<%=ResourceString.unitShow%>">
@@ -65,13 +68,14 @@
                                     value="${entity.unitCode}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.unitName}"/></td>
-                            <td align="center" bgcolor="#ffffff"><a href='unit?page=unitModify&&unitId=<c:out
+                            <td align="center" bgcolor="#ffffff"><a href='unit?action=showAllDepts&&unitId=<c:out
                                     value="${entity.id}"/>'>修改</a></td>
                             <td align="center" bgcolor="#ffffff"><a
                                     href='unit?action=unitDelete&&unitId=<c:out
                                     value="${entity.id}"/>'>删除</a></td>
                         </tr>
                     </c:forEach>
+                    </tbody>
                 </table>
             </div>
         </div>
