@@ -28,11 +28,11 @@
                         <td><input type="text" name="username"  class="s_inputs"/></td>
                         <td>学历：</td>
                         <td><select name="highestEdu" id="select" class="s_inputs" >
-                            <option value="小学">小学</option>
+                            <option value="本科">本科</option>
                             <option value="初中">初中</option>
                             <option value="高中">高中</option>
                             <option value="专科">专科</option>
-                            <option value="本科">本科</option>
+                            <option value="小学">小学</option>
                             <option value="硕士">硕士</option>
                             <option value="博士">博士</option>
                         </select></td>

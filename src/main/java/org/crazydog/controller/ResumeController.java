@@ -8,7 +8,9 @@ import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -101,7 +103,7 @@ public class ResumeController {
 		String[] ids =  request.getParameterValues("selectes");
 		if(ids!=null){
 			int[] id = resumeService.stringtoint(ids);
-			resumeService.batchcancelHire(id,"李飞");
+			resumeService.batchcancelHire(id, "李飞");
 		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
@@ -134,6 +136,17 @@ public class ResumeController {
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes1", resumes1);
 		return "batchCancelHire";
+	}
+
+
+
+	// eg : .../employee?pages=1
+	// 处理pages参数，显示相应页数的所有人员信息
+	@RequestMapping(method = RequestMethod.GET, value = "/resume/{page}")
+	public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
+		request.setAttribute("resume", resumeService.getResumeByPage(Integer.parseInt(page)));
+		request.setAttribute("page", page);
+		return "resumeBypage";
 	}
 
 }
