@@ -36,7 +36,7 @@ public class ResourceString {
     /**
      * 这是简历数据维护的列
      */
-    public final static String[] resumeshow = {"选择", "姓名", "性别", "民族", "出生年月", "最高学历", "婚否", "政治面貌", "户口所在地", "手机号码", "录取状态", "邮箱", "操作"};
+    public final static String[] resumeShow = {"选择", "姓名", "性别", "民族", "出生年月", "最高学历", "婚否", "政治面貌", "户口所在地", "手机号码", "录取状态", "邮箱", "操作"};
 
     /**
      * 这是岗位变更维护的列
@@ -48,8 +48,20 @@ public class ResourceString {
      */
     public final static String[] positionOffShow = {"序号", "员工编号", "员工姓名", "员工离职日期", "离职备注", "删除记录"};
     /**
-     * 这是录取状态的列
+     * 这是简历录取状态的列
      */
-    public final static String[] hireshow = {"序号", "录取状态", "备注", "操作时间", "操作人"};
+    public final static String[] hireShow = {"序号", "录取状态", "备注", "操作时间", "操作人"};
+    /**
+     * 这是简历家庭成员的列
+     */
+    public final static String[] familyShow = {"与本人关系", "姓名", "工作单位"};
+    /**
+     * 这是简历工作经历的列
+     */
+    public final static String[] jodShow = {"开始时间", "辞职时间", "职务", "工作部门"};
+    /**
+     * 这是简历教育经历的列
+     */
+    public final static String[] eudShow = {"开始时间", "毕业时间", "学校", "专业"};
 
 }

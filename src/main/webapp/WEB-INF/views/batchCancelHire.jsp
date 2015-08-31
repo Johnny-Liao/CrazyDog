@@ -17,21 +17,18 @@
 <body>
 <div class="cont left">
   <div class="content">
-    <div class="contentop">
-      <div class="welcome">您好：<a href="#">admin</a>，欢迎登综合业务管理系统！</div>
-      <div class="time"><span>2015年4月21日</span><span>星期二</span></div>
-    </div>
+    <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
     <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a></div>
     <form method="post">
       <div class="search">
-        <input type="submit" name="button" id="button" value="批量取消录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=bitchCancelHire'"/>
+        <input type="submit" name="button" id="button" value="批量取消录取"  class="s_btn"   onclick="javascript:this.form.action='/resume?action=batchCancelHire'"/>
       </div>
     <div  class="tum">
       <div class="contlist">
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <%--显示表头标题--%>
             <tr style="color:#000; font-size:14px; padding:10px 0;">
-              <c:forEach var="column" items="<%=ResourceString.resumeshow%>">
+              <c:forEach var="column" items="<%=ResourceString.resumeShow%>">
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
               </c:forEach>
             </tr>
@@ -50,7 +47,7 @@
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.hireById.state}"/></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.email}"/></td>
                 <td align="center" bgcolor="#fff8f8"><a href="#"/>人事建档</td>
-                <td align="center" bgcolor="#fff8f8"><a href="#"/>查看详细简历信息</td>
+                <td align="center" bgcolor="#fff8f8"><a href='/resume?action=getAresume&&resumeid=${column.id}'/>查看详细简历信息</td>
               </tr>
             </c:forEach>
         </table>

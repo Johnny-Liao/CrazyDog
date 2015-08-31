@@ -17,10 +17,7 @@
 <body>
 <div class="cont left">
     <div class="content">
-        <div class="contentop">
-            <div class="welcome">您好：<a href="#">admin</a>，欢迎登综合业务管理系统！</div>
-            <div class="time"><span>2015年4月21日</span><span>星期二</span></div>
-        </div>
+        <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">社会招聘管理</a> &gt; <a href="#">简历管理</a>
         </div>
         <form id="formresume" method="post">
@@ -48,7 +45,7 @@
                         <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/resume?action=modelSearch'"/></td>
                         <td><input type="button" name="submit" id="button2" value="导出Excel"  class="s_btns" /></td>
                         <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
-                        <td><input type="submit"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="javascript:this.form.action='/resume?action=bitchdelete'"/></td>
+                        <td><input type="submit"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="javascript:this.form.action='/resume?action=batchdelete'"/></td>
                     </tr>
 
             </table>
@@ -59,7 +56,7 @@
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <c:forEach var="column" items="<%=ResourceString.resumeshow%>">
+                        <c:forEach var="column" items="<%=ResourceString.resumeShow%>">
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>
