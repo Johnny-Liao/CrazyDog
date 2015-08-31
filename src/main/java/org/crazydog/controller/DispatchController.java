@@ -8,6 +8,7 @@ import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.PositionChangeServiceImpl;
 import org.crazydog.serviceI.impl.UnitServiceImpl;
+import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * Created by johnny on 15-8-30.
@@ -50,8 +52,8 @@ public class DispatchController {
         String empid = request.getParameter("empid");
         String date = request.getParameter("date");
         // only need the id from the front page.
-        String afterunitid = request.getParameter("afterunitid");
-        String afterdeptid = request.getParameter("afterdeptid");
+        String afterunit = request.getParameter("afterunit");
+        String afterdept = request.getParameter("afterdept");
         String reason = request.getParameter("reason");
 
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -80,16 +82,21 @@ public class DispatchController {
 
         positionChangeEntity.setUnitByBeforUnitId(beforUnit);
         positionChangeEntity.setDepartmentByBeforDeptId(befordept);
-
-
-        UnitEntity afterUnit = unitService.getEntity(Integer.parseInt(afterunitid));
-        DepartmentEntity afterDept = departmentdao.getEntity(Integer.parseInt(afterdeptid));
+// we should do it simple.
+//        unitService.getUnitByName()
+        List<UnitEntity> afterUnits = unitService.getUnitByName(afterunit);//getEntity(Integer.parseInt(afterunitid));
+        UnitEntity afterUnit = afterUnits.get(0);
+        DepartmentEntity afterDept = departmentdao.getDepartmentByName(afterdept);//.getEntity(Integer.parseInt(afterdeptid));
 
 
         positionChangeEntity.setUnitByAfterUnitId(afterUnit);
         positionChangeEntity.setDepartmentByAfterDeptId(afterDept);
+System.out.println("AfterUnit:============" + afterUnit);
+System.out.println("AfterDept:============" + afterDept);
 
 
+
+        positionChangeEntity.setChangeTime(sqldate);
         positionChangeEntity.setChangeCause(reason);
 
 

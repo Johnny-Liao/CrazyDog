@@ -89,4 +89,10 @@ public class DepartmentdaoImplTest {
         for (DepartmentEntity departmentEntity : departmentEntities)
             System.out.println(departmentEntity);
     }
+
+    @Test
+    public void getDepartmentByName() {
+        DepartmentEntity departmentEntity = departmentdao.getDepartmentByName("守门部");
+        System.out.println(departmentEntity);
+    }
 }

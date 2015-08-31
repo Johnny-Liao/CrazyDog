@@ -76,9 +76,9 @@
                             <!--  `after_unit_id`       INT          NOT NULL COMMENT '之后单位id',
                           `after_dept_id`       INT          NOT NULL COMMENT '之后部门id',   not do -->
                             <td align="center" bgcolor="#ffffff"><input type="text" id="afterunit" name="afterunit"
-                                                                        value="${date}" class="s_input"/></td>
+                                                                        value="请填写正确的单位名" class="s_input"/></td>
                             <td align="center" bgcolor="#ffffff"><input type="text" id="afterdept" name="afterdept"
-                                                                        value="${date}" class="s_input"/></td>
+                                                                        value="请填写正确的部门名" class="s_input"/></td>
 
 
                             <td align="center" bgcolor="#ffffff"><input type="text" id="reason" name="reason"

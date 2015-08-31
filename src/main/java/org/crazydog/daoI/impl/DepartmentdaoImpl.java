@@ -5,7 +5,9 @@ import org.crazydog.domain.DepartmentEntity;
 import org.crazydog.domain.UnitEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by never on 2015/8/25.
@@ -97,6 +99,13 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
     public List<DepartmentEntity> getAllDepartmentEntity(UnitEntity unitEntity) {
         List<DepartmentEntity> departmentEntities = (List<DepartmentEntity>) hibernateTemplate.findByNamedParam("from DepartmentEntity dept where dept.unitByUnitId=:id", "id", unitEntity);
         return departmentEntities;
+    }
+
+
+    public DepartmentEntity getDepartmentByName(String name) {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("name", name);
+        return (DepartmentEntity) this.find("from DepartmentEntity dept where dept.deptName=:name", map).get(0);
     }
 
 }
