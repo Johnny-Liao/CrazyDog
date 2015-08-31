@@ -43,8 +43,20 @@ public class ResourceString {
      */
     public final static String[] positionChangeShow = {"序号", "员工编号", "员工姓名", "更改时间", "更改原因", "之前单位", "之前部门", "之后单位", "之后部门", "删除记录"};
     /**
-     * 这是录取状态的列
+     * 这是简历录取状态的列
      */
     public final static String[] hireshow = {"序号", "录取状态", "备注","操作时间","操作人"};
+    /**
+     * 这是简历家庭成员的列
+     */
+    public final static String[] familyshow = {"与本人关系", "姓名", "工作单位"};
+    /**
+     * 这是简历工作经历的列
+     */
+    public final static String[] jodsshow = {"开始时间", "辞职时间","职务","工作部门"};
+    /**
+     * 这是简历教育经历的列
+     */
+    public final static String[] eudshow = {"开始时间", "毕业时间","学校","专业"};
 
 }
