@@ -1,10 +1,7 @@
 package org.crazydog.controller;
 
 import org.crazydog.daoI.impl.DepartmentdaoImpl;
-import org.crazydog.domain.DepartmentEntity;
-import org.crazydog.domain.EmployeeEntity;
-import org.crazydog.domain.PositionChangeEntity;
-import org.crazydog.domain.UnitEntity;
+import org.crazydog.domain.*;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.PositionChangeServiceImpl;
 import org.crazydog.serviceI.impl.UnitServiceImpl;
@@ -13,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -41,12 +39,11 @@ public class DispatchController {
 
     /**
      * deal with the dispatch position.
-     * now // only need the after id (unit & dept) from the front page.
      * @param request
      * @return
      */
     @RequestMapping(method = RequestMethod.POST)
-    public String addLeaveInfo(HttpServletRequest request) {
+    public String addDispatchInfo(HttpServletRequest request) {
 
         // get the parameters
         String empid = request.getParameter("empid");
@@ -106,5 +103,46 @@ System.out.println("AfterDept:============" + afterDept);
 
 
         return "redirect:employeePage/1";
+    }
+
+
+
+    /**
+     * 响应删除dispatch info
+     *
+     * @return
+     */
+    @RequestMapping(params = "action=dispatchDelete")
+    public String dispatchDelete(HttpServletRequest request, @RequestParam("dispatchId") int dispatchId) {
+
+        PositionChangeEntity positionChangeEntity = new PositionChangeEntity();
+        positionChangeEntity.setId(dispatchId);
+
+        EmployeeEntity employeeEntity = new EmployeeEntity();
+        employeeEntity.setId(Integer.parseInt(request.getParameter("empid")));
+        positionChangeEntity.setEmployeeEntity(employeeEntity);
+
+
+
+        List<UnitEntity> unitEntityBefors =  unitService.getUnitByName(request.getParameter("unitnameb"));
+        UnitEntity unitEntityBefor = unitEntityBefors.get(0);
+        positionChangeEntity.setUnitByBeforUnitId(unitEntityBefor);
+
+        List<UnitEntity> unitEntityAfters =  unitService.getUnitByName(request.getParameter("unitnameb"));
+        UnitEntity unitEntityAfter = unitEntityAfters.get(0);
+        positionChangeEntity.setUnitByAfterUnitId(unitEntityAfter);
+
+
+        DepartmentEntity departmentEntityBefor = departmentdao.getDepartmentByName(request.getParameter("deptnameb"));
+        DepartmentEntity departmentEntityAfter =  departmentdao.getDepartmentByName(request.getParameter("deptnamea"));
+        positionChangeEntity.setDepartmentByBeforDeptId(departmentEntityBefor);
+        positionChangeEntity.setDepartmentByAfterDeptId(departmentEntityAfter);
+
+
+
+
+        positionChangeService.deleteEntity(positionChangeEntity);
+
+        return "redirect:/employeePage?action=getPositionChange";
     }
 }

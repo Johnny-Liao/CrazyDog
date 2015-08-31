@@ -71,7 +71,7 @@
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.name}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.leaveDate}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out value="${entity.leaveComment}"/></td>
-                            <td align="center" bgcolor="#ffffff">删除</td>
+                            <td align="center" bgcolor="#ffffff"><a href='leave?action=leaveDelete&&leaveId=<c:out value="${entity.id}" />'>删除</a></td>
                         </tr>
                     </c:forEach>
                     <tr>

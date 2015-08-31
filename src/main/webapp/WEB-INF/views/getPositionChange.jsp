@@ -76,7 +76,11 @@
                                     value="${entity.unitByAfterUnitId.unitName}"/></td>
                             <td align="center" bgcolor="#ffffff"><c:out
                                     value="${entity.departmentByAfterDeptId.deptName}"/></td>
-                            <td align="center" bgcolor="#ffffff">删除</td>
+                            <td align="center" bgcolor="#ffffff"><a
+                                    href='dispatch?action=dispatchDelete&&dispatchId=<c:out value="${entity.id}" />
+                                    &empid=${entity.employeeEntity.empCode}&unitnameb=${entity.unitByBeforUnitId.unitName}&deptnameb=${entity.departmentByBeforDeptId.deptName}
+                                    &unitnamea=${entity.unitByAfterUnitId.unitName}&deptnamea=${entity.departmentByAfterDeptId.deptName}'>删除</a>
+                            </td>
                         </tr>
                     </c:forEach>
                     <tr>
