@@ -77,7 +77,7 @@
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column.tel}"/></td>
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column.hireById.state}"/></td>
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column.email}"/></td>
-                            <td align="center" bgcolor="#fff8f8"><a href="/resume?action=getAresume"/>查看详细简历信息</td>
+                            <td align="center" bgcolor="#fff8f8"><a href='/resume?action=getAresume&&resumeid=${column.id}'/>查看详细简历信息</td>
                         </tr>
                     </c:forEach>
                 </table>
