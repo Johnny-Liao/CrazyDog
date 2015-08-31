@@ -55,7 +55,7 @@
         <div class="tum">
             <div><font color="red">服务部门</font></div>
             <div class="contlist">
-                <form id="unit" method="post" action="/unit?action=add">
+                <form id="unit" method="post" action="/unit?action=add&&unitId=${unitEntity.id}">
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
 
                         <tbody id="mytable">
