@@ -42,11 +42,11 @@
                     </td>
                     <td><input type="button" name="btnAdd" id="btnAdd" value="增加行" class="s_btn" onclick="addRow()"/>
                     </td>
-                    <%--<td><input type="button" name="button2" id="button2" value="删除行" class="s_btns"/></td>--%>
                     <td align="center"><input type="submit" value="确定" class="s_btn"
                                               onclick='javascript:$("#unit").submit()'>
                     </td>
-                    <td align="center"><input type="submit" value="返回" class="s_btns"></td>
+                    <td align="center"><input type="button" value="返回" class="s_btns"
+                                              onclick="javascript:window.location='/unit?action=getAll'"></td>
                 </tr>
 
             </table>
@@ -55,7 +55,7 @@
         <div class="tum">
             <div><font color="red">服务部门</font></div>
             <div class="contlist">
-                <form id="unit" method="post" action="/unit?action=add&&unitId=${unitEntity.id}">
+                <form id="unit" method="post" action="/unit?action=addDepts&&unitId=${unitEntity.id}">
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
 
                         <tbody id="mytable">
@@ -71,7 +71,9 @@
                             <tr>
                                 <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
                                 <td align="center" bgcolor="#ffffff"><c:out value="${entity.deptName}"/></td>
-                                <td align="center" bgcolor="#ffffff">删除</td>
+                                <td align="center" bgcolor="#ffffff">
+                                    <a href='unit?action=deleteDept&&unitId=${unitEntity.id}&&deptId=<c:out
+                                        value="${entity.id}"/>'>删除</a></td>
                             </tr>
                         </c:forEach>
                         </tbody>

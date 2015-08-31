@@ -150,4 +150,13 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
     public void deleteEntity(UnitEntity entity) {
         unitdao.deleteEntity(entity);
     }
+
+    /**
+     * 删除某个部门
+     *
+     * @param departmentEntity
+     */
+    public void deleteDepartment(DepartmentEntity departmentEntity) {
+        departmentdao.deleteEntity(departmentEntity);
+    }
 }

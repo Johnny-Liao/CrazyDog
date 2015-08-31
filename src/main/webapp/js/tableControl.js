@@ -37,6 +37,55 @@ function addRow() {
     tr.appendChild(td2);
     document.getElementById("mytable").appendChild(tr);
 }
+function showHide() {
+    //var btn = document.getElementById('btn');
+    var yuansu = document.getElementById('confirmBtn');
+    if (yuansu.style.display == "none")
+        yuansu.style.display = "block";
+    if (yuansu.style.visibility == "hidden")
+        yuansu.style.visibility = "visible";
+    //} else {
+    //    yuansu.style.display = "block";
+    //}
+}
+
+function addunit() {
+    //showHide();
+    var length = document.getElementById("mytable").rows.length;
+
+    var tr = document.createElement("tr");
+    var td = document.createElement("td");
+    td.appendChild(document.createTextNode(""));
+    tr.appendChild(td);
+    tr.id = length + 1;
+
+    var td2 = document.createElement("td");
+    var input = document.createElement("input");
+    input.type = "text";
+    input.setAttribute("class", "s_input");
+    input.setAttribute("name", "unit_code" + length);
+    td2.id = tr.id + "/" + 1;
+    td2.align = "center";
+    td2.appendChild(input);
+    tr.appendChild(td2);
+
+    var td4 = document.createElement("td");
+    var input2 = document.createElement("input");
+    input2.type = "text";
+    input2.setAttribute("class", "s_input");
+    input2.setAttribute("name", "unit_name" + length);
+    td4.id = tr.id + "/" + 1;
+    td4.align = "center";
+    td4.appendChild(input2);
+    tr.appendChild(td4);
+
+    var td3 = document.createElement("td");
+    td3.appendChild(document.createTextNode(""));
+    var td4 = document.createElement("td");
+    td4.appendChild(document.createTextNode(""));
+    tr.appendChild(td4);
+    document.getElementById("mytable").appendChild(tr);
+}
 
 function addRow_withInsert() {
     varrow = document.getElementById("table").insertRow(document.getElementById("table").rows.length);
