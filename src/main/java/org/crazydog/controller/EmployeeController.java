@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by johnny on 15-8-27.
@@ -59,7 +60,20 @@ public class EmployeeController {
      * @return
      */
     @RequestMapping(params = "dispatch", method = RequestMethod.GET)
-    public  String dealWithDispatch() {
+    public  String dealWithDispatch(HttpServletRequest request) {
+        String empid = request.getParameter("empid");
+        String empname = request.getParameter("empname");
+        String unit = request.getParameter("unit");
+        String dept = request.getParameter("dept");
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String needDate = format.format(date);
+
+        request.setAttribute("empid", empid);
+        request.setAttribute("empname", empname);
+        request.setAttribute("unit", unit);
+        request.setAttribute("dept", dept);
+        request.setAttribute("date", needDate);
         return "dispatch";
     }
 
