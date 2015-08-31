@@ -85,7 +85,7 @@ public class PositionChangeEntity {
         return result;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "befor_unit_id", referencedColumnName = "id", nullable = false)
     public UnitEntity getUnitByBeforUnitId() {
         return unitByBeforUnitId;
@@ -95,7 +95,7 @@ public class PositionChangeEntity {
         this.unitByBeforUnitId = unitByBeforUnitId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "befor_dept_id", referencedColumnName = "id", nullable = false)
     public DepartmentEntity getDepartmentByBeforDeptId() {
         return departmentByBeforDeptId;
@@ -105,7 +105,7 @@ public class PositionChangeEntity {
         this.departmentByBeforDeptId = departmentByBeforDeptId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "after_unit_id", referencedColumnName = "id", nullable = false)
     public UnitEntity getUnitByAfterUnitId() {
         return unitByAfterUnitId;
@@ -115,7 +115,7 @@ public class PositionChangeEntity {
         this.unitByAfterUnitId = unitByAfterUnitId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "after_dept_id", referencedColumnName = "id", nullable = false)
     public DepartmentEntity getDepartmentByAfterDeptId() {
         return departmentByAfterDeptId;
@@ -139,7 +139,7 @@ public class PositionChangeEntity {
                 '}';
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER, optional = true)
     @JoinColumn(name = "emp_id", referencedColumnName = "id", nullable = false)
     public EmployeeEntity getEmployeeEntity() {
         return employeeEntity;
