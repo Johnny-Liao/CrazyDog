@@ -6,6 +6,7 @@ import org.crazydog.domain.PositionChangeEntity;
 import org.crazydog.domain.PositionLeaveEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.HireInfoServiceImpl;
+import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,8 +48,9 @@ public class EmployeeController {
      * @return
      */
     public String getAllHirePersons(HttpServletRequest request) {
-        List<HireInfoEntity> list = hireInfoService.getAllHireEnitities();
-
+        List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
+        for (HireInfoEntity hireInfoEntity : list)
+            System.out.println(hireInfoEntity);
         return null;
     }
 

@@ -106,7 +106,8 @@ public class PositionLeaveEntity {
 
     private EmployeeEntity employeeEntity;
 
-    @OneToOne(mappedBy = "positionLeaveEntity")
+    @ManyToOne
+    @JoinColumn(name = "emp_id", unique = true)
     public EmployeeEntity getEmployeeEntity() {
         return employeeEntity;
     }

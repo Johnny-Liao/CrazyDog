@@ -13,7 +13,6 @@ import java.sql.Date;
 @Table(name = "hire_info", schema = "", catalog = "crazydog")
 public class HireInfoEntity {
     private Integer id;
-    private Integer resumeId;
     private String state;
     private String comment;
     private Date operateTime;
@@ -29,16 +28,6 @@ public class HireInfoEntity {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "resume_id")
-    public Integer getResumeId() {
-        return resumeId;
-    }
-
-    public void setResumeId(Integer resumeId) {
-        this.resumeId = resumeId;
     }
 
     @Basic
@@ -83,13 +72,14 @@ public class HireInfoEntity {
 
     @Fetch(FetchMode.SELECT)
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="resumeEntity",insertable=true,unique=true)
+    @JoinColumn(name = "resume_id", insertable = true, unique = true)
     public ResumeEntity getResumeEntity() {
-            return resumeEntity;
-        }
+        return resumeEntity;
+    }
+
     public void setResumeEntity(ResumeEntity resumeEntity) {
-            this.resumeEntity = resumeEntity;
-       }
+        this.resumeEntity = resumeEntity;
+    }
 
     @Override
     public boolean equals(Object o) {
@@ -99,7 +89,6 @@ public class HireInfoEntity {
         HireInfoEntity that = (HireInfoEntity) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (resumeId != null ? !resumeId.equals(that.resumeId) : that.resumeId != null) return false;
         if (state != null ? !state.equals(that.state) : that.state != null) return false;
         if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
         if (operateTime != null ? !operateTime.equals(that.operateTime) : that.operateTime != null) return false;
@@ -111,7 +100,6 @@ public class HireInfoEntity {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (resumeId != null ? resumeId.hashCode() : 0);
         result = 31 * result + (state != null ? state.hashCode() : 0);
         result = 31 * result + (comment != null ? comment.hashCode() : 0);
         result = 31 * result + (operateTime != null ? operateTime.hashCode() : 0);
@@ -123,7 +111,6 @@ public class HireInfoEntity {
     public String toString() {
         return "HireInfoEntity{" +
                 "id=" + id +
-                ", resumeId=" + resumeId +
                 ", state='" + state + '\'' +
                 ", comment='" + comment + '\'' +
                 ", operateTime=" + operateTime +

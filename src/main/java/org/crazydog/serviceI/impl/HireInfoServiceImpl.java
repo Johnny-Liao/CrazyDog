@@ -4,6 +4,7 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.HireInfoEntity;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -38,10 +39,16 @@ public class HireInfoServiceImpl implements BaseService<HireInfoEntity> {
         return null;
     }
 
+    /**
+     * 获取某录取状态下所有的简历
+     *
+     * @param state
+     * @return
+     */
     @SuppressWarnings("unchecked")
-    public List<HireInfoEntity> getAllHireEnitities() {
+    public List<HireInfoEntity> getAllHireEnititiesByState(ResumeSearchModel.Luqu state) {
         Map<String, Object> map = new HashMap<String, Object>(1);
-        map.put("state", "录取");
+        map.put("state", state.toString());
         return (List<HireInfoEntity>) hiredao.find("from HireInfoEntity hire where hire.state=:state", map);
     }
 

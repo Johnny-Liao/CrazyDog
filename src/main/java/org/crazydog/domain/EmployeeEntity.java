@@ -491,17 +491,17 @@ public class EmployeeEntity {
         this.departmentEntity = departmentEntity;
     }
 
+    public void setContractEntity(ContractEntity contractEntity) {
+        this.contractEntity = contractEntity;
+    }
+
     //获取人员信息时顺便把简历信息也读取出来 fetch = FetchType.EAGER
     @OneToOne(mappedBy = "employeeEntity", fetch = FetchType.EAGER)
     public ContractEntity getContractEntity() {
         return contractEntity;
     }
 
-    public void setContractEntity(ContractEntity contractEntity) {
-        this.contractEntity = contractEntity;
-    }
-
-    @OneToOne
+    @OneToOne(mappedBy = "employeeEntity")
     public PositionLeaveEntity getPositionLeaveEntity() {
         return positionLeaveEntity;
     }

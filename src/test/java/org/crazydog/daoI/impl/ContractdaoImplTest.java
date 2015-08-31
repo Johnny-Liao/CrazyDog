@@ -34,7 +34,7 @@ public class ContractdaoImplTest {
         contractEntity.setContractEnd(new Date(System.currentTimeMillis()));
         contractEntity.setContractStart(new Date(System.currentTimeMillis() - 100000));
         contractdaoImpl.addEntity(contractEntity);
-        contractEntity.setEmpId(1);
+//        contractEntity.setEmpId(1);
         System.out.println(contractdaoImpl);
     }
 
