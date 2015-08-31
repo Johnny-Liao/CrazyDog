@@ -38,6 +38,7 @@ public class UnitController {
 
         request.setAttribute("unitEntities", unitEntities);
 
+        //将这页面需要的信息填充完毕之后跳转到showAllUnits界面
         return "showAllUnits";
     }
 
@@ -52,10 +53,15 @@ public class UnitController {
     @RequestMapping(value = "/unit", params = "action=addUnit")
     public String addUnit(HttpServletRequest request) {
 
+        //getParameterMap方法返回的是Map<String, String[]>
+        //这种类型的map因为很有可能像selector这样的空间含有多值
+
         @SuppressWarnings("unchecked")
         Map<String, String[]> map = request.getParameterMap();
         Set<String> set = map.keySet();
         List<UnitEntity> list = new ArrayList<UnitEntity>(map.size() - 1);
+        //因为从前端传来的参数一般都是成对的，在构建下面的UnitEntity也必须成对
+        //所以事先讲这个参数去除
         if (set.contains("action"))
             set.remove("action");
 
@@ -63,6 +69,8 @@ public class UnitController {
             String key1 = iterator.next();
             String key2 = iterator.next();
             UnitEntity unitEntity = new UnitEntity();
+
+            //将含有unit_code、unit_name的参数取出填充
             if (key1.contains("unit_code"))
                 unitEntity.setUnitCode(request.getParameter(key1));
             else if (key2.contains("unit_code"))
@@ -71,14 +79,14 @@ public class UnitController {
                 unitEntity.setUnitName(request.getParameter(key1));
             else if (key2.contains("unit_name"))
                 unitEntity.setUnitName(request.getParameter(key2));
+
             list.add(unitEntity);
         }
 
-        for (UnitEntity unitEntity : list) {
-            System.out.println(unitEntity);
+        for (UnitEntity unitEntity : list)
             unitService.addEntity(unitEntity);
-        }
 
+        //重新填充页面并返回到显示所有的单位的页面
         return getAllUnits(request);
     }
 
@@ -111,7 +119,7 @@ public class UnitController {
         unitEntity.setId(unitId);
         unitService.deleteEntity(unitEntity);
 
-        //删除单位之后在重新加载一次
+        //删除单位之后在重新返回到显示所有的单位的界面
         return getAllUnits(request);
     }
 
@@ -156,8 +164,10 @@ public class UnitController {
         @SuppressWarnings("unchecked")
         Map<String, String[]> map = request.getParameterMap();
         Set<String> set = map.keySet();
+        //如果能够在实现知道容器的大小直接指定也是一条最佳实践
         List<DepartmentEntity> departmentEntities = new ArrayList<DepartmentEntity>(map.size() - 2);
         for (String tmp : set) {
+            //判断一个字符串既不是action也不是unitId的逻辑是：和action不equals同时和unitId不equals
             if (!"action".equals(tmp) && !"unitId".equals(tmp)) {
                 String deptName = request.getParameter(tmp);
                 if (deptName != null && !"".equals(deptName)) {
