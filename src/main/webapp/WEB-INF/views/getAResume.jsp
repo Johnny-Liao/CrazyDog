@@ -17,10 +17,7 @@
 <body>
 <div class="cont left">
   <div class="content">
-    <div class="contentop">
-      <div class="welcome">您好：<a href="#">admin</a>，欢迎登综合业务管理系统！</div>
-      <div class="time"><span>2015年4月21日</span><span>星期二</span></div>
-    </div>
+    <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
     <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">读取简历信息</a></div>
     <div class="search">
       <table border="0" cellspacing="0" cellpadding="0">
@@ -148,12 +145,59 @@
             </c:forEach>
           </tr>
           <tr style="color:#000; font-size:14px; padding:10px 0;">
-            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.resumeId}"/></td>
+            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.id}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.state}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.comment}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.operateTime}"/></td>
             <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.operator}"/></td>
           </tr>
+        </table></br>
+        <h3>工作经历：</h3></br>
+        <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+          <tr style="color:#000; font-size:14px; padding:10px 0;">
+            <c:forEach var="column" items="<%=ResourceString.jodsshow%>">
+              <td  bgcolor="#fff8f8"><c:out value="${column}"/></td>
+            </c:forEach>
+          </tr>
+            <c:forEach var="onejob" items="${resume.resumeJobsById}">
+              <tr style="color:#000; font-size:14px; padding:10px 0;">
+                  <td  bgcolor="#fff8f8"><c:out value="${onejob.startTime}"/></td>
+                  <td  bgcolor="#fff8f8"><c:out value="${onejob.endTime}"/></td>
+                  <td  bgcolor="#fff8f8"><c:out value="${onejob.post}"/></td>
+                  <td  bgcolor="#fff8f8"><c:out value="${onejob.departmennt}"/></td>
+              </tr>
+            </c:forEach>
+        </table></br>
+        <h3>家庭成员：</h3></br>
+        <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+          <tr style="color:#000; font-size:14px; padding:10px 0;">
+            <c:forEach var="column" items="<%=ResourceString.familyshow%>">
+              <td  bgcolor="#fff8f8"><c:out value="${column}"/></td>
+            </c:forEach>
+          </tr>
+          <c:forEach var="family" items="${resume.resumeFamilyById}">
+            <tr style="color:#000; font-size:14px; padding:10px 0;">
+              <td  bgcolor="#fff8f8"><c:out value="${family.relationship}"/></td>
+              <td  bgcolor="#fff8f8"><c:out value="${family.name}"/></td>
+              <td  bgcolor="#fff8f8"><c:out value="${family.department}"/></td>
+            </tr>
+          </c:forEach>
+        </table></br>
+        <h3>教育经历：</h3></br>
+        <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
+          <tr style="color:#000; font-size:14px; padding:10px 0;">
+            <c:forEach var="column" items="<%=ResourceString.eudshow%>">
+              <td  bgcolor="#fff8f8"><c:out value="${column}"/></td>
+            </c:forEach>
+          </tr>
+          <c:forEach var="edu" items="${resume.resumeEduById}">
+            <tr style="color:#000; font-size:14px; padding:10px 0;">
+              <td  bgcolor="#fff8f8"><c:out value="${edu.startTime}"/></td>
+              <td  bgcolor="#fff8f8"><c:out value="${edu.endTime}"/></td>
+              <td  bgcolor="#fff8f8"><c:out value="${edu.school}"/></td>
+              <td  bgcolor="#fff8f8"><c:out value="${edu.discipline}"/></td>
+            </tr>
+          </c:forEach>
         </table>
       </div>
 
