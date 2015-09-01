@@ -27,7 +27,7 @@
         </ul>
         <div class="subNav">简历管理</div>
         <ul class="navContent">
-            <li><a href="/resume?action=getAll" target="contentFrame">所有简历</a></li>
+            <li><a href="/resume/1" target="contentFrame">所有简历</a></li>
             <li><a href="/resume?action=getNoHire" target="contentFrame">简历录取</a></li>
             <li><a href="/resume?action=getAllHire" target="contentFrame">取消录取</a></li>
         </ul>
