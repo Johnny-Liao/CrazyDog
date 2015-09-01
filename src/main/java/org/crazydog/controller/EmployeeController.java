@@ -87,10 +87,6 @@ public class EmployeeController {
 
         employeeService.buildEmployee(resumeId, unitId, deptId, code);
         //建档成功之后删除简历信息
-//        ResumeEntity resumeEntity = new ResumeEntity();
-//        resumeEntity.setId(resumeId);
-
-//        resumeService.deleteEntity(resumeEntity);
 
         return getAllHirePersons(request);
     }

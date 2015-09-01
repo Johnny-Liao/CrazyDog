@@ -134,6 +134,8 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
 
 //        System.out.println(employeeEntity);
         addEntity(employeeEntity);
+        //建档完成之后删去这个简历
+        resumedao.deleteEntity(resumeEntity);
     }
 
     /**
