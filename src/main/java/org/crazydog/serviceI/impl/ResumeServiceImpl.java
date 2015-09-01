@@ -238,7 +238,9 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *            教育经历的id
 	 */
 	public void deleteEdu(int id) {
-		resumeEdudao.deleteEntity(resumeEdudao.getEntity(id));
+		ResumeEduEntity edu = new ResumeEduEntity();
+		edu.setId(id);
+		resumeEdudao.deleteEntity(edu);
 	}
 	/**
 	 * 添加一条教育经历记录
@@ -256,7 +258,9 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *            教育经历的id
 	 */
 	public void deleteFamily(int id) {
-		resumeFamilydao.deleteEntity(resumeFamilydao.getEntity(id));
+		ResumeFamilyEntity family = new ResumeFamilyEntity();
+		family.setId(id);
+		resumeFamilydao.deleteEntity(family);
 	}
 	/**
 	 * 添加一条家庭成员记录
@@ -274,7 +278,9 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 *            教育经历的id
 	 */
 	public void deleteJob(int id) {
-		resumeJobsdao.deleteEntity(resumeJobsdao.getEntity(id));
+		ResumeJobsEntity job = new ResumeJobsEntity();
+		job.setId(id);
+		resumeJobsdao.deleteEntity(job);
 	}
 	/**
 	 * 添加一条工作经历记录
@@ -325,25 +331,10 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
 	 */
 	public void batchdeleteresume(int[] id) {
 		for (int i : id) {
-			ResumeEntity resume = resumedao.loadEntity(i);
+			ResumeEntity resume = new ResumeEntity();
+			resume.setId(i);
 			resumedao.deleteEntity(resume);
 		}
-	}
-
-
-	/**
-	 * 将前提获取的String[] id 转换为int[]
-	 *
-	 * @param String[]
-	 *            保存的是选择界面所有被选择的复选框的value，值是相应的简历对象的id
-	 *
-	 */
-	public int[] stringtoint(String[] ids){
-		int[] id = new int[ids.length];
-		for(int i=0;i<ids.length;i++){
-			id[i]=Integer.parseInt(ids[i]);
-		}
-		return id;
 	}
 
 	/*
