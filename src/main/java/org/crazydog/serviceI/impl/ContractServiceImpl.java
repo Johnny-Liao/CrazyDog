@@ -12,11 +12,9 @@ import java.util.List;
 /**
  * Created by never on 2015/8/23.
  */
+@Deprecated
 @Service
 public class ContractServiceImpl implements BaseService<ContractEntity> {
-
-//    @Autowired
-//    private EmployeeServiceImpl employeeService;
 
     @Autowired
     @Qualifier("contractdaoImpl")

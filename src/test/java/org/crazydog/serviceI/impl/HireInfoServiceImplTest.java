@@ -29,7 +29,7 @@ public class HireInfoServiceImplTest {
 
     @Test
     public void testGetAllHireEnititiesByState() throws Exception {
-        List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
+        List<HireInfoEntity> list = hireInfoService.getAllHireEntitiesByState(ResumeSearchModel.Luqu.录取);
         for (HireInfoEntity hireInfoEntity : list) {
             System.out.println(hireInfoEntity);
             System.out.println(hireInfoEntity.getResumeEntity());

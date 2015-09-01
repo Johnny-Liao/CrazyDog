@@ -99,7 +99,7 @@ public class ResumeServiceTest {
 
 
 //        int[] id = {2};
-//        resumeServiceImpl.batchdeleteresume(id);
+//        resumeServiceImpl.batchDeleteResume(id);
     }
 
 }

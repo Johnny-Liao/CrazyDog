@@ -4,7 +4,6 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.ResumedaoImpl;
 import org.crazydog.domain.*;
 import org.crazydog.serviceI.BaseService;
-import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -81,18 +80,26 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
         return null;
     }
 
+//    /**
+//     * 高级搜索
+//     *
+//     * @param model
+//     * @return
+//     */
+
+//    public List<?> advanceSearch(SearchModel model) {
+//        String hql = SearchModel.advanceSearch(model);
+//        return employeedao.find(hql);
+//    }
+
     /**
-     * 高级搜索
+     * 给某个录取的人员简历档案
      *
-     * @param model
-     * @return
+     * @param resumeId 简历id
+     * @param unitId   分配的单位id
+     * @param deptId   分配的部门id
+     * @param code     分配的员工编号
      */
-
-    public List<?> advanceSearch(SearchModel model) {
-        String hql = SearchModel.advanceSearch(model);
-        return employeedao.find(hql);
-    }
-
     public void buildEmployee(int resumeId, int unitId, int deptId, String code) {
         EmployeeEntity employeeEntity = new EmployeeEntity();
         //设置员工的单位
@@ -132,7 +139,6 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
         employeeEntity.setSpecialty(resumeEntity.getSpecialty());
         employeeEntity.setJndj(resumeEntity.getJndj());
 
-//        System.out.println(employeeEntity);
         addEntity(employeeEntity);
         //建档完成之后删去这个简历
         resumedao.deleteEntity(resumeEntity);
@@ -198,16 +204,20 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
         employeedao.deleteEntity(employeeEntity);
     }
 
+    /**
+     * 默认一页显示5条记录
+     */
     private int pageNum = 5;
 
+    @SuppressWarnings("unchecked")
     public List<EmployeeEntity> getEmployeeByPage(int page) {
         String hql = "from EmployeeEntity emp"; // left join emp.unitEntity unit left join emp.departmentEntity depart left join emp.contractEntity cont";
-        List<EmployeeEntity> emp = (List<EmployeeEntity>) employeedao.find(hql, page, pageNum);
-        return emp;
+        return (List<EmployeeEntity>) employeedao.find(hql, page, pageNum);
     }
 
     /**
      * 计算总的记录数，用于分页
+     *
      * @return 记录条数
      */
     public int maxPageNum() {

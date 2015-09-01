@@ -56,7 +56,7 @@ public class EmployeeController {
      */
     @RequestMapping(params = "action=getAllHires")
     public String getAllHirePersons(HttpServletRequest request) {
-        List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
+        List<HireInfoEntity> list = hireInfoService.getAllHireEntitiesByState(ResumeSearchModel.Luqu.录取);
         request.setAttribute("hireInfoEntities", list);
         return "showAllHires";
     }

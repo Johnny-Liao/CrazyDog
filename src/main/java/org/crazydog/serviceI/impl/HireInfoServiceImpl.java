@@ -46,7 +46,7 @@ public class HireInfoServiceImpl implements BaseService<HireInfoEntity> {
      * @return
      */
     @SuppressWarnings("unchecked")
-    public List<HireInfoEntity> getAllHireEnititiesByState(ResumeSearchModel.Luqu state) {
+    public List<HireInfoEntity> getAllHireEntitiesByState(ResumeSearchModel.Luqu state) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("state", state.toString());
         return (List<HireInfoEntity>) hiredao.find("from HireInfoEntity hire where hire.state=:state", map);
