@@ -56,7 +56,7 @@ public class EmployeeController {
      */
     @RequestMapping(params = "action=getAllHires")
     public String getAllHirePersons(HttpServletRequest request) {
-        List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
+        List<HireInfoEntity> list = hireInfoService.getAllHireEntitiesByState(ResumeSearchModel.Luqu.录取);
         request.setAttribute("hireInfoEntities", list);
         return "showAllHires";
     }
@@ -136,27 +136,12 @@ public class EmployeeController {
         return "dispatch";
     }
 
-    /**
-     * 获取所有的离职员工的信息
-     *
-     * @param request
-     * @return
-     */
-    @RequestMapping(params = "action=getOffLine")
-    public String getPositionOffLines(HttpServletRequest request) {
-        List<PositionLeaveEntity> positionLeaveEntities = employeeService.getAllPositionLeaveEntities();
-
-        request.setAttribute("positionLeaveEntities", positionLeaveEntities);
-
-        return "getOffLine";
-    }
 
     @RequestMapping(params = "action=getPositionChange")
     public String getPositionChanges(HttpServletRequest request) {
         List<PositionChangeEntity> positionChangeEntities = employeeService.getAllPositionChangeEntities();
-
         request.setAttribute("positionChangeEntities", positionChangeEntities);
 
-        return "getPositionChange";
+        return "showAllPositionChanges";
     }
 }

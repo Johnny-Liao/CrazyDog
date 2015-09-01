@@ -10,6 +10,8 @@ import java.util.Map;
 /**
  * 本类是DAO工具类，定义了dao基本的操作接口，并且支持进行复杂的hql查询
  * 支持分页查询
+ * 之所以将很多本来可以在这里实现的CRUD操作交给子类重新实现是因为子类很有可能在CRUD之前进行检查工作
+ * 每个实体类的检查时各不相同的，所以还是讲方法设计为抽象类
  * Created by never on 2015/8/25.
  */
 public abstract class Basedao<T> {

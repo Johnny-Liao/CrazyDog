@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 操作简历中的工作经历实体的dao
+ */
 @Component
 public class ResumeJobsdaoImpl extends Basedao<ResumeJobsEntity> {
 

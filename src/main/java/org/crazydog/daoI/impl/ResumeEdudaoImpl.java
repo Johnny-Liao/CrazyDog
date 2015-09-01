@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 操作简历中的教育信息的dao
+ */
 @Component
 public class ResumeEdudaoImpl extends Basedao<ResumeEduEntity> {
 
@@ -35,6 +38,7 @@ public class ResumeEdudaoImpl extends Basedao<ResumeEduEntity> {
     public void deleteEntity(ResumeEduEntity entity) {
         hibernateTemplate.delete(entity);
     }
+
     /**
      * 获取教育经历
      *

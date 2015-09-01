@@ -57,14 +57,13 @@
                         <tr>
                             <td align="right">分配员工编号：</td>
                             <td><input type="text" name="code" id="code" class="s_inputss"/></td>
-                            <%--<td align="right"><span class="red">*</span> 民族：</td>--%>
-                            <%--<td><input type="text" name="textfield3" id="textfield3" class="s_inputss"--%>
-                            <%--value="${resume.nation}"/></td>--%>
                         </tr>
                         <tr>
                             <td><input type="submit" name="button2" id="confirmBtn" value="确定" class="s_btn"/></td>
+                            <td><input type="button" name="button2" id="back" value="返回" class="s_btn"
+                                       onclick="javascript:window.location='/employeePage?action=getAllHires'"/>
+                            </td>
                         </tr>
-                        <%--</form>--%>
                     </table>
 
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
@@ -195,70 +194,6 @@
                             <td>&nbsp;</td>
                             <td colspan="2">&nbsp;</td>
                         </tr>
-                    </table>
-                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-                        <tr style="color:#000; font-size:14px; padding:10px 0;">
-                            <c:forEach var="column" items="<%=ResourceString.hireShow%>">
-                                <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
-                            </c:forEach>
-                        </tr>
-                        <tr style="color:#000; font-size:14px; padding:10px 0;">
-                            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.id}"/></td>
-                            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.state}"/></td>
-                            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.comment}"/></td>
-                            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.operateTime}"/></td>
-                            <td align="center" bgcolor="#fff8f8"><c:out value="${resume.hireById.operator}"/></td>
-                        </tr>
-                    </table>
-                    </br>
-                    <h3>工作经历：</h3></br>
-                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-                        <tr style="color:#000; font-size:14px; padding:10px 0;">
-                            <c:forEach var="column" items="<%=ResourceString.jodShow%>">
-                                <td bgcolor="#fff8f8"><c:out value="${column}"/></td>
-                            </c:forEach>
-                        </tr>
-                        <c:forEach var="onejob" items="${resume.resumeJobsById}">
-                            <tr style="color:#000; font-size:14px; padding:10px 0;">
-                                <td bgcolor="#fff8f8"><c:out value="${onejob.startTime}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${onejob.endTime}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${onejob.post}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${onejob.departmennt}"/></td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                    </br>
-                    <h3>家庭成员：</h3></br>
-                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-                        <tr style="color:#000; font-size:14px; padding:10px 0;">
-                            <c:forEach var="column" items="<%=ResourceString.familyShow%>">
-                                <td bgcolor="#fff8f8"><c:out value="${column}"/></td>
-                            </c:forEach>
-                        </tr>
-                        <c:forEach var="family" items="${resume.resumeFamilyById}">
-                            <tr style="color:#000; font-size:14px; padding:10px 0;">
-                                <td bgcolor="#fff8f8"><c:out value="${family.relationship}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${family.name}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${family.department}"/></td>
-                            </tr>
-                        </c:forEach>
-                    </table>
-                    </br>
-                    <h3>教育经历：</h3></br>
-                    <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-                        <tr style="color:#000; font-size:14px; padding:10px 0;">
-                            <c:forEach var="column" items="<%=ResourceString.eudShow%>">
-                                <td bgcolor="#fff8f8"><c:out value="${column}"/></td>
-                            </c:forEach>
-                        </tr>
-                        <c:forEach var="edu" items="${resume.resumeEduById}">
-                            <tr style="color:#000; font-size:14px; padding:10px 0;">
-                                <td bgcolor="#fff8f8"><c:out value="${edu.startTime}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${edu.endTime}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${edu.school}"/></td>
-                                <td bgcolor="#fff8f8"><c:out value="${edu.discipline}"/></td>
-                            </tr>
-                        </c:forEach>
                     </table>
                 </form>
             </div>

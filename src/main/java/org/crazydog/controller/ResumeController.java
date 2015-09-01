@@ -68,7 +68,7 @@ public class ResumeController {
 		String[] ids =  request.getParameterValues("selectid");
 		if(ids!=null){
 			int[] id = resumeService.stringtoint(ids);
-			resumeService.batchdeleteresume(id);
+			resumeService.batchDeleteResume(id);
 		}
 		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
@@ -100,7 +100,7 @@ public class ResumeController {
 		String[] ids =  request.getParameterValues("selectes");
 		if(ids!=null){
 			int[] id = resumeService.stringtoint(ids);
-			resumeService.batchcancelHire(id, "李飞");
+			resumeService.batchCancelHire(id, "李飞");
 		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
+ * 对职位更改进行操作的dao
  * Created by never on 2015/8/26.
  */
 @Component

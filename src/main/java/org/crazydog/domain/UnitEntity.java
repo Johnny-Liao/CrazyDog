@@ -16,6 +16,7 @@ public class UnitEntity {
     private Collection<PositionChangeEntity> positionChangesById;
     private Collection<PositionChangeEntity> positionChangesByAfterId;
     private Collection<EmployeeEntity> employeeEntities;
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -102,9 +103,6 @@ public class UnitEntity {
                 "id=" + id +
                 ", unitCode='" + unitCode + '\'' +
                 ", unitName='" + unitName + '\'' +
-//                ", departmentsById=" + departmentsById +
-//                ", positionChangesById=" + positionChangesById +
-//                ", positionChangesByAfterId=" + positionChangesByAfterId +
                 '}';
     }
 

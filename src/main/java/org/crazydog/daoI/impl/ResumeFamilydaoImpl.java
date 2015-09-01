@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+/**
+ * 操作简历中的家庭信息的dao
+ */
 @Component
 public class ResumeFamilydaoImpl extends Basedao<ResumeFamilyEntity> {
 
@@ -38,9 +41,6 @@ public class ResumeFamilydaoImpl extends Basedao<ResumeFamilyEntity> {
 
     /**
      * 获取所有的家庭成员
-     *
-     * @param
-     * @return
      */
     public List<ResumeFamilyEntity> getAllEntities() {
         return hibernateTemplate.loadAll(ResumeFamilyEntity.class);
@@ -48,8 +48,6 @@ public class ResumeFamilydaoImpl extends Basedao<ResumeFamilyEntity> {
 
     /**
      * 获取所有的家庭成员
-     *
-     * @return
      */
     public ResumeFamilyEntity getEntity(int id) {
         return hibernateTemplate.get(ResumeFamilyEntity.class, id);

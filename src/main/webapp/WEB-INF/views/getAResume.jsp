@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
-<%@ page import="org.crazydog.util.Htmlresourece" %>
+<%@ page import="org.crazydog.util.HtmlResources" %>
 <html>
 <head>
   <title>服务单位管理</title>
@@ -41,7 +41,7 @@
             <td width="8%" align="right"><span class="red">*</span> 性别：</td>
             <td width="21%"><select name="select4" id="select4" class="s_inputs" >
               <option>${resume.gender}</option>
-              <c:forEach var="column" items="<%=Htmlresourece.sex%>">
+              <c:forEach var="column" items="<%=HtmlResources.sex%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
@@ -57,14 +57,14 @@
             <td align="right"><span class="red">* </span>政治面貌：</td>
             <td><select name="select" id="select" class="s_inputs" >
               <option>${resume.zzmm}</option>
-              <c:forEach var="column" items="<%=Htmlresourece.zzmm%>">
+              <c:forEach var="column" items="<%=HtmlResources.zzmm%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
             <td align="right"><span class="red">*</span> 婚姻状况：</td>
             <td><select name="select2" id="select2" class="s_inputs" >
               <option>${resume.hyzk}</option>
-              <c:forEach var="column" items="<%=Htmlresourece.hunyin%>">
+              <c:forEach var="column" items="<%=HtmlResources.hunyin%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
@@ -73,7 +73,7 @@
             <td align="right"><span class="red">*</span> 最高学历：</td>
             <td><select name="select3" id="select3" class="s_inputs" >
               <option>${resume.education}</option>
-              <c:forEach var="column" items="<%=Htmlresourece.Edu%>">
+              <c:forEach var="column" items="<%=HtmlResources.Edu%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
@@ -116,7 +116,7 @@
             <td align="right">户口性质：</td>
             <td><select name="select5" id="select5" class="s_inputs" >
               <option>${resume.hukou}</option>
-              <c:forEach var="column" items="<%=Htmlresourece.hukoustyle%>">
+              <c:forEach var="column" items="<%=HtmlResources.hukouStyle%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
