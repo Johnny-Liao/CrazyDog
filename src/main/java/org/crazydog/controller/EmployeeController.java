@@ -45,6 +45,7 @@ public class EmployeeController {
     public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
         request.setAttribute("employeesList", employeeService.getEmployeeByPage(Integer.parseInt(page)));
         request.setAttribute("page", page);
+        request.setAttribute("maxPage", employeeService.maxPageNum());
         return "employeePage";
     }
 
