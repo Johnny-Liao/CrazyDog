@@ -1,6 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
+<%@ page import="org.crazydog.util.Htmlresourece" %>
 <html>
 <head>
   <title>服务单位管理</title>
@@ -40,8 +41,9 @@
             <td width="8%" align="right"><span class="red">*</span> 性别：</td>
             <td width="21%"><select name="select4" id="select4" class="s_inputs" >
               <option>${resume.gender}</option>
-              <option value="男">男</option>
-              <option value="女">女</option>
+              <c:forEach var="column" items="<%=Htmlresourece.sex%>">
+                <option value="${column}">${column}</option>
+              </c:forEach>
             </select></td>
             <td colspan="2" rowspan="7" bgcolor="#fafafa">&nbsp;</td>
           </tr>
@@ -55,27 +57,25 @@
             <td align="right"><span class="red">* </span>政治面貌：</td>
             <td><select name="select" id="select" class="s_inputs" >
               <option>${resume.zzmm}</option>
-              <option>党员</option>
-              <option>团员</option>
+              <c:forEach var="column" items="<%=Htmlresourece.zzmm%>">
+                <option value="${column}">${column}</option>
+              </c:forEach>
             </select></td>
             <td align="right"><span class="red">*</span> 婚姻状况：</td>
             <td><select name="select2" id="select2" class="s_inputs" >
               <option>${resume.hyzk}</option>
-              <option>未婚</option>
-              <option>已婚</option>
+              <c:forEach var="column" items="<%=Htmlresourece.hunyin%>">
+                <option value="${column}">${column}</option>
+              </c:forEach>
             </select></td>
           </tr>
           <tr>
             <td align="right"><span class="red">*</span> 最高学历：</td>
             <td><select name="select3" id="select3" class="s_inputs" >
               <option>${resume.education}</option>
-              <option>博士</option>
-              <option>硕士</option>
-              <option>本科</option>
-              <option>专科</option>
-              <option>高中</option>
-              <option>初中</option>
-              <option>大学</option>
+              <c:forEach var="column" items="<%=Htmlresourece.Edu%>">
+                <option value="${column}">${column}</option>
+              </c:forEach>
             </select></td>
             <td align="right">计算机水平：</td>
             <td><input type="text" name="textfield6" id="textfield6" class="s_inputss" value="${resume.jjsp}"/></td>
@@ -116,8 +116,9 @@
             <td align="right">户口性质：</td>
             <td><select name="select5" id="select5" class="s_inputs" >
               <option>${resume.hukou}</option>
-              <option>城镇户口</option>
-              <option>农村户口</option>
+              <c:forEach var="column" items="<%=Htmlresourece.hukoustyle%>">
+                <option value="${column}">${column}</option>
+              </c:forEach>
             </select></td>
             <td align="right">户口所在地：</td>
             <td><input type="text" name="textfield13" id="textfield40" class="s_inputss" value="${resume.hukouAddress}"/></td>
@@ -200,9 +201,7 @@
           </c:forEach>
         </table>
       </div>
-
     </div>
-
   </div>
 </div>
 </div>

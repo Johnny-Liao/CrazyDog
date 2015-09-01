@@ -71,8 +71,6 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
         } else return new ArrayList<ResumeEntity>(0);
     }
 
-
-
     /**
      * 增加一份简历
      *
@@ -319,5 +317,14 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
             id[i] = Integer.parseInt(ids[i]);
         }
         return id;
+    }
+
+    /*
+      分页查询简历记录
+     */
+    public List<ResumeEntity> getResumeByPage(int page) {
+        String hql = "from ResumeEntity res"; // left join emp.unitEntity unit left join emp.departmentEntity depart left join emp.contractEntity cont";
+        List<ResumeEntity> resumes = (List<ResumeEntity>) resumedao.find(hql, page, 5);
+        return resumes;
     }
 }

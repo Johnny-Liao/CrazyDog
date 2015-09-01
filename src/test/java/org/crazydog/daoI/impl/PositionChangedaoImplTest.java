@@ -61,4 +61,36 @@ public class PositionChangedaoImplTest {
 
 
     }
+
+
+    // so stupid 暴力删除
+    @Test
+    public void deleteEntity() {
+        PositionChangeEntity positionChangeEntity = new PositionChangeEntity();
+        positionChangeEntity.setId(2);
+
+        EmployeeEntity employeeEntity = new EmployeeEntity();
+        employeeEntity.setId(5);
+        positionChangeEntity.setEmployeeEntity(employeeEntity);
+
+
+        UnitEntity unitEntity = new UnitEntity();
+        unitEntity.setId(3);
+        positionChangeEntity.setUnitByBeforUnitId(unitEntity);
+
+
+
+        DepartmentEntity departmentEntitybefor = new DepartmentEntity();
+        departmentEntitybefor.setId(13);
+        positionChangeEntity.setDepartmentByBeforDeptId(departmentEntitybefor);
+
+        UnitEntity unitEntity1 = new UnitEntity();
+        unitEntity1.setId(2);
+        positionChangeEntity.setUnitByAfterUnitId(unitEntity1);
+
+        DepartmentEntity departmentEntity = new DepartmentEntity();
+        departmentEntity.setId(8);
+        positionChangeEntity.setDepartmentByAfterDeptId(departmentEntity);
+        positionChangedao.deleteEntity(positionChangeEntity);
+    }
 }

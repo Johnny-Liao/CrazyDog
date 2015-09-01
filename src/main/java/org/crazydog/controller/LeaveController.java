@@ -1,11 +1,13 @@
 package org.crazydog.controller;
 
 import org.crazydog.domain.PositionLeaveEntity;
+import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.impl.searchmodel.PositionLeaveServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
@@ -48,5 +50,19 @@ public class LeaveController {
         return "redirect:employeePage/1";
     }
 
+    /**
+     * 响应删除某个离职操作
+     *
+     * @return
+     */
+    @RequestMapping(params = "action=leaveDelete")
+    public String deleteUnit(HttpServletRequest request, @RequestParam("leaveId") int leaveId) {
+
+        PositionLeaveEntity positionLeaveEntity = new PositionLeaveEntity();
+        positionLeaveEntity.setId(leaveId);
+        positionLeaveService.deleteEntity(positionLeaveEntity);
+
+        return "redirect:/employeePage?action=getOffLine";
+    }
 
 }
