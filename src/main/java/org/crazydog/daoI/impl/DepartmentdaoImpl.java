@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 本类是对Department实体类进行操作的dao实现类
  * Created by never on 2015/8/25.
  */
 @Component
@@ -96,9 +97,9 @@ public class DepartmentdaoImpl extends Basedao<DepartmentEntity> {
      * @param unitEntity 服务单位（不能为空）
      * @return
      */
+    @SuppressWarnings("unchecked")
     public List<DepartmentEntity> getAllDepartmentEntity(UnitEntity unitEntity) {
-        List<DepartmentEntity> departmentEntities = (List<DepartmentEntity>) hibernateTemplate.findByNamedParam("from DepartmentEntity dept where dept.unitByUnitId=:id", "id", unitEntity);
-        return departmentEntities;
+        return (List<DepartmentEntity>) hibernateTemplate.findByNamedParam("from DepartmentEntity dept where dept.unitByUnitId=:id", "id", unitEntity);
     }
 
 

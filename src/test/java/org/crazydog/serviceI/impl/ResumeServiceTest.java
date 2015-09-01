@@ -1,10 +1,8 @@
 package org.crazydog.serviceI.impl;
 
 import org.crazydog.daoI.Basedao;
-import org.crazydog.domain.HireInfoEntity;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
-import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -38,7 +36,7 @@ public class ResumeServiceTest {
 //     resumeServiceImpl = (ResumeServiceImpl)
 //     applicationContext.getBean("resumeServiceImpl");
 //     System.out.println(resumeServiceImpl);
-//     HireEntity h = resumeServiceImpl.getEntitybyreumeid(3);
+//     HireEntity h = resumeServiceImpl.getHireInfoByResumeId(3);
 //     System.out.println(h);
 //     }
 //    @Test

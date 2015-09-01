@@ -1,20 +1,15 @@
 package org.crazydog.serviceI.impl;
 
-import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.*;
 import org.crazydog.domain.*;
 import org.crazydog.serviceI.BaseService;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
 import org.crazydog.serviceI.impl.searchmodel.SearchModel;
-import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -158,7 +153,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
      */
     public void batchHire(int[] id, String name) {
         for (int i : id) {
-            HireInfoEntity hire = hiredao.getEntitybyreumeid(i);
+            HireInfoEntity hire = hiredao.getHireInfoByResumeId(i);
             hire.setState("录取");
             hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
             hire.setOperator(name);
@@ -174,7 +169,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
      */
     public void batchcancelHire(int[] id, String name) {
         for (int i : id) {
-            HireInfoEntity hire = hiredao.getEntitybyreumeid(i);
+            HireInfoEntity hire = hiredao.getHireInfoByResumeId(i);
             hire.setState("未录取");
             hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
             hire.setOperator(name);
@@ -204,7 +199,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
      * @param name     操作人的姓名
      */
     public void cancelHireByresumeId(int resumeid, String name) {
-        HireInfoEntity hire = (HireInfoEntity) hiredao.getEntitybyreumeid(resumeid);
+        HireInfoEntity hire = (HireInfoEntity) hiredao.getHireInfoByResumeId(resumeid);
         hire.setState("未录取");
         hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
         hire.setOperator(name);

@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 操作简历实体的dao
+ */
 @Component
 public class ResumedaoImpl extends Basedao<ResumeEntity> {
 
@@ -43,7 +46,6 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
      * 获取指定的简历
      *
      * @param id 简历的id
-     * @return
      */
     public ResumeEntity getEntity(int id) {
         return hibernateTemplate.get(ResumeEntity.class, id);
@@ -51,9 +53,6 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
 
     /**
      * 获取所有的简历
-     *
-     * @param
-     * @return
      */
     public List<ResumeEntity> getAllEntities() {
         return hibernateTemplate.loadAll(ResumeEntity.class);
@@ -63,7 +62,6 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
      * 通过load获取指定的简历
      *
      * @param id 简历的id
-     * @return
      */
     public ResumeEntity loadEntity(int id) {
         return hibernateTemplate.load(ResumeEntity.class, id);
@@ -75,10 +73,11 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
      * @param name 指定查询的名字
      * @return 指定名字的简历实例
      */
-    public List<?> getEntityByName(String name) {
+    @SuppressWarnings("unchecked")
+    public List<ResumeEntity> getEntityByName(String name) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("name", name);
-        return find("from ResumeEntity resume where resume.name=:name", map);
+        return (List<ResumeEntity>) find("from ResumeEntity resume where resume.name=:name", map);
     }
 
 }

@@ -83,6 +83,8 @@
                                         value="${entity.resumeEntity.zzmm}"/></td>
                                 <td align="center" bgcolor="#ffffff"><c:out
                                         value="${entity.resumeEntity.education}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.state}"/></td>
                                 <td align="center" bgcolor="#ffffff"><a href='employeePage?action=showToBuild&&resumeId=<c:out
                                     value="${entity.id}"/>'>建档</a></td>
                                 <%--<td align="center" bgcolor="#ffffff"><a--%>

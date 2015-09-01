@@ -51,7 +51,7 @@ public final class ResourceString {
     /**
      * 这是对录取人员进行建档维护的列
      */
-    public final static String[] hireToEmployeeShow = {"序号", "姓名", "性别", "民族", "户口所在地", "婚否", "政治面貌", "学历", "建立档案"};
+    public final static String[] hireToEmployeeShow = {"序号", "姓名", "性别", "民族", "户口所在地", "婚否", "政治面貌", "学历", "录取状态", "建立档案"};
 
     /**
      * 这是简历录取状态的列

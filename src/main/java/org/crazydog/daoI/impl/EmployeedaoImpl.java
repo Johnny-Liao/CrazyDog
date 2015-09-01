@@ -2,14 +2,12 @@ package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
-import org.hibernate.Query;
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 /**
+ * 对EmployeeEntity操作的dao
  * Created by never on 2015/8/23.
  */
 @Component

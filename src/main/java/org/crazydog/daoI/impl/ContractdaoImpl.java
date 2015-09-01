@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 操作合同的dao
  * Created by never on 2015/8/23.
  */
 @Component
@@ -21,11 +22,12 @@ public class ContractdaoImpl extends Basedao<ContractEntity> {
      * @param employeeEntity 人事信息（不能为空）
      * @return
      */
+    @SuppressWarnings("unchecked")
     public ContractEntity getContractEntity(EmployeeEntity employeeEntity) {
         Map<String, Object> map = new HashMap<String, Object>(1);
         map.put("emp", employeeEntity);
         List<ContractEntity> list = (List<ContractEntity>) find("from ContractEntity con where con.employeeByEmpId=:emp", map);
-        if (list.size() == 1)
+        if (list != null && list.size() == 1)
             return list.get(0);
         else throw new RuntimeException("没有" + employeeEntity.getEmpName() + "的合同");
     }

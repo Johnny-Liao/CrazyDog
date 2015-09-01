@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
+ * 本类是对UnitEntity进行操作的实体类
  * Created by never on 2015/8/29.
  */
 @Component
