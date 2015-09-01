@@ -37,7 +37,7 @@ public class ResumeController {
 			System.out.println(a.getAddress());
 			System.out.println(a.getHireById());
 		}
-		return "resume";
+		return "resumeBypage";
 	}
 	/*
 	    获取指定的简历信息
