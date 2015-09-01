@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
  * 这个是jsp资源跳转的分配器
  * Created by never on 2015/8/27.
  */
+@Deprecated
 @Controller
 public class PageDispatcher {
 

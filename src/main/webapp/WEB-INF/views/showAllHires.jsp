@@ -28,30 +28,6 @@
     <div class="content">
         <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">待办申请</a></div>
-        <div class="search">
-            <table border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <form method="post">
-                        <td><input type="text" name="unitCode" id="textfield" class="s_input" value="服务单位编码"
-                                   onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位编码')this.value='';"
-                                   onblur="javascript:if(this.value==''){this.value='服务单位编码';this.style.color='#CCCCCC';}"/>
-                        </td>
-                        <td><input type="text" name="unitName" id="textfield2" class="s_input" value="服务单位名称"
-                                   onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位名称')this.value='';"
-                                   onblur="javascript:if(this.value==''){this.value='服务单位名称';this.style.color='#CCCCCC';}"/>
-                        </td>
-                        <td><input type="submit" name="button" id="button" value="查询" class="s_btn"
-                                   onclick="javascript:this.form.action='/unit?action=search'"/></td>
-                        <td><input type="button" name="btnAdd" id="btnAdd" value="增加行" class="s_btn"
-                                   onclick="addunit()"/>
-                        </td>
-                        <td><input type="button" name="button2" id="confirmBtn" value="确定" class="s_btn"
-                                   onclick='javascript:$("#addUnit").submit()'/></td>
-                    </form>
-                </tr>
-            </table>
-        </div>
-
         <div class=" tum">
             <div class="contlist">
                 <form id="addUnit" method="post" action="/unit?action=addUnit">

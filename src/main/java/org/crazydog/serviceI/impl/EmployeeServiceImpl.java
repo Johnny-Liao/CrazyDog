@@ -42,14 +42,14 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
         return positionChangedao.getAllEntities();
     }
 
-    /**
-     * 获取所有的离职员工信息
-     *
-     * @return
-     */
-    public List<PositionLeaveEntity> getAllPositionLeaveEntities() {
-        return positionLeavedao.getAllEntities();
-    }
+//    /**
+//     * 获取所有的离职员工信息
+//     *
+//     * @return
+//     */
+//    public List<PositionLeaveEntity> getAllPositionLeaveEntities() {
+//        return positionLeavedao.getAllEntities();
+//    }
 
     /**
      * 通过名字获得员工（抽象匹配）

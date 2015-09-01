@@ -1,7 +1,6 @@
 package org.crazydog.controller;
 
 import org.crazydog.domain.PositionLeaveEntity;
-import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.impl.searchmodel.PositionLeaveServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import javax.servlet.http.HttpServletRequest;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 /**
  * Created by johnny on 15-8-30.
@@ -65,4 +65,18 @@ public class LeaveController {
         return "redirect:/employeePage?action=getOffLine";
     }
 
+    /**
+     * 获取所有的离职员工的信息
+     *
+     * @param request
+     * @return
+     */
+    @RequestMapping(params = "action=getOffLine")
+    public String getPositionOffLines(HttpServletRequest request) {
+        List<PositionLeaveEntity> positionLeaveEntities = positionLeaveService.getAllEntities();
+
+        request.setAttribute("positionLeaveEntities", positionLeaveEntities);
+
+        return "showAllLeaves";
+    }
 }

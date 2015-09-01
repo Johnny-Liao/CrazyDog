@@ -75,4 +75,5 @@ public class PositionChangeServiceImpl implements BaseService<PositionChangeEnti
     public void deleteEntity(PositionChangeEntity positionChangeEntity) {
         positiondao.deleteEntity(positionChangeEntity);
     }
+
 }

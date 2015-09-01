@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
-<%@ page import="org.crazydog.util.Htmlresourece" %>
+<%@ page import="org.crazydog.util.HtmlResources" %>
 <html>
 
 <head>
@@ -29,13 +29,13 @@
             <td><input type="text" name="username"  class="s_inputs"/></td>
             <td>学历：</td>
             <td><select name="highestEdu" id="select" class="s_inputs" >
-              <c:forEach var="column" items="<%=Htmlresourece.Edu%>">
+              <c:forEach var="column" items="<%=HtmlResources.Edu%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
             <td>录取状态：</td>
             <td><select name="luquState" id="select2" class="s_inputs" >
-              <c:forEach var="column" items="<%=Htmlresourece.state%>">
+              <c:forEach var="column" items="<%=HtmlResources.state%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>

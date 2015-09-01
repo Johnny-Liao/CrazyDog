@@ -3,6 +3,14 @@ package org.crazydog.serviceI.impl.searchmodel;
 /**
  * 使用模板设计模式完成hql语句生成。
  * 提供缓存功能
+ * <p>
+ * 使用方式为:
+ * 先实例化相应的searchModel
+ * SearchModel.advanceSearch(#searchModel);
+ * <p>
+ * 还有equals方法在这里很重要，实现的时候务必判断每个属性是否为空
+ * <p>
+ * 不推荐直接调用advanceSearch方法。因为这个方法只是处理的一个中间环节
  * Created by never on 2015/8/28.
  */
 public abstract class SearchModel {
