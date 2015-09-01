@@ -20,50 +20,25 @@
     <meta http-equiv="Content-Language" content="zh-cn">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
-    <script src="../../js/jquery-1.3.2.js" type="text/javascript"></script>
-    <script src="../../js/tableControl.js" type="text/javascript"></script>
+    <%--<script src="../../js/jquery-1.3.2.js" type="text/javascript"></script>--%>
+    <%--<script src="../../js/tableControl.js" type="text/javascript"></script>--%>
+    <%--将前端生成的代码在这里显示--%>
+    ${script}
 </head>
 <body>
 <div class="cont left">
     <div class="content">
         <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">待办申请</a></div>
-        <div class="search">
-            <table border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <form method="post">
-                        <td><input type="text" name="unitCode" id="textfield" class="s_input" value="服务单位编码"
-                                   onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位编码')this.value='';"
-                                   onblur="javascript:if(this.value==''){this.value='服务单位编码';this.style.color='#CCCCCC';}"/>
-                        </td>
-                        <td><input type="text" name="unitName" id="textfield2" class="s_input" value="服务单位名称"
-                                   onfocus="javascript:this.style.color='#000000';if(this.value=='服务单位名称')this.value='';"
-                                   onblur="javascript:if(this.value==''){this.value='服务单位名称';this.style.color='#CCCCCC';}"/>
-                        </td>
-                        <td><input type="submit" name="button" id="button" value="查询" class="s_btn"
-                                   onclick="javascript:this.form.action='/unit?action=search'"/></td>
-                        <td><input type="button" name="btnAdd" id="btnAdd" value="增加行" class="s_btn"
-                                   onclick="addunit()"/>
-                        </td>
-                        <td><input type="button" name="button2" id="confirmBtn" value="确定" class="s_btn"
-                                   onclick='javascript:$("#addUnit").submit()'/></td>
-                    </form>
-                </tr>
-            </table>
-        </div>
 
         <div class=" tum">
             <div class="contlist">
-                <form id="addUnit" method="post" action="/unit?action=addUnit">
+                <form id="collect" method="post" action="/employeePage?action=buildRecord&&resumeId=${resume.id}">
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                         <tr>
-                            <%--<td width="9%" align="right"><span class="red">*</span> 姓名：</td>--%>
-                            <%--<td width="18%"><input type="text" name="textfield" id="textfield" class="s_inputss"--%>
-                            <%--value="${resume.name}"/></td>--%>
-                            <%--<td width="8%" align="right"><span class="red">*</span> 性别：</td>--%>
                             <td width="8%" align="right"><span class="red">*</span> 单位名：</td>
                             <td width="21%">
-                                <select name="select1" id="unit" class="s_inputs">
+                                <select name="unitId" id="unit" class="s_inputs" onchange="changecity()">
                                     <c:forEach var="entity" items="${unitEntities}">
                                         <option value='<c:out value="${entity.id}"/>'><c:out
                                                 value="${entity.unitName}"/></option>
@@ -74,16 +49,24 @@
 
                             <td width="8%" align="right"><span class="red">*</span> 部门名：</td>
                             <td width="21%">
-                                <select name="select2" id="dept" class="s_inputs">
-                                    <c:forEach var="entity" items="${unitEntities}">
-                                        <option value='<c:out value="${entity.id}"/>'><c:out
-                                                value="${entity.unitName}"/></option>
-                                    </c:forEach>
+                                <select name="deptId" id="dept" class="s_inputs">
                                 </select>
                             </td>
                             <td colspan="2" rowspan="7" bgcolor="#fafafa">&nbsp;</td>
                         </tr>
+                        <tr>
+                            <td align="right">分配员工编号：</td>
+                            <td><input type="text" name="code" id="code" class="s_inputss"/></td>
+                            <%--<td align="right"><span class="red">*</span> 民族：</td>--%>
+                            <%--<td><input type="text" name="textfield3" id="textfield3" class="s_inputss"--%>
+                            <%--value="${resume.nation}"/></td>--%>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" name="button2" id="confirmBtn" value="确定" class="s_btn"/></td>
+                        </tr>
+                        <%--</form>--%>
                     </table>
+
                     <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                         <tr>
                             <td colspan="6" align="left" bgcolor="#fff8f8"

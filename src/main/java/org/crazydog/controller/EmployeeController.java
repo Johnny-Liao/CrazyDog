@@ -1,5 +1,6 @@
 package org.crazydog.controller;
 
+import org.crazydog.controller.util.GenerateArray;
 import org.crazydog.domain.*;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.HireInfoServiceImpl;
@@ -66,17 +67,32 @@ public class EmployeeController {
      * @param resumeId
      * @return
      */
-    @RequestMapping(params = "action=buildRecord")
-    public String buildRecord(HttpServletRequest request, @RequestParam("resumeId") int resumeId) {
+    @RequestMapping(params = "action=showToBuild")
+    public String showToBuild(HttpServletRequest request, @RequestParam("resumeId") int resumeId) {
         ResumeEntity resumeEntity = resumeService.getEntity(resumeId);
-//        List<HireInfoEntity> list = hireInfoService.getAllHireEnititiesByState(ResumeSearchModel.Luqu.录取);
         request.setAttribute("resume", resumeEntity);
 
         List<UnitEntity> unitEntities = unitService.getAllEntities();
         request.setAttribute("unitEntities", unitEntities);
 
-//        unitService.get
+        String script = GenerateArray.generateScript(unitService);
+        request.setAttribute("script", script);
+
         return "buildRecord";
+    }
+
+    @RequestMapping(params = "action=buildRecord")
+    public String buildRecord(HttpServletRequest request, @RequestParam("resumeId") int resumeId, @RequestParam("unitId") int unitId, @RequestParam("deptId") int deptId, @RequestParam("code") String code) {
+//        System.out.println(resumeId + ":" + unitId + ":" + deptId);
+
+        employeeService.buildEmployee(resumeId, unitId, deptId, code);
+        //建档成功之后删除简历信息
+//        ResumeEntity resumeEntity = new ResumeEntity();
+//        resumeEntity.setId(resumeId);
+
+//        resumeService.deleteEntity(resumeEntity);
+
+        return getAllHirePersons(request);
     }
 
     /**

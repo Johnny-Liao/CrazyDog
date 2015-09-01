@@ -36,8 +36,8 @@ public class UnitServiceImplTest {
 
     @Test
     public void testAddDepartments() throws Exception {
-        GenerateArray generateArray = new GenerateArray();
-        String s = generateArray.generateArray(unitService);
+//        GenerateArray generateArray = new GenerateArray();
+        String s = GenerateArray.generateScript(unitService);
         System.out.println(s);
     }
 

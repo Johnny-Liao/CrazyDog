@@ -10,9 +10,9 @@ import java.util.List;
  * Created by never on 2015/8/31.
  */
 public class GenerateArray {
-    private static StringBuffer buffer = new StringBuffer();
 
     public static String generateArray(UnitServiceImpl unitService) {
+        StringBuffer buffer = new StringBuffer();
         buffer.append("var array = new Array(  \n");
         List<UnitEntity> unitEntities = unitService.getAllEntities();
         for (UnitEntity unitEntity : unitEntities) {
@@ -30,17 +30,19 @@ public class GenerateArray {
         return buffer.toString();
     }
 
-    public String generateScript() {
-        String script = "function changecity(){\n" +
-                " index = form2.sf.options.selectedIndex-1;\n" +
-                " form2.city.length = city[index].length;\n" +
-                " for(var i = 0;i<city[index].length;i++)\n" +
-                "  {\n" +
-                "   var text = city[index][i].split(\"-\");\n" +
-                "   form2.city.options[i].text = text[1];\n" +
-                "   form2.city.options[i].value =text[0];\n" +
-                "  }\n" +
-                "}";
+    public static String generateScript(UnitServiceImpl unitService) {
+        String script = "<script>";
+        script += "function changecity() {\n" +
+                "            index = collect.unit.options.selectedIndex;\n" +
+                "            collect.dept.length = array[index].length;\n" +
+                "            for (var i = 0; i < array[index].length; i++) {\n" +
+                "                var text = array[index][i].split(\"-\");\n" +
+                "                collect.dept.options[i].text = text[1];\n" +
+                "                collect.dept.options[i].value = text[0];\n" +
+                "            }\n" +
+                "        }";
+        script += generateArray(unitService);
+        script += "</script>";
         return script;
     }
 }

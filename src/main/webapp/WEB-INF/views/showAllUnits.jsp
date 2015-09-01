@@ -22,6 +22,17 @@
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
     <script src="../../js/jquery-1.3.2.js" type="text/javascript"></script>
     <script src="../../js/tableControl.js" type="text/javascript"></script>
+    <%--<script>--%>
+        <%--function changecity() {--%>
+            <%--index = form2.sf.options.selectedIndex - 1;--%>
+            <%--form2.city.length = city[index].length;--%>
+            <%--for (var i = 0; i < city[index].length; i++) {--%>
+                <%--var text = city[index][i].split("-");--%>
+                <%--form2.city.options[i].text = text[0];--%>
+                <%--form2.city.options[i].value = text[1];--%>
+            <%--}--%>
+        <%--}--%>
+    <%--</script>--%>
 </head>
 <body>
 <div class="cont left">
