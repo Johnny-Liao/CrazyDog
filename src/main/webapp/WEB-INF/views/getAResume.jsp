@@ -141,7 +141,7 @@
         </table>
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <tr style="color:#000; font-size:14px; padding:10px 0;">
-            <c:forEach var="column" items="<%=ResourceString.hireshow%>">
+            <c:forEach var="column" items="<%=ResourceString.hireShow%>">
               <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
             </c:forEach>
           </tr>
@@ -156,7 +156,7 @@
         <h3>工作经历：</h3></br>
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <tr style="color:#000; font-size:14px; padding:10px 0;">
-            <c:forEach var="column" items="<%=ResourceString.jodsshow%>">
+            <c:forEach var="column" items="<%=ResourceString.jodShow%>">
               <td  bgcolor="#fff8f8"><c:out value="${column}"/></td>
             </c:forEach>
           </tr>
@@ -172,7 +172,7 @@
         <h3>家庭成员：</h3></br>
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <tr style="color:#000; font-size:14px; padding:10px 0;">
-            <c:forEach var="column" items="<%=ResourceString.familyshow%>">
+            <c:forEach var="column" items="<%=ResourceString.familyShow%>">
               <td  bgcolor="#fff8f8"><c:out value="${column}"/></td>
             </c:forEach>
           </tr>
@@ -187,7 +187,7 @@
         <h3>教育经历：</h3></br>
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <tr style="color:#000; font-size:14px; padding:10px 0;">
-            <c:forEach var="column" items="<%=ResourceString.eudshow%>">
+            <c:forEach var="column" items="<%=ResourceString.eudShow%>">
               <td  bgcolor="#fff8f8"><c:out value="${column}"/></td>
             </c:forEach>
           </tr>

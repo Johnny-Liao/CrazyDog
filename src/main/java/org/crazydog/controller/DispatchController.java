@@ -1,11 +1,13 @@
 package org.crazydog.controller;
 
 import org.crazydog.daoI.impl.DepartmentdaoImpl;
-import org.crazydog.domain.*;
+import org.crazydog.domain.DepartmentEntity;
+import org.crazydog.domain.EmployeeEntity;
+import org.crazydog.domain.PositionChangeEntity;
+import org.crazydog.domain.UnitEntity;
 import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.PositionChangeServiceImpl;
 import org.crazydog.serviceI.impl.UnitServiceImpl;
-import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -1,10 +1,8 @@
 package org.crazydog.controller;
 
-import org.crazydog.domain.HireInfoEntity;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.impl.ResumeServiceImpl;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
-import org.crazydog.serviceI.impl.searchmodel.SearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -14,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 

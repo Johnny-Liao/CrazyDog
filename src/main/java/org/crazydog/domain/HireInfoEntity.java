@@ -30,7 +30,6 @@ public class HireInfoEntity {
         this.id = id;
     }
 
-
     @Basic
     @Column(name = "STATE")
     public String getState() {
@@ -73,13 +72,14 @@ public class HireInfoEntity {
 
     @Fetch(FetchMode.SELECT)
     @OneToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="resume_id",insertable=true,unique=true)
+    @JoinColumn(name = "resume_id", insertable = true, unique = true)
     public ResumeEntity getResumeEntity() {
-            return resumeEntity;
-        }
+        return resumeEntity;
+    }
+
     public void setResumeEntity(ResumeEntity resumeEntity) {
-            this.resumeEntity = resumeEntity;
-       }
+        this.resumeEntity = resumeEntity;
+    }
 
     @Override
     public boolean equals(Object o) {

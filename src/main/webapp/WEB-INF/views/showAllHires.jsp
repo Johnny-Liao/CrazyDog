@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: never
-  Date: 2015/8/27
-  Time: 20:23
+  Date: 2015/8/31
+  Time: 20:07
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -22,17 +22,6 @@
     <link href="../../style/style.css" rel="stylesheet" type="text/css"/>
     <script src="../../js/jquery-1.3.2.js" type="text/javascript"></script>
     <script src="../../js/tableControl.js" type="text/javascript"></script>
-    <%--<script>--%>
-        <%--function changecity() {--%>
-            <%--index = form2.sf.options.selectedIndex - 1;--%>
-            <%--form2.city.length = city[index].length;--%>
-            <%--for (var i = 0; i < city[index].length; i++) {--%>
-                <%--var text = city[index][i].split("-");--%>
-                <%--form2.city.options[i].text = text[0];--%>
-                <%--form2.city.options[i].value = text[1];--%>
-            <%--}--%>
-        <%--}--%>
-    <%--</script>--%>
 </head>
 <body>
 <div class="cont left">
@@ -70,24 +59,35 @@
                         <tbody id="mytable">
                         <%--显示表头标题--%>
                         <tr style="color:#000; font-size:14px; padding:10px 0;">
-                            <c:forEach var="column" items="<%=ResourceString.unitShow%>">
+                            <c:forEach var="column" items="<%=ResourceString.hireToEmployeeShow%>">
                                 <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                             </c:forEach>
                         </tr>
 
                         <%--显示表内容--%>
-                        <c:forEach var="entity" items="${unitEntities}">
+                        <c:forEach var="entity" items="${hireInfoEntities}">
                             <tr>
-                                <td align="center" bgcolor="#ffffff"><c:out value="${entity.id}"/></td>
                                 <td align="center" bgcolor="#ffffff"><c:out
-                                        value="${entity.unitCode}"/></td>
+                                        value="${entity.id}"/></td>
                                 <td align="center" bgcolor="#ffffff"><c:out
-                                        value="${entity.unitName}"/></td>
-                                <td align="center" bgcolor="#ffffff"><a href='unit?action=showAllDepts&&unitId=<c:out
-                                    value="${entity.id}"/>'>修改</a></td>
-                                <td align="center" bgcolor="#ffffff"><a
-                                        href='unit?action=unitDelete&&unitId=<c:out
-                                    value="${entity.id}"/>'>删除</a></td>
+                                        value="${entity.resumeEntity.name}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.resumeEntity.gender}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.resumeEntity.nation}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.resumeEntity.hukouAddress}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.resumeEntity.hyzk}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.resumeEntity.zzmm}"/></td>
+                                <td align="center" bgcolor="#ffffff"><c:out
+                                        value="${entity.resumeEntity.education}"/></td>
+                                <td align="center" bgcolor="#ffffff"><a href='employeePage?action=showToBuild&&resumeId=<c:out
+                                    value="${entity.id}"/>'>建档</a></td>
+                                <%--<td align="center" bgcolor="#ffffff"><a--%>
+                                        <%--href='unit?action=unitDelete&&unitId=<c:out--%>
+                                    <%--value="${entity.id}"/>'>取消录取</a></td>--%>
                             </tr>
                         </c:forEach>
                         </tbody>
