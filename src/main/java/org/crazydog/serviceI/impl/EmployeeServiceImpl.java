@@ -150,10 +150,21 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
         employeedao.deleteEntity(employeeEntity);
     }
 
+    private int pageNum = 5;
 
     public List<EmployeeEntity> getEmployeeByPage(int page) {
         String hql = "from EmployeeEntity emp"; // left join emp.unitEntity unit left join emp.departmentEntity depart left join emp.contractEntity cont";
-        List<EmployeeEntity> emp = (List<EmployeeEntity>) employeedao.find(hql, page, 5);
+        List<EmployeeEntity> emp = (List<EmployeeEntity>) employeedao.find(hql, page, pageNum);
         return emp;
+    }
+
+    /**
+     * 计算总的记录数，用于分页
+     * @return 记录条数
+     */
+    public int maxPageNum() {
+        String sql = "select count(*)  from  EmployeeEntity";
+        int count = ((Long) employeedao.find(sql).iterator().next()).intValue();
+        return count / pageNum + 1;
     }
 }

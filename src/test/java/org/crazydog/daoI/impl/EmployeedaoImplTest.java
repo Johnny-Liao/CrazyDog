@@ -93,9 +93,4 @@ public class EmployeedaoImplTest {
 //        System.out.println(aa);
     }
 
-//    public void testDisPage() {
-
-//        String hql = "find EmployeeEntity left"
-//        employeedaoImpl.find();
-//    }
 }

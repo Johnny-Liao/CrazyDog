@@ -2,6 +2,9 @@ package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.EmployeeEntity;
+import org.hibernate.Query;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -77,4 +80,5 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
     public void deleteEntity(EmployeeEntity employeeEntity) {
         hibernateTemplate.delete(employeeEntity);
     }
+
 }
