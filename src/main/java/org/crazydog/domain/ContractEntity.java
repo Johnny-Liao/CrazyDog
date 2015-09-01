@@ -10,7 +10,6 @@ import java.sql.Date;
 @Table(name = "contract", schema = "", catalog = "crazydog")
 public class ContractEntity {
     private Integer id;
-    private Integer empId;
     private Date contractStart;
     private Date contractEnd;
     private EmployeeEntity employeeEntity;
@@ -26,17 +25,8 @@ public class ContractEntity {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "emp_id")
-    public Integer getEmpId() {
-        return empId;
-    }
-
-    public void setEmpId(Integer empId) {
-        this.empId = empId;
-    }
-
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "emp_id", insertable = true, unique = true)
     public EmployeeEntity getEmployeeEntity() {
         return employeeEntity;
     }
@@ -92,7 +82,6 @@ public class ContractEntity {
     public String toString() {
         return "ContractEntity{" +
                 "id=" + id +
-                ", empId=" + empId +
                 ", contractStart=" + contractStart +
                 ", contractEnd=" + contractEnd +
                 '}';

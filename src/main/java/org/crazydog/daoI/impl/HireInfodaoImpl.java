@@ -4,8 +4,13 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.HireInfoEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+/**
+ * 记录简历录取的信息的dao
+ */
 @Component
 public class HireInfodaoImpl extends Basedao<HireInfoEntity> {
 
@@ -70,10 +75,14 @@ public class HireInfodaoImpl extends Basedao<HireInfoEntity> {
      *
      * @return id 查询的resume的id
      */
-    public HireInfoEntity getEntitybyreumeid(int resume_id) {
-        String hql = "from HireInfoEntity hire where hire.resumeEntity.id='" + resume_id
-                + "'";
-        return (HireInfoEntity) find(hql).get(0);
+    @SuppressWarnings("unchecked")
+    public HireInfoEntity getHireInfoByResumeId(int resumeId) {
+        Map<String, Object> map = new HashMap<String, Object>(1);
+        map.put("resumeId", resumeId);
+        List<HireInfoEntity> list = (List<HireInfoEntity>) find("from HireInfoEntity hire where hire.resumeEntity.id=:resumeId", map);
+        if (list != null && list.size() == 1)
+            return list.get(0);
+        return null;
     }
 
 

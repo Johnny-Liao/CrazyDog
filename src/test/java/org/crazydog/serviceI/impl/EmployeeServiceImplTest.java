@@ -1,5 +1,6 @@
 package org.crazydog.serviceI.impl;
 
+import org.crazydog.daoI.impl.EmployeedaoImpl;
 import org.crazydog.domain.EmployeeEntity;
 import org.junit.Assert;
 import org.junit.Before;
@@ -87,5 +88,12 @@ public class EmployeeServiceImplTest {
             System.out.println(employeeEntity.getContractEntity().getContractStart());
             System.out.println(employeeEntity.getContractEntity().getContractEnd());
         }
+    }
+
+
+    @Test
+    public  void maxPageNum () {
+        int number = employeeService.maxPageNum();
+        System.out.println(number);
     }
 }

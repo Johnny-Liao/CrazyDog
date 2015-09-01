@@ -85,7 +85,7 @@
                                                       onclick="javascript:this.form.action='/employeePage/${(page - 1) > 1 ? (page - 1) : 1}'">
                             </td>
                             <td align="center"><input type="submit" value="下一页" class="s_btn"
-                                                      onclick="javascript:this.form.action='/employeePage/${page + 1}'">
+                                                      onclick="javascript:this.form.action='/employeePage/${(page + 1) > maxPage ? maxPage : (page + 1)}'">
                             </td>
                             <td align="center"><c:out value="当前页：${page}"></c:out></td>
                         </tr>

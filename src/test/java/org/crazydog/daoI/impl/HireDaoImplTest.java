@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.orm.hibernate4.HibernateTemplate;
 
 /**
  * Created by lifei on 2015/8/29.
@@ -26,7 +25,7 @@ public class HireDaoImplTest {
          */
 
         HireInfodaoImpl hireInfoDaoImpl = (HireInfodaoImpl) applicationContext.getBean("hireInfoDaoImpl");
-       HireInfoEntity h =  hireInfoDaoImpl.getEntitybyreumeid(6);
+       HireInfoEntity h =  hireInfoDaoImpl.getHireInfoByResumeId(6);
         h.setState("录取");
         hireInfoDaoImpl.modifyEntity(h);
         System.out.println(h.getState());

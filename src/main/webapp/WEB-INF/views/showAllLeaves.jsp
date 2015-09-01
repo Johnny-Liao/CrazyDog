@@ -52,15 +52,11 @@
 
             <div class="contlist">
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
-
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <td align="center" bgcolor="#fff8f8">序号</td>
-                        <td align="center" bgcolor="#fff8f8">员工编号</td>
-                        <td align="center" bgcolor="#fff8f8">员工姓名</td>
-                        <td align="center" bgcolor="#fff8f8">员工离职日期</td>
-                        <td align="center" bgcolor="#fff8f8">员工离职备注</td>
-                        <td align="center" bgcolor="#fff8f8">删除记录</td>
+                        <c:forEach var="column" items="<%=ResourceString.positionOffShow%>">
+                            <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
+                        </c:forEach>
                     </tr>
 
                     <%--显示表内容--%>

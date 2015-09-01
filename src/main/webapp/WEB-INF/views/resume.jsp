@@ -56,7 +56,7 @@
                 <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
                     <%--显示表头标题--%>
                     <tr style="color:#000; font-size:14px; padding:10px 0;">
-                        <c:forEach var="column" items="<%=ResourceString.resumeshow%>">
+                        <c:forEach var="column" items="<%=ResourceString.resumeShow%>">
                             <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
                         </c:forEach>
                     </tr>

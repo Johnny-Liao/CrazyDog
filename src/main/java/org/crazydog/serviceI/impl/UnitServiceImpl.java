@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
+ * 本类综合了单位，部门相关的信息处理
  * Created by never on 2015/8/24.
  */
 @Service
@@ -78,6 +79,12 @@ public class UnitServiceImpl implements BaseService<UnitEntity> {
         return null;
     }
 
+    /**
+     * 获取某单位下的所有部门
+     *
+     * @param unitEntity
+     * @return
+     */
     public List<DepartmentEntity> getDepartmentEntitiesByUnit(UnitEntity unitEntity) {
         return departmentdao.getAllDepartmentEntity(unitEntity);
     }

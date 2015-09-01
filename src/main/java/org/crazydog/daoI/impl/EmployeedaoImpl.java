@@ -7,6 +7,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
+ * 对EmployeeEntity操作的dao
  * Created by never on 2015/8/23.
  */
 @Component
@@ -77,4 +78,5 @@ public class EmployeedaoImpl extends Basedao<EmployeeEntity> {
     public void deleteEntity(EmployeeEntity employeeEntity) {
         hibernateTemplate.delete(employeeEntity);
     }
+
 }

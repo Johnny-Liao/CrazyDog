@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="org.crazydog.util.ResourceString" %>
-<%@ page import="org.crazydog.util.Htmlresourece" %>
+<%@ page import="org.crazydog.util.HtmlResources" %>
 <html>
 
 <head>
@@ -29,13 +29,13 @@
             <td><input type="text" name="username"  class="s_inputs"/></td>
             <td>学历：</td>
             <td><select name="highestEdu" id="select" class="s_inputs" >
-              <c:forEach var="column" items="<%=Htmlresourece.Edu%>">
+              <c:forEach var="column" items="<%=HtmlResources.Edu%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
             <td>录取状态：</td>
             <td><select name="luquState" id="select2" class="s_inputs" >
-              <c:forEach var="column" items="<%=Htmlresourece.state%>">
+              <c:forEach var="column" items="<%=HtmlResources.state%>">
                 <option value="${column}">${column}</option>
               </c:forEach>
             </select></td>
@@ -53,7 +53,7 @@
           <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
             <%--显示表头标题--%>
             <tr style="color:#000; font-size:14px; padding:10px 0;">
-              <c:forEach var="column" items="<%=ResourceString.resumeshow%>">
+              <c:forEach var="column" items="<%=ResourceString.resumeShow%>">
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
               </c:forEach>
             </tr>

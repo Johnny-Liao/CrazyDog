@@ -1,5 +1,6 @@
 package org.crazydog.serviceI.impl;
 
+import org.crazydog.controller.util.GenerateArray;
 import org.crazydog.domain.UnitEntity;
 import org.junit.Before;
 import org.junit.Test;
@@ -35,7 +36,9 @@ public class UnitServiceImplTest {
 
     @Test
     public void testAddDepartments() throws Exception {
-
+//        GenerateArray generateArray = new GenerateArray();
+        String s = GenerateArray.generateScript(unitService);
+        System.out.println(s);
     }
 
     @Test
