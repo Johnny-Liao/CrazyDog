@@ -64,11 +64,9 @@ public class ResumeController {
 		批量删除
 	 */
 	@RequestMapping(value="/resume",params ="action=batchdelete")
-	public String batchdelete(HttpServletRequest request){
-		String[] ids =  request.getParameterValues("selectid");
-		if(ids!=null){
-			int[] id = resumeService.stringtoint(ids);
-			resumeService.batchDeleteResume(id);
+	public String batchdelete(HttpServletRequest request,@RequestParam("selectes")int[] id){
+		if(id!=null){
+			resumeService.batchdeleteresume(id);
 		}
 		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
@@ -79,10 +77,8 @@ public class ResumeController {
 		批量录取
 	 */
 	@RequestMapping(value="/resume",params ="action=batchHire")
-	public String batchHire(HttpServletRequest request){
-		String[] ids =  request.getParameterValues("selectes");
-		if(ids!=null){
-			int[] id = resumeService.stringtoint(ids);
+	public String batchHire(HttpServletRequest request,@RequestParam("selectes")int[] id){
+		if(id!=null){
 			resumeService.batchHire(id, "李飞");
 		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.等待审核);
@@ -96,11 +92,9 @@ public class ResumeController {
             批量取消录取
          */
 	@RequestMapping(value="/resume",params ="action=batchCancelHire")
-	public String batchCancelHire(HttpServletRequest request){
-		String[] ids =  request.getParameterValues("selectes");
-		if(ids!=null){
-			int[] id = resumeService.stringtoint(ids);
-			resumeService.batchCancelHire(id, "李飞");
+	public String batchCancelHire(HttpServletRequest request,@RequestParam("selectes")int[] id){
+		if(id!=null){
+			resumeService.batchcancelHire(id, "李飞");
 		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);

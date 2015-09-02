@@ -67,12 +67,9 @@ public class ResumeDaoImplTest {
         测试级联删除
          */
 //        resumedaoImpl.deleteEntity(h);
-        String s = "3";
-        if((s.equals("1")&&s.equals("2"))==false){
-            System.out.println("不符合要求");
-        }else{
-            System.out.println("符合要求");
-        }
-
+        ResumedaoImpl resumedaoImpl = (ResumedaoImpl) applicationContext.getBean("resumedaoImpl");
+        ResumeEntity resume = new ResumeEntity();
+        resume.setId(1);
+        resumedaoImpl.deleteEntity(resume);
     }
 }
