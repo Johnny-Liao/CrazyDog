@@ -265,19 +265,7 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
     }
 
 
-    /**
-     * 将前提获取的String[] id 转换为int[]
-     *
-     * @param String[] 保存的是选择界面所有被选择的复选框的value，值是相应的简历对象的id
-     */
-    public int[] stringtoint(String[] ids) {
-        int[] id = new int[ids.length];
-        for (int i = 0; i < ids.length; i++) {
-            id[i] = Integer.parseInt(ids[i]);
-        }
-        return id;
-    }
-
+    
     /*
       分页查询简历记录
      */

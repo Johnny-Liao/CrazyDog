@@ -1,6 +1,7 @@
 package org.crazydog.daoI.impl;
 
 import org.crazydog.daoI.Basedao;
+import org.crazydog.domain.HireInfoEntity;
 import org.crazydog.domain.ResumeEntity;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,12 @@ public class ResumedaoImpl extends Basedao<ResumeEntity> {
      * @param entity 简历实例
      */
     public void addEntity(ResumeEntity entity) {
+        HireInfoEntity hire = new HireInfoEntity();
+        hire.setState("等待审核");
+        hire.setOperator("admin");
+        hire.setOperateTime(new java.sql.Date(new java.util.Date().getTime()));
+        hire.setResumeEntity(entity);
+        entity.setHireById(hire);
         hibernateTemplate.save(entity);
     }
 
