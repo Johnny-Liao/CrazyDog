@@ -29,17 +29,21 @@
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">显示人员信息</a></div>
         <div class="search">
             <table border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td><input type="text" name="textfield" id="textfield" class="s_input" value="人员编号"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='人员编号')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='人员编号';this.style.color='#CCCCCC';}"/>
-                    </td>
-                    <td><input type="text" name="textfield2" id="textfield2" class="s_input" value="姓名"
-                               onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';"
-                               onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}"/>
-                    </td>
-                    <td><input type="submit" name="button" id="button" value="查询" class="s_btn"/></td>
-                </tr>
+                <form method="post">
+                    <tr>
+                        <td><input type="text" name="empid" id="empid" class="s_input" value="人员编号"
+                                   onfocus="javascript:this.style.color='#000000';if(this.value=='人员编号')this.value='';"
+                                   onblur="javascript:if(this.value==''){this.value='人员编号';this.style.color='#CCCCCC';}"/>
+                        </td>
+                        <td><input type="text" name="empname" id="empname" class="s_input" value="姓名"
+                                   onfocus="javascript:this.style.color='#000000';if(this.value=='姓名')this.value='';"
+                                   onblur="javascript:if(this.value==''){this.value='姓名';this.style.color='#CCCCCC';}"/>
+                        </td>
+                        <td><input type="submit" name="button" id="button" value="查询" class="s_btn"
+                                   onclick="javascript:this.form.action='/employeePage?action=search'"/>
+                        </td>
+                    </tr>
+                </form>
             </table>
         </div>
 

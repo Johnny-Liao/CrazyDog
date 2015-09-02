@@ -6,7 +6,9 @@ import org.crazydog.serviceI.impl.EmployeeServiceImpl;
 import org.crazydog.serviceI.impl.HireInfoServiceImpl;
 import org.crazydog.serviceI.impl.ResumeServiceImpl;
 import org.crazydog.serviceI.impl.UnitServiceImpl;
+import org.crazydog.serviceI.impl.searchmodel.EmployeeSearchModel;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
+import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,6 +43,13 @@ public class EmployeeController {
 
     // eg : .../employee?pages=1
     // 处理pages参数，显示相应页数的所有人员信息
+
+    /**
+     * 接收page参数（REST风格），实现人员显示
+     * @param request
+     * @param page
+     * @return
+     */
     @RequestMapping(method = RequestMethod.GET, value = "/{page}")
     public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
         request.setAttribute("employeesList", employeeService.getEmployeeByPage(Integer.parseInt(page)));
@@ -84,7 +93,6 @@ public class EmployeeController {
 
     @RequestMapping(params = "action=buildRecord")
     public String buildRecord(HttpServletRequest request, @RequestParam("resumeId") int resumeId, @RequestParam("unitId") int unitId, @RequestParam("deptId") int deptId, @RequestParam("code") String code) {
-//        System.out.println(resumeId + ":" + unitId + ":" + deptId);
 
         employeeService.buildEmployee(resumeId, unitId, deptId, code);
         //建档成功之后删除简历信息
@@ -120,12 +128,9 @@ public class EmployeeController {
 
         // just get the emp id
         String empid = request.getParameter("empid");
-        System.out.println(empid + "========================================");
 
         // get the employee from the database
         EmployeeEntity employeeEntity = employeeService.getEntity(Integer.parseInt(empid));
-
-        System.out.println(employeeEntity + "========================================");
 
         Date date = new Date();
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -143,5 +148,30 @@ public class EmployeeController {
         request.setAttribute("positionChangeEntities", positionChangeEntities);
 
         return "showAllPositionChanges";
+    }
+
+
+    /**
+     * 实现人员搜索功能
+     * @param request
+     * @param empid
+     * @param empname
+     * @return
+     */
+    @RequestMapping(params = "action=search")
+    public String advanceSearch(HttpServletRequest request, @RequestParam("empid") String empid, @RequestParam("empname") String empname) {
+
+        if ("".equals(empid) || "人员编号".equals(empid)) {
+            empid = null;
+        }
+        if ("".equals(empname) || "姓名".equals(empname)) {
+            empname = null;
+        }
+
+        EmployeeSearchModel model = new EmployeeSearchModel(empid, empname);
+        List<EmployeeEntity> employeeEntities = employeeService.advanceSearch(model);
+        request.setAttribute("employeesList", employeeEntities);
+
+        return "employeePage";
     }
 }

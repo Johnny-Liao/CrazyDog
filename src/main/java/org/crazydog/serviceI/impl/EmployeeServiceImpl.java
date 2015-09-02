@@ -4,10 +4,14 @@ import org.crazydog.daoI.Basedao;
 import org.crazydog.daoI.impl.ResumedaoImpl;
 import org.crazydog.domain.*;
 import org.crazydog.serviceI.BaseService;
+import org.crazydog.serviceI.impl.searchmodel.EmployeeSearchModel;
+import org.crazydog.serviceI.impl.searchmodel.SearchModel;
+import org.crazydog.serviceI.impl.searchmodel.UnitSearchModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -224,5 +228,22 @@ public class EmployeeServiceImpl implements BaseService<EmployeeEntity> {
         String sql = "select count(*)  from  EmployeeEntity";
         int count = ((Long) employeedao.find(sql).iterator().next()).intValue();
         return count / pageNum + 1;
+    }
+
+    /**
+     * 使用EmployeeSearchModel来进行高级查询
+     *
+     * @param model
+     * @return
+     */
+    @SuppressWarnings("unchecked")
+    public List<EmployeeEntity> advanceSearch(EmployeeSearchModel model) {
+        String hql = SearchModel.advanceSearch(model);
+        if (hql != null) {
+            System.out.println(hql);
+            return (List<EmployeeEntity>) employeedao.find(hql);
+        } else {
+            return new ArrayList<EmployeeEntity>(0);
+        }
     }
 }
