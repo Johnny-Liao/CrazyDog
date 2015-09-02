@@ -66,7 +66,7 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=batchdelete")
 	public String batchdelete(HttpServletRequest request,@RequestParam("selectes")int[] id){
 		if(id!=null){
-			resumeService.batchdeleteresume(id);
+			resumeService.batchDeleteResume(id);
 		}
 		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
@@ -94,7 +94,7 @@ public class ResumeController {
 	@RequestMapping(value="/resume",params ="action=batchCancelHire")
 	public String batchCancelHire(HttpServletRequest request,@RequestParam("selectes")int[] id){
 		if(id!=null){
-			resumeService.batchcancelHire(id, "李飞");
+			resumeService.batchCancelHire(id, "李飞");
 		}
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(null,null, ResumeSearchModel.Luqu.录取);
 		List<ResumeEntity> resumes1 = resumeService.advanceSearch(resumeSearchModel);
