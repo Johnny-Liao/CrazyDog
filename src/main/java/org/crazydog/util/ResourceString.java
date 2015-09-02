@@ -69,5 +69,8 @@ public final class ResourceString {
      * 这是简历教育经历的列
      */
     public final static String[] eudShow = {"开始时间", "毕业时间", "学校", "专业"};
-
+    /**
+     * 取消录取或建档
+     */
+    public final static String[] cancelResume = {"选择", "姓名", "性别", "民族", "出生年月", "最高学历", "婚否", "政治面貌", "户口所在地", "手机号码", "录取状态", "邮箱", "建档","操作"};
 }
