@@ -28,7 +28,7 @@
         <table border="0" cellspacing="0" cellpadding="0" style="width:100%;">
           <%--显示表头标题--%>
             <tr style="color:#000; font-size:14px; padding:10px 0;">
-              <c:forEach var="column" items="<%=ResourceString.resumeShow%>">
+              <c:forEach var="column" items="<%=ResourceString.cancelResume%>">
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column}"/></td>
               </c:forEach>
             </tr>
@@ -46,7 +46,7 @@
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.tel}"/></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.hireById.state}"/></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.email}"/></td>
-                <td align="center" bgcolor="#fff8f8"><a href="#"/>人事建档</td>
+                <td align="center" bgcolor="#fff8f8"><a href="/employeePage?action=showToBuild&&resumeId=${column.id}"/>人事建档</td>
                 <td align="center" bgcolor="#fff8f8"><a href='/resume?action=getAresume&&resumeid=${column.id}'/>查看详细简历信息</td>
               </tr>
             </c:forEach>
