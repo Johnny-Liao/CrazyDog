@@ -41,8 +41,10 @@
             <td width="8%" align="right"><span class="red">*</span> 性别：</td>
             <td width="21%"><select name="select4" id="select4" class="s_inputs" >
               <option>${resume.gender}</option>
-              <c:forEach var="column" items="<%=HtmlResources.sex%>">
-                <option value="${column}">${column}</option>
+              <c:forEach var="column" items="<%=Htmlresourece.sex%>">
+                <c:if test="${column!=resume.gender}">
+                  <option value="${column}">${column}</option>
+                </c:if>
               </c:forEach>
             </select></td>
             <td colspan="2" rowspan="7" bgcolor="#fafafa">&nbsp;</td>
@@ -57,15 +59,19 @@
             <td align="right"><span class="red">* </span>政治面貌：</td>
             <td><select name="select" id="select" class="s_inputs" >
               <option>${resume.zzmm}</option>
-              <c:forEach var="column" items="<%=HtmlResources.zzmm%>">
-                <option value="${column}">${column}</option>
+              <c:forEach var="column" items="<%=Htmlresourece.zzmm%>">
+                <c:if test="${column!=resume.zzmm}">
+                  <option value="${column}">${column}</option>
+                </c:if>
               </c:forEach>
             </select></td>
             <td align="right"><span class="red">*</span> 婚姻状况：</td>
             <td><select name="select2" id="select2" class="s_inputs" >
               <option>${resume.hyzk}</option>
-              <c:forEach var="column" items="<%=HtmlResources.hunyin%>">
-                <option value="${column}">${column}</option>
+              <c:forEach var="column" items="<%=Htmlresourece.hunyin%>">
+                <c:if test="${column!=resume.hyzk}">
+                  <option value="${column}">${column}</option>
+                </c:if>
               </c:forEach>
             </select></td>
           </tr>
@@ -73,8 +79,10 @@
             <td align="right"><span class="red">*</span> 最高学历：</td>
             <td><select name="select3" id="select3" class="s_inputs" >
               <option>${resume.education}</option>
-              <c:forEach var="column" items="<%=HtmlResources.Edu%>">
-                <option value="${column}">${column}</option>
+              <c:forEach var="column" items="<%=Htmlresourece.Edu%>">
+                <c:if test="${column!=resume.education}">
+                  <option value="${column}">${column}</option>
+                </c:if>
               </c:forEach>
             </select></td>
             <td align="right">计算机水平：</td>
@@ -116,8 +124,10 @@
             <td align="right">户口性质：</td>
             <td><select name="select5" id="select5" class="s_inputs" >
               <option>${resume.hukou}</option>
-              <c:forEach var="column" items="<%=HtmlResources.hukouStyle%>">
-                <option value="${column}">${column}</option>
+              <c:forEach var="column" items="<%=Htmlresourece.hukoustyle%>">
+                <c:if test="${column!=resume.hukou}">
+                  <option value="${column}">${column}</option>
+                </c:if>
               </c:forEach>
             </select></td>
             <td align="right">户口所在地：</td>
