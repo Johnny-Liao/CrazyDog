@@ -27,25 +27,6 @@
     <div class="content">
         <jsp:include page="/WEB-INF/fragments/contentTop.jsp"/>
         <div class="ctop"><a href="#">首页</a> &gt; <a href="#">综合业务管理系统</a> &gt; <a href="#">待办申请</a></div>
-        <div class="search">
-            <table border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                    <td>
-                        员工编号<span class="red">*</span><input type="text" name="code" value="${unitEntity.unitCode}"
-                                                             class="s_input">
-                    </td>
-                    <td>
-                        员工姓名<span class="red">*</span><input type="text" name="name" value="${unitEntity.unitName}"
-                                                             class="s_input">
-                    </td>
-                    <td>
-                        员工离职日期<span class="red">*</span><input type="text" name="date" value="${unitEntity.unitName}"
-                                                               class="s_input">
-                    </td>
-                    <td><input type="button" name="button" id="button" value="搜索" class="s_btn"/></td>
-                </tr>
-            </table>
-        </div>
 
         <div class="tum">
             <span class="red">离职员工</span>
@@ -70,10 +51,6 @@
                             <td align="center" bgcolor="#ffffff"><a href='leave?action=leaveDelete&&leaveId=<c:out value="${entity.id}" />'>删除</a></td>
                         </tr>
                     </c:forEach>
-                    <tr>
-                        <td align="center"><input type="submit" value="确定" class="s_btn"></td>
-                        <td align="center"><input type="submit" value="取消" class="s_btns"></td>
-                    </tr>
                 </table>
             </div>
         </div>
