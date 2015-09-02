@@ -1,31 +1,27 @@
 package org.crazydog.serviceI.impl.searchmodel;
 
 /**
- * Created by never on 2015/8/28.
+ * Changed by Johnny on 2015/9/01.
  */
 public class EmployeeSearchModel extends SearchModel {
+    private String id;
     private String name;
-    private String unitName;
-    private ResumeSearchModel.Edu edu;
 
 
-    public EmployeeSearchModel(String name, String unitName, ResumeSearchModel.Edu edu) {
+    public EmployeeSearchModel(String id, String name) {
+        this.id = id;
         this.name = name;
-        this.unitName = unitName;
-        this.edu = edu;
     }
 
     @Override
     protected StringBuffer advanceSearch() {
-        if (name == null && unitName == null && edu == null)
+        if (id == null && name == null)
             return null;
         buffer.append("from EmployeeEntity emp where ");
+        if (id != null)
+            buffer.append(" emp.empCode=" + id + " and");
         if (name != null)
             buffer.append(" emp.empName='" + name + "' and");
-        if (unitName != null)
-            buffer.append(" emp.unitByUnitId.unitName='" + unitName + "' and");
-        if (edu != null)
-            buffer.append(" emp.education='" + edu + "' and");
 
         return buffer;
     }
@@ -38,16 +34,14 @@ public class EmployeeSearchModel extends SearchModel {
         EmployeeSearchModel that = (EmployeeSearchModel) o;
 
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (unitName != null ? !unitName.equals(that.unitName) : that.unitName != null) return false;
-        return edu == that.edu;
+
+        return id == that.id;
 
     }
 
     @Override
     public int hashCode() {
         int result = name != null ? name.hashCode() : 0;
-        result = 31 * result + (unitName != null ? unitName.hashCode() : 0);
-        result = 31 * result + (edu != null ? edu.hashCode() : 0);
         return result;
     }
 }
