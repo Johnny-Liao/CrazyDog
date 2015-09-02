@@ -3,6 +3,7 @@ package org.crazydog.controller;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.impl.ResumeServiceImpl;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
+import org.crazydog.util.PoiUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
 
@@ -58,7 +61,7 @@ public class ResumeController {
 		ResumeSearchModel resumeSearchModel = new ResumeSearchModel(name,ResumeSearchModel.Edu.valueOf(highestEdu), ResumeSearchModel.Luqu.valueOf(luquState));
 		List<ResumeEntity> resumes = resumeService.advanceSearch(resumeSearchModel);
 		request.setAttribute("resumes", resumes);
-		return "resume";
+		return "resumeBypage";
 	}
 	/*
 		批量删除
@@ -139,5 +142,19 @@ public class ResumeController {
 		request.setAttribute("page", page);
 		return "resumeBypage";
 	}
+
+
+
+	/*
+            从excel中读取简历信息
+     */
+	@RequestMapping(value="/resume",params ="action=upLoadExcel")
+	public String upLoadResume(HttpServletRequest request,@RequestParam("uploadExcel")File excel){
+			String path = excel.getPath();
+			System.out.println(path);
+		PoiUtils.PoiUtils(path);
+		return this.getAllmes(request);
+	}
+
 
 }

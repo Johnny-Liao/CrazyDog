@@ -40,7 +40,8 @@
               </c:forEach>
             </select></td>
             <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/resume?action=modelSearch'"/></td>
-            <td><input type="button" name="submit" id="button2" value="导出Excel"  class="s_btns" /></td>
+            <td><input type="file" name="uploadExcel"></td>
+            <td><input type="submit" value="Excel导入简历" class="s_btns" onclick="javascript:this.form.action='/resume?action=upLoadExcel'"/></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td><input type="submit"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="javascript:this.form.action='/resume?action=batchdelete'"/></td>
           </tr>

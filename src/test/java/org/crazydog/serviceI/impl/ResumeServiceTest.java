@@ -3,6 +3,7 @@ package org.crazydog.serviceI.impl;
 import org.crazydog.daoI.Basedao;
 import org.crazydog.domain.ResumeEntity;
 import org.crazydog.serviceI.impl.searchmodel.ResumeSearchModel;
+import org.crazydog.util.PoiUtils;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
@@ -100,6 +101,12 @@ public class ResumeServiceTest {
 
 //        int[] id = {2};
 //        resumeServiceImpl.batchDeleteResume(id);
+
+
+//       String path =  "C:\Users\lifei\Desktop\crazydog.xls";
+//        path.replace("//","\\");
+//        System.out.println(path);
+        PoiUtils.PoiUtils("C:\\Users\\lifei\\Desktop\\crazydog.xls");
     }
 
 }

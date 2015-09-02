@@ -37,7 +37,7 @@ public class PoiUtils {
     @Qualifier("resumedaoImpl")
     private static  ResumedaoImpl resumedao;
     private static ApplicationContext applicationContext =new ClassPathXmlApplicationContext(
-            "test-application-config.xml");
+            "application-config.xml");
 
     /*
        传入文件的路径，文件格式为*.xls,模板如crazydog.xls
