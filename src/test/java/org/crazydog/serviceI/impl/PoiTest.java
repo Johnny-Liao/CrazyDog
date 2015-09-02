@@ -48,7 +48,7 @@ public class PoiTest {
                 "test-application-config.xml");
 
     }
-    public static String filePath = "C://Users//lifei//Desktop//crazydog.xls";
+    public static String filePath = "C:\\Users\\lifei\\Desktop\\crazydog.xls";
     @Test
     public void test() {
         ResumeEntity entity =  new ResumeEntity();;
