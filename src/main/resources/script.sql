@@ -61,7 +61,7 @@ CREATE TABLE `resume` (
 
 #简历教育信息
 CREATE TABLE `resume_edu` (
-  `id`         INT          NOT NULL PRIMARY KEY ,
+  `id`         INT          NOT NULL PRIMARY KEY auto_increment,
   `resume_id`  INT          NOT NULL,
   `start_time` DATE         NOT NULL,
   `end_time`   DATE         NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE `resume_edu` (
 
 #简历家庭情况信息
 CREATE TABLE `resume_family` (
-  `id`           INT         NOT NULL PRIMARY KEY ,
+  `id`           INT         NOT NULL PRIMARY KEY auto_increment,
   `resume_id`    INT         NOT NULL,
   `name`         VARCHAR(10) NOT NULL,
   `relationship` VARCHAR(10) NOT NULL,
@@ -82,7 +82,7 @@ CREATE TABLE `resume_family` (
 
 #简历就业经历
 CREATE TABLE `resume_jobs` (
-  `id`          INT          NOT NULL PRIMARY KEY ,
+  `id`          INT          NOT NULL PRIMARY KEY auto_increment,
   `resume_id`   INT          NOT NULL,
   `start_time`  DATE         NOT NULL,
   `end_time`    DATE         NOT NULL,
