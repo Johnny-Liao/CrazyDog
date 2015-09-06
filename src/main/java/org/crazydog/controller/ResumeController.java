@@ -138,7 +138,7 @@ public class ResumeController {
 	// 处理pages参数，显示相应页数的所有人员信息
 	@RequestMapping(method = RequestMethod.GET, value = "/resume/{page}")
 	public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
-		request.setAttribute("resume", resumeService.getResumeByPage(Integer.parseInt(page)));
+		request.setAttribute("resumes", resumeService.getResumeByPage(Integer.parseInt(page)));
 		request.setAttribute("page", page);
 		return "resumeBypage";
 	}

@@ -25,6 +25,7 @@
         <filter-name>Character Encoding</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+
     <!-- SpringOpenSessionInViewFilter -->
     <filter>
         <filter-name>SpringOpenSessionInViewFilter</filter-name>
@@ -35,20 +36,11 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- 控制session开关的openSessionInView过滤器 -->
-    <!--<filter>-->
-    <!--<filter-name>openSessionInViewFilter</filter-name>-->
-    <!--<filter-class>org.springframework.orm.hibernate4.support.OpenSessionInViewFilter</filter-class>-->
-    <!--</filter>-->
-    <!--<filter-mapping>-->
-    <!--<filter-name>openSessionInViewFilter</filter-name>-->
-    <!--<url-pattern>/*</url-pattern>-->
-    <!--</filter-mapping>-->
-
     <!--用来Spring核心组件的类-->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
+
     <!--Spring MVC核心的分派类-->
     <servlet>
         <servlet-name>SpringMVC</servlet-name>
@@ -65,7 +57,6 @@
         <servlet-name>SpringMVC</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
-
 
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
