@@ -12,7 +12,7 @@ import java.util.List;
 /**
  * Created by never on 2015/8/23.
  */
-@Deprecated
+//@Deprecated
 @Service
 public class ContractServiceImpl implements BaseService<ContractEntity> {
 

@@ -33,24 +33,20 @@ import java.util.List;
  * Created by lifei on 2015/9/2.
  */
 public class PoiUtils {
+
     @Autowired
     @Qualifier("resumedaoImpl")
     private static  ResumedaoImpl resumedao;
-    private static ApplicationContext applicationContext =new ClassPathXmlApplicationContext(
-            "application-config.xml");
 
-    /*
-       传入文件的路径，文件格式为*.xls,模板如crazydog.xls
+    /**
+     * 传入文件的路径，文件格式为*.xls,模板如crazydog.xls
+     * @param filePath
      */
-
     public static void PoiUtils(String filePath) {
-        resumedao = (ResumedaoImpl)
-                applicationContext.getBean("resumedaoImpl");
         ResumeEntity entity =  new ResumeEntity();;
         List<ResumeEduEntity> eduentity = new ArrayList<ResumeEduEntity>();
         XSSFWorkbook wookbook = null;
-        resumedao = (ResumedaoImpl)
-                applicationContext.getBean("resumedaoImpl");
+
         try {
             // 创建对Excel工作簿文件的引用
             wookbook = new XSSFWorkbook(new FileInputStream(filePath));
@@ -60,8 +56,6 @@ public class PoiUtils {
             //获取到Excel文件中的所有行数
             int rows = sheet.getPhysicalNumberOfRows();
             //遍历行
-
-
 
             for (int i = 1; i < rows; i++) {
                 // 读取左上端单元格
@@ -98,40 +92,12 @@ public class PoiUtils {
                     for (String s : val) {
                         System.out.println(s);
                     }
-                    entity.setName(val[0]);
-                    entity.setNation(val[1]);
-                    entity.setGender(val[2]);
-                    entity.setIdNum(val[3]);
-                    entity.setTel(Long.parseLong(val[4]));
-                    entity.setEmail(val[5]);
-                    entity.setZzmm(val[6]);
-                    entity.setHyzk(val[7]);
-                    entity.setEducation(val[8]);
-                    Date birthday = null;
-                    try {
-                        DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                        birthday = new Date(f.parse(val[9].toString()).getTime());
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    entity.setBirthday(birthday);
-                    entity.setJjsp(val[10]);
-                    entity.setProfession(val[11]);
-                    entity.setZipCode(Integer.parseInt(val[12]));
-                    entity.setHomeTown(val[13]);
-                    entity.setForeignLang(val[14]);
-                    entity.setSpecialty(val[15]);
-                    entity.setYysp(val[16]);
-                    entity.setJndj(Integer.parseInt(val[17]));
-                    entity.setHeight(Double.valueOf(val[18]));
-                    entity.setHukou(val[19]);
-                    entity.setHukouAddress(val[20]);
-                    entity.setHomePhone(Integer.parseInt(val[21]));
-                    entity.setAddress(val[22]);
-                    entity.setReportCard(val[23]);
+                    setToEntity(entity, val);
+
                     resumedao.addEntity(entity);
                 }
             }
+
             XSSFSheet sheet2 = wookbook.getSheet("Sheet2");
             int rows2 = sheet2.getPhysicalNumberOfRows();
             for (int i = 1; i <=rows; i++) {
@@ -164,25 +130,9 @@ public class PoiUtils {
                         System.out.println(s);
                     }
                     ResumeEduEntity edu = new ResumeEduEntity();
-                    Date begindata = null;
-                    try {
-                        DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                        begindata = new Date(f.parse(valedu[0].toString()).getTime());
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    edu.setStartTime(begindata);
-                    Date enddata = null;
-                    try {
-                        DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-                        enddata = new Date(f.parse(valedu[1].toString()).getTime());
-                    } catch (ParseException e) {
-                        e.printStackTrace();
-                    }
-                    edu.setEndTime(enddata);
-                    edu.setSchool(valedu[2]);
-                    edu.setDiscipline(valedu[3]);
-                    edu.setResumeId(entity.getId());
+
+                    setToResumeEduEntity(entity, valedu, edu);
+
                     eduentity.add(edu);
                 }
             }
@@ -193,6 +143,62 @@ public class PoiUtils {
         }
         entity.setResumeEduById(eduentity);
         resumedao.modifyEntity(entity);
+    }
+
+    private static void setToResumeEduEntity(ResumeEntity entity, String[] valedu, ResumeEduEntity edu) {
+        Date begindata = null;
+        try {
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            begindata = new Date(f.parse(valedu[0].toString()).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        edu.setStartTime(begindata);
+        Date enddata = null;
+        try {
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            enddata = new Date(f.parse(valedu[1].toString()).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        edu.setEndTime(enddata);
+        edu.setSchool(valedu[2]);
+        edu.setDiscipline(valedu[3]);
+        edu.setResumeId(entity.getId());
+    }
+
+    private static void setToEntity(ResumeEntity entity, String[] val) {
+        entity.setName(val[0]);
+        entity.setNation(val[1]);
+        entity.setGender(val[2]);
+        entity.setIdNum(val[3]);
+        entity.setTel(Long.parseLong(val[4]));
+        entity.setEmail(val[5]);
+        entity.setZzmm(val[6]);
+        entity.setHyzk(val[7]);
+        entity.setEducation(val[8]);
+        Date birthday = null;
+        try {
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+            birthday = new Date(f.parse(val[9].toString()).getTime());
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        entity.setBirthday(birthday);
+        entity.setJjsp(val[10]);
+        entity.setProfession(val[11]);
+        entity.setZipCode(Integer.parseInt(val[12]));
+        entity.setHomeTown(val[13]);
+        entity.setForeignLang(val[14]);
+        entity.setSpecialty(val[15]);
+        entity.setYysp(val[16]);
+        entity.setJndj(Integer.parseInt(val[17]));
+        entity.setHeight(Double.valueOf(val[18]));
+        entity.setHukou(val[19]);
+        entity.setHukouAddress(val[20]);
+        entity.setHomePhone(Integer.parseInt(val[21]));
+        entity.setAddress(val[22]);
+        entity.setReportCard(val[23]);
     }
 
 

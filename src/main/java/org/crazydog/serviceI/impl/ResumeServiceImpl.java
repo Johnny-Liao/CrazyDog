@@ -38,6 +38,11 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
     private ResumeJobsdaoImpl resumeJobsdao;
 
     /**
+     * 默认一页显示5条记录
+     */
+    private int pageNum = 5;
+
+    /**
      * 使用resumeSearchModel来进行高级查询
      *
      * @param searchModel
@@ -274,4 +279,18 @@ public class ResumeServiceImpl implements BaseService<ResumeEntity> {
         String hql = "from ResumeEntity res";
         return (List<ResumeEntity>) resumedao.find(hql, page, 5);
     }
+
+
+
+    /**
+     * 计算总的记录数，用于分页
+     *
+     * @return 记录条数
+     */
+    public int maxPageNum() {
+        String sql = "select count(*)  from  ResumeEntity";
+        int count = ((Long) resumedao.find(sql).iterator().next()).intValue();
+        return count / pageNum + 1;
+    }
+
 }

@@ -29,7 +29,7 @@ public class ResumeController {
 	 */
 	@RequestMapping(value="/resume",params="action=getAll")
 	public String getAllmes(HttpServletRequest request){
-		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+		List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
 		Iterator<ResumeEntity> it = resumes.iterator();
 		while(it.hasNext()){
@@ -67,20 +67,20 @@ public class ResumeController {
 		批量删除
 	 */
 	@RequestMapping(value="/resume",params ="action=batchdelete")
-	public String batchdelete(HttpServletRequest request,@RequestParam("selectes")int[] id){
+	public String batchdelete(HttpServletRequest request,@RequestParam("selects")int[] id){
 		if(id!=null){
 			resumeService.batchDeleteResume(id);
 		}
-		java.util.List<ResumeEntity> resumes = resumeService.getAllEntities();
+		List<ResumeEntity> resumes = resumeService.getAllEntities();
 		request.setAttribute("resumes", resumes);
-		return "resume";
+		return "resumeBypage";
 	}
 
 	/*
 		批量录取
 	 */
 	@RequestMapping(value="/resume",params ="action=batchHire")
-	public String batchHire(HttpServletRequest request,@RequestParam("selectes")int[] id){
+	public String batchHire(HttpServletRequest request,@RequestParam("selects")int[] id){
 		if(id!=null){
 			resumeService.batchHire(id, "李飞");
 		}
@@ -91,11 +91,14 @@ public class ResumeController {
 
 	}
 
-	/*
-            批量取消录取
-         */
+	/**
+	 * 批量取消录取
+	 * @param request
+	 * @param id
+	 * @return
+	 */
 	@RequestMapping(value="/resume",params ="action=batchCancelHire")
-	public String batchCancelHire(HttpServletRequest request,@RequestParam("selectes")int[] id){
+	public String batchCancelHire(HttpServletRequest request,@RequestParam("selects")int[] id){
 		if(id!=null){
 			resumeService.batchCancelHire(id, "李飞");
 		}
@@ -138,8 +141,9 @@ public class ResumeController {
 	// 处理pages参数，显示相应页数的所有人员信息
 	@RequestMapping(method = RequestMethod.GET, value = "/resume/{page}")
 	public String getEmployeeByPages(HttpServletRequest request, @PathVariable String page) {
-		request.setAttribute("resume", resumeService.getResumeByPage(Integer.parseInt(page)));
+		request.setAttribute("resumes", resumeService.getResumeByPage(Integer.parseInt(page)));
 		request.setAttribute("page", page);
+		request.setAttribute("maxPage", resumeService.maxPageNum());
 		return "resumeBypage";
 	}
 

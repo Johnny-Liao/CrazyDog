@@ -40,7 +40,7 @@
               </c:forEach>
             </select></td>
             <td><input type="submit"  name="submit" id="button" value="查询"  class="s_btn"  onclick="javascript:this.form.action='/resume?action=modelSearch'"/></td>
-            <td><input type="file" name="uploadExcel"></td>
+            <td><input type="file" name="uploadExcel" class="s_btn"></td>
             <td><input type="submit" value="Excel导入简历" class="s_btns" onclick="javascript:this.form.action='/resume?action=upLoadExcel'"/></td>
             <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
             <td><input type="submit"  name="submit" id="button3" value="批量删除"  class="s_btns" onclick="javascript:this.form.action='/resume?action=batchdelete'"/></td>
@@ -59,9 +59,9 @@
               </c:forEach>
             </tr>
             <%--显示表内容--%>
-            <c:forEach var="column" items="${resume}">
+            <c:forEach var="column" items="${resumes}">
               <tr style="color:#000; font-size:14px; padding:10px 0;">
-                <td align="center" bgcolor="#fff8f8"><input name="selectid" type="checkbox" value="${column.id}" /></td>
+                <td align="center" bgcolor="#fff8f8"><input name="selects" type="checkbox" value="${column.id}" /></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.name}"/></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.gender}"/></td>
                 <td align="center" bgcolor="#fff8f8"><c:out value="${column.nation}"/></td>
@@ -77,7 +77,7 @@
             </c:forEach>
               <tr>
                 <td align="center" bgcolor="#fff8f8"><a href='/resume/${(page - 1) > 1 ? (page - 1) : 1}'/>上一页</td>
-                <td align="center" bgcolor="#fff8f8"><a href='/resume/${page + 1}'/>下一页</td>
+                <td align="center" bgcolor="#fff8f8"><a href='/resume/${(page + 1) > maxPage ? maxPage : (page + 1)}'/>下一页</td>
                 <td align="center"><c:out value="当前页：${page}"></c:out></td>
               </tr>
           </table>
